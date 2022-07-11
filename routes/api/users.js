@@ -3,6 +3,7 @@ const router = express.Router();
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const config = require('config');
+const auth = require('../../middleware/auth');
 const { check, validationResult } = require('express-validator');
 
 const User = require('../../models/User');
@@ -38,7 +39,7 @@ router.post(
       postcode,
       isAdmin,
       allowedToSellQty,
-      roles,
+      role,
       timestamps,
     } = req.body;
 
@@ -49,7 +50,7 @@ router.post(
       if (user) {
         return res
           .status(400)
-          .json({ errors: [{ msg: 'User is already registered' }] });
+          .json({ errors: [{ msg: 'User is already registered GD' }] });
       }
 
       // instantiate new user
@@ -65,7 +66,7 @@ router.post(
         postcode,
         isAdmin,
         allowedToSellQty,
-        roles,
+        role,
         timestamps,
       });
 
@@ -87,7 +88,7 @@ router.post(
         { expiresIn: 360000 },
         (err, token) => {
           if (err) throw err;
-          res.json({ token });
+          return res.json({ token });
         }
       );
 
@@ -97,8 +98,60 @@ router.post(
       res.status(500).send('Server Error in users.js');
     }
 
-    res.send('User registered');
+    // res.send('User registered');
   }
 );
+
+// @route   GET api/users
+// @desc    Get current user by token
+// @access  Private
+router.get('/', auth, async (req, res) => {
+  try {
+    const user = await User.findById(req.user.id).select('-password');
+    res.json(user);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server Error in users.js');
+  }
+});
+
+// @route   PUT api/users
+// @desc    Update User Details via JWT login - password not returned in JWT
+// @access  Private
+router.put('/', auth, async (req, res) => {
+  try {
+    await User.findOneAndUpdate(
+      { _id: req.user.id },
+      {
+        name: req.body.name,
+        email: req.body.email,
+      },
+      { new: true }
+    ).select('-password');
+    if (!User) {
+      return res.status(400).json({ msg: 'There is no User to update' });
+    }
+    res.json({ msg: 'User account updated successfully' });
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server Error');
+  }
+});
+
+// @route   DELETE api/users
+// @desc    Delete a Registered User
+// @access  Private
+router.delete('/', auth, async (req, res) => {
+  try {
+    await User.findOneAndRemove({ _id: req.user.id });
+    if (!User) {
+      return res.status(400).json({ msg: 'There is no User to delete' });
+    }
+    res.json({ msg: 'User account deleted successfully' });
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server Error');
+  }
+});
 
 module.exports = router;

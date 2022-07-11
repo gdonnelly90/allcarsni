@@ -26,7 +26,7 @@ const userSchema = mongoose.Schema(
     companyRegNumber: {
       type: String,
       required: false,
-      unique: true,
+      default: 'Not Registered',
     },
     vatNumber: {
       type: String,
@@ -51,12 +51,11 @@ const userSchema = mongoose.Schema(
       required: true,
       default: 1,
     },
-    roles: [
-      {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'Role',
-      },
-    ],
+    role: {
+      type: String,
+      required: true,
+      default: 'individual',
+    },
   },
   {
     timestamps: true,

@@ -4,6 +4,9 @@ const app = express();
 
 connectDB();
 
+// initialis emiddleware
+app.use(express.json({ extended: false }));
+
 app.get('/', (req, res) => res.send('AllCarsNI API Running'));
 
 // routes defined

@@ -4,7 +4,7 @@ const userSchema = mongoose.Schema(
   {
     businessName: {
       type: String,
-      //   required: false,
+      required: false,
     },
     name: {
       type: String,
@@ -21,25 +21,25 @@ const userSchema = mongoose.Schema(
     },
     telephone: {
       type: String,
-      //   required: true,
+      required: false,
     },
     companyRegNumber: {
       type: String,
-      //   required: true,
+      required: false,
       unique: true,
     },
     vatNumber: {
       type: String,
-      //   required: true,
+      required: false,
       default: 'Not VAT Registered',
     },
     address: {
       type: String,
-      //   required: true,
+      required: false,
     },
     postcode: {
       type: String,
-      //   required: true,
+      required: false,
     },
     isAdmin: {
       type: Boolean,

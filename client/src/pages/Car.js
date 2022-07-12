@@ -1,13 +1,23 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { Row, Col, Image, ListGroup, Card, Button } from 'react-bootstrap';
+import axios from 'axios';
 import Rating from '../components/Rating';
-import cars from '../cars';
+// import cars from '../cars';
 // import CarouselSlider from '../components/CarouselSlider';
 
 const CarScreen = ({ match }) => {
   const { id } = useParams();
-  const car = cars.find((c) => c._id === id);
+  // const car = cars.find((c) => c._id === id);
+  const [car, setCar] = useState({});
+  useEffect(() => {
+    const fetchCar = async () => {
+      const { data } = await axios.get(`/api/cars/${match.params.id}`);
+      setCar(data);
+    };
+    fetchCar();
+  }, []);
+
   return (
     <>
       <Link className='btn btn-light my-3' to='/'>

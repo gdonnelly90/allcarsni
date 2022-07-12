@@ -123,6 +123,11 @@ const carSchema = mongoose.Schema({
     type: [String],
     // required: false,
   },
+  isNewCar: {
+    type: Boolean,
+    required: true,
+    default: false,
+  },
   reviews: [reviewSchema],
   rating: {
     type: Number,

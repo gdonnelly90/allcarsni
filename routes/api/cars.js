@@ -39,6 +39,7 @@ router.post(
     check('emissions', 'C02 Emissions Figure').not().isEmpty(),
     check('ulezCompliant', 'Is It ULEZ Compliant').not().isEmpty(),
     check('damaged', 'Is Car S/C/D/N Damaged, True Or False').not().isEmpty(),
+    check('isNewCar', 'Is this a new car? True Or False').not().isEmpty(),
   ],
   async (req, res) => {
     const {
@@ -67,6 +68,7 @@ router.post(
       ulezCompliant,
       damaged,
       keywords,
+      isNewCar,
       reviews,
       rating,
       numReviews,
@@ -109,14 +111,15 @@ router.post(
         ulezCompliant,
         damaged,
         keywords,
+        isNewCar,
         reviews,
         rating,
         numReviews,
       });
 
       res.json(await car.save());
-    } catch (err) {
-      console.error(err.message);
+    } catch (error) {
+      console.error(error.message);
       res.status(500).send('Server Error in car.js');
     }
   }
@@ -128,31 +131,32 @@ router.post(
 router.get('/', async (req, res) => {
   try {
     const cars = await Car.find();
+    if (!cars) {
+      return res.status(400).json({ msg: 'There is no Cars to find' });
+    }
     res.json(cars);
-  } catch (err) {
-    console.error(err.message);
+  } catch (error) {
+    console.error(error.message);
     res.status(500).send('Server Error');
   }
 });
 
-// @route    GET api/cars/:id
-// @desc     Get car by ID
+// @route    Get api/cars/:new
+// @desc     Get all 'new' cars by isNewCar
 // @access   Public
-// router.get('/:id', checkObjectId('id'), async (req, res) => {
-//   try {
-//     const car = await Car.findById(req.params.id);
+router.get('/:isNewCar', async (req, res) => {
+  try {
+    const newCars = await Car.find({ isNewCar: { $in: ['true', true] } });
+    res.json(newCars);
+    if (!newCars) {
+      return res.status(400).json({ msg: 'There are no new cars' });
+    }
+  } catch (error) {
+    console.error(error.message);
 
-//     if (!car) {
-//       return res.status(404).json({ msg: 'Car not found' });
-//     }
-
-//     res.json(car);
-//   } catch (err) {
-//     console.error(err.message);
-
-//     res.status(500).send('Server Error');
-//   }
-// });
+    res.status(500).send('Server Error');
+  }
+});
 
 // @route    GET api/cars/:keyword
 // @desc     Get car by Car ID or User
@@ -162,9 +166,12 @@ router.get('/:keyword', async (req, res) => {
     const cars = await Car.find({
       $or: [{ _id: req.params.keyword }, { user: req.params.keyword }],
     });
+    if (!cars) {
+      return res.status(400).json({ msg: 'There is no Car to find' });
+    }
     res.json(cars);
-  } catch (err) {
-    console.error(err.message);
+  } catch (error) {
+    console.error(error.message);
     res.status(500).send('Server Error');
   }
 });
@@ -201,6 +208,7 @@ router.put('/:id', checkObjectId('id'), async (req, res) => {
         ulezCompliant: req.body.ulezCompliant,
         damaged: req.body.damaged,
         keywords: req.body.keywords,
+        isNewCar: req.body.isNewCar,
         reviews: req.body.reviews,
         rating: req.body.rating,
         numReviews: req.body.numReviews,
@@ -208,8 +216,8 @@ router.put('/:id', checkObjectId('id'), async (req, res) => {
       { new: true }
     );
     res.json(await car.save());
-  } catch (err) {
-    console.error(err.message);
+  } catch (error) {
+    console.error(error.message);
     res.status(500).send('Update Car Error');
   }
 });
@@ -227,11 +235,30 @@ router.delete('/:id', checkObjectId('id'), async (req, res) => {
 
     await car.remove();
     res.json({ msg: 'Car removed' });
-  } catch (err) {
-    console.error(err.message);
+  } catch (error) {
+    console.error(error.message);
 
     res.status(500).send('Server Error');
   }
 });
 
 module.exports = router;
+
+// @route    GET api/cars/:id
+// @desc     Get car by ID
+// @access   Public
+// router.get('/:id', checkObjectId('id'), async (req, res) => {
+//   try {
+//     const car = await Car.findById(req.params.id);
+
+//     if (!car) {
+//       return res.status(404).json({ msg: 'Car not found' });
+//     }
+
+//     res.json(car);
+//   } catch (err) {
+//     console.error(err.message);
+
+//     res.status(500).send('Server Error');
+//   }
+// });

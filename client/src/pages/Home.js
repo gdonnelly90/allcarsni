@@ -1,9 +1,20 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Row, Col } from 'react-bootstrap';
 import Car from '../components/Car';
-import cars from '../cars';
+import axios from 'axios';
+// import cars from '../cars';
 
 const Home = () => {
+  const [cars, setCars] = useState([]);
+  useEffect(() => {
+    const fetchCars = async () => {
+      const { data } = await axios.get('/api/cars');
+
+      setCars(data);
+    };
+    fetchCars();
+  }, []);
+
   return (
     <>
       <h1>Latest Cars</h1>

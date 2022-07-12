@@ -144,22 +144,22 @@ router.get('/', async (req, res) => {
 // @route    Get api/cars/:new
 // @desc     Get all 'new' cars by isNewCar
 // @access   Public
-router.get('/:isNewCar', async (req, res) => {
-  try {
-    const newCars = await Car.find({ isNewCar: { $in: ['true', true] } });
-    res.json(newCars);
-    if (!newCars) {
-      return res.status(400).json({ msg: 'There are no new cars' });
-    }
-  } catch (error) {
-    console.error(error.message);
+// router.get('/:isNewCar', async (req, res) => {
+//   try {
+//     const newCars = await Car.find({ isNewCar: { $in: ['true', true] } });
+//     res.json(newCars);
+//     if (!newCars) {
+//       return res.status(400).json({ msg: 'There are no new cars' });
+//     }
+//   } catch (error) {
+//     console.error(error.message);
 
-    res.status(500).send('Server Error');
-  }
-});
+//     res.status(500).send('Server Error');
+//   }
+// });
 
 // @route    GET api/cars/:keyword
-// @desc     Get car by Car ID or User
+// @desc     Get car by Car ID or User ID
 // @access   Public
 router.get('/:keyword', async (req, res) => {
   try {

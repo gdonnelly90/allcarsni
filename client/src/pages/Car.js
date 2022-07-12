@@ -8,15 +8,17 @@ import Rating from '../components/Rating';
 
 const CarScreen = ({ match }) => {
   const { id } = useParams();
-  // const car = cars.find((c) => c._id === id);
   const [car, setCar] = useState({});
+
   useEffect(() => {
     const fetchCar = async () => {
-      const { data } = await axios.get(`/api/cars/${match.params.id}`);
+      const { data } = await axios.get(`/api/cars/${id}`);
+
       setCar(data);
     };
+
     fetchCar();
-  }, []);
+  }, [match]);
 
   return (
     <>

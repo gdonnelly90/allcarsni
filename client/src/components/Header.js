@@ -36,6 +36,11 @@ const Header = () => {
                   <i className='fas fa-car'></i> Sell Your Car
                 </Nav.Link>
               </LinkContainer>
+              <LinkContainer to='/account'>
+                <Nav.Link>
+                  <i className='fas fa-book'></i> Account
+                </Nav.Link>
+              </LinkContainer>
             </Nav>
           </Navbar.Collapse>
         </Container>

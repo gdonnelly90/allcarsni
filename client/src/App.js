@@ -4,6 +4,7 @@ import { Container } from 'react-bootstrap';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Home from './pages/Home';
+import Cart from './pages/Cart';
 import Car from './pages/Car';
 import SellCar from './pages/SellCar';
 import Search from './pages/Search';
@@ -26,6 +27,7 @@ const App = () => {
         <Container>
           <Routes>
             <Route path='/' element={<Home />} exact />
+            <Route path='/cart' element={<Cart />} exact />
             <Route path='car/:id' element={<Car />} exact />
             <Route path='/sellcar' element={<SellCar />} exact />
             <Route path='/search' element={<Search />} exact />

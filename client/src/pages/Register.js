@@ -36,12 +36,12 @@ const Register = () => {
           <Form className='mt-8 form-login card p-5'>
             <div className='form-login text-center mb-2'>
               <img
-                src={require('../assets/img/profilePic.jpg')}
-                alt='Top 500 lgo'
+                src={require('../assets/img/Mainlogo_25mm.png')}
+                alt='AllCarsNI Logo'
               />
             </div>
-            <div className='d flex justify-content-center text-center mb-2'>
-              <h4>Signup</h4>
+            <div className='d flex justify-content-center text-center mb-5'>
+              <h2>Sign Up</h2>
             </div>
             <div className='w-full'>
               {/* {signUpSuccess && <FormSuccess text={signUpSuccess} />}

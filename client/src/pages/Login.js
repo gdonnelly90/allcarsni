@@ -25,53 +25,27 @@ const Login = () => {
   return (
     <Formik
       initialValues={{
-        name: '',
         email: '',
         password: '',
-        confirmPassword: '',
       }}
     >
       {() => (
         <div className='form-login-wrapper'>
           <Form className='mt-8 form-login card p-5'>
-            <div className='form-login text-center mb-2'>
+            <div className='text-center mb-5'>
               <img
-                src={require('../assets/img/profilePic.jpg')}
-                alt='Top 500 lgo'
+                src={require('../assets/img/Mainlogo_25mm.png')}
+                alt='AllCarsNI Logo'
               />
             </div>
-            <div className='d flex justify-content-center text-center mb-2'>
-              <h4>Sign In</h4>
+            <div className='d flex justify-content-center text-center mb-5'>
+              <h2>Log In</h2>
             </div>
             <div className='w-full'>
-              {/* {signUpSuccess && <FormSuccess text={signUpSuccess} />}
-              {signUpError && <ErrorAlert text={signUpError} />} */}
+              {/* {loginSuccess && <FormSuccess text={loginSuccess} />}
+                {loginError && <ErrorAlert text={loginError} />} */}
             </div>
             <div>
-              <div className='mb-3'>
-                <div className='mb-1'>
-                  <Label text='First name' />
-                </div>
-                <FormInput
-                  fieldType='input'
-                  ariaLabel='firstName'
-                  name='firstName'
-                  type='text'
-                  placeholder=''
-                />
-              </div>
-              <div className='mb-3'>
-                <div className='mb-1'>
-                  <Label text='Last name' />
-                </div>
-                <FormInput
-                  fieldType='input'
-                  ariaLabel='LastName'
-                  name='lastName'
-                  type='text'
-                  placeholder=''
-                />
-              </div>
               <div className='mb-3'>
                 <div className='mb-1'>
                   <Label text='Email' />
@@ -81,7 +55,7 @@ const Login = () => {
                   ariaLabel='Email'
                   name='email'
                   type='text'
-                  placeholder=''
+                  placeholder='Email'
                 />
               </div>
               <div className='mb-3'>
@@ -93,19 +67,7 @@ const Login = () => {
                   ariaLabel='Password'
                   name='password'
                   type='password'
-                  placeholder=''
-                />
-              </div>
-              <div className='mb-3'>
-                <div className='mb-1'>
-                  <Label text='Retype Password' />
-                </div>
-                <FormInput
-                  fieldType='input'
-                  ariaLabel='ConfirmPassword'
-                  name='confirmPassword'
-                  type='password'
-                  placeholder=''
+                  placeholder='Password'
                 />
               </div>
             </div>

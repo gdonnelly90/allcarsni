@@ -148,7 +148,7 @@ const TradeSeller = () => {
                   ariaLabel='vatNumber'
                   name='vatNumber'
                   type='text'
-                  placeholder='VAT Number'
+                  placeholder='VAT Number (if registered - otherwise leave blank)'
                 />
               </div>
               <div className='mb-3'>

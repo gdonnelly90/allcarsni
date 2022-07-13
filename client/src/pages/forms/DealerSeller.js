@@ -20,7 +20,7 @@ const DealerSellerSchema = Yup.object().shape({
   companyRegNumber: Yup.string().required(
     'Company Registration Number is required'
   ),
-  vatNumber: Yup.string.required('VAT Number is required'),
+  vatNumber: Yup.string().required('VAT Number is required'),
   address: Yup.string().required('Address is required'),
   postcode: Yup.string().required('Postcode is required'),
 });

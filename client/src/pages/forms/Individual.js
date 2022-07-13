@@ -1,15 +1,12 @@
 import React, { useState, useContext } from 'react';
 import { Navigate, Link } from 'react-router-dom';
-import { Formik, Form } from 'formik';
+import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
 import { Button } from 'react-bootstrap';
-import { FormSuccess } from '../components/formComponents/FormSuccess';
-import { ErrorAlert } from '../components/formComponents/ErrorAlert';
-import { FormInput } from '../components/formComponents/FormInput';
-import { Label } from '../components/formComponents/Label';
-import { toast } from 'react-toastify';
+import { FormInput } from '../../components/formComponents/FormInput';
+import { Label } from '../../components/formComponents/Label';
 
-const RegisterSchema = Yup.object().shape({
+const InvididualSchema = Yup.object().shape({
   name: Yup.string().required('Name is required'),
   email: Yup.string()
     .email('Invaild email address')
@@ -21,36 +18,46 @@ const RegisterSchema = Yup.object().shape({
   ),
 });
 
-const Login = () => {
+const Individual = () => {
   return (
     <Formik
       initialValues={{
+        businessName: '',
+        name: '',
         email: '',
         password: '',
+        confirmPassword: '',
+        telephone: '',
+        companyRegNumber: '',
+        vatNumber: '',
+        address: '',
+        postcode: '',
+        isAdmin: '',
       }}
     >
       {() => (
         <div className='form-login-wrapper'>
           <Form className='mt-8 form-login card p-5'>
-            <div className='text-center mb-5'>
-              <img
-                src={require('../assets/img/Mainlogo_25mm.png')}
-                alt='AllCarsNI Logo'
-              />
-            </div>
-            <div className='d flex justify-content-center text-center mb-5'>
-              <h2>Log In</h2>
-            </div>
-            <div className='w-full'>
-              {/* {loginSuccess && <FormSuccess text={loginSuccess} />}
-                {loginError && <ErrorAlert text={loginError} />} */}
-            </div>
-            <div>
+            <div className='account-selection'>
+              <div className='mb-3'>
+                <div className='mb-1'>
+                  <Label text='Name' />
+                </div>
+                <FormInput
+                  id='name'
+                  fieldType='input'
+                  ariaLabel='name'
+                  name='name'
+                  type='text'
+                  placeholder='Name'
+                />
+              </div>
               <div className='mb-3'>
                 <div className='mb-1'>
                   <Label text='Email' />
                 </div>
                 <FormInput
+                  id='email'
                   fieldType='input'
                   ariaLabel='Email'
                   name='email'
@@ -63,6 +70,7 @@ const Login = () => {
                   <Label text='Password' />
                 </div>
                 <FormInput
+                  id='password'
                   fieldType='input'
                   ariaLabel='Password'
                   name='password'
@@ -70,18 +78,19 @@ const Login = () => {
                   placeholder='Password'
                 />
               </div>
-            </div>
-
-            <div className='mb-2 text-center'>
-              Need to sign up? <Link to={'/register'}>Register</Link>
-            </div>
-            <div className='mb-4 text-center'>
-              Return to browse? <Link to={'/'}>click here</Link>
-            </div>
-            <div className='d-grid gap-2'>
-              <Button variant='primary' type='submit'>
-                Submit
-              </Button>
+              <div className='mb-3'>
+                <div className='mb-1'>
+                  <Label text='Retype Password' />
+                </div>
+                <FormInput
+                  id='confirmPassword'
+                  fieldType='input'
+                  ariaLabel='ConfirmPassword'
+                  name='confirmPassword'
+                  type='password'
+                  placeholder='Confirm Password'
+                />
+              </div>
             </div>
           </Form>
         </div>
@@ -90,4 +99,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default Individual;

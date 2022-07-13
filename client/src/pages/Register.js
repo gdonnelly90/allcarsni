@@ -1,13 +1,13 @@
 import React, { useState, useContext } from 'react';
 import { Navigate, Link } from 'react-router-dom';
-import { Formik, Form } from 'formik';
+import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
 import { Button } from 'react-bootstrap';
-import { FormSuccess } from '../components/formComponents/FormSuccess';
-import { ErrorAlert } from '../components/formComponents/ErrorAlert';
+// import { FormSuccess } from '../components/formComponents/FormSuccess';
+// import { ErrorAlert } from '../components/formComponents/ErrorAlert';
 import { FormInput } from '../components/formComponents/FormInput';
 import { Label } from '../components/formComponents/Label';
-import { toast } from 'react-toastify';
+// import { toast } from 'react-toastify';
 
 const RegisterSchema = Yup.object().shape({
   name: Yup.string().required('Name is required'),
@@ -22,13 +22,28 @@ const RegisterSchema = Yup.object().shape({
 });
 
 const Register = () => {
+  const accountTypes = [
+    { id: 1, label: 'Individual Seller ', value: 'individualSeller' },
+    { id: 2, label: 'Trader Seller ', value: 'tradeSeller' },
+    { id: 3, label: 'Dealership Seller ', value: 'dealershipSeller' },
+  ];
+
+  const [selectedAccountId, setAccountId] = useState(1);
+
   return (
     <Formik
       initialValues={{
+        businessName: '',
         name: '',
         email: '',
         password: '',
         confirmPassword: '',
+        telephone: '',
+        companyRegNumber: '',
+        vatNumber: '',
+        address: '',
+        postcode: '',
+        isAdmin: '',
       }}
     >
       {() => (
@@ -47,29 +62,52 @@ const Register = () => {
               {/* {signUpSuccess && <FormSuccess text={signUpSuccess} />}
               {signUpError && <ErrorAlert text={signUpError} />} */}
             </div>
-            <div>
-              <div className='mb-3'>
-                <div className='mb-1'>
-                  <Label text='First name' />
-                </div>
-                <FormInput
-                  fieldType='input'
-                  ariaLabel='firstName'
-                  name='firstName'
-                  type='text'
-                  placeholder=''
-                />
+            {/* <div> */}
+            <div className='account-selection'>
+              <div id='my-radio-group'>
+                <h4>Are you an individual, trade seller or dealer seller?</h4>{' '}
               </div>
+              <ul>
+                {accountTypes.map((option, index) => (
+                  <li key={index}>
+                    <label>
+                      {option.label}
+                      <input
+                        className='account-checkbox'
+                        name={option.value}
+                        checked={selectedAccountId === option.id}
+                        onChange={() => setAccountId(option.id)}
+                        type='checkbox'
+                      />
+                    </label>
+                  </li>
+                ))}
+              </ul>
+              {/* </div>
+            <div role='group' aria-labelledby='my-radio-group'>
+              <label>
+                <Field type='radio' name='user-type' value='Individual' />
+                Individual
+              </label>
+              <label>
+                <Field type='radio' name='user-type' value='Trade Seller' />
+                Trade Seller
+              </label>
+              <label>
+                <Field type='radio' name='user-type' value='Dealer Seller' />
+                Dealer Seller
+              </label> */}
               <div className='mb-3'>
                 <div className='mb-1'>
-                  <Label text='Last name' />
+                  <Label text='Name' />
                 </div>
                 <FormInput
+                  id='name'
                   fieldType='input'
-                  ariaLabel='LastName'
-                  name='lastName'
+                  ariaLabel='name'
+                  name='name'
                   type='text'
-                  placeholder=''
+                  placeholder='Name'
                 />
               </div>
               <div className='mb-3'>
@@ -77,11 +115,12 @@ const Register = () => {
                   <Label text='Email' />
                 </div>
                 <FormInput
+                  id='email'
                   fieldType='input'
                   ariaLabel='Email'
                   name='email'
                   type='text'
-                  placeholder=''
+                  placeholder='Email'
                 />
               </div>
               <div className='mb-3'>
@@ -89,11 +128,12 @@ const Register = () => {
                   <Label text='Password' />
                 </div>
                 <FormInput
+                  id='password'
                   fieldType='input'
                   ariaLabel='Password'
                   name='password'
                   type='password'
-                  placeholder=''
+                  placeholder='Password'
                 />
               </div>
               <div className='mb-3'>
@@ -101,15 +141,19 @@ const Register = () => {
                   <Label text='Retype Password' />
                 </div>
                 <FormInput
+                  id='confirmPassword'
                   fieldType='input'
                   ariaLabel='ConfirmPassword'
                   name='confirmPassword'
                   type='password'
-                  placeholder=''
+                  placeholder='Confirm Password'
                 />
               </div>
             </div>
 
+            <div className='mb-2 text-center'>
+              Already have an account <Link to={'/login'}>Login In</Link>
+            </div>
             <div className='mb-4 text-center'>
               Return to browse? <Link to={'/'}>click here</Link>
             </div>

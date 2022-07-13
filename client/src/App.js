@@ -10,6 +10,7 @@ import SellCar from './pages/SellCar';
 import Search from './pages/Search';
 import Login from './pages/Login';
 import Register from './pages/Register';
+import RegisterTest from './pages/RegisterTest';
 import MainAccount from './pages/account/MainAccount';
 import AdvertHistory from './pages/account/AdvertHistory';
 import Favourites from './pages/account/Favourites';
@@ -34,6 +35,7 @@ const App = () => {
             <Route path='/account' element={<MainAccount />} exact />
             <Route path='/login' element={<Login />} exact />
             <Route path='/register' element={<Register />} exact />
+            <Route path='/registertest' element={<RegisterTest />} exact />
             <Route
               path='/account/adverthistory'
               element={<AdvertHistory />}

@@ -26,6 +26,11 @@ const Header = () => {
                   <i className='fas fa-user'></i> Sign In / Up
                 </Nav.Link>
               </LinkContainer>
+              <LinkContainer to='/sellcar'>
+                <Nav.Link>
+                  <i className='fas fa-car'></i> Sell Your Car
+                </Nav.Link>
+              </LinkContainer>
             </Nav>
           </Navbar.Collapse>
         </Container>

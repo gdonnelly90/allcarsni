@@ -2,7 +2,6 @@ import React, { useState, useContext } from 'react';
 import { Navigate, Link } from 'react-router-dom';
 import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
-import { Button } from 'react-bootstrap';
 import { FormInput } from '../../components/formComponents/FormInput';
 import { Label } from '../../components/formComponents/Label';
 
@@ -22,17 +21,10 @@ const Individual = () => {
   return (
     <Formik
       initialValues={{
-        businessName: '',
         name: '',
         email: '',
         password: '',
         confirmPassword: '',
-        telephone: '',
-        companyRegNumber: '',
-        vatNumber: '',
-        address: '',
-        postcode: '',
-        isAdmin: '',
       }}
     >
       {() => (

@@ -56,6 +56,7 @@ const RegisterTest = () => {
               {selectedAccountId === 2 && <TradeSeller />}
               {selectedAccountId === 3 && <DealerSeller />}
             </div>
+            <p></p>
             <div className='mb-2 text-center'>
               Already have an account <Link to={'/login'}>Login In</Link>
             </div>

@@ -7,6 +7,8 @@ import Home from './pages/Home';
 import Car from './pages/Car';
 import SellCar from './pages/SellCar';
 import Search from './pages/Search';
+import Login from './pages/Login';
+import Register from './pages/Register';
 import MainAccount from './pages/account/MainAccount';
 import AdvertHistory from './pages/account/AdvertHistory';
 import Favourites from './pages/account/Favourites';
@@ -28,6 +30,8 @@ const App = () => {
             <Route path='/sellcar' element={<SellCar />} exact />
             <Route path='/search' element={<Search />} exact />
             <Route path='/account' element={<MainAccount />} exact />
+            <Route path='/login' element={<Login />} exact />
+            <Route path='/register' element={<Register />} exact />
             <Route
               path='/account/adverthistory'
               element={<AdvertHistory />}

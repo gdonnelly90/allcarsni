@@ -66,7 +66,15 @@ const MyVehicleHidden = () => {
         </Col>
       </Row>
       <Row>
-        <Button color='primary'>Find Car</Button>{' '}
+        {/* <Button color='primary'>Find Car</Button>{' '} */}
+        <Button
+          className='me-2'
+          variant='primary'
+          type='submit'
+          // disabled={!formik.dirty}
+        >
+          Find car
+        </Button>
       </Row>
     </Container>
   );

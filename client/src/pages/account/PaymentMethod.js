@@ -1,7 +1,13 @@
 import React from 'react';
+import AccountNavbar from '../../components/AccountNavbar';
+import { Button, Container } from 'react-bootstrap';
 
 const PaymentMethod = () => {
-  return <div>Payment Methods</div>;
+  return (
+    <Container>
+      <AccountNavbar />
+    </Container>
+  );
 };
 
 export default PaymentMethod;

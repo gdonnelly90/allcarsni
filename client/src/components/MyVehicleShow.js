@@ -4,7 +4,7 @@ import { Container, Row, Col, Image } from 'react-bootstrap';
 const MyVehicleShow = () => {
   return (
     <Container>
-      <Row sm={2} md={2}>
+      <Row xs={1} sm={2} md={2}>
         <Col>
           <Image src={require('../assets/img/profilePic.jpg')} />
         </Col>

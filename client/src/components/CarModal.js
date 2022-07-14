@@ -1,8 +1,24 @@
 import React from 'react';
-import { Container, Row, Col } from 'react-bootstrap';
+import { Container, Row, Col, Image } from 'react-bootstrap';
+import placeholder from '../assets/img/placeholder.jpg';
 
 const CarModal = () => {
-  return <div>Test</div>;
+  return (
+    <Container>
+      <div className='car-modal'>
+        <div>
+          <Image src={placeholder} fluid />
+        </div>
+        <p></p>
+        <div className='car-modal'>
+          <h4>Make and Model</h4>
+        </div>
+        <div className='mileage'>Mileage</div>
+        <div className='car-modal'>Make and Model</div>
+        <div className='car-modal'>Make and Model</div>
+      </div>
+    </Container>
+  );
 };
 
 export default CarModal;

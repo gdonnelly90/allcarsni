@@ -6,6 +6,7 @@ import Footer from './components/Footer';
 import Home from './pages/Home';
 import Cart from './pages/Cart';
 import Car from './pages/Car';
+import CarCloseDetailTest from './pages/CarCloseDetailTest';
 import SellCar from './pages/SellCar';
 import Search from './pages/Search';
 import Login from './pages/Login';
@@ -29,6 +30,11 @@ const App = () => {
             <Route path='/' element={<Home />} exact />
             <Route path='/cart' element={<Cart />} exact />
             <Route path='car/:id' element={<Car />} exact />
+            <Route
+              path='search/cardetail'
+              element={<CarCloseDetailTest />}
+              exact
+            />
             <Route path='/sellcar' element={<SellCar />} exact />
             <Route path='/search' element={<Search />} exact />
             <Route path='/account' element={<MainAccount />} exact />

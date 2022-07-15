@@ -1,7 +1,8 @@
 import React from 'react';
+import CarCarousel from './CarCarousel';
 
 const CarDetails = () => {
-  return <div>car details</div>;
+  return <CarCarousel />;
 };
 
 export default CarDetails;

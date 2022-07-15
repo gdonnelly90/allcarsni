@@ -6,7 +6,7 @@ const Search = () => {
   return (
     <div>
       <Container>
-        <CarGrid></CarGrid>
+        <CarGrid />
       </Container>
     </div>
   );

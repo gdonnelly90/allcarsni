@@ -1,27 +1,102 @@
+import { FaGasPump } from 'react-icons/fa';
+import { GiGearStickPattern } from 'react-icons/gi';
+import { GiNetworkBars } from 'react-icons/gi';
+
 import React from 'react';
-import { Container, Row, Col, Image } from 'react-bootstrap';
+import {
+  Container,
+  Row,
+  Col,
+  Image,
+  Card,
+  Button,
+  ListGroup,
+} from 'react-bootstrap';
 import placeholder from '../assets/img/placeholder.jpg';
 
+// designing the car modal card
 const CarModal = () => {
   return (
-    <Container>
-      <div className='car-modal'>
-        <div>
-          <Image src={placeholder} fluid />
-        </div>
-        <p></p>
-        <div className='car-modal'>
-          <h4>Make and Model</h4>
-        </div>
-        <div className='mileage'>Mileage</div>
-        <div className='car-modal'>Make and Model</div>
-        <div className='car-modal'>Make and Model</div>
-      </div>
-    </Container>
+    <Card className='my-3 p-3 rounded'>
+      <Card.Img src={placeholder} variant='top' />
+      <Card.Body>
+        <Card.Title as='div'>
+          <strong>Car Make and Model</strong>
+        </Card.Title>
+        <Card.Text></Card.Text>
+        <Card.Text as='h3'>£price</Card.Text>
+      </Card.Body>
+      <Container>
+        <Row>
+          {/* <className style='font-size:20px' */}
+          <Col>
+            <ListGroup.Item>
+              <GiNetworkBars /> Mileage
+            </ListGroup.Item>
+          </Col>
+          <Col>
+            <ListGroup.Item>
+              <FaGasPump /> Fuel
+            </ListGroup.Item>
+          </Col>
+          <Col>
+            <ListGroup.Item>
+              <GiGearStickPattern /> Gearbox
+            </ListGroup.Item>
+          </Col>
+        </Row>
+      </Container>
+    </Card>
   );
 };
 
 export default CarModal;
+
+// <Card style={{ width: '18rem' }}>
+//   <Card.Img variant='top' src={placeholder} />
+//   <Card.Body>
+//     <Card.Title>Card Title</Card.Title>
+//     <Card.Text>
+//       Some quick example text to build on the card title and make up the
+//       bulk of the card's content.
+//     </Card.Text>
+//     <Button variant='primary'>Car Details</Button>
+//   </Card.Body>
+// </Card>
+
+// <Card className='my-3 p-3 rounded'>
+// <Link to={`/car/${car._id}`}>
+//   <Card.Img src={car.image1} variant='top' />
+// </Link>
+// <Card.Body>
+//   <Link to={`/car/${car._id}`}>
+//     <Card.Title as='div'>
+//       <strong>
+//         {car.make} {car.model}
+//       </strong>
+//     </Card.Title>
+//   </Link>
+//   <Card.Text as='div'>
+//     <Rating value={car.rating} text={` ${car.numReviews} reviews`} />
+//   </Card.Text>
+//   <Card.Text as='h3'>£{car.price}</Card.Text>
+// </Card.Body>
+// </Card>
+
+// <Container>
+//   <div className='car-modal'>
+//     <div>
+//       <Image src={placeholder} fluid />
+//     </div>
+//     <p></p>
+//     <div className='car-modal'>
+//       <h4>Make and Model</h4>
+//     </div>
+//     <div className='mileage'>Mileage</div>
+//     <div className='car-modal'>Make and Model</div>
+//     <div className='car-modal'>Make and Model</div>
+//   </div>
+// </Container>
 
 // <div className='row'>
 //   <div className='col-sm-6 col-xl-4'>

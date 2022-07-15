@@ -6,6 +6,7 @@ import Individual from './forms/Individual';
 import TradeSeller from './forms/TradeSeller';
 import DealerSeller from './forms/DealerSeller';
 
+// register form schema
 const RegisterTest = () => {
   const accountTypes = [
     { id: 1, label: 'Individual Seller ', value: 'individualSeller' },
@@ -15,6 +16,7 @@ const RegisterTest = () => {
 
   const [selectedAccountId, setAccountId] = useState(1);
 
+  // designing the register feature, uses formik for form
   return (
     <Formik>
       {() => (

@@ -5,11 +5,13 @@ import * as Yup from 'yup';
 import { FormInput } from '../components/formComponents/FormInput';
 import { Label } from '../components/formComponents/Label';
 
+// outlining the schema
 const CarRegSchema = Yup.object().shape({
   reg: Yup.string().required('Reg is required'),
   mileage: Yup.string(),
 });
 
+// designing the hidden car feature
 const MyVehicleHidden = () => {
   return (
     <Container>

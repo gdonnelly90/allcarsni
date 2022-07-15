@@ -1,6 +1,7 @@
 import React from 'react';
 import { Container, Row, Col, Image } from 'react-bootstrap';
 
+// designing the car detail feature once license plate has been entered
 const MyVehicleShow = () => {
   return (
     <Container>

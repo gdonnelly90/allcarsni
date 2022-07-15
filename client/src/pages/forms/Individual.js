@@ -5,6 +5,7 @@ import * as Yup from 'yup';
 import { FormInput } from '../../components/formComponents/FormInput';
 import { Label } from '../../components/formComponents/Label';
 
+// designign the individual schema
 const InvididualSchema = Yup.object().shape({
   name: Yup.string().required('Name is required'),
   email: Yup.string()
@@ -17,6 +18,7 @@ const InvididualSchema = Yup.object().shape({
   ),
 });
 
+// creating the form required for the individual option
 const Individual = () => {
   return (
     <Formik

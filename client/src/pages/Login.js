@@ -9,6 +9,7 @@ import { FormInput } from '../components/formComponents/FormInput';
 import { Label } from '../components/formComponents/Label';
 import { toast } from 'react-toastify';
 
+// login form schema
 const RegisterSchema = Yup.object().shape({
   name: Yup.string().required('Name is required'),
   email: Yup.string()
@@ -21,6 +22,7 @@ const RegisterSchema = Yup.object().shape({
   ),
 });
 
+// designing the login feature, uses formik for form
 const Login = () => {
   return (
     <Formik

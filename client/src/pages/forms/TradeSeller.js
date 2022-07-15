@@ -5,6 +5,7 @@ import * as Yup from 'yup';
 import { FormInput } from '../../components/formComponents/FormInput';
 import { Label } from '../../components/formComponents/Label';
 
+// designign the trade seller schema
 const TradeSellerSchema = Yup.object().shape({
   businessName: Yup.string().required('Name is required'),
   name: Yup.string().required('Name is required'),
@@ -25,6 +26,7 @@ const TradeSellerSchema = Yup.object().shape({
   postcode: Yup.string().required('Postcode is required'),
 });
 
+// creating the form required for the trade seller option
 const TradeSeller = () => {
   return (
     <Formik

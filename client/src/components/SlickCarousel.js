@@ -5,9 +5,55 @@ import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import placeholder from '../assets/img/placeholder.jpg';
 
-const settings = {
+// const settings = {
+//   slidesToShow: 1,
+//   slidesToScroll: 1,
+//   autoplay: true,
+//   autoplaySpeed: 2000,
+//   nextArrow: (
+//     <div>
+//       <div className='next-slick-arrow'> ⫸ </div>
+//     </div>
+//   ),
+//   prevArrow: (
+//     <div>
+//       <div className='prev-slick-arrow'> ⫷ </div>
+//     </div>
+//   ),
+//   dots: true,
+//   infinite: true,
+//   speed: 500,
+//   lazyLoad: 'progressive',
+//   responsive: [
+//     {
+//       breakpoint: 700,
+//       settings: {
+//         arrows: false,
+//         slidesToShow: 3,
+//       },
+//     },
+//     {
+//       breakpoint: 500,
+//       settings: {
+//         arrows: false,
+//         slidesToShow: 2,
+//       },
+//     },
+//     {
+//       breakpoint: 400,
+//       settings: {
+//         arrows: false,
+//         slidesToShow: 1,
+//       },
+//     },
+//   ],
+// };
+
+const settingsMain = {
   slidesToShow: 1,
   slidesToScroll: 1,
+  arrows: true,
+  fade: true,
   autoplay: true,
   autoplaySpeed: 2000,
   nextArrow: (
@@ -20,9 +66,10 @@ const settings = {
       <div className='prev-slick-arrow'> ⫷ </div>
     </div>
   ),
-  dots: true,
+  // dots: true,
   infinite: true,
   speed: 500,
+  asNavFor: '.slider-nav',
   lazyLoad: 'progressive',
   responsive: [
     {
@@ -49,16 +96,8 @@ const settings = {
   ],
 };
 
-const settingsMain = {
-  slidesToShow: 1,
-  slidesToScroll: 1,
-  arrows: true,
-  fade: true,
-  asNavFor: '.slider-nav',
-};
-
 const settingsThumbs = {
-  slidesToShow: 6,
+  slidesToShow: 4,
   slidesToScroll: 1,
   asNavFor: '.slider-for',
   dots: true,

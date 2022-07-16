@@ -7,7 +7,8 @@ import CarModal from '../components/CarModal';
 const CarGrid = () => {
   return (
     <Container>
-      <Row className='text-center'>
+      {/* <Row className='text-center'> */}
+      <Row>
         <Col sm={12} md={6} lg={4}>
           <CarModal />
         </Col>

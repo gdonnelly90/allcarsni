@@ -8,7 +8,8 @@ import placeholder from '../assets/img/placeholder.jpg';
 const settings = {
   slidesToShow: 1,
   slidesToScroll: 1,
-  arrows: true,
+  autoplay: true,
+  autoplaySpeed: 2000,
   nextArrow: (
     <div>
       <div className='next-slick-arrow'> ⫸ </div>
@@ -51,13 +52,13 @@ const settings = {
 const settingsMain = {
   slidesToShow: 1,
   slidesToScroll: 1,
-  arrows: false,
+  arrows: true,
   fade: true,
   asNavFor: '.slider-nav',
 };
 
 const settingsThumbs = {
-  slidesToShow: 3,
+  slidesToShow: 6,
   slidesToScroll: 1,
   asNavFor: '.slider-for',
   dots: true,
@@ -119,7 +120,7 @@ const SlickCarousel = () => {
       >
         {slidesData.map((slide) => (
           <div className='slick-slide' key={slide.id}>
-            <h2 className='slick-slide-title'>{slide.title}</h2>
+            {/* <h2 className='slick-slide-title'>{slide.title}</h2> */}
             <img
               className='slick-slide-image'
               src={`https://picsum.photos/800/400?img=${slide.id}`}

@@ -27,8 +27,7 @@ const CarModal = () => {
         <Card.Text as='h3'>£price</Card.Text>
       </Card.Body>
       <Container>
-        <Row>
-          {/* <className style='font-size:20px' */}
+        <Row className='text-center'>
           <Col>
             <ListGroup.Item>
               <GiNetworkBars /> Mileage

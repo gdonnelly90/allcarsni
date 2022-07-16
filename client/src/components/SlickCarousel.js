@@ -55,7 +55,7 @@ const settingsMain = {
   arrows: true,
   fade: true,
   autoplay: true,
-  autoplaySpeed: 2000,
+  autoplaySpeed: 3000,
   nextArrow: (
     <div>
       <div className='next-slick-arrow'> ⫸ </div>

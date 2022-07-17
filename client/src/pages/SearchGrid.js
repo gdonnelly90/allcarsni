@@ -1,13 +1,21 @@
 import React from 'react';
-// import Header from './Header';
-// import Footer from './Footer';
+import { Container, Row, Col } from 'react-bootstrap';
+import ResultsGrid from '../components/ResultsGrid';
+import SidePanel from '../components/search/SidePanel';
 
 const SearchGrid = () => {
   return (
     <div>
-      {/* <Header /> */}
-      Initial Search Results Page
-      {/* <Footer /> */}
+      <Row>
+        <Col>
+          <SidePanel />
+        </Col>
+        <Col>
+          <Container>
+            <ResultsGrid />
+          </Container>
+        </Col>
+      </Row>
     </div>
   );
 };

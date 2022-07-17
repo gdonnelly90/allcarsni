@@ -2,6 +2,157 @@ import React from 'react';
 import { Container, Section, Row, Col, Button } from 'react-bootstrap';
 
 const SidePanel = () => {
+  //   return (
+  // <div className='our-listing pt0 bgc-f9 pb30-991'>
+  //   <div>
+  //     <div className='row'>
+  //       <div className='col-lg-4 col-xl-3 dn-md'>
+  //         <div className='sidebar_feature_listing_widget'>
+  //           <h4 className='title'>Featured Listings</h4>
+  //           <div className='listing_item_1grid_slider nav_none'>
+  //             <div className='item'>
+  //               <div className='car-listing sidebar_style'>
+  //                 <div className='thumb'>
+  //                   <img
+  //                     className='sidePanelFeatured'
+  //                     src={require('../../assets/img/cars/Audi_R8_V10_1.jpg')}
+  //                     alt='first.jpg'
+  //                   />
+  //                 </div>
+  //                 <div className='details'>
+  //                   <div className='wrapper'>
+  //                     <h5 className='price'>£xxx</h5>
+  //                     <h6 className='title'>
+  //                       <a href='page-car-single-v1.html'>
+  //                         Make, Model and Spec
+  //                       </a>
+  //                     </h6>
+  //                   </div>
+  //                 </div>
+  //               </div>
+  //             </div>
+  //             <div className='item'>
+  //               <div className='car-listing sidebar_style'>
+  //                 <div className='thumb'>
+  //                   <img
+  //                     className='sidePanelFeatured'
+  //                     src={require('../../assets/img/cars/Audi_R8_V10_1.jpg')}
+  //                     alt='first.jpg'
+  //                   />
+  //                 </div>
+  //                 <div className='details'>
+  //                   <div className='wrapper'>
+  //                     <h5 className='price'>£xxx</h5>
+  //                     <h6 className='title'>
+  //                       <a href='page-car-single-v1.html'>
+  //                         Make, Model and Spec
+  //                       </a>
+  //                     </h6>
+  //                   </div>
+  //                 </div>
+  //               </div>
+  //             </div>
+  //             <div className='item'>
+  //               <div className='car-listing sidebar_style'>
+  //                 <div className='thumb'>
+  //                   <img
+  //                     className='sidePanelFeatured'
+  //                     src={require('../../assets/img/cars/Audi_R8_V10_1.jpg')}
+  //                     alt='first.jpg'
+  //                   />
+  //                 </div>
+  //                 <div className='details'>
+  //                   <div className='wrapper'>
+  //                     <h5 className='price'>£xxx</h5>
+  //                     <h6 className='title'>
+  //                       <a href='page-car-single-v1.html'>
+  //                         Make, Model and Spec
+  //                       </a>
+  //                     </h6>
+  //                   </div>
+  //                 </div>
+  //               </div>
+  //             </div>
+  //           </div>
+  //         </div>
+  //         <div className='sidebar_recent_viewed_widgets'>
+  //           <h4 className='title'>Recently Viewed</h4>
+  //           <div className='d-flex mb20'>
+  //             <div className='flex-shrink-0'>
+  //               <img
+  //                 className='align-self-start mr-3'
+  //                 src='images/blog/s1.jpg'
+  //                 alt='s1.jpg'
+  //               />
+  //             </div>
+  //             <div className='flex-grow-1 ms-3'>
+  //               <h5 className='price'>£xxx</h5>
+  //               <h6 class='title'>
+  //                 <a href='page-car-single-v1.html'>Make, Model and Spec</a>
+  //               </h6>
+  //             </div>
+  //           </div>
+  //           <div className='d-flex mb20'>
+  //             <div className='flex-shrink-0'>
+  //               <img
+  //                 className='align-self-start mr-3'
+  //                 src='images/blog/s2.jpg'
+  //                 alt='s2.jpg'
+  //               />
+  //             </div>
+  //             <div className='flex-grow-1 ms-3'>
+  //               <h5 className='post_title'>$129</h5>
+  //               <p>Bentley Bentayga</p>
+  //               <p>V8 - 2020</p>
+  //             </div>
+  //           </div>
+  //           <div className='d-flex'>
+  //             <div className='flex-shrink-0'>
+  //               <img
+  //                 className='align-self-start mr-3'
+  //                 src='images/blog/s3.jpg'
+  //                 alt='s3.jpg'
+  //               />
+  //             </div>
+  //             <div className='flex-grow-1 ms-3'>
+  //               <h5 className='post_title'>$129</h5>
+  //               <p>Ferrari 488 Spider</p>
+  //               <p>Base - 2019</p>
+  //             </div>
+  //           </div>
+  //         </div>
+  //         <div className='sidebar_vichel_avail_Widget'>
+  //           <div className='thumb'>
+  //             <img
+  //               src='images/about/sidebar-vichel.jpg'
+  //               alt='sidebar-vichel.jpg'
+  //             />
+  //           </div>
+  //           <div className='details'>
+  //             <div className='wrapper'>
+  //               <div className='title_count'>
+  //                 20.597{' '}
+  //                 <span>
+  //                   <img src='images/home/title-bottom-border.svg' alt='' />
+  //                 </span>
+  //               </div>
+  //               <h4 className='title'>Vehicle Available</h4>
+  //               <p className='para'>
+  //                 Find the right price, dealer and advice.
+  //               </p>
+  //               <p className='subtitle'>CALL US NOW</p>
+  //               <a className='phone_number' href='#'>
+  //                 +1 670 936 46 70
+  //               </a>
+  //             </div>
+  //           </div>
+  //         </div>
+  //       </div>
+  //     </div>
+  //   </div>
+  // </div>
+
+  // const SidePanelTest = () => {
   return (
     <Container>
       <div className='py-3'>
@@ -121,7 +272,23 @@ const SidePanel = () => {
                   </div>
                   <div className='details'>
                     <div className='wrapper'>
+                      {/* <div className='title_count'>
+                        20.597{' '}
+                        <span>
+                          <img
+                            src='images/home/title-bottom-border.svg'
+                            alt=''
+                          />
+                        </span>
+                      </div> */}
                       <h4 className='title'>Advert space</h4>
+                      {/* <p className='para'>
+                        Find the right price, dealer and advice.
+                      </p>
+                      <p className='subtitle'>CALL US NOW</p>
+                      <a className='phone_number' href='#'>
+                        +1 670 936 46 70
+                      </a> */}
                     </div>
                   </div>
                 </div>
@@ -160,11 +327,10 @@ const SidePanel = () => {
                 </div>
                 <div className='row'>
                   <div className='col-sm-6 col-xl-4'>
-                    <div className='car-listing'>
+                    {/* <div className='car-listing'>
                       <div className='thumb'>
                         <div className='tag'>FEATURED</div>
-                        src=
-                        {require('../../assets/img/cars/Porsche_911_TurboS_1.jpg')}
+                        <img src='images/listing/1.jpg' alt='1.jpg' />
                         <div className='thmb_cntnt2'>
                           <ul className='mb0'>
                             <li className='list-inline-item'>
@@ -1101,7 +1267,7 @@ const SidePanel = () => {
                           </ul>
                         </div>
                       </div>
-                    </div>
+                    </div> */}
                   </div>
                 </div>
                 <div className='row'>

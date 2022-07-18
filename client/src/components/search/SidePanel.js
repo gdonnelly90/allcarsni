@@ -2,14 +2,14 @@ import React from 'react';
 import { Container, Section, Row, Col, Button } from 'react-bootstrap';
 import CarModal from '../CarModal';
 
-const SidePanel = () => {
+const SidePanel = ({ src }) => {
   return (
     <Container>
       <div className='py-3'>
         <section className='our-listing pt0 bgc-f9 pb30-991'>
           <div className='container'>
             <div className='row'>
-              <div className='col-lg-4 col-xl-3 dn-md'>
+              <div className='col-md-3 col-lg-3 col-xl-3'>
                 <div className='sidebar_feature_listing_widget'>
                   <h4 className='title'>Featured Listings</h4>
                   <div className='listing_item_1grid_slider nav_none'>

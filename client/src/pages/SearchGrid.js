@@ -1,22 +1,14 @@
 import React from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
-import ResultsGrid from '../components/ResultsGrid';
-import SidePanel from '../components/search/SidePanel';
+import ResultsGrid from '../components/search/ResultsGrid';
 
 const SearchGrid = () => {
   return (
-    <div>
+    <Container>
       <Row>
-        <Col>
-          <SidePanel />
-        </Col>
-        <Col>
-          <Container>
-            <ResultsGrid />
-          </Container>
-        </Col>
+        <ResultsGrid />
       </Row>
-    </div>
+    </Container>
   );
 };
 

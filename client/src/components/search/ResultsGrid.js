@@ -1,6 +1,6 @@
 import React from 'react';
 import { MDBContainer, MDBRow, MDBCol } from 'mdb-react-ui-kit';
-import CarModal from '../CarModal';
+import CarModal from '../car/CarModal';
 import SidePanel from './SidePanel';
 
 const ResultsGrid = () => {

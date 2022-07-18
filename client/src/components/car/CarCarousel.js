@@ -1,5 +1,6 @@
 import Carousel from 'react-bootstrap/Carousel';
-import placeholder from '../assets/img/placeholder.jpg';
+// import placeholder from '../assets/img/placeholder.jpg';
+import placeholder from '../../assets/img/placeholder.jpg';
 
 function CarCarousel() {
   return (

@@ -12,7 +12,7 @@ import {
   Button,
   ListGroup,
 } from 'react-bootstrap';
-import placeholder from '../assets/img/placeholder.jpg';
+import placeholder from '../../assets/img/placeholder.jpg';
 
 // designing the car modal card
 const CarModal = () => {

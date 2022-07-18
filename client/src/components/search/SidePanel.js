@@ -1,6 +1,6 @@
 import React from 'react';
 import { Container, Section, Row, Col, Button } from 'react-bootstrap';
-import CarModal from '../CarModal';
+import CarModal from '../../components/car/CarModal';
 
 const SidePanel = ({ src }) => {
   return (

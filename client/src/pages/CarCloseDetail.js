@@ -1,14 +1,16 @@
 import React from 'react';
-import { Container } from 'react-bootstrap';
-import CarDetails from '../components/CarDetails';
+import { MDBContainer, MDBRow, MDBCol } from 'mdb-react-ui-kit';
+// import CarDetails from '../components/CarDetails';
+import CarDetailsTest from '../components/CarDetailsTest';
 
 // calling the car details component
 const CarCloseDetail = () => {
   return (
     <div>
-      <Container>
-        <CarDetails />
-      </Container>
+      <MDBContainer>
+        {/* <CarDetails /> */}
+        <CarDetailsTest />
+      </MDBContainer>
     </div>
   );
 };

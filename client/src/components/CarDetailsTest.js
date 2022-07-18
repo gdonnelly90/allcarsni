@@ -17,10 +17,8 @@ import {
 } from 'react-bootstrap';
 import placeholder from '../assets/img/placeholder.jpg';
 
+// designign the layout of the cardetails page
 const CarDetails = () => {
-  // return <CarCarousel />;
-  // return <SlickCarousel />;
-
   return (
     <div>
       <MDBRow>
@@ -42,39 +40,6 @@ const CarDetails = () => {
         </MDBCol>
       </MDBRow>
     </div>
-
-    // old code
-    // <Container>
-    //   <Card className='my-3 p-3 rounded'>
-    //     <SlickCarousel fluid />
-    //     <Card.Body>
-    //       <Card.Title as='div'>
-    //         <strong>Car Make and Model</strong>
-    //       </Card.Title>
-    //       <Card.Text></Card.Text>
-    //       <Card.Text as='h3'>£car price</Card.Text>
-    //     </Card.Body>
-    //     <Container>
-    //       <Row className='text-center'>
-    //         <Col>
-    //           <ListGroup.Item>
-    //             <GiNetworkBars /> Mileage
-    //           </ListGroup.Item>
-    //         </Col>
-    //         <Col>
-    //           <ListGroup.Item>
-    //             <FaGasPump /> Fuel
-    //           </ListGroup.Item>
-    //         </Col>
-    //         <Col>
-    //           <ListGroup.Item>
-    //             <GiGearStickPattern /> Gearbox
-    //           </ListGroup.Item>
-    //         </Col>
-    //       </Row>
-    //     </Container>
-    //   </Card>
-    // </Container>
   );
 };
 

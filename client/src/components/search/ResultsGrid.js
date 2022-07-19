@@ -52,14 +52,3 @@ const ResultsGrid = () => {
 };
 
 export default ResultsGrid;
-
-// <Card.Img src={placeholder} variant='top' />
-
-{
-  /* <MDBContainer>
-  <MDBRow>
-    <MDBCol size='3'>3 widths</MDBCol>
-    <MDBCol col='9'>9 widths</MDBCol>
-  </MDBRow>
-</MDBContainer> */
-}

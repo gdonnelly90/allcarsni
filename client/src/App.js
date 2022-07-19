@@ -35,6 +35,7 @@ const App = () => {
             <Route path='/sellcar' element={<SellCar />} exact />
             <Route path='/search' element={<SearchGrid />} exact />
             <Route path='/search/:id' element={<CarCloseDetail />} exact />
+            {/* <Route path='/vehicle/:id' element={<CarCloseDetail />} exact /> */}
             <Route path='/account' element={<MainAccount />} exact />
             <Route path='/login' element={<Login />} exact />
             <Route path='/register' element={<Register />} exact />

@@ -1,53 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import '../index.css';
+import '../../index.css';
 import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-import placeholder from '../assets/img/placeholder.jpg';
-
-// const settings = {
-//   slidesToShow: 1,
-//   slidesToScroll: 1,
-//   autoplay: true,
-//   autoplaySpeed: 2000,
-//   nextArrow: (
-//     <div>
-//       <div className='next-slick-arrow'> ⫸ </div>
-//     </div>
-//   ),
-//   prevArrow: (
-//     <div>
-//       <div className='prev-slick-arrow'> ⫷ </div>
-//     </div>
-//   ),
-//   dots: true,
-//   infinite: true,
-//   speed: 500,
-//   lazyLoad: 'progressive',
-//   responsive: [
-//     {
-//       breakpoint: 700,
-//       settings: {
-//         arrows: false,
-//         slidesToShow: 3,
-//       },
-//     },
-//     {
-//       breakpoint: 500,
-//       settings: {
-//         arrows: false,
-//         slidesToShow: 2,
-//       },
-//     },
-//     {
-//       breakpoint: 400,
-//       settings: {
-//         arrows: false,
-//         slidesToShow: 1,
-//       },
-//     },
-//   ],
-// };
+import placeholder from '../../assets/img/placeholder.jpg';
 
 const settingsMain = {
   slidesToShow: 1,
@@ -189,3 +145,47 @@ const SlickCarousel = () => {
 };
 
 export default SlickCarousel;
+
+// const settings = {
+//   slidesToShow: 1,
+//   slidesToScroll: 1,
+//   autoplay: true,
+//   autoplaySpeed: 2000,
+//   nextArrow: (
+//     <div>
+//       <div className='next-slick-arrow'> ⫸ </div>
+//     </div>
+//   ),
+//   prevArrow: (
+//     <div>
+//       <div className='prev-slick-arrow'> ⫷ </div>
+//     </div>
+//   ),
+//   dots: true,
+//   infinite: true,
+//   speed: 500,
+//   lazyLoad: 'progressive',
+//   responsive: [
+//     {
+//       breakpoint: 700,
+//       settings: {
+//         arrows: false,
+//         slidesToShow: 3,
+//       },
+//     },
+//     {
+//       breakpoint: 500,
+//       settings: {
+//         arrows: false,
+//         slidesToShow: 2,
+//       },
+//     },
+//     {
+//       breakpoint: 400,
+//       settings: {
+//         arrows: false,
+//         slidesToShow: 1,
+//       },
+//     },
+//   ],
+// };

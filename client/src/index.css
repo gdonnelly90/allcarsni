@@ -81,3 +81,20 @@ img {
   width: 70%;
 }
 
+.bg-grey {
+  background: lightgrey;
+}
+
+.car-spec {
+  height: 480px;
+}
+
+.accordion-button {
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.bg-light-grey {
+  background-color: rgb(3, 4, 4);
+  height: 200px;
+}

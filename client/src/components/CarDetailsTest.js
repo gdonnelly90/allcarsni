@@ -1,9 +1,6 @@
 import React from 'react';
 import CarCarousel from './car/CarCarousel';
 import SlickCarousel from './car/SlickCarousel';
-import { FaGasPump } from 'react-icons/fa';
-import { GiGearStickPattern } from 'react-icons/gi';
-import { GiNetworkBars } from 'react-icons/gi';
 import {
   MDBContainer,
   MDBRow,
@@ -12,15 +9,6 @@ import {
   MDBAccordionItem,
 } from 'mdb-react-ui-kit';
 
-import {
-  Container,
-  Row,
-  Col,
-  Image,
-  Card,
-  Button,
-  ListGroup,
-} from 'react-bootstrap';
 import placeholder from '../assets/img/placeholder.jpg';
 
 // designign the layout of the cardetails page

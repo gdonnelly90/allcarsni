@@ -3,6 +3,15 @@ main {
     min-height: 80vh;
 }
 
+.responsive {
+  width: 100%;
+  height: auto;
+}
+
+.home-row-1 {
+  padding-top: 150px;
+}
+
 h3 {
     padding: 1rem 0;
 }

@@ -3,13 +3,30 @@ main {
     min-height: 80vh;
 }
 
+.home-logo {
+  width: 20%;
+  height: auto;
+}
 .responsive {
   width: 100%;
   height: auto;
 }
 
 .home-row-1 {
+  padding-top: 125px;
+}
+
+.home-row-2 {
   padding-top: 150px;
+}
+
+.home-row-3 {
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.home-button-browse {
+  font-size: 1.5rem;
 }
 
 h3 {

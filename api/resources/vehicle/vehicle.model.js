@@ -1,30 +1,9 @@
-const mongoose = require('mongoose');
+import mongoose from "mongoose";
 
-const reviewSchema = mongoose.Schema(
-  {
-    name: {
-      type: String,
-      //   required: true,
-    },
-    rating: {
-      type: Number,
-      //   required: true,
-    },
-    comment: {
-      type: String,
-      //   required: true,
-    },
-  },
-  {
-    timestamps: true,
-  }
-);
-
-const carSchema = mongoose.Schema({
+const VehicleSchema = mongoose.Schema({
   user: {
-    type: mongoose.Schema.Types.ObjectId,
-    required: true,
-    ref: 'User',
+    type: mongoose.Schema.ObjectId,
+    ref: 'users',
   },
   registrationNumber: {
     type: String,
@@ -48,11 +27,11 @@ const carSchema = mongoose.Schema({
   },
   year: {
     type: Number,
-    // required: true,
+    required: true,
   },
   mileage: {
     type: Number,
-    // required: true,
+    required: true,
   },
   gearbox: {
     type: String,
@@ -80,7 +59,7 @@ const carSchema = mongoose.Schema({
   },
   colour: {
     type: String,
-    // required: true,
+    required: true,
   },
   numberOfSeats: {
     type: Number,
@@ -125,20 +104,34 @@ const carSchema = mongoose.Schema({
   },
   isNewCar: {
     type: Boolean,
-    required: true,
     default: false,
   },
-  reviews: [reviewSchema],
   rating: {
     type: Number,
-    // required: true,
     default: 0,
   },
   numReviews: {
     type: Number,
-    // required: true,
     default: 0,
   },
+  status: {
+    type: String,
+    enum : ['FOR SALE', 'SOLD', 'DEPOSIT TAKEN'],
+    default: 'FOR SALE'
+  },
+  reviews: {
+    type: [Object],
+    ref: 'reviews'
+  }
 });
 
-module.exports = Car = mongoose.model('car', carSchema);
+// Virtual Populate - user 
+VehicleSchema.virtual('users', {
+  ref: 'users',
+  localField: 'user',
+  foreignField: '_id'
+})
+
+
+
+export const Vehicle = mongoose.model('cars', VehicleSchema)

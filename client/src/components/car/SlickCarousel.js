@@ -115,7 +115,6 @@ const SlickCarousel = () => {
       >
         {slidesData.map((slide) => (
           <div className='slick-slide' key={slide.id}>
-            {/* <h2 className='slick-slide-title'>{slide.title}</h2> */}
             <img
               className='slick-slide-image'
               src={`https://picsum.photos/800/400?img=${slide.id}`}

@@ -98,3 +98,7 @@ img {
   background-color: rgb(3, 4, 4);
   height: 200px;
 }
+
+.car-info {
+  font-weight: bold;
+}

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Button } from 'react-bootstrap';
-import { MDBRow, MDBCol, MDBCollapse } from 'mdb-react-ui-kit';
+import { MDBRow, MDBCol } from 'mdb-react-ui-kit';
+import SimpleSearch from '../components/search/SimpleSearch';
 import homepage_main from '../assets/img/homepage_main.jpg';
 import home_hero from '../assets/img/home-hero.png';
 
@@ -11,7 +12,7 @@ const Home = () => {
         <div className='home-row-1 text-center'>
           <img
             className='home-logo pb-5'
-            src={require('../assets/img/Mainlogo.png')}
+            src={require('../assets/img/logo.png')}
           />
           <img
             // src={homepage_main}
@@ -22,9 +23,11 @@ const Home = () => {
         </div>
       </MDBRow>
       <MDBRow md='12'>
-        <div className='home-row-2 text-center'>
-          <h1>Row 2</h1>
-        </div>
+        <MDBCol>
+          <div className='home-row-2'>
+            <SimpleSearch />
+          </div>
+        </MDBCol>
       </MDBRow>
       <MDBRow md='12'>
         <div className='home-row-3 text-center'>

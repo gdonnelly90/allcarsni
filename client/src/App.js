@@ -1,6 +1,8 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Container } from 'react-bootstrap';
+import Header2 from './components/Header2';
+import Header3 from './components/Header2';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Home from './pages/Home';
@@ -24,7 +26,8 @@ import PersonalDetails from './pages/account/PersonalDetails';
 const App = () => {
   return (
     <Router>
-      <Header />
+      {/* <Header /> */}
+      <Header2 />
       <main className='py3'>
         <div className='main-gradient-colour'>
           <Container>

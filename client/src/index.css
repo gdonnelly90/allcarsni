@@ -12,6 +12,24 @@ main {
   height: 45vh;
 }
 
+.home-box-gradient-colour {
+  background-image: linear-gradient(#180161, #030397, #0054dc);
+  height: 10vh;
+  width: 100%;
+  padding-bottom: 2rem;
+}
+
+.gradient-custom {
+  /* fallback for old browsers */
+  background: #180161;
+
+  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #030397);
+
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: linear-gradient(#030397, #0054dc);
+}
+
 .home-logo {
   width: 15%;
   height: auto;

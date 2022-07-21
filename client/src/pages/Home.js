@@ -4,6 +4,7 @@ import { MDBRow, MDBCol } from 'mdb-react-ui-kit';
 import SimpleSearch from '../components/search/SimpleSearch';
 import homepage_main from '../assets/img/homepage_main.jpg';
 import home_hero from '../assets/img/home-hero.png';
+import BlueBoxComponent from '../components/layout/BlueBoxComponent';
 
 const Home = () => {
   return (
@@ -18,7 +19,7 @@ const Home = () => {
             // src={homepage_main}
             src={home_hero}
             alt='Home Page Main Image'
-            class='responsive'
+            className='responsive'
           />
         </div>
       </MDBRow>
@@ -93,7 +94,8 @@ const Home = () => {
           </MDBCol>
         </MDBRow>
       </MDBRow>
-      <MDBRow md='12'>
+      <BlueBoxComponent />
+      <MDBRow md='12 pt-3'>
         <MDBCol md='4'>
           <div className='home-col-1 text-center'>
             <img src={require('../assets/img/cars/Bugatti_1.jpg')} />

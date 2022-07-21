@@ -189,17 +189,17 @@ export default SimpleSearch;
 //   </MDBCol>
 // </MDBRow>
 
-// <div class='advance_search_panel'>
-//   <div class='row'>
-//     <div class='col-lg-12'>
+// <div className='advance_search_panel'>
+//   <div className='row'>
+//     <div className='col-lg-12'>
 //       <ul
-//         class='nav nav-pills justify-content-center'
+//         className='nav nav-pills justify-content-center'
 //         id='pills-tab'
 //         role='tablist'
 //       >
-//         <li class='nav-item' role='presentation'>
+//         <li className='nav-item' role='presentation'>
 //           <button
-//             class='nav-link active'
+//             className='nav-link active'
 //             id='pills-allstatus-tab'
 //             data-bs-toggle='pill'
 //             data-bs-target='#pills-allstatus'
@@ -211,9 +211,9 @@ export default SimpleSearch;
 //             All cars
 //           </button>
 //         </li>
-//         <li class='nav-item' role='presentation'>
+//         <li className='nav-item' role='presentation'>
 //           <button
-//             class='nav-link'
+//             className='nav-link'
 //             id='pills-usedcar-tab'
 //             data-bs-toggle='pill'
 //             data-bs-target='#pills-usedcar'
@@ -225,9 +225,9 @@ export default SimpleSearch;
 //             Used Cars
 //           </button>
 //         </li>
-//         <li class='nav-item' role='presentation'>
+//         <li className='nav-item' role='presentation'>
 //           <button
-//             class='nav-link'
+//             className='nav-link'
 //             id='pills-newcar-tab'
 //             data-bs-toggle='pill'
 //             data-bs-target='#pills-newcar'
@@ -240,23 +240,23 @@ export default SimpleSearch;
 //           </button>
 //         </li>
 //       </ul>
-//       <div class='adss_bg_stylehome1'>
-//         <div class='tab-content' id='pills-tabContent'>
+//       <div className='adss_bg_stylehome1'>
+//         <div className='tab-content' id='pills-tabContent'>
 //           <div
-//             class='tab-pane fade show active'
+//             className='tab-pane fade show active'
 //             id='pills-allstatus'
 //             role='tabpanel'
 //             aria-labelledby='pills-allstatus-tab'
 //           >
-//             <div class='row'>
-//               <div class='col-lg-12'>
-//                 <div class='home1_advance_search_wrapper'>
-//                   <ul class='mb0 text-center'>
-//                     <li class='list-inline-item'>
-//                       <div class='select-boxes'>
-//                         <div class='car_brand'>
-//                           <h6 class='title'>Make</h6>
-//                           <select class='selectpicker'>
+//             <div className='row'>
+//               <div className='col-lg-12'>
+//                 <div className='home1_advance_search_wrapper'>
+//                   <ul className='mb0 text-center'>
+//                     <li className='list-inline-item'>
+//                       <div className='select-boxes'>
+//                         <div className='car_brand'>
+//                           <h6 className='title'>Make</h6>
+//                           <select className='selectpicker'>
 //                             <option>Select Makes</option>
 //                             <option>Make1</option>
 //                             <option>Make2</option>
@@ -268,11 +268,11 @@ export default SimpleSearch;
 //                         </div>
 //                       </div>
 //                     </li>
-//                     <li class='list-inline-item'>
-//                       <div class='select-boxes'>
-//                         <div class='car_models'>
-//                           <h6 class='title'>Models</h6>
-//                           <select class='selectpicker'>
+//                     <li className='list-inline-item'>
+//                       <div className='select-boxes'>
+//                         <div className='car_models'>
+//                           <h6 className='title'>Models</h6>
+//                           <select className='selectpicker'>
 //                             <option>Select Models</option>
 //                             <option>Model1</option>
 //                             <option>Model2</option>
@@ -283,11 +283,11 @@ export default SimpleSearch;
 //                         </div>
 //                       </div>
 //                     </li>
-//                     <li class='list-inline-item'>
-//                       <div class='select-boxes'>
-//                         <div class='car_prices'>
-//                           <h6 class='title'>Price</h6>
-//                           <select class='selectpicker'>
+//                     <li className='list-inline-item'>
+//                       <div className='select-boxes'>
+//                         <div className='car_prices'>
+//                           <h6 className='title'>Price</h6>
+//                           <select className='selectpicker'>
 //                             <option>All Price</option>
 //                             <option>£10,000</option>
 //                             <option>£15,000</option>
@@ -297,10 +297,10 @@ export default SimpleSearch;
 //                         </div>
 //                       </div>
 //                     </li>
-//                     <li class='list-inline-item'>
-//                       <div class='d-block'>
-//                         <button class='btn btn-thm advnc_search_form_btn'>
-//                           <span class='flaticon-magnifiying-glass'></span>
+//                     <li className='list-inline-item'>
+//                       <div className='d-block'>
+//                         <button className='btn btn-thm advnc_search_form_btn'>
+//                           <span className='flaticon-magnifiying-glass'></span>
 //                           Search
 //                         </button>
 //                       </div>
@@ -311,15 +311,15 @@ export default SimpleSearch;
 //             </div>
 //           </div>
 //           <div
-//             class='tab-pane fade'
+//             className='tab-pane fade'
 //             id='pills-usedcar'
 //             role='tabpanel'
 //             aria-labelledby='pills-usedcar-tab'
 //           >
-//             <li class='list-inline-item'>
-//               <div class='select-boxes'>
-//                 <button class='btn btn-thm advnc_search_form_btn'>
-//                   <span class='flaticon-magnifiying-glass'></span>
+//             <li className='list-inline-item'>
+//               <div className='select-boxes'>
+//                 <button className='btn btn-thm advnc_search_form_btn'>
+//                   <span className='flaticon-magnifiying-glass'></span>
 //                   Search
 //                 </button>
 //               </div>

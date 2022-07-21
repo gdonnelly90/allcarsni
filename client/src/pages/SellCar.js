@@ -2,7 +2,7 @@ import React from 'react';
 
 // designing the sell your car feature
 const SellCar = () => {
-  return <div>Sell Car Page</div>;
+  return <div></div>;
 };
 
 export default SellCar;

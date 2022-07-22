@@ -5,6 +5,7 @@ import Header2 from './components/Header2';
 import Header3 from './components/Header2';
 import Header from './components/Header';
 import Footer from './components/Footer';
+import Footer2 from './components/Footer2';
 import Home from './pages/Home';
 import Cart from './pages/Cart';
 import Car from './pages/Car';
@@ -82,7 +83,8 @@ const App = () => {
           </Container>
         </div>
       </main>
-      <Footer />
+      {/* <Footer /> */}
+      <Footer2 />
     </Router>
   );
 };

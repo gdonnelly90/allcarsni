@@ -1,6 +1,6 @@
 
 main {
-  min-height: 150vh;
+  min-height: 136vh;
 }
 
 .background {
@@ -9,7 +9,7 @@ main {
 
 .main-gradient-colour {
   background-image: linear-gradient(#180161, #030397, #0054dc);
-  height: 45vh;
+  height: 50vh;
 }
 
 .home-box-gradient-colour {
@@ -17,6 +17,16 @@ main {
   height: 10vh;
   width: 100%;
   padding-bottom: 2rem;
+}
+
+.footer-top {
+    background: #180161;
+    background: linear-gradient(to right, #030397);
+    background: linear-gradient(#030397, #0054dc);
+  }
+
+.footer-bottom {
+  background-color: #180068;
 }
 
 .gradient-custom {

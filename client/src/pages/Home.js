@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Button } from 'react-bootstrap';
 import { MDBRow, MDBCol } from 'mdb-react-ui-kit';
 import SimpleSearch from '../components/search/SimpleSearch';
+import SimpleSearch2 from '../components/search/SimpleSearch2';
 import homepage_main from '../assets/img/homepage_main.jpg';
 import home_hero from '../assets/img/home-hero.png';
 import BlueBoxComponent from '../components/layout/BlueBoxComponent';
@@ -26,7 +27,8 @@ const Home = () => {
       <MDBRow md='12'>
         <MDBCol>
           <div className='home-row-2'>
-            <SimpleSearch />
+            {/* <SimpleSearch /> */}
+            <SimpleSearch2 />
           </div>
         </MDBCol>
       </MDBRow>
@@ -94,8 +96,12 @@ const Home = () => {
           </MDBCol>
         </MDBRow>
       </MDBRow>
-      <BlueBoxComponent />
-      <MDBRow md='12 pt-3'>
+      <MDBRow md='12'>
+        <div className='blie-box-row pb-4'>
+          <BlueBoxComponent />
+        </div>
+      </MDBRow>
+      <MDBRow md='12'>
         <MDBCol md='4'>
           <div className='home-col-1 text-center'>
             <img src={require('../assets/img/cars/Bugatti_1.jpg')} />

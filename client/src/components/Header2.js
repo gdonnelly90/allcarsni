@@ -20,7 +20,7 @@ const Header3 = () => {
               <Nav className='ml-auto'>
                 <LinkContainer to='/search'>
                   <Nav.Link>
-                    <i className='fas fa-shopping-search'></i> Search
+                    <i className='fas fa-search'></i> Search
                   </Nav.Link>
                 </LinkContainer>
                 <LinkContainer to='/login'>

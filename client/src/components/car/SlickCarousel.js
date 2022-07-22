@@ -68,26 +68,31 @@ const slidesData = [
     id: 1,
     title: 'First',
     label: '1st',
+    src: 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/R8_Coupe_V10_performance-1.jpg/280px-R8_Coupe_V10_performance-1.jpg',
   },
   {
     id: 2,
     title: 'Second',
     label: '2nd',
+    src: './src/assets/img/cars/Audi_R8_V10_2.jpg',
   },
   {
     id: 3,
     title: 'Third',
     label: '3rd',
+    src: '../../assets/img/cars/Audi_R8_V10_3.jpg',
   },
   {
     id: 4,
     title: 'Fourth',
     label: '4th',
+    src: '../../assets/img/cars/Audi_R8_V10_4.jpg',
   },
   {
     id: 5,
     title: 'Fifth',
     label: '5th',
+    src: '../../assets/img/cars/Audi_R8_V10_5.jpg',
   },
   {
     id: 6,
@@ -115,10 +120,7 @@ const SlickCarousel = () => {
       >
         {slidesData.map((slide) => (
           <div className='slick-slide' key={slide.id}>
-            <img
-              className='slick-slide-image'
-              src={`https://picsum.photos/800/400?img=${slide.id}`}
-            />
+            <img className='slick-slide-image' src={slide.src} />
             <label className='slick-slide-label'>{slide.label}</label>
           </div>
         ))}
@@ -131,10 +133,7 @@ const SlickCarousel = () => {
         >
           {slidesData.map((slide) => (
             <div className='slick-slide' key={slide.id}>
-              <img
-                className='slick-slide-image'
-                src={`https://picsum.photos/800/400?img=${slide.id}`}
-              />
+              <img className='slick-slide-image' src={slide.src} />
             </div>
           ))}
         </Slider>

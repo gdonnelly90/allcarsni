@@ -181,3 +181,66 @@ img {
 .dropdown-container {
   width: 300px;
 }
+
+.footer-3.footer-topbar .copyright{ 
+  margin-top: 60px; 
+}
+
+.car-directory-banner .search-tab .tabs-header { 
+  display: inherit; 
+}
+
+.car-directory-banner .search-tab .tabs-header .car-total {
+   margin-left: inherit; 
+  }
+
+.car-directory-banner .search-tab #search-tabs ul.nav-tabs { 
+  margin: 15px 0; 
+}
+
+.car-directory-banner .search-tab #search-tabs .tab-content{ 
+  padding-top: 40px; 
+}
+.car-directory-banner .search-tab #tabs .tabs-header h6 {
+  margin-bottom: 15px;
+}
+.car-directory-banner .search-tab #tabs .tabs-header .nav-tabs{
+ margin-bottom: 15px;
+ padding: 5px 10px;
+}
+
+ .search-logo #search-logo-tabs .tabs-header,
+ .vehicle-tab #tabs .tabs-header{  
+  display: inherit; 
+}
+
+  
+
+ /*design-section new*/
+.design-section #tabs .tabs-header{
+  display: flex;
+    align-items: center;
+}
+
+ /*car-directory-banner new*/
+ .car-directory-banner .search-tab .tabs-header{
+   display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+ .car-directory-banner .search-tab .tabs-header .car-total{
+   margin-left: auto;
+  }
+
+  /*search-logo tabs*/
+ .search-logo #search-logo-tabs .tabs-header{
+    display: flex;
+    align-items: center;
+ }
+
+  /*vehicle-tab new*/
+ .vehicle-tab #tabs .tabs-header{
+    display: flex;
+    align-items: center;
+ }

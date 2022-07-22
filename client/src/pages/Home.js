@@ -34,7 +34,7 @@ const Home = () => {
       </MDBRow>
       <MDBRow md='12'>
         <div className='home-row-3 text-center'>
-          <h1>Shop by car shape</h1>
+          <h1>Shop by car type</h1>
         </div>
         <MDBRow md='12'>
           <MDBCol md='4 text-center'>

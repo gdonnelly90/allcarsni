@@ -79,11 +79,7 @@ const Footer2 = () => {
         </MDBRow> */}
       </MDBContainer>
 
-      <div
-        className='footer-bottom text-center p-3'
-        // style={{ backgroundColor: 'rgba(0, 0, 0, 0.2)' }}
-        // style={{ backgroundColor: linear-gradient(#180161, #030397, #0054dc); }}
-      >
+      <div className='footer-bottom text-center p-3'>
         Copyright &copy; AllCarsNI 2022
       </div>
     </MDBFooter>

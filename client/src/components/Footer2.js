@@ -35,7 +35,7 @@ const Footer2 = () => {
           </a>
         </section>
 
-        <section className=''>
+        <section className='newsletter-signup'>
           <form action=''>
             <div className='row d-flex justify-content-center'>
               <div className='col-auto'>
@@ -62,7 +62,7 @@ const Footer2 = () => {
           </form>
         </section>
 
-        <section className='mb-5'>
+        <section className='mb-3'>
           <p class='h4'>
             AllCarsNI - the one stop shop for all buying and selling of new and
             used cars in Northern Ireland.
@@ -70,15 +70,13 @@ const Footer2 = () => {
           <p class='h4'>We offer it all, from the one location...</p>
         </section>
 
-        <section className=''>
-          <MDBRow>
-            <MDBCol md='12' className='text-center'>
-              <h5 className='text-uppercase'>
-                SELL YOUR CAR <u>HERE</u>
-              </h5>
-            </MDBCol>
-          </MDBRow>
-        </section>
+        {/* <MDBRow>
+          <MDBCol md='12' className='text-center'>
+            <h5 className='text-uppercase'>
+              SELL YOUR CAR <u>HERE</u>
+            </h5>
+          </MDBCol>
+        </MDBRow> */}
       </MDBContainer>
 
       <div

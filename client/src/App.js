@@ -10,6 +10,7 @@ import { Container } from 'react-bootstrap';
 import { AppShell } from './AppShell';
 import { ToastContainer } from 'react-toastify';
 import Home from './pages/Home';
+import Home2 from './pages/Home2';
 import Cart from './pages/Cart';
 import Car from './pages/Car';
 import CarCloseDetail from './pages/CarCloseDetail';
@@ -37,7 +38,16 @@ const App = () => {
   return (
     <Router>
       <Routes>
-        <Route path='/' element={<Home />} exact />
+        {/* <Route path='/' element={<Home />} exact /> */}
+        <Route
+          path='/'
+          element={
+            <AppShell>
+              <Home2 />
+            </AppShell>
+          }
+          exact
+        />
         <Route path='/cart' element={<Cart />} exact />
         <Route path='car/:id' element={<Car />} exact />
         <Route path='search/cardetail' element={<CarCloseDetail />} exact />

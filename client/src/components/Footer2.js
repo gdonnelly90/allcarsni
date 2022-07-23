@@ -11,7 +11,7 @@ import {
 
 const Footer2 = () => {
   return (
-    <MDBFooter className='footer-top text-center' color='white' bgColor='dark'>
+    <MDBFooter className='footer-top text-center' color='white'>
       <MDBContainer className='p-4'>
         <section className='mb-4'>
           <a className='btn btn-outline-light btn-floating m-1' role='button'>
@@ -69,14 +69,6 @@ const Footer2 = () => {
           </p>
           <p class='h4'>We offer it all, from the one location...</p>
         </section>
-
-        {/* <MDBRow>
-          <MDBCol md='12' className='text-center'>
-            <h5 className='text-uppercase'>
-              SELL YOUR CAR <u>HERE</u>
-            </h5>
-          </MDBCol>
-        </MDBRow> */}
       </MDBContainer>
 
       <div className='footer-bottom text-center p-3'>

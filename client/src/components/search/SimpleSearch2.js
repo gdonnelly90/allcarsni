@@ -1,10 +1,11 @@
 import React from 'react';
+import { Container } from 'react-bootstrap';
 import Box from '../../components/layout/Box';
 import { MDBContainer, MDBRow, MDBCol } from 'mdb-react-ui-kit';
 
 const SimpleSearch2 = () => {
   return (
-    <>
+    <Container>
       <Box
         style={{
           backgroundColor: '#030397',
@@ -18,12 +19,78 @@ const SimpleSearch2 = () => {
         <MDBContainer>
           <MDBRow md='12'>Quick Search Title</MDBRow>
           <MDBRow md='12'>
-            <MDBCol md='2'>Used Cars Tab</MDBCol>
-            <MDBCol md='2'>New Cars Tab</MDBCol>
-            <MDBCol md='2'>All Cars Tab</MDBCol>
+            <MDBCol md='12'>
+              <div
+                class='btn-group'
+                role='group'
+                aria-label='homepage-filter-buttons'
+              >
+                <input
+                  type='radio'
+                  class='btn-check'
+                  name='btnradio'
+                  id='btnradio1'
+                  autocomplete='off'
+                  checked
+                />
+                <label class='btn btn-outline-primary' for='btnradio1'>
+                  Used Cars
+                </label>
+
+                <input
+                  type='radio'
+                  class='btn-check'
+                  name='btnradio'
+                  id='btnradio2'
+                  autocomplete='off'
+                />
+                <label class='btn btn-outline-primary' for='btnradio2'>
+                  New cars
+                </label>
+
+                <input
+                  type='radio'
+                  class='btn-check'
+                  name='btnradio'
+                  id='btnradio3'
+                  autocomplete='off'
+                />
+                <label class='btn btn-outline-primary' for='btnradio3'>
+                  All Cars
+                </label>
+              </div>
+            </MDBCol>
           </MDBRow>
           <MDBRow md='12'>
-            <MDBCol md='2'>Make Dropdown</MDBCol>
+            <MDBCol md='2'>
+              <div class='dropdown'>
+                <button
+                  class='btn btn-secondary dropdown-toggle'
+                  type='button'
+                  data-bs-toggle='dropdown'
+                  aria-expanded='false'
+                >
+                  Dropdown
+                </button>
+                <ul class='dropdown-menu'>
+                  <li>
+                    <button class='dropdown-item' type='button'>
+                      Action
+                    </button>
+                  </li>
+                  <li>
+                    <button class='dropdown-item' type='button'>
+                      Another action
+                    </button>
+                  </li>
+                  <li>
+                    <button class='dropdown-item' type='button'>
+                      Something else here
+                    </button>
+                  </li>
+                </ul>
+              </div>
+            </MDBCol>
             <MDBCol md='2'>Model Dropdown</MDBCol>
             <MDBCol md='2'>Price Dropdown</MDBCol>
             <MDBCol md='4'></MDBCol>
@@ -31,7 +98,7 @@ const SimpleSearch2 = () => {
           </MDBRow>
         </MDBContainer>
       </Box>
-    </>
+    </Container>
   );
 };
 

@@ -4,7 +4,7 @@ import { Container, Nav, Navbar } from 'react-bootstrap';
 import textlogo from '../assets/img/text_only_logo.png';
 import '../../src/index.css';
 
-const Header3 = () => {
+const Header2 = () => {
   return (
     <div>
       <nav className='navbar navbar-expand-lg navbar-dark gradient-custom'>
@@ -59,4 +59,4 @@ const Header3 = () => {
   );
 };
 
-export default Header3;
+export default Header2;

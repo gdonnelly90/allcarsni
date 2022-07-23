@@ -1,11 +1,14 @@
-import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import React, { Suspense, useContext } from 'react';
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Outlet,
+  Navigate,
+} from 'react-router-dom';
 import { Container } from 'react-bootstrap';
-import Header2 from './components/Header2';
-import Header3 from './components/Header2';
-import Header from './components/Header';
-import Footer from './components/Footer';
-import Footer2 from './components/Footer2';
+import { AppShell } from './AppShell';
+import { ToastContainer } from 'react-toastify';
 import Home from './pages/Home';
 import Cart from './pages/Cart';
 import Car from './pages/Car';
@@ -24,67 +27,51 @@ import PaymentHistory from './pages/account/PaymentHistory';
 import PaymentMethod from './pages/account/PaymentMethod';
 import PersonalDetails from './pages/account/PersonalDetails';
 
+const LoadingFallback = () => (
+  <AppShell>
+    <div>Loading...</div>
+  </AppShell>
+);
+
 const App = () => {
   return (
     <Router>
-      {/* <Header /> */}
-      <Header2 />
-      <main className='py3'>
-        <div className='main-gradient-colour'>
-          <Container>
-            <Routes>
-              <Route path='/' element={<Home />} exact />
-              <Route path='/cart' element={<Cart />} exact />
-              <Route path='car/:id' element={<Car />} exact />
-              <Route
-                path='search/cardetail'
-                element={<CarCloseDetail />}
-                exact
-              />
-              <Route path='/sellcar' element={<SellCar />} exact />
-              <Route path='/search' element={<SearchGrid />} exact />
-              <Route path='/search/:id' element={<CarCloseDetail />} exact />
-              {/* <Route path='/vehicle/:id' element={<CarCloseDetail />} exact /> */}
-              <Route path='/account' element={<MainAccount />} exact />
-              <Route path='/login' element={<Login />} exact />
-              <Route path='/register' element={<Register />} exact />
-              <Route
-                path='/account/adverthistory'
-                element={<AdvertHistory />}
-                exact
-              />
-              <Route
-                path='/account/favourites'
-                element={<Favourites />}
-                exact
-              />
-              <Route
-                path='/account/manageadvert'
-                element={<ManageAdvert />}
-                exact
-              />
-              <Route path='/account/myvehicle' element={<MyVehicle />} exact />
-              <Route
-                path='/account/paymenthistory'
-                element={<PaymentHistory />}
-                exact
-              />
-              <Route
-                path='/account/paymentmethod'
-                element={<PaymentMethod />}
-                exact
-              />
-              <Route
-                path='/account/personaldetails'
-                element={<PersonalDetails />}
-                exact
-              />
-            </Routes>
-          </Container>
-        </div>
-      </main>
-      {/* <Footer /> */}
-      <Footer2 />
+      <Routes>
+        <Route path='/' element={<Home />} exact />
+        <Route path='/cart' element={<Cart />} exact />
+        <Route path='car/:id' element={<Car />} exact />
+        <Route path='search/cardetail' element={<CarCloseDetail />} exact />
+        <Route path='/sellcar' element={<SellCar />} exact />
+        <Route path='/search' element={<SearchGrid />} exact />
+        <Route path='/search/:id' element={<CarCloseDetail />} exact />
+        {/* <Route path='/vehicle/:id' element={<CarCloseDetail />} exact /> */}
+        <Route path='/account' element={<MainAccount />} exact />
+        <Route path='/login' element={<Login />} exact />
+        <Route path='/register' element={<Register />} exact />
+        <Route
+          path='/account/adverthistory'
+          element={<AdvertHistory />}
+          exact
+        />
+        <Route path='/account/favourites' element={<Favourites />} exact />
+        <Route path='/account/manageadvert' element={<ManageAdvert />} exact />
+        <Route path='/account/myvehicle' element={<MyVehicle />} exact />
+        <Route
+          path='/account/paymenthistory'
+          element={<PaymentHistory />}
+          exact
+        />
+        <Route
+          path='/account/paymentmethod'
+          element={<PaymentMethod />}
+          exact
+        />
+        <Route
+          path='/account/personaldetails'
+          element={<PersonalDetails />}
+          exact
+        />
+      </Routes>
     </Router>
   );
 };

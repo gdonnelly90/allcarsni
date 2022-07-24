@@ -31,6 +31,7 @@ main {
 .home-row-3 {
   font-size: 22px;
   font-weight: bold;
+  padding: 100px
 }
 
 .home-button-browse {
@@ -39,6 +40,11 @@ main {
 }
 
 /* Home page imagery */
+
+.hero-column-home {
+  padding-left: 0;
+  padding-right: 0;
+}
 .home-logo {
   display: block;
   margin-left: auto;
@@ -70,6 +76,10 @@ main {
   padding-right: 0;
 }
 
+.home-button {
+padding: 100px
+}
+
 /* footer */
 .footer-top {
     background: #180161;
@@ -92,10 +102,54 @@ main {
   background: linear-gradient(#030397, #0054dc);
 }
 
+/* Gradient */
+.bg--blue-gradient {
+  background: linear-gradient( 135deg, rgba(0, 97, 215, 1) 0%, rgba(0, 200, 255, 1) 100% );
+}
 
+/* Background Colour Classes */
+.bg-green-light {
+  background-color: #f0fff4;
+}
+
+.bg-red-light {
+  background-color: #fff5f5;
+}
+
+/* Border Colour Classes */
+.border-red-heavy {
+  border: 1px solid #c53030
+}
+
+.border-green-heavy {
+  border: 1px solid #38a169;
+}
+
+/* Text Colour Classes */
+.text-green-heavy {
+  color: #2f855a;
+}
+
+.text-red-heavy {
+  color: #c53030;
+}
+
+.h-1 {
+  height: 0.25rem;
+}
+
+/* Bootstrap */
+.card {
+  border: 1px solid rgba(0,0,0,0.1);
+}
 
 
 /* Navbar */
+.app-login,
+.app-register {
+    background-color: #f7fafc;
+}
+
 .navbar.brand {
   width: 5%;
   height: auto;
@@ -214,4 +268,11 @@ img {
 
 .car-info {
   font-weight: bold;
+}
+
+.form-control {
+  height: 48px;
+}
+.form-handle-xxs {
+  width: 200px;
 }

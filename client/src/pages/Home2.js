@@ -21,50 +21,62 @@ const Home2 = () => {
           <h1>Shop by car type</h1>
         </div>
         <MDBRow md='12'>
-          <MDBCol md='4 text-center'>
+          <MDBCol md='1'></MDBCol>
+          <MDBCol md='1'></MDBCol>
+          <MDBCol md='1'></MDBCol>
+          <MDBCol md='2 text-center'>
             <img
               className='icon-electric'
               src={require('../assets/img/icons/electric.webp')}
             />
             <p>Electric</p>
           </MDBCol>
-          <MDBCol md='4 text-center'>
+          <MDBCol md='2 text-center'>
             <img
               className='icon-suv'
               src={require('../assets/img/icons/suv.webp')}
             />
             <p>SUV</p>
           </MDBCol>{' '}
-          <MDBCol md='4 text-center'>
+          <MDBCol md='2 text-center'>
             <img
               className='icon-hatchback'
               src={require('../assets/img/icons/hatchback.webp')}
             />
             <p>Hatchback</p>
           </MDBCol>
+          <MDBCol md='1'></MDBCol>
+          <MDBCol md='1'></MDBCol>
+          <MDBCol md='1'></MDBCol>
         </MDBRow>
         <MDBRow md='12'>
-          <MDBCol md='4 text-center'>
+          <MDBCol md='1'></MDBCol>
+          <MDBCol md='1'></MDBCol>
+          <MDBCol md='1'></MDBCol>
+          <MDBCol md='2 text-center'>
             <img
               className='icon-ccoupe'
               src={require('../assets/img/icons/coupe.webp')}
             />
             <p>Coupe</p>
           </MDBCol>
-          <MDBCol md='4 text-center'>
+          <MDBCol md='2 text-center'>
             <img
               className='icon-estate'
               src={require('../assets/img/icons/estate.webp')}
             />
             <p>Estate</p>
           </MDBCol>{' '}
-          <MDBCol md='4 text-center'>
+          <MDBCol md='2 text-center'>
             <img
               className='icon-convertible'
               src={require('../assets/img/icons/convertible.webp')}
             />
             <p>Convertible</p>
           </MDBCol>
+          <MDBCol md='1'></MDBCol>
+          <MDBCol md='1'></MDBCol>
+          <MDBCol md='1'></MDBCol>
         </MDBRow>
         <MDBRow>
           <MDBCol>

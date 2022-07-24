@@ -40,18 +40,34 @@ main {
 
 /* Home page imagery */
 .home-logo {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
   width: 15%;
   height: auto;
+  z-index: 9999;
+  /* position: absolute; */
 }
 
 .home-car-img {
-  z-index: -2; 
+  z-index: 1; 
   width: 100%;
+  position: relative;
+
 }
 
 .responsive {
   width: 100%;
   height: auto;
+}
+
+.column1-home, .column2-home,
+.column3-home, .column4-home,
+.column5-home, .column6-home,
+.column7-home, .column8-home {
+  padding-left: 0;
+  padding-right: 0;
 }
 
 /* footer */

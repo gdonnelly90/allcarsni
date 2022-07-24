@@ -21,30 +21,30 @@ const SimpleSearch2 = () => {
           <MDBRow md='12'>
             <MDBCol md='12'>
               <div
-                class='btn-group'
+                className='btn-group'
                 role='group'
                 aria-label='homepage-filter-buttons'
               >
                 <input
                   type='radio'
-                  class='btn-check'
+                  className='btn-check'
                   name='btnradio'
                   id='btnradio1'
                   autocomplete='off'
                   checked
                 />
-                <label class='btn btn-outline-primary' for='btnradio1'>
+                <label className='btn btn-outline-primary' for='btnradio1'>
                   Used Cars
                 </label>
 
                 <input
                   type='radio'
-                  class='btn-check'
+                  className='btn-check'
                   name='btnradio'
                   id='btnradio2'
                   autocomplete='off'
                 />
-                <label class='btn btn-outline-primary' for='btnradio2'>
+                <label className='btn btn-outline-primary' for='btnradio2'>
                   New cars
                 </label>
 
@@ -55,7 +55,7 @@ const SimpleSearch2 = () => {
                   id='btnradio3'
                   autocomplete='off'
                 />
-                <label class='btn btn-outline-primary' for='btnradio3'>
+                <label className='btn btn-outline-primary' for='btnradio3'>
                   All Cars
                 </label>
               </div>
@@ -63,28 +63,28 @@ const SimpleSearch2 = () => {
           </MDBRow>
           <MDBRow md='12'>
             <MDBCol md='2'>
-              <div class='dropdown'>
+              <div className='dropdown'>
                 <button
-                  class='btn btn-secondary dropdown-toggle'
+                  className='btn btn-secondary dropdown-toggle'
                   type='button'
                   data-bs-toggle='dropdown'
                   aria-expanded='false'
                 >
                   Dropdown
                 </button>
-                <ul class='dropdown-menu'>
+                <ul className='dropdown-menu'>
                   <li>
-                    <button class='dropdown-item' type='button'>
+                    <button className='dropdown-item' type='button'>
                       Action
                     </button>
                   </li>
                   <li>
-                    <button class='dropdown-item' type='button'>
+                    <button className='dropdown-item' type='button'>
                       Another action
                     </button>
                   </li>
                   <li>
-                    <button class='dropdown-item' type='button'>
+                    <button className='dropdown-item' type='button'>
                       Something else here
                     </button>
                   </li>

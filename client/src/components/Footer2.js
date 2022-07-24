@@ -67,7 +67,7 @@ const Footer2 = () => {
             AllCarsNI - the one stop shop for all buying and selling of new and
             used cars in Northern Ireland.
           </p>
-          <p class='h4'>We offer it all, from the one location...</p>
+          <p className='h4'>We offer it all, from the one location...</p>
         </section>
       </MDBContainer>
 

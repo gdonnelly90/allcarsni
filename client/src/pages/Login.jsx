@@ -64,11 +64,11 @@ export const Login = () => {
           <div className='row card col-md-6 offset-md-3 shadow bg-body rounded'>
             <div className='bg--blue-gradient h-1'></div>
             <div className='p-3'>
-              <h1 className='mt-3 text-center'>Login into your account</h1>
-              <p className='text-center'>
+              <h1 className='mt-5 mb-5 text-center'>Login into your account</h1>
+              {/* <p className='text-center'>
                 Don't have an account?{' '}
                 <Hyperlink text='Sign up now' to='/register' />
-              </p>
+              </p> */}
               <div className='card-body'>
                 {success && <SuccessBanner text='Login successful...' />}
                 {error && <ErrorBanner text='An error has occurred...' />}
@@ -107,7 +107,7 @@ export const Login = () => {
                       {formik.errors.password}
                     </Form.Control.Feedback>
                   </Form.Group>
-                  <div className='mb-2 text-center'>
+                  <div className='mt-5 mb-2 text-center'>
                     Need to sign up? <Link to={'/register'}>Register</Link>
                   </div>
                   <div className='mb-4 text-center'>

@@ -20,7 +20,7 @@ const LatestNews = () => {
           <MDBCol md='5'>
             <LatestNewsCarousel />
           </MDBCol>
-          <MDBCol md='7'>
+          <MDBCol md='7 pb-5'>
             <div className='lastestnews-text'>
               <p className='lastestnews-text1'>
                 BMW M5 taking life and the Nürburgring by storm!
@@ -41,6 +41,7 @@ const LatestNews = () => {
                   pace. The kind of pace that doesn't trouble your own morals!
                 </p>
               </p>
+              <p className='lastestnews-text4 pt-3'>(credit TopGear)</p>
             </div>
           </MDBCol>
         </MDBRow>

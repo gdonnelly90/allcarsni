@@ -76,9 +76,9 @@ export const Register = () => {
           <div className='row card col-md-8 offset-md-2 shadow bg-body rounded'>
             <div className='bg--blue-gradient h-1'></div>
             <div className='p-4'>
-              <h1 className='mt-3 text-center'>Create your account</h1>
-              <p className='text-center'>
-                Starting selling and find your dream car
+              <h1 className='mt-5 text-center'>Create your account</h1>
+              <p className='mb-5 text-center'>
+                Starting searching for, or selling, your dream car
               </p>
               {success && <SuccessBanner text={'Account created...'} />}
               {error && <ErrorBanner text={'Error creating account'} />}
@@ -194,7 +194,7 @@ export const Register = () => {
                     {formik.errors.confirmPassword}
                   </Form.Control.Feedback>
                 </Form.Group>
-                <div className='mb-2 text-center'>
+                <div className='mt-5 mb-2 text-center'>
                   Already have an account <Link to={'/login'}>Login In</Link>
                 </div>
                 <div className='mb-4 text-center'>

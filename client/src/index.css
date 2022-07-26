@@ -49,10 +49,11 @@ main {
 .home-logo {
   display: block;
   padding-top: 50px;
-  margin-left: 45%;
+  padding-bottom: 50px;
+  margin-left: 44%;
   margin-right: 50%;
   text-align: center;
-  width: 10%;
+  width: 12%;
   height: auto;
   z-index: 99;
   position: absolute;
@@ -62,7 +63,6 @@ main {
   z-index: 1; 
   width: 100%;
   position: relative;
-
 }
 
 .responsive {
@@ -152,9 +152,17 @@ padding: 100px
     background-color: #f7fafc;
 }
 
+.nav-colour {
+  background-color: #E78F00
+}
+
 .navbar.brand {
   width: 5%;
   height: auto;
+}
+
+.nav-link {
+  color: #c53030;
 }
 
 /* Typography */
@@ -176,6 +184,12 @@ h3 {
 .lastestnews-text3 {
   text-transform: uppercase;
   font-size: 15px;
+  text-align: left;
+}
+
+.lastestnews-text4 {
+  text-transform: uppercase;
+  font-size: 12px;
   text-align: left;
 }
 
@@ -304,7 +318,7 @@ img {
 /* Search elements */
 .search-wrapper {
   position: absolute;
-  top: 300px;
+  top: 350px;
   left: 0;
   width: 100%;
   z-index: 100;

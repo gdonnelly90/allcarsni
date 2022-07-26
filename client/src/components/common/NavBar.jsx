@@ -21,14 +21,17 @@ export const NavBar = () => {
   };
   return (
     <Navbar
+      className='nav-colour px-4'
       collapseOnSelect
       expand='lg'
-      bg='transparent'
+      // bg='transparent'
       variant='light'
-      className='px-4'
+      // className='px-4'
     >
       <LinkContainer to='/'>
-        <img src={textlogo} width='120' height='30' alt='AllCarsNI' />
+        <Nav.Link>
+          <img src={textlogo} width='120' height='30' alt='AllCarsNI' />
+        </Nav.Link>
       </LinkContainer>
       <Navbar.Toggle aria-controls='responsive-navbar-nav' />
       <Navbar.Collapse id='responsive-navbar-nav'>
@@ -38,7 +41,7 @@ export const NavBar = () => {
               <i className='fas fa-search'></i> Search
             </Nav.Link>
           </LinkContainer>
-          <Nav.Link href='#pricing'>News &amp; reviews</Nav.Link>
+          {/* <Nav.Link href='#pricing'>News &amp; reviews</Nav.Link> */}
         </Nav>
         <Nav>
           {isAuthenticated && (

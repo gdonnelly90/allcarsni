@@ -5,13 +5,11 @@ import ResultsGrid from '../components/search/ResultsGrid';
 
 const SearchGrid = () => {
   return (
-    <AppShellNoFooter>
-      <Container>
-        <Row>
-          <ResultsGrid />
-        </Row>
-      </Container>
-    </AppShellNoFooter>
+    <Container>
+      <Row>
+        <ResultsGrid />
+      </Row>
+    </Container>
   );
 };
 

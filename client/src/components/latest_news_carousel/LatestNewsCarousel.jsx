@@ -8,7 +8,7 @@ import Image4 from '../../assets/img/latestnews_slider/bmw_m5_3.webp';
 import Image5 from '../../assets/img/latestnews_slider/bmw_m5_4.webp';
 import Image6 from '../../assets/img/latestnews_slider/bmw_m5_5.webp';
 import Image7 from '../../assets/img/latestnews_slider/bmw_m5_6.webp';
-import Video from '../../assets/img/latestnews_slider/m5_comp_video.mp4';
+// import Video from '../../assets/img/latestnews_slider/m5_comp_video.mp4';
 
 const LatestNewsCarousel = () => {
   return (

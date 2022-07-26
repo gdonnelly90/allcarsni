@@ -23,7 +23,7 @@ export const NavBar = () => {
     <Navbar
       collapseOnSelect
       expand='lg'
-      // bg='light'
+      bg='transparent'
       variant='light'
       className='px-4'
     >
@@ -33,7 +33,11 @@ export const NavBar = () => {
       <Navbar.Toggle aria-controls='responsive-navbar-nav' />
       <Navbar.Collapse id='responsive-navbar-nav'>
         <Nav className='me-auto'>
-          <Nav.Link href='#features'>Find my car</Nav.Link>
+          <LinkContainer to='/search'>
+            <Nav.Link>
+              <i className='fas fa-search'></i> Search
+            </Nav.Link>
+          </LinkContainer>
           <Nav.Link href='#pricing'>News &amp; reviews</Nav.Link>
         </Nav>
         <Nav>

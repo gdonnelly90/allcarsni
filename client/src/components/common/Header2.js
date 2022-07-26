@@ -1,8 +1,8 @@
 import React from 'react';
 import { LinkContainer } from 'react-router-bootstrap';
 import { Container, Nav, Navbar } from 'react-bootstrap';
-import textlogo from '../assets/img/text_only_logo.png';
-import '../../src/index.css';
+import textlogo from '../../assets/img/text_only_logo.png';
+import '../../../src/index.css';
 
 const Header2 = () => {
   return (

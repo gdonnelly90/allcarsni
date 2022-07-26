@@ -1,15 +1,17 @@
 import React from 'react';
 import { Row, Button } from 'react-bootstrap';
 import { MDBRow, MDBCol } from 'mdb-react-ui-kit';
+import SimpleSearch from '../components/search/SimpleSearch';
 import home_logo from '../assets/img/white_logo.png';
-import home_car from '../assets/img/fullwidth/bugatti_back3.jpg';
-import SimpleSearch2 from '../components/search/SimpleSearch2';
+import home_car from '../assets/img/fullwidth/bugatti_back1.jpg';
+import LatestNews from '../components/common/LatestNews';
 
 const Home2 = () => {
   return (
     <MDBCol>
       <MDBRow className='hero-column-home' md='12'>
         <div className='home-image-logo-row'>
+          <SimpleSearch />
           <img className='home-logo' src={home_logo} />
           <img className='home-car pb-5' src={home_car} />
         </div>
@@ -140,6 +142,7 @@ const Home2 = () => {
           />
         </MDBCol>
       </MDBRow>
+      <LatestNews />
     </MDBCol>
   );
 };

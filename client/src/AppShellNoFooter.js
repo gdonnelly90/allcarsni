@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
-import Header2 from './components/Header2';
-import Footer2 from './components/Footer2';
+import Header2 from './components/common/Header2';
+import Footer2 from './components/common/Footer2';
 // import { AuthContext } from './context/AuthContext';
 
 export const AppShell = ({ children }) => {

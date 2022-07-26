@@ -3,6 +3,7 @@ main {
   min-height: 160vh;
 }
 
+
 .background {
   height: 20%;
 }
@@ -53,7 +54,7 @@ main {
   text-align: center;
   width: 10%;
   height: auto;
-  z-index: 9999;
+  z-index: 99;
   position: absolute;
 }
 
@@ -159,6 +160,28 @@ padding: 100px
 /* Typography */
 h3 {
     padding: 1rem 0;
+}
+
+.lastestnews-text1 {
+  text-transform: uppercase;
+  font-size: 25px;
+  text-align: left;
+}
+.lastestnews-text2 {
+  text-transform: uppercase;
+  font-size: 15px;
+  text-align: left;
+}
+
+.lastestnews-text3 {
+  text-transform: uppercase;
+  font-size: 15px;
+  text-align: left;
+}
+
+.news-red {
+  color: #db2d2e;
+  font-weight: bold;
 }
 
 /* Rating */
@@ -277,3 +300,54 @@ img {
 .form-handle-xxs {
   width: 200px;
 }
+
+/* Search elements */
+.search-wrapper {
+  position: absolute;
+  top: 300px;
+  left: 0;
+  width: 100%;
+  z-index: 100;
+  height: 80px !important;
+}
+
+.search-filter {
+  height: 50px !important;
+}
+
+/* .search-input {
+position: relative;
+} */
+
+/* .search-input i {
+color: rgb(196, 13, 13);
+position: absolute;
+top: 3px;
+right: 25px;
+font-size: 2rem;
+} */
+
+/* .search-input > .form-control, .search-filter > .form-control {
+  height: 50px;
+  color: #fff;
+  background: rgba(255,255, 255, 0);
+} */
+
+/* .search-submit {
+  height: 30px !important;
+} */
+
+/* .search-input > .form-control:focus,
+.search-filter > .form-control:focus {
+  color: #fff;
+  background: rgba(255, 255, 255, 0);
+} */
+
+/* Separator elements */
+/* .home-row-3 { margin-bottom: 60px; text-align: center; } */
+.home-row-3 .separator { position: relative; margin-top: 10px; display: inline-block; }
+.home-row-3 span { margin-bottom: 10px; display: block; }
+.home-row-3 .separator:after { width: 100px; display: block; margin: auto; content: ""; height: 1px; background: #db2d2e; bottom: 0px; left: 50%; transition: width .8s ease, background-color .8s ease; -webkit-transition: width .8s ease, background-color .8s ease; -o-transition: width .8s ease, background-color .8s ease; -ms-transition: width .8s ease, background-color .8s ease; -moz-transition: width .8s ease, background-color .8s ease; }
+.home-row-3 .separator:before { content: ''; display: block; margin: auto; left: 50%; height: 1px; width: 50px; bottom: -15px; background: #db2d2e; transition: width .8s ease, background-color .8s ease; -webkit-transition: width .8s ease, background-color .8s ease; -o-transition: width .8s ease, background-color .8s ease; -ms-transition: width .8s ease, background-color .8s ease; -moz-transition: width .8s ease, background-color .8s ease; margin-bottom: 6px; }
+:hover .home-row-3 .separator:before { width: 100px; left: 0; }
+:hover:hover .home-row-3 .separator:after { width: 50px; left: 0; }

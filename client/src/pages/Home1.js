@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Button } from 'react-bootstrap';
 import { MDBRow, MDBCol } from 'mdb-react-ui-kit';
 import { AppShell } from '../AppShell2';
-import SimpleSearch from '../components/search/SimpleSearch';
+import SimpleSearch1 from '../components/search/SimpleSearch1';
 import SimpleSearch2 from '../components/search/SimpleSearch2';
 import homepage_main from '../assets/img/homepage_main.jpg';
 import home_hero from '../assets/img/home-hero.png';

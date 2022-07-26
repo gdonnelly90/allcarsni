@@ -47,16 +47,17 @@ main {
 }
 .home-logo {
   display: block;
-  margin-left: auto;
-  margin-right: auto;
+  padding-top: 50px;
+  margin-left: 45%;
+  margin-right: 50%;
   text-align: center;
-  width: 15%;
+  width: 10%;
   height: auto;
   z-index: 9999;
-  /* position: absolute; */
+  position: absolute;
 }
 
-.home-car-img {
+.home-car {
   z-index: 1; 
   width: 100%;
   position: relative;

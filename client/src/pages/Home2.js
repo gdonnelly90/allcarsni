@@ -1,7 +1,7 @@
 import React from 'react';
 import { Row, Button } from 'react-bootstrap';
 import { MDBRow, MDBCol } from 'mdb-react-ui-kit';
-import home_logo from '../assets/img/logo.png';
+import home_logo from '../assets/img/white_logo.png';
 import home_car from '../assets/img/fullwidth/bugatti_back3.jpg';
 import SimpleSearch2 from '../components/search/SimpleSearch2';
 
@@ -10,8 +10,8 @@ const Home2 = () => {
     <MDBCol>
       <MDBRow className='hero-column-home' md='12'>
         <div className='home-image-logo-row'>
+          <img className='home-logo' src={home_logo} />
           <img className='home-car pb-5' src={home_car} />
-          {/* <img className='home-logo' src={home_logo} /> */}
         </div>
       </MDBRow>
 

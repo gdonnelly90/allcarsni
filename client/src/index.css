@@ -170,11 +170,49 @@ h3 {
     padding: 1rem 0;
 }
 
+.sell-car-icon {
+padding-bottom: 35px;
+}
+
+.sell-car-text1 {
+  text-transform: uppercase;
+  color: #fff;
+  font-size: 40px;
+  text-align: left;
+  font-weight: bold;
+}
+
+.sell-car-text2 {
+  text-transform: uppercase;
+  color: rgb(255, 255, 0);
+  font-size: 30px;
+  text-align: left;
+  font-weight: bold;
+}
+
+.sell-car-text3 {
+  text-transform: uppercase;
+  /* color: rgb(47, 42, 42); */
+  color: #c53030;
+  font-size: 33px;
+  text-shadow: -1px -1px 0 #fff, 1px -1px 0 #fff, -1px 1px 0 #fff, 1px 1px 0 #fff;
+  /* text-shadow:1px 0 0 #fff,0 1px 0 #fff,-1px 0 0 #fff,0 -1px 0 #fff; */
+  text-align: left;
+  font-weight: bold;
+}
+
+
+.selling-blue {
+  color: #2dd2db;
+  font-weight: bold;
+}
+
 .lastestnews-text1 {
   text-transform: uppercase;
   font-size: 25px;
   text-align: left;
 }
+
 .lastestnews-text2 {
   text-transform: uppercase;
   font-size: 15px;
@@ -190,11 +228,16 @@ h3 {
 .lastestnews-text4 {
   text-transform: uppercase;
   font-size: 12px;
+  font-style: italic;
   text-align: left;
 }
 
 .news-red {
   color: #db2d2e;
+  font-weight: bold;
+}
+
+.news-para {
   font-weight: bold;
 }
 
@@ -365,3 +408,30 @@ font-size: 2rem;
 .home-row-3 .separator:before { content: ''; display: block; margin: auto; left: 50%; height: 1px; width: 50px; bottom: -15px; background: #db2d2e; transition: width .8s ease, background-color .8s ease; -webkit-transition: width .8s ease, background-color .8s ease; -o-transition: width .8s ease, background-color .8s ease; -ms-transition: width .8s ease, background-color .8s ease; -moz-transition: width .8s ease, background-color .8s ease; margin-bottom: 6px; }
 :hover .home-row-3 .separator:before { width: 100px; left: 0; }
 :hover:hover .home-row-3 .separator:after { width: 50px; left: 0; }
+
+.image-home-solid-1 {
+background-color:#c53030
+}
+
+.sellicon {
+  color: #fff;
+  float: left; 
+  padding-bottom: 10px;
+}
+
+.enter-reg {
+  color: rgb(147, 5, 5);
+  padding-bottom: 10px;
+}
+
+.enter-reg-button {
+  background-color: transparent;
+  color: #fff;
+  text-align: left;
+  width: 250px;
+}
+
+.button-container-reg {
+  text-align: left;
+  padding-top: 10px;
+}

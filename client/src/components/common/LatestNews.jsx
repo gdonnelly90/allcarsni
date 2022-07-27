@@ -12,7 +12,7 @@ const LatestNews = () => {
           <MDBCol md='12'>
             <div className='home-row-3 text-center'>
               <h1>Latest Review</h1>
-              <div class='separator'></div>
+              <div className='separator'></div>
             </div>
           </MDBCol>
         </MDBRow>
@@ -23,25 +23,28 @@ const LatestNews = () => {
           <MDBCol md='7 pb-5'>
             <div className='lastestnews-text'>
               <p className='lastestnews-text1'>
-                BMW M5 taking life and the Nürburgring by storm!
+                BMW M5: taking life, and the Nürburgring, by storm!
               </p>
-              <p className='lastestnews-text2'>
+              <div className='lastestnews-text2 pb-3'>
                 <span className='lastestnews-text2'>July 26 2022 | </span>
                 <span className='news-red'>By Gary Donnelly</span>
-              </p>
-              <p className='lastestnews-text3 pt-3'>
+              </div>
+              <div className='lastestnews-text3 pt-3'>
                 <p>
                   The quickest M5 ever is also the comfiest M5 ever. Maybe the
-                  most complete super saloon of them all
+                  most complete super saloon of them all...
                 </p>
                 <p>
-                  Is ‘too complete’ a valid criticism? The M5 Competition is
-                  almighty in its performance and comfort, but found a little
-                  wanting when you want a bit of verve and attitude at everyday
-                  pace. The kind of pace that doesn't trouble your own morals!
+                  <span className='news-para'>
+                    Is ‘too complete’ a valid criticism?
+                  </span>{' '}
+                  The M5 Competition is almighty in its performance and comfort,
+                  but found a little wanting when you want a bit of verve and
+                  attitude at everyday pace. The kind of pace that doesn't
+                  trouble your own morals!
                 </p>
-              </p>
-              <p className='lastestnews-text4 pt-3'>(credit TopGear)</p>
+              </div>
+              <div className='lastestnews-text4 pt-3'>(credit TopGear)</div>
             </div>
           </MDBCol>
         </MDBRow>

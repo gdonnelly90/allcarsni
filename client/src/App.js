@@ -47,7 +47,7 @@ const App = () => {
           />
           <Route path='car/:id' element={<Car />} exact />
           <Route path='search/cardetail' element={<CarCloseDetail />} exact />
-          <Route path='/sellcar' element={<SellCar />} exact />
+          {/* <Route path='/sellcar' element={<SellCar />} exact /> */}
           {/* <Route path='/search' element={<SearchGrid />} exact /> */}
           <Route
             path='/search'

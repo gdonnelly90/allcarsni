@@ -50,7 +50,7 @@ const SimpleSearch2 = () => {
 
                 <input
                   type='radio'
-                  class='btn-check'
+                  className='btn-check'
                   name='btnradio'
                   id='btnradio3'
                   autocomplete='off'

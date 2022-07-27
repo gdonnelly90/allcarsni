@@ -6,6 +6,7 @@ import home_logo from '../assets/img/white_logo.png';
 import home_logo2 from '../assets/img/brown_logo.png';
 import home_car from '../assets/img/fullwidth/bugatti_back1.jpg';
 import LatestNews from '../components/common/LatestNews';
+import SellYourCar from '../components/SellYourCar';
 
 const Home2 = () => {
   return (
@@ -21,7 +22,7 @@ const Home2 = () => {
       {/* Car type */}
       <MDBRow md='12'>
         <div className='home-row-3 text-center'>
-          <h1>Shop by car type</h1>
+          <h1>Search by body style</h1>
         </div>
         <MDBRow md='12'>
           <MDBCol md='1'></MDBCol>
@@ -143,9 +144,53 @@ const Home2 = () => {
           />
         </MDBCol>
       </MDBRow>
-      <LatestNews />
+      <MDBRow className='column-main-cars-home pb-5' md='12'>
+        <LatestNews />
+      </MDBRow>
+      {/* sell your car elements */}
+      <MDBRow className='column-main-cars-home pt-5 pb-5' md='12'>
+        <MDBCol className='column1-home' md='7 text-center'>
+          <div
+            className='image-home-solid-1'
+            style={{ width: '100%', height: '450px' }}
+          >
+            <SellYourCar />
+          </div>
+        </MDBCol>
+        <MDBCol className='column2-home' md='5 text-center'>
+          <img
+            className='image-home-car-1'
+            style={{ width: '100%', height: '450px' }}
+            src={require('../assets/img/woman_selling.jpg')}
+          />
+        </MDBCol>
+      </MDBRow>
     </MDBCol>
   );
 };
 
 export default Home2;
+
+{
+  /* <MDBCol className='sell-car-quick pb-5'>
+  <div className='home-sell-contents'>test</div>
+  <img
+    className='icon-hatchback'
+    src={require('../assets/img/woman_selling.jpg')}
+  />
+</MDBCol>; */
+}
+
+//       <MDBRow className='column-main-cars-home pb-5' md='12'>
+//   <MDBCol className='column-main-cars-home pb-5' md='12 text-center'>
+//     {/* <SellYourCar /> */}
+//     <MDBCol md='12'>Test</MDBCol>
+//   </MDBCol>
+//   <MDBCol md='6'>
+//     <img
+//       className='icon-hatchback'
+//       src={require('../assets/img/woman_selling.jpg')}
+//     />
+//     {/* </MDBCol> */}
+//   </MDBCol>
+// </MDBRow>

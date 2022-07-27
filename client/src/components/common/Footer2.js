@@ -63,7 +63,7 @@ const Footer2 = () => {
         </section>
 
         <section className='mb-3'>
-          <p class='h4'>
+          <p className='h4'>
             AllCarsNI - the one stop shop for all buying and selling of new and
             used cars in Northern Ireland.
           </p>

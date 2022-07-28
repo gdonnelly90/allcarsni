@@ -9,7 +9,7 @@ const Header2 = () => {
     <div>
       <nav className='navbar navbar-expand-lg navbar-dark gradient-custom'>
         <div className='container-fluid'>
-          <a className='navbar-brand' href='#'>
+          <a className='navbar-brand'>
             <LinkContainer to='/'>
               <img src={textlogo} width='120' height='30' alt='AllCarsNI' />
             </LinkContainer>

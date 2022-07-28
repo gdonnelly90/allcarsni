@@ -25,7 +25,7 @@ export const NavBar = () => {
       collapseOnSelect
       expand='lg'
       // bg='transparent'
-      variant='light'
+      variant='dark'
       // className='px-4'
     >
       <LinkContainer to='/'>
@@ -39,6 +39,11 @@ export const NavBar = () => {
           <LinkContainer to='/search'>
             <Nav.Link>
               <i className='fas fa-search'></i> Search
+            </Nav.Link>
+          </LinkContainer>
+          <LinkContainer to='/search/cardetail'>
+            <Nav.Link>
+              <i className='fas fa-car'></i> Car Detail
             </Nav.Link>
           </LinkContainer>
           {/* <Nav.Link href='#pricing'>News &amp; reviews</Nav.Link> */}

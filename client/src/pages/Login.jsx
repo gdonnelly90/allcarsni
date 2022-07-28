@@ -58,12 +58,18 @@ export const Login = () => {
   });
 
   return (
-    <section className='w-100 vh-100 mx-auto'>
+    <section className='the-register-wrapper w-100 vh-100 mx-auto'>
       <div className='d-flex flex-row justify-content-center align-items-center h-100'>
         <div className='d-flex flex-column align-item-center container'>
           <div className='row card col-md-6 offset-md-3 shadow bg-body rounded'>
             <div className='bg--blue-gradient h-1'></div>
             <div className='p-3'>
+              <div className='text-center mb-2'>
+                <img
+                  src={require('../assets/img/red_white_logo.png')}
+                  style={{ width: '50%' }}
+                />
+              </div>
               <h1 className='mt-5 mb-5 text-center'>Login into your account</h1>
               {/* <p className='text-center'>
                 Don't have an account?{' '}

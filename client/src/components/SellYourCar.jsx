@@ -13,7 +13,7 @@ const SellYourCar = () => {
           <MDBCol md='3'></MDBCol>
           <MDBCol md='8'>
             <div className='sell-car-text'>
-              <div className='sell-car-icon'>
+              <div className='sell-car-icon pt-2'>
                 <i className='sellicon fa-solid fa-car-on fa-xl'></i>
               </div>
               <div className='sell-car-text1'>SELL YOUR CAR</div>

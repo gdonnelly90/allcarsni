@@ -70,13 +70,19 @@ export const Register = () => {
   });
 
   return (
-    <section className='w-100 vh-100 mx-auto'>
+    <section className='the-login-wrapper w-100 vh-100 mx-auto'>
       <div className='d-flex flex-row justify-content-center align-items-center h-100'>
         <div className='d-flex flex-column align-item-center container'>
           <div className='row card col-md-8 offset-md-2 shadow bg-body rounded'>
             <div className='bg--blue-gradient h-1'></div>
             <div className='p-4'>
-              <h1 className='mt-5 text-center'>Create your account</h1>
+              <div className='text-center mb-2'>
+                <img
+                  src={require('../assets/img/red_white_logo.png')}
+                  style={{ width: '50%' }}
+                />
+              </div>
+              <h1 className='text-center'>Create your account</h1>
               <p className='mb-5 text-center'>
                 Starting searching for, or selling, your dream car
               </p>

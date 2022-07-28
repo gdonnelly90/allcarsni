@@ -45,10 +45,15 @@ const App = () => {
             }
             exact
           />
-          <Route path='car/:id' element={<Car />} exact />
-          <Route path='search/cardetail' element={<CarCloseDetail />} exact />
-          {/* <Route path='/sellcar' element={<SellCar />} exact /> */}
-          {/* <Route path='/search' element={<SearchGrid />} exact /> */}
+          <Route
+            path='search/cardetail'
+            element={
+              <AppShell>
+                <CarCloseDetail />
+              </AppShell>
+            }
+            exact
+          />
           <Route
             path='/search'
             element={
@@ -58,7 +63,6 @@ const App = () => {
             }
             exact
           />
-          <Route path='/search/:id' element={<CarCloseDetail />} exact />{' '}
           <Route path='/login' element={<Login />} />
           <Route path='/register' element={<Register />} />
           <Route
@@ -78,16 +82,30 @@ const App = () => {
 export default App;
 
 {
+  /* <Route path='car/:id' element={<Car />} exact /> */
+}
+{
   /* <Route
-    path="admin"
-    element={
-      <ProtectedRoute
-        redirectPath="/home"
-        isAllowed={!!user && user.roles.includes('admin')}
-      >
-        <Admin />
-      </ProtectedRoute>
-    }
+  path='/search/:id'
+  element={
+    <AppShell>
+      <CarCloseDetail />
+    </AppShell>
+  }
+  exact
+/>{' '} */
+}
+{
+  /* <Route
+  path="admin"
+  element={
+    <ProtectedRoute
+    redirectPath="/home"
+    isAllowed={!!user && user.roles.includes('admin')}
+    >
+    <Admin />
+    </ProtectedRoute>
+  }
   /> */
 }
 

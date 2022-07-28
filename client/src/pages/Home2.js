@@ -2,9 +2,9 @@ import React from 'react';
 import { Row, Button } from 'react-bootstrap';
 import { MDBRow, MDBCol } from 'mdb-react-ui-kit';
 import SimpleSearch from '../components/search/SimpleSearch';
-import home_logo from '../assets/img/white_logo.png';
+import home_logo from '../assets/img/red_white_logo.png';
 import home_logo2 from '../assets/img/brown_logo.png';
-import home_car from '../assets/img/fullwidth/bugatti_back1.jpg';
+import home_car from '../assets/img/fullwidth/bugatti_back1b.jpg';
 import LatestNews from '../components/common/LatestNews';
 import SellYourCar from '../components/SellYourCar';
 
@@ -14,7 +14,7 @@ const Home2 = () => {
       <MDBRow className='hero-column-home' md='12'>
         <div className='home-image-logo-row'>
           <SimpleSearch />
-          <img className='home-logo' src={home_logo2} />
+          <img className='home-logo' src={home_logo} />
           <img className='home-car' src={home_car} />
         </div>
       </MDBRow>
@@ -139,7 +139,7 @@ const Home2 = () => {
         </MDBCol>
         <MDBCol className='column8-home' md='3 text-center'>
           <img
-            className='icon-hatchback'
+            className='image-home-car-1'
             src={require('../assets/img/fullwidth/911_turbo.jpg')}
           />
         </MDBCol>
@@ -170,6 +170,36 @@ const Home2 = () => {
 };
 
 export default Home2;
+
+{
+  /* <div className='image-home-car-1-overlay'>
+<ul>
+  <li>
+    <a href='#'>
+      <i className='fa fa-link'></i>
+    </a>
+  </li>
+  <li>
+    <a href='#'>
+      <i className='fa fa-dashboard'></i>
+    </a>
+  </li>
+</ul>
+</div>
+<div className='car-list'>
+<ul className='list-inline'>
+  <li>
+    <i className='fa fa-registered'></i> 2021
+  </li>
+  <li>
+    <i className='fa fa-cog'></i> Manual{' '}
+  </li>
+  <li>
+    <i className='fa fa-dashboard'></i> 6,000 mi
+  </li>
+</ul>
+</div> */
+}
 
 {
   /* <MDBCol className='sell-car-quick pb-5'>

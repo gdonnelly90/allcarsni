@@ -17,6 +17,7 @@ import { IoIosSpeedometer } from 'react-icons/io';
 import { BsFillCalendar2DateFill } from 'react-icons/bs';
 import { FaGasPump } from 'react-icons/fa';
 import { FaPowerOff } from 'react-icons/fa';
+import FinanceCalculator from '../common/FinanceCalculator';
 
 // import { MdAirlineSeatReclineExtra } from 'react-icons/md';
 
@@ -160,6 +161,12 @@ const CarDetail = () => {
             <ContactSeller />
           </MDBCol>
         </MDBRow>
+      </MDBRow>
+      <MDBRow md='12'>
+        <MDBCol className='contact-seller' md='8'></MDBCol>
+        <MDBCol className='contact-seller' md='4'>
+          <FinanceCalculator />
+        </MDBCol>
       </MDBRow>
     </div>
   );

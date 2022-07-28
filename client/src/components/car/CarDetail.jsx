@@ -109,63 +109,75 @@ const CarDetail = () => {
           </MDBRow>
         </MDBCol>
       </MDBRow>
-      <MDBRow className='car-overview-row1 pt-3' md='12'>
-        <MDBRow className='my-5'>
-          <MDBCol md='8'>
-            <div className='accordion-sections pb-5'>
-              <h1>Overview</h1>
-              <MDBAccordion initialActive={1}>
-                <MDBAccordionItem
-                  collapseId={1}
-                  headerTitle='Description'
-                  className='accordion-title'
-                >
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc
-                  laoreet, orci eget congue semper, est nunc tincidunt nulla, eu
-                  consequat tellus nunc sit amet lectus. Mauris pretium euismod
-                  nibh sed aliquam. Integer blandit metus a aliquet hendrerit.
-                  Sed id nisl eget ante hendrerit scelerisque et eget neque.
-                  Etiam sollicitudin urna vel diam egestas vehicula. Donec
-                  condimentum felis at metus eleifend tempus. Nullam in placerat
-                  ligula, eu luctus lacus. Fusce mattis tortor a dui ultrices,
-                  vitae porttitor enim dictum. Morbi hendrerit tempor ante a
-                  malesuada. Aenean sed sapien gravida, rutrum odio at, viverra
-                  massa. Suspendisse quis ante est. Nunc in nisi commodo,
-                  feugiat enim eget, tempus sem. Aenean varius dolor ut eros
-                  pharetra imperdiet.
-                </MDBAccordionItem>
-                <MDBAccordionItem
-                  collapseId={2}
-                  headerTitle='Specification'
-                  className='accordion-title'
-                >
-                  Sed id nisl eget ante hendrerit scelerisque et eget neque.
-                  Etiam sollicitudin urna vel diam egestas vehicula. Donec
-                  condimentum felis at metus eleifend tempus. Nullam in placerat
-                  ligula, eu luctus lacus. Fusce mattis tortor a dui ultrices,
-                  vitae porttitor enim dictum.
-                </MDBAccordionItem>
-                <MDBAccordionItem
-                  collapseId={3}
-                  headerTitle='Features'
-                  className='accordion-title'
-                >
-                  Morbi hendrerit tempor ante a malesuada. Aenean sed sapien
-                  gravida, rutrum odio at, viverra massa. Suspendisse quis ante
-                  est.
-                </MDBAccordionItem>
-              </MDBAccordion>
-            </div>
-          </MDBCol>
-          <MDBCol className='contact-seller-insert' md='4'>
+
+      {/* overview and contact / finance sections */}
+      <MDBRow>
+        <MDBCol className='pt-5' md='8'>
+          <div className='accordion-sections'>
+            <h1 className=''>Overview</h1>
+            <MDBAccordion initialActive={1}>
+              <MDBAccordionItem
+                collapseId={1}
+                headerTitle='Description'
+                className='accordion-title'
+              >
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc
+                laoreet, orci eget congue semper, est nunc tincidunt nulla, eu
+                consequat tellus nunc sit amet lectus. Mauris pretium euismod
+                nibh sed aliquam. Integer blandit metus a aliquet hendrerit. Sed
+                id nisl eget ante hendrerit scelerisque et eget neque. Etiam
+                sollicitudin urna vel diam egestas vehicula. Donec condimentum
+                felis at metus eleifend tempus. Nullam in placerat ligula, eu
+                luctus lacus. Fusce mattis tortor a dui ultrices, vitae
+                porttitor enim dictum. Morbi hendrerit tempor ante a malesuada.
+                Aenean sed sapien gravida, rutrum odio at, viverra massa.
+                Suspendisse quis ante est. Nunc in nisi commodo, feugiat enim
+                eget, tempus sem. Aenean varius dolor ut eros pharetra
+                imperdiet. Lorem ipsum dolor sit amet, consectetur adipiscing
+                elit. Nunc laoreet, orci eget congue semper, est nunc tincidunt
+                nulla, eu consequat tellus nunc sit amet lectus. Mauris pretium
+                euismod nibh sed aliquam. Integer blandit metus a aliquet
+                hendrerit. Sed id nisl eget ante hendrerit scelerisque et eget
+                neque. Etiam sollicitudin urna vel diam egestas vehicula. Donec
+                condimentum felis at metus eleifend tempus. Nullam in placerat
+                ligula, eu luctus lacus. Fusce mattis tortor a dui ultrices,
+                vitae porttitor enim dictum. Morbi hendrerit tempor ante a
+                malesuada. Aenean sed sapien gravida, rutrum odio at, viverra
+                massa. Suspendisse quis ante est. Nunc in nisi commodo, feugiat
+                enim eget, tempus sem. Aenean varius dolor ut eros pharetra
+                imperdiet.
+              </MDBAccordionItem>
+              <MDBAccordionItem
+                collapseId={2}
+                headerTitle='Specification'
+                className='accordion-title'
+              >
+                Sed id nisl eget ante hendrerit scelerisque et eget neque. Etiam
+                sollicitudin urna vel diam egestas vehicula. Donec condimentum
+                felis at metus eleifend tempus. Nullam in placerat ligula, eu
+                luctus lacus. Fusce mattis tortor a dui ultrices, vitae
+                porttitor enim dictum.
+              </MDBAccordionItem>
+              <MDBAccordionItem
+                collapseId={3}
+                headerTitle='Features'
+                className='accordion-title'
+              >
+                Morbi hendrerit tempor ante a malesuada. Aenean sed sapien
+                gravida, rutrum odio at, viverra massa. Suspendisse quis ante
+                est.
+              </MDBAccordionItem>
+            </MDBAccordion>
+          </div>
+        </MDBCol>
+        <MDBCol className='pt-5' md='4'>
+          <MDBRow>
             <ContactSeller />
-          </MDBCol>
-        </MDBRow>
-      </MDBRow>
-      <MDBRow md='12'>
-        <MDBCol className='contact-seller' md='8'></MDBCol>
-        <MDBCol className='contact-seller' md='4'>
-          <FinanceCalculator />
+          </MDBRow>
+          <MDBRow>
+            <h1 className='pt-5'>Finance Example</h1>
+            <FinanceCalculator />
+          </MDBRow>
         </MDBCol>
       </MDBRow>
     </div>
@@ -173,6 +185,82 @@ const CarDetail = () => {
 };
 
 export default CarDetail;
+
+// {/* afkjfkjnfajhfjhjfhljfhg */}
+// <MDBRow className='car-overview-row1 pt-3' md='12'>
+//   <MDBRow className='my-5'>
+//     <MDBCol md='8'>
+//       <div className='accordion-sections pb-5'>
+//         <h1>Overview</h1>
+//         <MDBAccordion initialActive={1}>
+//           <MDBAccordionItem
+//             collapseId={1}
+//             headerTitle='Description'
+//             className='accordion-title'
+//           >
+//             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc
+//             laoreet, orci eget congue semper, est nunc tincidunt nulla, eu
+//             consequat tellus nunc sit amet lectus. Mauris pretium euismod
+//             nibh sed aliquam. Integer blandit metus a aliquet hendrerit.
+//             Sed id nisl eget ante hendrerit scelerisque et eget neque.
+//             Etiam sollicitudin urna vel diam egestas vehicula. Donec
+//             condimentum felis at metus eleifend tempus. Nullam in placerat
+//             ligula, eu luctus lacus. Fusce mattis tortor a dui ultrices,
+//             vitae porttitor enim dictum. Morbi hendrerit tempor ante a
+//             malesuada. Aenean sed sapien gravida, rutrum odio at, viverra
+//             massa. Suspendisse quis ante est. Nunc in nisi commodo,
+//             feugiat enim eget, tempus sem. Aenean varius dolor ut eros
+//             pharetra imperdiet. Lorem ipsum dolor sit amet, consectetur
+//             adipiscing elit. Nunc laoreet, orci eget congue semper, est
+//             nunc tincidunt nulla, eu consequat tellus nunc sit amet
+//             lectus. Mauris pretium euismod nibh sed aliquam. Integer
+//             blandit metus a aliquet hendrerit. Sed id nisl eget ante
+//             hendrerit scelerisque et eget neque. Etiam sollicitudin urna
+//             vel diam egestas vehicula. Donec condimentum felis at metus
+//             eleifend tempus. Nullam in placerat ligula, eu luctus lacus.
+//             Fusce mattis tortor a dui ultrices, vitae porttitor enim
+//             dictum. Morbi hendrerit tempor ante a malesuada. Aenean sed
+//             sapien gravida, rutrum odio at, viverra massa. Suspendisse
+//             quis ante est. Nunc in nisi commodo, feugiat enim eget, tempus
+//             sem. Aenean varius dolor ut eros pharetra imperdiet.
+//           </MDBAccordionItem>
+//           <MDBAccordionItem
+//             collapseId={2}
+//             headerTitle='Specification'
+//             className='accordion-title'
+//           >
+//             Sed id nisl eget ante hendrerit scelerisque et eget neque.
+//             Etiam sollicitudin urna vel diam egestas vehicula. Donec
+//             condimentum felis at metus eleifend tempus. Nullam in placerat
+//             ligula, eu luctus lacus. Fusce mattis tortor a dui ultrices,
+//             vitae porttitor enim dictum.
+//           </MDBAccordionItem>
+//           <MDBAccordionItem
+//             collapseId={3}
+//             headerTitle='Features'
+//             className='accordion-title'
+//           >
+//             Morbi hendrerit tempor ante a malesuada. Aenean sed sapien
+//             gravida, rutrum odio at, viverra massa. Suspendisse quis ante
+//             est.
+//           </MDBAccordionItem>
+//         </MDBAccordion>
+//       </div>
+//     </MDBCol>
+//   </MDBRow>
+//   <MDBCol className='contact-seller-finance' md='4'>
+//     <MDBRow>
+//       <ContactSeller />
+//     </MDBRow>
+//     <MDBRow md='12'>
+//       <MDBCol className='recent-cars-viewed' md='8'></MDBCol>
+//       <MDBCol className='finance-examples' md='4'>
+//         <h1>Finance Example</h1>
+//         <FinanceCalculator />
+//       </MDBCol>
+//     </MDBRow>
+//   </MDBCol>
+// </MDBRow>
 
 //   <MDBRow className='slider-desc-row' md='12'>
 //     <MDBCol md='8'>Slider</MDBCol>

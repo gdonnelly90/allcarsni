@@ -351,6 +351,24 @@ color: #c53030;
 background-color: #ffd2d2;
 }
 
+.accordion-button:link, .accordion-button:visited, .accordion-button:hover, .accordion-button:active  {
+  background-color: #ffd2d2 !important;
+    color:#c53030 !important;
+    text-decoration: none !important;
+     border: hidden !important;
+       border-color: #FFF !important;
+    box-shadow: 0px !important;
+
+      
+}
+
+.accordion-button:focus {
+  z-index: 3;
+  border-color: #FFF !important;
+  outline: 0;
+  box-shadow: 0 0 0 .25rem #FFF !important;
+}
+
 .car-info {
   font-weight: bold;
 }
@@ -521,3 +539,210 @@ background-color:#c53030
     padding-left: 0;
     padding-right: 0;
   }
+
+/* finance elements */
+.mainContainer{
+  margin-top: 5px;
+  background-color: #f3f3f3;
+  color: #505050;
+  padding: 35px;
+}
+
+/* left side elements */
+.leftSide{
+  background-color: #fff;
+  padding: 20px 20px 30px 20px;
+  border: 1px solid #e6e3e3;
+  text-align: center;
+}
+.labelSlider{
+  text-align: center;
+  background-color: #c53030;
+  padding: 3px;
+  border-radius: 5px;
+  color: #f3f3f3;
+  min-width: 120px;
+  font-size: 20px;
+  /* margin-bottom: 30px; */
+  transition: all 1s;
+  margin-left: auto;
+  margin-right: auto;
+}
+.descSlider{
+  padding: 10px 12px;
+  color: #707070;
+}
+
+.leftSide input[type=range]{
+  width:100%;
+}
+#amountValueDisplay, #loanDurationDisplay{
+  font-size: 26px;
+  color: #000000;
+}
+
+/* right side elements */
+.rightSide{
+  text-align: center;
+}
+
+.rightSide h4{
+  font-size: 18px;
+  margin-top: 20px;
+  margin-bottom: -3px;
+}
+
+.rightSide span {
+  font-weight: bold;
+  /* padding: 10px 60px; */
+  font-size: 30px;
+}
+
+/* input css */
+input[type=range] {
+  -webkit-appearance: none;
+  margin: 18px 0;
+  width: 100%;
+}
+input[type=range]:focus {
+  outline: none;
+}
+input[type=range]::-webkit-slider-runnable-track {
+  width: 100%;
+  height: 4px;
+  cursor: pointer;
+  border: 1px solid #bdc3c7;
+  background: #e1e1e1;
+  border-radius: 1.3px;
+
+}
+input[type=range]::-webkit-slider-thumb {
+
+  height: 20px;
+  width: 20px;
+  border-radius: 15px;
+  background: #c53032;
+  cursor: pointer;
+  -webkit-appearance: none;
+  margin-top: -10px;
+  transition: all 0.1s;
+}
+input[type=range]:focus::-webkit-slider-runnable-track {
+  background: #c53031;
+}
+input[type=range]::-moz-range-track {
+  width: 100%;
+  height: 4px;
+  cursor: pointer;
+  border: 1px solid #bdc3c7;
+  background: #e1e1e1;
+  border-radius: 1.3px;
+}
+input[type=range]::-moz-range-thumb {
+  height: 30px;
+  width: 66px;
+  border-radius: 15px;
+  background: #c53030;
+  cursor: pointer;
+  -webkit-appearance: none;
+  margin-top: -15px;
+  transition: all 0.1s
+}
+input[type=range]::-ms-track {
+  width: 100%;
+  height: 4px;
+  cursor: pointer;
+  border: 1px solid #bdc3c7;
+  background: #e1e1e1;
+  border-radius: 1.3px;
+}
+input[type=range]::-ms-fill-lower {
+  background: #000000;
+  border: 0.2px solid #010101;
+  border-radius: 2.6px;
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+}
+input[type=range]::-ms-fill-upper {
+  background: #3071a9;
+  border: 0.2px solid #010101;
+  border-radius: 2.6px;
+  box-shadow: 1px 1px 1px #000000, 0px 0px 1px #0d0d0d;
+}
+input[type=range]::-ms-thumb {
+  height: 30px;
+  width: 66px;
+  border-radius: 15px;
+  background: #4caf50;
+  cursor: pointer;
+  -webkit-appearance: none;
+  margin-top: -15px;
+  transition: all 0.1s;
+
+}
+input[type=range]:focus::-ms-fill-lower {
+  background: #3071a9;
+}
+input[type=range]:focus::-ms-fill-upper {
+  background: #367ebd;
+}
+
+
+@media (max-width: 400px){.rightSide span{font-size: 40px;}}
+
+.btn-primary {
+  font-size:small;
+  color: #fff;
+  background-color: #c53030 ;
+  border-color: #c53030;
+}
+
+.btn-primary:hover {
+  font-size:small;
+  color: #fff;
+  background-color: #c53030 ;
+  border-color: #c53030;
+}
+
+.btn:focus, .btn.focus {
+  outline: 0;
+  box-shadow: 0 0 0 0.2rem #c53030;
+}
+
+.btn-primary:hover {
+  color: #fff;
+  background-color: #c53030;
+  border-color: #c53030;
+}
+
+.btn-primary:focus, .btn-primary.focus {
+  box-shadow: 0 0 0 0.2rem #c53030;
+}
+
+.btn-primary.disabled, .btn-primary:disabled {
+  color: #fff;
+  background-color: #c53030;
+  border-color: #c53030;
+}
+
+.btn-primary:not(:disabled):not(.disabled):active, .btn-primary:not(:disabled):not(.disabled).active,
+.show > .btn-primary.dropdown-toggle {
+  color: #fff;
+  background-color: #c53030;
+  border-color: #c53030;
+}
+
+.btn-primary:not(:disabled):not(.disabled):active:focus, .btn-primary:not(:disabled):not(.disabled).active:focus,
+.show > .btn-primary.dropdown-toggle:focus {
+  box-shadow: 0 0 0 0.2rem #c53030;
+}
+
+.buttons input:focus {
+  outline: none;
+}
+
+.btn-primary:focus,
+.btn-primary.focus {
+  color: #fff;
+  background-color: #c53030;
+  border-color: #c53030;
+}

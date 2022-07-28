@@ -85,7 +85,11 @@ const Home2 = () => {
         <MDBRow>
           <MDBCol>
             <div className='home-button gap-2 text-center'>
-              <Button variant='outline-secondary' size='lg'>
+              <Button
+                variant='outline-secondary'
+                size='lg'
+                // style={{ backgroundColor: '#c53030' }}
+              >
                 Browse all cars
               </Button>
             </div>

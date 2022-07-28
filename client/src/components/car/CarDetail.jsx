@@ -10,6 +10,15 @@ import CarCarousel from './CarCarousel';
 import image1 from '../../assets/img/cars/Ferrari_LaFerrari_Aperta_2.jpg';
 import image2 from '../../assets/img/cars/Ferrari_LaFerrari_Aperta_3.jpg';
 import ContactSeller from '../car/ContactSeller';
+import { AiFillCar } from 'react-icons/ai';
+import { TbEngine } from 'react-icons/tb';
+import { GiGearStick } from 'react-icons/gi';
+import { IoIosSpeedometer } from 'react-icons/io';
+import { BsFillCalendar2DateFill } from 'react-icons/bs';
+import { FaGasPump } from 'react-icons/fa';
+import { FaPowerOff } from 'react-icons/fa';
+
+// import { MdAirlineSeatReclineExtra } from 'react-icons/md';
 
 const CarDetail = () => {
   return (
@@ -37,10 +46,72 @@ const CarDetail = () => {
           </MDBRow>
         </MDBCol>
       </MDBRow>
+      <MDBRow className='car-icon-display pt-5' md='12'>
+        <MDBCol className='price-row-cardetails' md='3'>
+          <h1 className='car-price-cardetails'>£3,500,000</h1>
+        </MDBCol>
+        <MDBCol className='pb-3' md='2'>
+          <MDBRow className='cardetails-icons-icon text-center'>
+            <AiFillCar size='26px' />
+          </MDBRow>
+          <MDBRow className='cardetails-icons-icon text-center pt-1 pb-2'>
+            <h5>Hyper car</h5>
+          </MDBRow>
+        </MDBCol>
+        <MDBCol className='pb-3' md='1'>
+          <MDBRow className='cardetails-icons-icon text-center'>
+            <BsFillCalendar2DateFill size='20px' />
+          </MDBRow>
+          <MDBRow className='cardetails-icons-icon text-center pt-1 pb-2'>
+            <h5>2018</h5>
+          </MDBRow>
+        </MDBCol>
+        <MDBCol className='pb-3' md='1'>
+          <MDBRow className='cardetails-icons-icon text-center'>
+            <IoIosSpeedometer size='25px' />
+          </MDBRow>
+          <MDBRow className='cardetails-icons-icon text-center pt-1'>
+            <h5>35,000</h5>
+          </MDBRow>
+        </MDBCol>
+        <MDBCol className='pb-3' md='1'>
+          <MDBRow className='cardetails-icons-icon text-center'>
+            <FaGasPump size='20px' />
+          </MDBRow>
+          <MDBRow className='cardetails-icons-icon text-center pt-1'>
+            <h5>Petrol</h5>
+          </MDBRow>
+        </MDBCol>
+        <MDBCol className='pb-3' md='1'>
+          <MDBRow className='cardetails-icons-icon text-center'>
+            <GiGearStick size='22px' />
+          </MDBRow>
+          <MDBRow className='cardetails-icons-icon text-center pt-1'>
+            <h5>Auto</h5>
+          </MDBRow>
+        </MDBCol>
+        <MDBCol className='pb-3' md='1'>
+          <MDBRow className='cardetails-icons-icon text-center'>
+            <h6 className='mt-1'>BHP</h6>
+          </MDBRow>
+          <MDBRow className='cardetails-icons-icon text-center pt-1'>
+            <h5>1000</h5>
+          </MDBRow>
+        </MDBCol>
+        <MDBCol className='pb-3' md='1'>
+          <MDBRow className='cardetails-icons-icon text-center'>
+            {/* <i class='fa-regular fa-engine'></i> */}
+            <TbEngine size='25px' />
+          </MDBRow>
+          <MDBRow className='cardetails-icons-icon text-center pt-1'>
+            <h5>5L</h5>
+          </MDBRow>
+        </MDBCol>
+      </MDBRow>
       <MDBRow className='car-overview-row1 pt-3' md='12'>
         <MDBRow className='my-5'>
           <MDBCol md='8'>
-            <div className='accordion-sections'>
+            <div className='accordion-sections pb-5'>
               <h1>Overview</h1>
               <MDBAccordion initialActive={1}>
                 <MDBAccordionItem

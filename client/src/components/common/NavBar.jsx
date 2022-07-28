@@ -6,7 +6,7 @@ import { useAppState, useAppDispatch } from '../../context/appContext/context';
 import { LOGOUT } from '../../context/actionTypes';
 import { Hyperlink } from './Hyperlink';
 import { logout } from '../../context/appContext';
-import textlogo from '../../assets/img/text_only_logo.png';
+import textlogo from '../../assets/img/textonly_white_red_logo.png';
 
 export const NavBar = () => {
   const dispatch = useAppDispatch();

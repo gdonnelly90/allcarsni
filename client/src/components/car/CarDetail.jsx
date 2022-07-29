@@ -171,11 +171,11 @@ const CarDetail = () => {
           </div>
         </MDBCol>
         <MDBCol className='pt-5' md='4'>
-          <MDBRow>
+          <MDBRow className='mainContainer'>
             <ContactSeller />
           </MDBRow>
-          <MDBRow>
-            <h1 className='pt-5'>Finance Example</h1>
+          <MDBRow className='mainContainer2'>
+            <h1 className='pt-2'>Finance Example</h1>
             <FinanceCalculator />
           </MDBRow>
         </MDBCol>

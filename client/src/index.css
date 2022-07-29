@@ -542,10 +542,20 @@ background-color:#c53030
 
 /* finance elements */
 .mainContainer{
-  margin-top: 5px;
+  margin-top: 10px;
   background-color: #f3f3f3;
   color: #505050;
   padding: 35px;
+}
+
+.mainContainer2{
+  margin-top: 20px;
+  background-color: #f3f3f3;
+  color: #505050;
+  padding-top: 30px;
+  padding-bottom: 10px;
+  padding-right: 30px;
+  padding-left: 30px;
 }
 
 /* left side elements */
@@ -555,6 +565,7 @@ background-color:#c53030
   border: 1px solid #e6e3e3;
   text-align: center;
 }
+
 .labelSlider{
   text-align: center;
   background-color: #c53030;
@@ -568,6 +579,7 @@ background-color:#c53030
   margin-left: auto;
   margin-right: auto;
 }
+
 .descSlider{
   padding: 10px 12px;
   color: #707070;

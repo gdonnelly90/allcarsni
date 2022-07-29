@@ -217,20 +217,20 @@ class FinanceCalculator extends Component {
   }
 }
 //  Assign Types for props
-FinanceCalculator.propTypes = {
-  valueD: React.PropTypes.number,
-  stepD: React.PropTypes.number,
-  maxD: React.PropTypes.number,
-  minD: React.PropTypes.number,
-  valueA: React.PropTypes.number,
-  stepA: React.PropTypes.number,
-  maxA: React.PropTypes.number,
-  minA: React.PropTypes.number,
-  APR1: React.PropTypes.number,
-  APR2: React.PropTypes.number,
-  APR3: React.PropTypes.number,
-  currency: React.PropTypes.string,
-};
+// FinanceCalculator.propTypes = {
+//   valueD: React.PropTypes.number,
+//   stepD: React.PropTypes.number,
+//   maxD: React.PropTypes.number,
+//   minD: React.PropTypes.number,
+//   valueA: React.PropTypes.number,
+//   stepA: React.PropTypes.number,
+//   maxA: React.PropTypes.number,
+//   minA: React.PropTypes.number,
+//   APR1: React.PropTypes.number,
+//   APR2: React.PropTypes.number,
+//   APR3: React.PropTypes.number,
+//   currency: React.PropTypes.string,
+// };
 
 // Assign deafault values to props
 

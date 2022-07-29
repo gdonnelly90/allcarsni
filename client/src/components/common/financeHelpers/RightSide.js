@@ -23,7 +23,7 @@ class RightSide extends Component {
 
         <h6 className='mt-4'>Example APR Rates</h6>
 
-        <ButtonGroup justified>
+        <ButtonGroup>
           <Button variant='primary' id='4.9' onClick={this.props.btnOnClick}>
             4.9%
           </Button>

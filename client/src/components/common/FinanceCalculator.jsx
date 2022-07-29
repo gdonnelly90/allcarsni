@@ -181,7 +181,7 @@ class FinanceCalculator extends Component {
       <Container className='show-grid mainContainer'>
         <Row>
           <Col className='leftSide' xs={12} md={6}>
-            <Form horizontal>
+            <Form>
               <div className='slider-amount-div mt-3 mb-5'>
                 <SliderAmount
                   value={this.state.valueAmount}

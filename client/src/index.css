@@ -488,7 +488,7 @@ background-color:#c53030
 .the-login-wrapper {
   width: 100%;
   align-items: center;
-  background-image: url("./assets/img/fullwidth/lambo.jpg");
+  background-image: url("./assets/img/fullwidth/lambo2.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   box-shadow: inset 0 0 0 1000px rgba(245, 107, 107, 0.42);
@@ -503,7 +503,7 @@ background-color:#c53030
 .the-register-wrapper {
   width: 100%;
   align-items: center;
-  background-image: url("./assets/img/fullwidth/lambo_rain.jpg");
+  background-image: url("./assets/img/fullwidth/lambo_rain2.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   box-shadow: inset 0 0 0 1000px rgba(245, 107, 107, 0.42);
@@ -758,3 +758,42 @@ input[type=range]:focus::-ms-fill-upper {
   background-color: #c53030;
   border-color: #c53030;
 }
+
+/* #slider-container .slider {
+  overflow: initial;
+} */
+
+
+.swiper {
+  width: 100%;
+  height: 100%;
+  --swiper-theme-color: #c53030;
+}
+
+.swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  background: #fff;
+
+  /* Center slide text vertically */
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+}
+
+.swiper-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+

@@ -24,9 +24,9 @@ export default function CarDetailCarousel() {
           delay: 2500,
           disableOnInteraction: false,
         }}
-        pagination={{
-          clickable: true,
-        }}
+        // pagination={{
+        //   clickable: true,
+        // }}
         breakpoints={{
           500: {
             slidesPerView: 1,
@@ -43,7 +43,8 @@ export default function CarDetailCarousel() {
           },
         }}
         navigation={true}
-        modules={[Autoplay, Pagination, Navigation]}
+        // modules={[Autoplay, Pagination, Navigation]}
+        modules={[Autoplay, Navigation]}
         className='mySwiper'
       >
         <SwiperSlide>

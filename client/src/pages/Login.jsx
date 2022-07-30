@@ -67,7 +67,7 @@ export const Login = () => {
               <div className='text-center mb-2'>
                 <img
                   src={require('../assets/img/red_white_logo.png')}
-                  style={{ width: '50%' }}
+                  style={{ width: '25%' }}
                 />
               </div>
               <h1 className='mt-5 mb-5 text-center'>Login into your account</h1>

@@ -25,6 +25,7 @@ import MyVehicle from './pages/account/MyVehicle';
 import PaymentHistory from './pages/account/PaymentHistory';
 import PaymentMethod from './pages/account/PaymentMethod';
 import PersonalDetails from './pages/account/PersonalDetails';
+import RegisterTest from './pages/RegisterTest';
 
 const App = () => {
   return (
@@ -64,7 +65,8 @@ const App = () => {
             exact
           />
           <Route path='/login' element={<Login />} />
-          <Route path='/register' element={<Register />} />
+          <Route path='/register' element={<RegisterTest />} />
+          {/* <Route path='/register' element={<Register />} /> */}
           <Route
             path='/account'
             element={

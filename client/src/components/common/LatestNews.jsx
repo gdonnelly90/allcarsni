@@ -2,7 +2,7 @@ import React from 'react';
 import { LinkContainer } from 'react-router-bootstrap';
 import { Container, Nav, Navbar } from 'react-bootstrap';
 import { MDBRow, MDBCol } from 'mdb-react-ui-kit';
-import LatestNewsCarousel from '../latest_news_carousel/LatestNewsCarousel';
+import LatestNewsCarousel from '../latestNewsCarousel/LatestNewsCarousel';
 
 const LatestNews = () => {
   return (

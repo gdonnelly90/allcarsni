@@ -294,7 +294,7 @@ const CarDetail = () => {
             <FinanceCalculator />
           </MDBRow>
         </MDBCol>
-        <MDBCol className='similar-for-sale pt-5' md='12'>
+        <MDBCol className='similar-for-sale pt-5 pb-5' md='12'>
           <h1 className='pt-2'>Similar For Sale</h1>
           <CarDetailCarousel />
           {/* <CarDetailSlickCarousel /> */}

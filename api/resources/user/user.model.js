@@ -1,7 +1,22 @@
-import mongoose from "mongoose";
+import mongoose from 'mongoose';
 
 const UserSchema = mongoose.Schema(
   {
+    firstName: {
+      type: String,
+      required: true,
+    },
+    lastName: {
+      type: String,
+      required: true,
+    },
+    businessName: {
+      type: String,
+    },
+    mobile: {
+      type: String,
+      required: true,
+    },
     email: {
       type: String,
       required: true,
@@ -11,34 +26,13 @@ const UserSchema = mongoose.Schema(
       type: String,
       required: true,
     },
-    businessName: {
-      type: String,
-    },
-    firstName: {
-      type: String,
-      required: true,
-    },
-    lastName: {
-      type: String,
-      required: true,
-    },
-    mobile: {
-      type: String,
-      required: true,
-    },
-    name: {
-      type: String,
-    },
-    telephone: {
-      type: String,
-    },
     companyRegNumber: {
       type: String,
-      default: "Not Registered",
+      default: 'Not Registered',
     },
     vatNumber: {
       type: String,
-      default: "Not VAT Registered",
+      default: 'Not VAT Registered',
     },
     address: {
       type: String,
@@ -56,16 +50,22 @@ const UserSchema = mongoose.Schema(
     },
     roles: {
       type: [String],
-      enum: ["admin", "user"],
-      default: "user",
+      enum: ['admin', 'user'],
+      default: 'user',
     },
     subscription: {
       type: mongoose.Schema.ObjectId,
-      ref: "subscriptionTypes",
+      ref: 'subscriptionTypes',
     },
     active: {
       type: Boolean,
       default: true,
+    },
+    name: {
+      type: String,
+    },
+    telephone: {
+      type: String,
     },
   },
   {
@@ -76,10 +76,10 @@ const UserSchema = mongoose.Schema(
 );
 
 // Virtual Populate - user subscription type
-UserSchema.virtual("subscriptionTypes", {
-  ref: "subscriptionTypes",
-  foreignField: "users",
-  localField: "_id",
+UserSchema.virtual('subscriptionTypes', {
+  ref: 'subscriptionTypes',
+  foreignField: 'users',
+  localField: '_id',
 });
 
-export const User = mongoose.model("users", UserSchema);
+export const User = mongoose.model('users', UserSchema);

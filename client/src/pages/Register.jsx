@@ -22,12 +22,13 @@ export const Register = () => {
     firstName: Yup.string()
       .min(2, 'Too Short!')
       .max(50, 'Too Long!')
-      .required('You need to fill this bit in'),
+      .required('Your first name is required'),
     lastName: Yup.string()
       .min(2, 'Too Short!')
       .max(50, 'Too Long!')
-      .required('You need to fill this bit in'),
-    mobile: Yup.string().phone('UK').required('Phone number is required'),
+      .required('Your surname is required'),
+    // mobile: Yup.string().phone('UK').required('Phone number is required'),
+    mobile: Yup.string().required('Phone number is required'),
     email: Yup.string().email().required('Email is required'),
     password: Yup.string()
       .required('Password is required')
@@ -79,7 +80,7 @@ export const Register = () => {
               <div className='text-center mb-2'>
                 <img
                   src={require('../assets/img/red_white_logo.png')}
-                  style={{ width: '50%' }}
+                  style={{ width: '25%' }}
                 />
               </div>
               <h1 className='text-center'>Create your account</h1>
@@ -115,7 +116,7 @@ export const Register = () => {
                     name='lastName'
                     type='text'
                     className='form-handle-xxs'
-                    placeholder='Last Name'
+                    placeholder='Surname'
                     onBlur={formik.handleBlur}
                     onChange={formik.handleChange}
                     value={formik.values.lastName}

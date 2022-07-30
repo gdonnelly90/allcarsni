@@ -75,7 +75,7 @@ export const Register = () => {
       <div className='d-flex flex-row justify-content-center align-items-center h-100'>
         <div className='d-flex flex-column align-item-center container'>
           <div className='row card col-md-8 offset-md-2 shadow bg-body rounded'>
-            <div className='bg--blue-gradient h-1'></div>
+            <div className='bg--red-gradient h-1'></div>
             <div className='p-4'>
               <div className='text-center mb-2'>
                 <img

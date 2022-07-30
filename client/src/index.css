@@ -108,6 +108,10 @@ padding: 100px
   background: linear-gradient( 135deg, rgba(0, 97, 215, 1) 0%, rgba(0, 200, 255, 1) 100% );
 }
 
+.bg--red-gradient {
+  background: linear-gradient( 135deg, #c53030 0%, #c53030 100% );
+}
+
 /* Background Colour Classes */
 .bg-green-light {
   background-color: #f0fff4;

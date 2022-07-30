@@ -8,6 +8,7 @@ import { Home } from './pages/Home';
 import Home2 from './pages/Home2';
 import { Home1 } from './pages/Home1';
 import { Register } from './pages/Register';
+// import RegisterTest from './pages/RegisterTest';
 import { Login } from './pages/Login';
 import { Account } from './pages/Account';
 import Car from './pages/Car';
@@ -25,7 +26,6 @@ import MyVehicle from './pages/account/MyVehicle';
 import PaymentHistory from './pages/account/PaymentHistory';
 import PaymentMethod from './pages/account/PaymentMethod';
 import PersonalDetails from './pages/account/PersonalDetails';
-import RegisterTest from './pages/RegisterTest';
 
 const App = () => {
   return (
@@ -65,8 +65,8 @@ const App = () => {
             exact
           />
           <Route path='/login' element={<Login />} />
-          <Route path='/register' element={<RegisterTest />} />
-          {/* <Route path='/register' element={<Register />} /> */}
+          <Route path='/register' element={<Register />} />
+          {/* <Route path='/register' element={<RegisterTest />} /> */}
           <Route
             path='/account'
             element={

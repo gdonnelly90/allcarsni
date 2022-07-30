@@ -109,7 +109,7 @@ padding: 100px
 }
 
 .bg--red-gradient {
-  background: linear-gradient( 135deg, #c53030 0%, #c53030 100% );
+  background: linear-gradient( 135deg, #c53030 10%, #c53030 100% );
 }
 
 /* Background Colour Classes */
@@ -172,6 +172,16 @@ padding: 100px
 /* Typography */
 h3 {
     padding: 1rem 0;
+}
+
+.car-card-makemodel {
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+
+.ccard-price-entry {
+  font-size: large;
+  color: #c53030;
 }
 
 .vat {
@@ -811,4 +821,38 @@ input[type=range]:focus::-ms-fill-upper {
 
 li {
   display: inline;
+}
+/* custom cards */
+.card-title-div {
+  color: 000000 75%;
+  font-size: '20px';
+  font-weight: bold;
+  text-align: center;
+}
+
+.card-desc-div {
+  color: 000000 75%;
+  font-size: '20px';
+  font-weight: regular;
+  text-align: left;
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3; /* number of lines to show */
+  -webkit-box-orient: vertical;
+}
+
+.price-button-car-card:disabled {
+  background-color: transparent;
+  color: #c53030;
+  /* border: 1px solid #c53030; */
+  width: 100%;
+  font-size: large;
+  font-weight: bold;
+}
+
+.bg--red-gradient2 {
+  height: 0.15rem;
+  background: linear-gradient( 135deg, #c53030 10%, #c53030 100% );
 }

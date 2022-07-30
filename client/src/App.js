@@ -6,18 +6,13 @@ import { AppShell } from './AppShell';
 import { ToastContainer } from 'react-toastify';
 import { Home } from './pages/Home';
 import Home2 from './pages/Home2';
-import { Home1 } from './pages/Home1';
 import { Register } from './pages/Register';
-// import RegisterTest from './pages/RegisterTest';
 import { Login } from './pages/Login';
 import { Account } from './pages/Account';
 import Car from './pages/Car';
 import CarCloseDetail from './pages/CarCloseDetail';
 import SellCar from './pages/SellCar';
-// import Search from './pages/Search';
 import SearchGrid from './pages/SearchGrid';
-import Login2 from './pages/Login2';
-import Register2 from './pages/Register2';
 import MainAccount from './pages/account/MainAccount';
 import AdvertHistory from './pages/account/AdvertHistory';
 import Favourites from './pages/account/Favourites';
@@ -26,6 +21,11 @@ import MyVehicle from './pages/account/MyVehicle';
 import PaymentHistory from './pages/account/PaymentHistory';
 import PaymentMethod from './pages/account/PaymentMethod';
 import PersonalDetails from './pages/account/PersonalDetails';
+// import { Home1 } from './pages/Home1';
+// import RegisterTest from './pages/RegisterTest';
+// import Search from './pages/Search';
+// import Login2 from './pages/Login2';
+// import Register2 from './pages/Register2';
 
 const App = () => {
   return (

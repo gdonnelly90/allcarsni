@@ -35,7 +35,7 @@ const LatestNews = () => {
                   most complete super saloon of them all...
                 </p>
                 <p>
-                  <span className='news-para'>
+                  <span className='news-para1'>
                     Is ‘too complete’ a valid criticism?
                   </span>{' '}
                   The M5 Competition is almighty in its performance and comfort,

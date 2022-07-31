@@ -1,3 +1,9 @@
+/* font used */
+@import url(https://fonts.googleapis.com/css?family=Roboto);
+body, html { 
+  font-family: 'Roboto';
+}
+
 /* Home page elements */
 main {
   min-height: 160vh;
@@ -7,6 +13,7 @@ main {
   height: 20%;
 }
 
+/* 
 .main-gradient-colour {
   background-image: linear-gradient(#180161, #030397, #0054dc);
   height: 50vh;
@@ -17,7 +24,8 @@ main {
   height: 10vh;
   width: 100%;
   padding-bottom: 2rem;
-}
+} */
+
 
 .home-row-1 {
   padding-top: 125px;
@@ -258,12 +266,12 @@ padding-bottom: 35px;
 }
 
 .news-red {
-  color: #db2d2e;
-  font-weight: bold;
+  color: #c53030;
+  font-weight: 400;
 }
 
-.news-para {
-  font-weight: bold;
+.news-para1 {
+  font-weight: 400;
 }
 
 /* Rating */
@@ -721,7 +729,7 @@ input[type=range]:focus::-ms-fill-upper {
 }
 
 
-@media (max-width: 400px){.rightSide span{font-size: 40px;}}
+
 
 .btn-primary {
   font-size:small;
@@ -742,15 +750,15 @@ input[type=range]:focus::-ms-fill-upper {
   box-shadow: 0 0 0 0.2rem #c53030;
 }
 
-.btn-primary:hover {
+/* .btn-primary:hover {
   color: #fff;
   background-color: #c53030;
   border-color: #c53030;
-}
+} */
 
-.btn-primary:focus, .btn-primary.focus {
+/* .btn-primary:focus, .btn-primary.focus {
   box-shadow: 0 0 0 0.2rem #c53030;
-}
+} */
 
 .btn-primary.disabled, .btn-primary:disabled {
   color: #fff;
@@ -758,17 +766,17 @@ input[type=range]:focus::-ms-fill-upper {
   border-color: #c53030;
 }
 
-.btn-primary:not(:disabled):not(.disabled):active, .btn-primary:not(:disabled):not(.disabled).active,
+/* .btn-primary:not(:disabled):not(.disabled):active, .btn-primary:not(:disabled):not(.disabled).active,
 .show > .btn-primary.dropdown-toggle {
   color: #fff;
   background-color: #c53030;
   border-color: #c53030;
-}
+} */
 
-.btn-primary:not(:disabled):not(.disabled):active:focus, .btn-primary:not(:disabled):not(.disabled).active:focus,
+/* .btn-primary:not(:disabled):not(.disabled):active:focus, .btn-primary:not(:disabled):not(.disabled).active:focus,
 .show > .btn-primary.dropdown-toggle:focus {
   box-shadow: 0 0 0 0.2rem #c53030;
-}
+} */
 
 .buttons input:focus {
   outline: none;
@@ -823,11 +831,57 @@ li {
   display: inline;
 }
 /* custom cards */
-.card-title-div {
-  color: 000000 75%;
-  font-size: '20px';
+/* font colour is #111c31 for price and #434343 for desc*/
+.card-div-class{
+  box-shadow: 0 1px 1px -1px hsla(240, 30.1%, 28%, 0.25), 0 8px 16px -8px hsla(0, 0%, 0%, 0.3),
+  0 -6px 16px -6px hsla(0, 0%, 0%, 0.03);
+}
+
+.card-top-text {
+  color: #041639;
+  font-size: 2rem;
   font-weight: bold;
-  text-align: center;
+  text-align: left;
+}
+
+.card-description-text {
+  color: #434343;
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-align: left;
+  /* display: block; */
+  /* white-space: nowrap; */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+}
+
+.bg--grey-gradient1 {
+  height: 0.15rem;
+  background:#434343;
+}
+
+.card-small-elements {
+  color: #041639;
+  font-size: 0.85rem;
+  background-color: #e1ebf8;
+  border-radius: 24px;
+  list-style-type: none;
+  margin: 2px 4px 0 0;
+  padding: 2px 8px;
+}
+.card-seller-distance {
+  color: #041639;
+  display: flex;
+  border-top: 1px solid #ebebeb;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-top: auto;
+  margin-left: 10px;
+  padding-top: 10px;
+  font-size: 0.75rem;
 }
 
 .card-desc-div {
@@ -840,19 +894,29 @@ li {
   text-overflow: ellipsis;
   display: -webkit-box;
   -webkit-line-clamp: 3; /* number of lines to show */
-  -webkit-box-orient: vertical;
-}
+   -webkit-box-orient: vertical; 
+ } 
 
-.price-button-car-card:disabled {
+ .price-button-car-card:disabled {
   background-color: transparent;
   color: #c53030;
-  /* border: 1px solid #c53030; */
-  width: 100%;
+   border: 1px solid #c53030;
+  width: 100%; 
   font-size: large;
   font-weight: bold;
-}
+} 
 
-.bg--red-gradient2 {
+ 
+ /* .bg--red-gradient2 {
   height: 0.15rem;
   background: linear-gradient( 135deg, #c53030 10%, #c53030 100% );
+ }  */
+
+
+.card1-column-class {
+  padding-left: 2;
+  padding-right: 0;
 }
+
+@media (max-width: 400px){.rightSide span{font-size: 40px;}}
+

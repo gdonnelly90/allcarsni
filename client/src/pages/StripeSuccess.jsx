@@ -39,7 +39,7 @@ export const StripeSuccess = () => {
         {success && <SuccessBanner text={message} classNames='mt-5' />}
         <div className='col-md-12'>
           <div className='d-flex text-center justify-content-center py-5'>
-            Successfully subscribed... you will be shortly redirected.
+            Successfully subscribed... you will be redirected to your account page shortly.
           </div>
         </div>
       </div>

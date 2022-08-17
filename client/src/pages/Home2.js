@@ -1,5 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { Row, Button } from 'react-bootstrap';
 import { MDBRow, MDBCol } from 'mdb-react-ui-kit';
 import SimpleSearch from '../components/search/SimpleSearch';
@@ -106,11 +107,7 @@ const Home2 = () => {
         <MDBRow>
           <MDBCol>
             <div className='home-button gap-2 text-center'>
-              <Button
-                variant='outline-secondary'
-                size='lg'
-                onClick={() => onBrowseCarsClick()}
-              >
+              <Button variant='outline-secondary' size='lg' onClick={() => onBrowseCarsClick()}>
                 Browse all cars
               </Button>
             </div>
@@ -127,22 +124,13 @@ const Home2 = () => {
           />
         </MDBCol>
         <MDBCol className='column2-home' md='3 text-center'>
-          <img
-            className='image-home-car-1'
-            src={require('../assets/img/fullwidth/zonda.jpg')}
-          />
+          <img className='image-home-car-1' src={require('../assets/img/fullwidth/zonda.jpg')} />
         </MDBCol>{' '}
         <MDBCol className='column3-home' md='3 text-center'>
-          <img
-            className='image-home-car-1'
-            src={require('../assets/img/fullwidth/mclaren2.jpg')}
-          />
+          <img className='image-home-car-1' src={require('../assets/img/fullwidth/mclaren2.jpg')} />
         </MDBCol>
         <MDBCol className='column4-home' md='3 text-center'>
-          <img
-            className='image-home-car-1'
-            src={require('../assets/img/fullwidth/sf90.jpg')}
-          />
+          <img className='image-home-car-1' src={require('../assets/img/fullwidth/sf90.jpg')} />
         </MDBCol>
         <MDBCol className='column5-home' md='3 text-center'>
           <img
@@ -175,10 +163,7 @@ const Home2 = () => {
       {/* sell your car elements */}
       <MDBRow className='column-main-cars-home pt-5 pb-5' md='12'>
         <MDBCol className='column1-home' md='7 text-center'>
-          <div
-            className='image-home-solid-1'
-            style={{ width: '100%', height: '450px' }}
-          >
+          <div className='image-home-solid-1' style={{ width: '100%', height: '450px' }}>
             <SellYourCar />
           </div>
         </MDBCol>

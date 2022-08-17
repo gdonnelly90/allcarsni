@@ -4,6 +4,7 @@ export const BODYTYPE = {
   COUPE: 'Coupe',
   ESTATE: 'Estate',
   CONVERTIBLE: 'Convertible',
+  SALOON: 'Saloon',
 };
 
 export const APP_TABS = {

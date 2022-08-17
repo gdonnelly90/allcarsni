@@ -11,21 +11,20 @@ const Search = () => {
   const [query, setQuery] = useState('');
   const [pageNumber, setPageNumber] = useState(1);
   const [numberOfPages, setNumberOfPages] = useState(1);
+  // const [countVehicles, setCountVehicles] = useState([]);
 
   const pages = new Array(numberOfPages).fill().map((v, i) => (
-    <Pagination.Item
-      key={i + 1}
-      active={i + 1 === pageNumber}
-      onClick={() => setPageNumber(i + 1)}
-    >
+    <Pagination.Item key={i + 1} active={i + 1 === pageNumber} onClick={() => setPageNumber(i + 1)}>
       {i + 1}
     </Pagination.Item>
   ));
 
   const getVehicles = async () => {
     const { vehicles, totalPages } = await fetchAllVehicles(query);
+    // const { vehicles, totalPages, countVehicles } = await fetchAllVehicles(query).countDocuments();
     setVehicles(vehicles);
     setNumberOfPages(totalPages);
+    // setCountVehicles(countVehicles);
     window.scrollTo(0, 0);
   };
 
@@ -55,6 +54,7 @@ const Search = () => {
       </div>
       <div className='card-search-container'>
         <div className='container-search-page'>
+          {/* <span className='total-vehicles'>Total vehicles = {countVehicles}</span> */}
           {vehicles &&
             vehicles.map((vehicle, i) => {
               return <CarCard key={i} vehicle={vehicle} />;
@@ -62,8 +62,7 @@ const Search = () => {
         </div>
         <Pagination
           className='pagination-row'
-          style={{ display: 'flex', justifyContent: 'center' }}
-        >
+          style={{ display: 'flex', justifyContent: 'center' }}>
           {pages}
         </Pagination>
       </div>

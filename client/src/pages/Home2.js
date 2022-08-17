@@ -78,9 +78,9 @@ const Home2 = () => {
             <img
               className='icon-ccoupe'
               src={require('../assets/img/icons/coupe.webp')}
-              onClick={() => onBodyTypeClick(BODYTYPE.COUPE)}
+              onClick={() => onBodyTypeClick(BODYTYPE.SALOON)}
             />
-            <p>Coupe</p>
+            <p>Saloon</p>
           </MDBCol>
           <MDBCol md='2 text-center'>
             <img

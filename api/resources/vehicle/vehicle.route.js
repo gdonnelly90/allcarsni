@@ -13,11 +13,26 @@ const router = Router();
 // @access   Public
 router.get('/', async (req, res) => {
   try {
-    // req.query of object bodytype - same as
+    // getting query params form URL, adding pagination and executing query
+    // which searches for matching cars
+    const queryObject = { ...req.query };
+    const excludeFields = ['page', 'sort', 'limit', 'fields'];
+    excludeFields.forEach((el) => delete queryObject[el]);
     const pageSize = 9;
     const page = Number(req.query.page) || 1;
+
+    // using filter params to assign a '$' code to the math functions
+    // then replacing it in the queryString
+    let queryString = JSON.stringify(queryObject);
+    queryString = queryString.replace(
+      /\b(gte|gt|lte|lt)\b/g,
+      (match) => `$${match}`
+    );
+    console.log(JSON.parse(queryString));
+
     const count = await Vehicle.countDocuments();
-    const vehicles = await Vehicle.find(req.query)
+    const vehicles = await Vehicle.find(JSON.parse(queryString))
+      // const vehicles = await Vehicle.find(req.query)
       .limit(pageSize)
       .skip(pageSize * (page - 1));
 
@@ -47,6 +62,8 @@ router.get('/:id', async (req, res) => {
         .json({ success: false, message: 'Vehicle does not exist' });
     }
 
+    // joining the user documents to the vehicle by id query (populated)
+    // so theyre available to us
     const vehicle = await Vehicle.findById(id)
       .populate('user', ['email'])
       .lean()
@@ -306,53 +323,70 @@ router.delete('/:id', checkObjectId('id'), auth, async (req, res) => {
 
 export default router;
 
-// var make = req.params.make;
-// var model = req.params.model;
-// var variant = req.params.variant;
-// var price = req.params.price;
-// var year = req.params.year;
-// var mileage = req.params.mileage;
-// var gearbox = req.params.gearbox;
-// var fuelType = req.params.fuelType;
-// var bodyType = req.params.bodyType;
-// var engineSize = req.params.engineSize;
-// var enginePower = req.params.enginePower;
-// var numberOfDoors = req.params.numberOfDoors;
-// var colour = req.params.colour;
-// var numberOfSeats = req.params.numberOfSeats;
-// var zeroToSixtyTime = req.params.zeroToSixtyTime;
-// var annualTax = req.params.annualTax;
-// var drivetrain = req.params.drivetrain;
-// var fuelConsumption = req.params.fuelConsumption;
-// var insuranceGroup = req.params.insuranceGroup;
-// var emissions = req.params.emissions;
-// var ulezCompliant = req.params.ulezCompliant;
-// var damaged = req.params.damaged;
-// var isNewCar = req.params.isNewCar;
-// var numberOfOwners = req.params.numberOfOwners;
+// // tried to add sorting and different pagintation but didnt work
+// try {
+//   // getting query params form URL, adding pagination and executing query
+//   // which searches for matching cars
+//   const queryObject = { ...req.query };
+//   const excludeFields = ['page', 'sort', 'limit', 'fields'];
+//   excludeFields.forEach((el) => delete queryObject[el]);
 
-// // @route    GET api/v1/vehciles/fuelType=Electric
-// // @desc     GET Vehcile by electric fuelType
-// // @access   Public
-// router.get('/:fuelType', async (req, res) => {
-//   try {
-//     const vehicle = await Vehicle.find({
-//       fuelType: 'Electric',
-//     })
-//       .populate('user', ['email'])
-//       .lean()
-//       .exec();
+//   // using filter params to assign a '$' code to the math functions
+//   // then replacing it in the queryString
+//   let queryString = JSON.stringify(queryObject);
+//   queryString = queryString.replace(
+//     /\b(gte|gt|lte|lt)\b/g,
+//     (match) => `$${match}`
+//   );
+//   console.log(JSON.parse(queryString));
 
-//     console.log(vehicle);
-//     if (!vehicle) {
-//       return res
-//         .status(400)
-//         .json({ success: false, message: 'No vechile found' });
-//     }
+//   let query = Vehicle.find(JSON.parse(queryString));
 
-//     res.status(200).json(vehicle);
-//   } catch (error) {
-//     console.error(error.message);
-//     res.status(500).send('Server Error');
+//   // sorting results
+//   if (req.query.sort) {
+//     const sortBy = req.query.sort.split(',').join(' ');
+//     query = query.sort(sortBy);
+//   } else {
+//     query = query.sort('-createdAt');
 //   }
-// });
+
+//   // field limiting from results
+//   if (req.query.fields) {
+//     const fields = req.query.fields.split(',').join(' ');
+//     query = query.select(fields);
+//   } else {
+//     query = query.select('-__v');
+//   }
+
+//   // coding pagination & page size
+//   // const pageSize = 9;
+//   // const page = Number(req.query.page) || 1;
+//   const page = req.query.page * 1 || 1;
+//   const limit = req.query.limit * 1 || 9;
+//   const skip = (page - 1) * limit;
+
+//   query = query.skip(skip).limit(limit);
+
+//   const vehicles = await query;
+//   const count = await Vehicle.countDocuments();
+//   // console.log(count);
+
+//   // let vehicles = await Vehicle.find(JSON.parse(queryString))
+//   //   // const vehicles = await Vehicle.find(req.query)
+//   //   .limit(pageSize)
+//   //   .skip(pageSize * (page - 1));
+
+//   // original code
+//   // const query = await Vehicle.find(JSON.parse(queryString));
+
+//   if (!vehicles) {
+//     return res.status(200).json({ success: true, data: [] });
+//   }
+
+//   res
+//     .status(200)
+//     .json({ vehicles, page, totalPages: Math.ceil(count / limit) });
+// } catch (error) {
+//   console.error(error.message);
+//   res.status(500).send('Server Error');
+// }

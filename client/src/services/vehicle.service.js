@@ -2,10 +2,10 @@ import apiClient from '../utils/httpService';
 
 // get all vehicles
 export const fetchAllVehicles = async (query) => {
-  // console.log(`1. current page number ${pageNumber}`);
   try {
     const response = await apiClient.get(`/api/v1/vehicles?${query}`);
     // const response = await apiClient.get('/api/v1/vehicles');
+    console.log(query);
     return response.data;
   } catch (error) {
     console.log(error);

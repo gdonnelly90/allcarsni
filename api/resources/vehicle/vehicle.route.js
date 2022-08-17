@@ -17,7 +17,7 @@ router.get('/', async (req, res) => {
     const pageSize = 9;
     const page = Number(req.query.page) || 1;
     const count = await Vehicle.countDocuments();
-    const vehicles = await Vehicle.find({})
+    const vehicles = await Vehicle.find(req.query)
       .limit(pageSize)
       .skip(pageSize * (page - 1));
 

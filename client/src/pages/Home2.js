@@ -1,11 +1,9 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Link } from 'react-router-dom';
-import { Row, Button } from 'react-bootstrap';
+import { Button } from 'react-bootstrap';
 import { MDBRow, MDBCol } from 'mdb-react-ui-kit';
 import SimpleSearch from '../components/search/SimpleSearch';
 import home_logo from '../assets/img/red_white_logo.png';
-import home_logo2 from '../assets/img/brown_logo.png';
 import home_car from '../assets/img/fullwidth/bugatti_back1b.jpg';
 import LatestNews from '../components/common/LatestNews';
 import SellYourCar from '../components/SellYourCar';

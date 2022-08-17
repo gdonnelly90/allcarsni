@@ -1,41 +1,23 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { AppProvider } from './context/appContext';
-import { Container } from 'react-bootstrap';
-import { AppShell } from './AppShell';
 import { ToastContainer } from 'react-toastify';
-import { Home } from './pages/Home';
+import { AppProvider } from './context/appContext';
+import { AppShell } from './AppShell';
+import { ProtectedRoute } from './components/common/ProtectedRoute';
 import Home2 from './pages/Home2';
 import { Register } from './pages/Register';
 import { Login } from './pages/Login';
 import { Account } from './pages/Account';
-import Car from './pages/Car';
 import CarCloseDetail from './pages/CarCloseDetail';
-import SellCar from './pages/SellCar';
-import SearchGrid from './pages/SearchGrid';
-import MainAccount from './pages/account/MainAccount';
-import AdvertHistory from './pages/account/AdvertHistory';
-import Favourites from './pages/account/Favourites';
-import ManageAdvert from './pages/account/ManageAdvert';
-import MyVehicle from './pages/account/MyVehicle';
-import PaymentHistory from './pages/account/PaymentHistory';
-import PaymentMethod from './pages/account/PaymentMethod';
-import PersonalDetails from './pages/account/PersonalDetails';
-// import { Home1 } from './pages/Home1';
-// import RegisterTest from './pages/RegisterTest';
-// import Search from './pages/Search';
-// import Login2 from './pages/Login2';
-// import Register2 from './pages/Register2';
+import Search from './pages/Search';
+import { StripeSuccess } from './pages/StripeSuccess';
+import 'react-toastify/dist/ReactToastify.css';
 
 const App = () => {
   return (
     <AppProvider>
       <Router>
-        <ToastContainer
-          theme='colored'
-          autoClose={2500}
-          hideProgressBar={true}
-        />
+        <ToastContainer theme='colored' autoClose={2500} hideProgressBar={true} />
         <Routes>
           <Route
             path='/'
@@ -47,7 +29,26 @@ const App = () => {
             exact
           />
           <Route
-            path='search/cardetail'
+            path='/page/:pageNumber'
+            element={
+              <AppShell>
+                <Home2 />
+              </AppShell>
+            }
+            exact
+          />
+
+          <Route
+            path='/search'
+            element={
+              <AppShell>
+                <Search />
+              </AppShell>
+            }
+            exact
+          />
+          <Route
+            path='/vehicle/:id'
             element={
               <AppShell>
                 <CarCloseDetail />
@@ -55,24 +56,25 @@ const App = () => {
             }
             exact
           />
-          <Route
-            path='/search'
-            element={
-              <AppShell>
-                <SearchGrid />
-              </AppShell>
-            }
-            exact
-          />
+
           <Route path='/login' element={<Login />} />
           <Route path='/register' element={<Register />} />
-          {/* <Route path='/register' element={<RegisterTest />} /> */}
+          <Route
+            path='/stripe/success'
+            element={
+              <AppShell>
+                <StripeSuccess />
+              </AppShell>
+            }
+          />
           <Route
             path='/account'
             element={
-              <AppShell>
-                <Account />
-              </AppShell>
+              <ProtectedRoute redirectPath='/'>
+                <AppShell>
+                  <Account />
+                </AppShell>
+              </ProtectedRoute>
             }
           />
         </Routes>
@@ -82,6 +84,18 @@ const App = () => {
 };
 
 export default App;
+
+{
+  /*<Route
+            path='/search'
+            element={
+              <AppShell>
+                <TestPage />
+              </AppShell>
+            }
+            exact
+          />*/
+}
 
 {
   /* <Route path='car/:id' element={<Car />} exact /> */

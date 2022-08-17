@@ -2,21 +2,6 @@ import mongoose from 'mongoose';
 
 const UserSchema = mongoose.Schema(
   {
-    firstName: {
-      type: String,
-      required: true,
-    },
-    lastName: {
-      type: String,
-      required: true,
-    },
-    businessName: {
-      type: String,
-    },
-    mobile: {
-      type: String,
-      required: true,
-    },
     email: {
       type: String,
       required: true,
@@ -25,6 +10,31 @@ const UserSchema = mongoose.Schema(
     password: {
       type: String,
       required: true,
+    },
+    stripeCustomerId: {
+      type: String,
+      required: true,
+    },
+    businessName: {
+      type: String,
+    },
+    firstName: {
+      type: String,
+      required: true,
+    },
+    lastName: {
+      type: String,
+      required: true,
+    },
+    mobile: {
+      type: String,
+      required: true,
+    },
+    name: {
+      type: String,
+    },
+    telephone: {
+      type: String,
     },
     companyRegNumber: {
       type: String,
@@ -44,28 +54,14 @@ const UserSchema = mongoose.Schema(
       type: Boolean,
       default: false,
     },
-    allowedToSellQty: {
-      type: Number,
-      default: 1,
-    },
     roles: {
       type: [String],
       enum: ['admin', 'user'],
       default: 'user',
     },
-    subscription: {
-      type: mongoose.Schema.ObjectId,
-      ref: 'subscriptionTypes',
-    },
     active: {
       type: Boolean,
       default: true,
-    },
-    name: {
-      type: String,
-    },
-    telephone: {
-      type: String,
     },
   },
   {

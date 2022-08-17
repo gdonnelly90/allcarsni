@@ -1,10 +1,13 @@
-import React from 'react'
-import { Navigate, Outlet } from 'react-router-dom'
+import React from 'react';
+import { Navigate, Outlet } from 'react-router-dom';
+import { useAppState } from '../../context/appContext';
 
-export const ProtectedRoute = ({isAllowed, redirectPath, children}) => {
-    if(isAllowed) {
-        return <Navigate to={redirectPath} replace />
-    }
+export const ProtectedRoute = ({ redirectPath, children }) => {
+  const state = useAppState();
 
-    return children ? children : <Outlet />
-}
+  if (!state.isAuthenticated) {
+    return <Navigate to={redirectPath} replace />;
+  }
+
+  return children ? children : <Outlet />;
+};

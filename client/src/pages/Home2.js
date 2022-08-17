@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Row, Button } from 'react-bootstrap';
 import { MDBRow, MDBCol } from 'mdb-react-ui-kit';
 import SimpleSearch from '../components/search/SimpleSearch';
@@ -7,8 +8,22 @@ import home_logo2 from '../assets/img/brown_logo.png';
 import home_car from '../assets/img/fullwidth/bugatti_back1b.jpg';
 import LatestNews from '../components/common/LatestNews';
 import SellYourCar from '../components/SellYourCar';
+import { BODYTYPE } from '../utils/constants';
 
 const Home2 = () => {
+  let navigate = useNavigate();
+
+  const onBrowseCarsClick = () => {
+    navigate('search/');
+  };
+
+  const onElectricIconClick = () => {
+    navigate('search?fuelType=Electric');
+  };
+  const onBodyTypeClick = (bodyType) => {
+    navigate(`search?bodyType=${bodyType}`);
+  };
+
   return (
     <MDBCol>
       <MDBRow className='hero-column-home' md='12'>
@@ -32,6 +47,7 @@ const Home2 = () => {
             <img
               className='icon-electric'
               src={require('../assets/img/icons/electric.webp')}
+              onClick={() => onElectricIconClick()}
             />
             <p>Electric</p>
           </MDBCol>
@@ -39,6 +55,7 @@ const Home2 = () => {
             <img
               className='icon-suv'
               src={require('../assets/img/icons/suv.webp')}
+              onClick={() => onBodyTypeClick(BODYTYPE.SUV)}
             />
             <p>SUV</p>
           </MDBCol>{' '}
@@ -46,6 +63,7 @@ const Home2 = () => {
             <img
               className='icon-hatchback'
               src={require('../assets/img/icons/hatchback.webp')}
+              onClick={() => onBodyTypeClick(BODYTYPE.HATCHBACK)}
             />
             <p>Hatchback</p>
           </MDBCol>
@@ -61,6 +79,7 @@ const Home2 = () => {
             <img
               className='icon-ccoupe'
               src={require('../assets/img/icons/coupe.webp')}
+              onClick={() => onBodyTypeClick(BODYTYPE.COUPE)}
             />
             <p>Coupe</p>
           </MDBCol>
@@ -68,6 +87,7 @@ const Home2 = () => {
             <img
               className='icon-estate'
               src={require('../assets/img/icons/estate.webp')}
+              onClick={() => onBodyTypeClick(BODYTYPE.ESTATE)}
             />
             <p>Estate</p>
           </MDBCol>{' '}
@@ -75,6 +95,7 @@ const Home2 = () => {
             <img
               className='icon-convertible'
               src={require('../assets/img/icons/convertible.webp')}
+              onClick={() => onBodyTypeClick(BODYTYPE.CONVERTIBLE)}
             />
             <p>Convertible</p>
           </MDBCol>
@@ -88,7 +109,7 @@ const Home2 = () => {
               <Button
                 variant='outline-secondary'
                 size='lg'
-                // style={{ backgroundColor: '#c53030' }}
+                onClick={() => onBrowseCarsClick()}
               >
                 Browse all cars
               </Button>

@@ -181,7 +181,7 @@ export const RegisterIndividual = () => {
           Already have an account <Link to={'/login'}>Login In</Link>
         </div>
         <div className='mb-4 text-center'>
-          Return to browse? <Link to={'/'}>click here</Link>
+          Return to browse? <Link to={'/'}>Click here</Link>
         </div>
         <Button variant='primary' type='submit'>
           {loading ? (

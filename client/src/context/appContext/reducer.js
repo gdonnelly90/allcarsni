@@ -6,10 +6,18 @@ import {
   LOGIN_SUCCESS,
   LOGIN_ERROR,
   LOGOUT,
+  LOADING,
+  ERROR,
+  REQUEST_CREATE_SUBSCRIPTION,
+  SET_SUBSCRIPTION,
+  SUCCESS,
+  CREATE_SUBSCRIPTION_SESSION,
 } from '../actionTypes';
+import { logout } from './actions';
+import { getLocalUser, setLocalUser } from '../../services/localStorage.service';
 
 let user = localStorage.getItem('user') ? JSON.parse(localStorage.getItem('user')) : '';
-let token = localStorage.getItem('app-token') ? JSON.parse(localStorage.getItem('app-token')) : '';
+let token = localStorage.getItem('app-token') || '';
 let expiresAt = localStorage.getItem('expiresAt')
   ? JSON.parse(localStorage.getItem('expiresAt'))
   : '';
@@ -19,7 +27,7 @@ const isAuthenticated = () => {
     return false;
   }
 
-  return new Date().getTime() / 1000 < expiresAt;
+  return new Date().getTime() / 1000 < expiresAt ? true : logout();
 };
 
 const isAdmin = (user = {}) => {
@@ -34,12 +42,15 @@ export const initialState = {
   isAdmin: isAdmin(user) || false,
   loading: false,
   errorMessage: null,
+  session: null,
 };
 
 export const AppReducer = (initialState, action) => {
   switch (action.type) {
     case REGISTER:
     case REQUEST_LOGIN:
+    case REQUEST_CREATE_SUBSCRIPTION:
+    case LOADING:
       return {
         ...initialState,
         loading: true,
@@ -67,15 +78,35 @@ export const AppReducer = (initialState, action) => {
       };
     case REGISTER_ERROR:
     case LOGIN_ERROR:
-      debugger;
+    case ERROR:
       return {
         ...initialState,
         loading: false,
         errorMessage: action.error,
         isAuthenticated: false,
       };
-
+    case CREATE_SUBSCRIPTION_SESSION:
+      return {
+        ...initialState,
+        session: action.payload.session,
+        loading: false,
+      };
+    case SET_SUBSCRIPTION:
+      // update user local storage
+      const user = getLocalUser();
+      setLocalUser({ ...user, subscription: action.payload });
+      return {
+        ...initialState,
+        session: initialState.session,
+        user: { ...user, subscription: action.payload },
+        loading: false,
+      };
+    case SUCCESS:
+      return {
+        ...initialState,
+        loading: false,
+      };
     default:
-      throw new Error(`Unhandled action type: ${action.type}`);
+      throw new Error(`Unhandled action type: ${action.type || 'No type'}`);
   }
 };

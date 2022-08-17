@@ -16,7 +16,7 @@ import Car from './pages/Car';
 import CarCloseDetail from './pages/CarCloseDetail';
 import SellCar from './pages/SellCar';
 // import Search from './pages/Search';
-import SearchGrid from './pages/SearchGrid';
+import Search from './pages/Search';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import MainAccount from './pages/account/MainAccount';
@@ -52,7 +52,7 @@ const App = () => {
         <Route path='car/:id' element={<Car />} exact />
         <Route path='search/cardetail' element={<CarCloseDetail />} exact />
         <Route path='/sellcar' element={<SellCar />} exact />
-        <Route path='/search' element={<SearchGrid />} exact />
+        <Route path='/search' element={<Search />} exact />
         <Route path='/search/:id' element={<CarCloseDetail />} exact />
         {/* <Route path='/vehicle/:id' element={<CarCloseDetail />} exact /> */}
         <Route path='/account' element={<MainAccount />} exact />

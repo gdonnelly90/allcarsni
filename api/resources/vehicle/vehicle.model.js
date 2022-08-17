@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+import mongoose from 'mongoose';
 
 const VehicleSchema = mongoose.Schema({
   user: {
@@ -11,11 +11,12 @@ const VehicleSchema = mongoose.Schema({
   },
   make: {
     type: String,
-    // required: true,
   },
   model: {
     type: String,
-    // required: true,
+  },
+  modelVariant: {
+    type: String,
   },
   variant: {
     type: String,
@@ -33,29 +34,23 @@ const VehicleSchema = mongoose.Schema({
     type: Number,
     required: true,
   },
-  gearbox: {
+  transmission: {
     type: String,
-    // required: true,
   },
   fuelType: {
     type: String,
-    // required: true,
   },
   bodyType: {
     type: String,
-    // required: true,
   },
   engineSize: {
     type: Number,
-    // required: true,
   },
   enginePower: {
     type: Number,
-    // required: true,
   },
   numberOfDoors: {
     type: Number,
-    // required: true,
   },
   colour: {
     type: String,
@@ -63,44 +58,47 @@ const VehicleSchema = mongoose.Schema({
   },
   numberOfSeats: {
     type: Number,
-    // required: true,
   },
   zeroToSixtyTime: {
     type: Number,
-    // required: true,
   },
   annualTax: {
     type: Number,
-    // required: true,
   },
-  drivetrain: {
+  driveTrain: {
     type: String,
-    // required: true,
   },
   fuelConsumption: {
     type: Number,
-    // required: true,
   },
   insuranceGroup: {
     type: String,
-    // required: true,
   },
   emissions: {
     type: Number,
-    // required: true,
   },
   ulezCompliant: {
     type: Boolean,
-    // required: true,
   },
   damaged: {
     type: Boolean,
-    required: true,
-    // default: false,
+    default: false,
+  },
+  numberOfOwners: {
+    type: Number,
+    default: 1,
+  },
+  description: {
+    type: [String],
+  },
+  specification: {
+    type: [String],
+  },
+  features: {
+    type: [String],
   },
   keywords: {
     type: [String],
-    // required: false,
   },
   isNewCar: {
     type: Boolean,
@@ -116,22 +114,20 @@ const VehicleSchema = mongoose.Schema({
   },
   status: {
     type: String,
-    enum : ['FOR SALE', 'SOLD', 'DEPOSIT TAKEN'],
-    default: 'FOR SALE'
+    enum: ['FOR SALE', 'SOLD', 'DEPOSIT TAKEN'],
+    default: 'FOR SALE',
   },
   reviews: {
     type: [Object],
-    ref: 'reviews'
-  }
+    ref: 'reviews',
+  },
 });
 
-// Virtual Populate - user 
+// Virtual Populate - user
 VehicleSchema.virtual('users', {
   ref: 'users',
   localField: 'user',
-  foreignField: '_id'
-})
+  foreignField: '_id',
+});
 
-
-
-export const Vehicle = mongoose.model('cars', VehicleSchema)
+export const Vehicle = mongoose.model('cars', VehicleSchema);

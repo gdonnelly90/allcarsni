@@ -71,10 +71,10 @@ export const Register = () => {
   });
 
   return (
-    <section className='the-login-wrapper w-100 vh-100 mx-auto'>
+    <section className='the-register-wrapper w-100 vh-100 mx-auto'>
       <div className='d-flex flex-row justify-content-center align-items-center h-100'>
         <div className='d-flex flex-column align-item-center container'>
-          <div className='row card col-md-8 offset-md-2 shadow bg-body rounded'>
+          <div className='row card w-50 col-md-8 offset-md-2 shadow bg-body rounded'>
             <div className='bg--red-gradient h-1'></div>
             <div className='p-4'>
               <div className='text-center mb-2'>
@@ -205,7 +205,7 @@ export const Register = () => {
                   Already have an account <Link to={'/login'}>Login In</Link>
                 </div>
                 <div className='mb-4 text-center'>
-                  Return to browse? <Link to={'/'}>click here</Link>
+                  Return to browse? <Link to={'/'}>Click here</Link>
                 </div>
                 <Button variant='primary' type='submit'>
                   {loading ? (

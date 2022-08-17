@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavBar } from './components/common/NavBar';
 import { Footer } from './components/common/Footer';
-import { MDBRow } from 'mdb-react-ui-kit';
+import Header2 from './components/common/Header2';
 
 export const AppShell = ({ children }) => {
   return (

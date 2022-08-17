@@ -1,7 +1,7 @@
 import React from 'react';
 import { LinkContainer } from 'react-router-bootstrap';
 import { Container, Nav, Navbar } from 'react-bootstrap';
-import placeholder from '../assets/img/text_only_logo.png';
+import placeholder from '../../assets/img/text_only_logo.png';
 
 // import NavDropdown from 'react-bootstrap/NavDropdown';
 

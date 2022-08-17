@@ -41,11 +41,11 @@ export const NavBar = () => {
               <i className='fas fa-search'></i> Search
             </Nav.Link>
           </LinkContainer>
-          <LinkContainer to='/search/cardetail'>
+          {/* <LinkContainer to='/search/cardetail'>
             <Nav.Link>
               <i className='fas fa-car'></i> Car Detail
             </Nav.Link>
-          </LinkContainer>
+          </LinkContainer> */}
           {/* <Nav.Link href='#pricing'>News &amp; reviews</Nav.Link> */}
         </Nav>
         <Nav>

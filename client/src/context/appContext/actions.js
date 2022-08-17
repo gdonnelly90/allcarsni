@@ -5,17 +5,22 @@ import {
   REGISTER_ERROR,
   REGISTER_SUCCESS,
   REQUEST_LOGIN,
+  LOADING,
   LOGIN_SUCCESS,
   LOGIN_ERROR,
-  LOGOUT,
+  SET_SUBSCRIPTION,
+  SUCCESS,
+  CREATE_SUBSCRIPTION_SESSION,
+  ERROR,
 } from '../actionTypes';
+import { isEmpty } from 'lodash';
 
 const decodeToken = (token) => {
   return jwt_decode(token);
 };
 
 const setLocalStorageState = (token, user, exp) => {
-  localStorage.setItem('app-token', JSON.stringify(token));
+  localStorage.setItem('app-token', token);
   localStorage.setItem('user', JSON.stringify(user));
   localStorage.setItem('expiresAt', JSON.stringify(exp));
 };
@@ -64,8 +69,58 @@ export const loginUser = async (dispatch, loginPayload) => {
   }
 };
 
-export const logout = (dispatch) => {
-  dispatch({ type: LOGOUT });
+export const logout = () => {
   localStorage.removeItem('user');
-  localStorage.removeItem('token');
+  localStorage.removeItem('app-token');
+  localStorage.removeItem('expiresAt');
 };
+
+export const createSubscription = async (dispatch, payload) => {
+  try {
+    dispatch({ type: LOADING });
+    const { data } = await apiClient.post(
+      '/api/v1/subscriptiontypes/create-subscription-session',
+      payload,
+    );
+    dispatch({ type: CREATE_SUBSCRIPTION_SESSION, payload: data });
+    return data;
+  } catch (error) {
+    dispatch({ type: ERROR, error: error });
+    return error;
+  }
+};
+
+export const getSetSubscription = async (dispatch, payload) => {
+  try {
+    dispatch({ type: LOADING });
+    let subscription = {};
+    const { data: data } = await apiClient.get('api/v1/subscriptiontypes/active-subscriptions');
+    console.log('DATA FROM ACTIVE SUBSCRIPTIONS - ACTION');
+    console.log(data);
+    if (!isEmpty(data)) {
+      subscription = data?.data[0];
+      dispatch({ type: SET_SUBSCRIPTION, payload: subscription });
+    } else {
+      dispatch({ type: SET_SUBSCRIPTION, payload: subscription });
+    }
+    return subscription;
+  } catch (error) {
+    dispatch({ type: ERROR, error: error });
+  }
+};
+
+export const createBillingSession = async (dispatch, payload) => {
+  try {
+    dispatch({ type: LOADING });
+    const { data } = await apiClient.get('api/v1/subscriptiontypes/customer-portal');
+    console.log('2B: SUCCESS ACTION');
+    console.log(data);
+    dispatch({ type: SUCCESS });
+    return data;
+  } catch (error) {
+    console.log(error);
+    dispatch({ type: ERROR, error: error });
+  }
+};
+
+export const createPaymentSession = async () => {};

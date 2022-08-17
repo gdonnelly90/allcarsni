@@ -1,12 +1,8 @@
-import React from 'react';
-import Container from 'react-bootstrap';
-import {
-  MDBRow,
-  MDBCol,
-  MDBAccordion,
-  MDBAccordionItem,
-} from 'mdb-react-ui-kit';
+import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
+import { MDBRow, MDBCol } from 'mdb-react-ui-kit';
 import CarCarousel from './CarCarousel';
+import CarDetailCarousel from '../CarDetailCarousel';
 import image1 from '../../assets/img/cars/Ferrari_LaFerrari_Aperta_2.jpg';
 import image2 from '../../assets/img/cars/Ferrari_LaFerrari_Aperta_3.jpg';
 import ContactSeller from '../car/ContactSeller';
@@ -16,13 +12,27 @@ import { GiGearStick } from 'react-icons/gi';
 import { IoIosSpeedometer } from 'react-icons/io';
 import { BsFillCalendar2DateFill } from 'react-icons/bs';
 import { FaGasPump } from 'react-icons/fa';
-import { FaPowerOff } from 'react-icons/fa';
 import FinanceCalculator from '../common/FinanceCalculator';
-import CarDetailCarousel from '../CarDetailCarousel';
-// import CarDetailSlickCarousel from '../CarDetailSlickCarousel';
-// import { MdAirlineSeatReclineExtra } from 'react-icons/md';
+import { fetchVehicleById } from '../../services/vehicle.service';
 
 const CarDetail = () => {
+  const [vehicle, setVehicle] = useState({});
+  const params = useParams();
+
+  const getVehicle = async () => {
+    try {
+      const vehicle = await fetchVehicleById(params.id);
+      console.log(vehicle);
+      setVehicle(vehicle);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    getVehicle();
+  }, []);
+
   return (
     <div>
       <MDBRow className='car-imagery-row pt-5' md='12'>
@@ -35,7 +45,7 @@ const CarDetail = () => {
               className='second-image-cardetails'
               style={{ width: '100%', height: '268px' }}
               src={image1}
-              alt='second image'
+              alt='second pic'
             />
           </MDBRow>
           <MDBRow className='car-imagery-row1 pt-3' md='12'>
@@ -43,21 +53,21 @@ const CarDetail = () => {
               className='third-image-cardetails'
               style={{ width: '100%', height: '268px' }}
               src={image2}
-              alt='third image'
+              alt='third pic'
             />
           </MDBRow>
         </MDBCol>
       </MDBRow>
       <MDBRow className='car-icon-display pt-5' md='12'>
         <MDBCol className='price-row-cardetails' md='3'>
-          <h1 className='car-price-cardetails'>£3,500,000</h1>
+          <h1 className='car-price-cardetails'>{vehicle.price}</h1>
         </MDBCol>
         <MDBCol className='pb-3' md='2'>
           <MDBRow className='cardetails-icons-icon text-center'>
             <AiFillCar size='26px' />
           </MDBRow>
           <MDBRow className='cardetails-icons-icon text-center pt-1 pb-2'>
-            <h5>Hyper car</h5>
+            <h5>{vehicle.bodyType}</h5>
           </MDBRow>
         </MDBCol>
         <MDBCol className='pb-3' md='1'>
@@ -65,7 +75,7 @@ const CarDetail = () => {
             <BsFillCalendar2DateFill size='20px' />
           </MDBRow>
           <MDBRow className='cardetails-icons-icon text-center pt-1 pb-2'>
-            <h5>2018</h5>
+            <h5>{vehicle.year}</h5>
           </MDBRow>
         </MDBCol>
         <MDBCol className='pb-3' md='1'>
@@ -73,7 +83,7 @@ const CarDetail = () => {
             <IoIosSpeedometer size='25px' />
           </MDBRow>
           <MDBRow className='cardetails-icons-icon text-center pt-1'>
-            <h5>35,000</h5>
+            <h5>{vehicle.mileage}</h5>
           </MDBRow>
         </MDBCol>
         <MDBCol className='pb-3' md='1'>
@@ -81,7 +91,7 @@ const CarDetail = () => {
             <FaGasPump size='20px' />
           </MDBRow>
           <MDBRow className='cardetails-icons-icon text-center pt-1'>
-            <h5>Petrol</h5>
+            <h5>{vehicle.fuelType}</h5>
           </MDBRow>
         </MDBCol>
         <MDBCol className='pb-3' md='1'>
@@ -89,7 +99,7 @@ const CarDetail = () => {
             <GiGearStick size='22px' />
           </MDBRow>
           <MDBRow className='cardetails-icons-icon text-center pt-1'>
-            <h5>Auto</h5>
+            <h5>{vehicle.gearbox}</h5>
           </MDBRow>
         </MDBCol>
         <MDBCol className='pb-3' md='1'>
@@ -97,16 +107,15 @@ const CarDetail = () => {
             <h6 className='mt-1'>BHP</h6>
           </MDBRow>
           <MDBRow className='cardetails-icons-icon text-center pt-1'>
-            <h5>1000</h5>
+            <h5>{vehicle.enginePower}</h5>
           </MDBRow>
         </MDBCol>
         <MDBCol className='pb-3' md='1'>
           <MDBRow className='cardetails-icons-icon text-center'>
-            {/* <i class='fa-regular fa-engine'></i> */}
             <TbEngine size='25px' />
           </MDBRow>
           <MDBRow className='cardetails-icons-icon text-center pt-1'>
-            <h5>5L</h5>
+            <h5>{vehicle.engineSize}</h5>
           </MDBRow>
         </MDBCol>
       </MDBRow>
@@ -114,175 +123,73 @@ const CarDetail = () => {
       {/* overview and contact / finance sections */}
       <MDBRow>
         <MDBCol className='pt-5' md='8'>
-          <div className='accordion-sections'>
-            <h1 className=''>Overview</h1>
-            <MDBAccordion initialActive={1}>
-              <MDBAccordionItem
-                collapseId={1}
-                headerTitle='Description'
-                className='accordion-title'
+          <div className='accordion' id='accordionExample'>
+            <div className='accordion-item'>
+              <h2 className='accordion-header' id='headingOne'>
+                <button
+                  className='accordion-button'
+                  type='button'
+                  data-bs-toggle='collapse'
+                  data-bs-target='#collapseOne'
+                  aria-expanded='true'
+                  aria-controls='collapseOne'
+                >
+                  Description
+                </button>
+              </h2>
+              <div
+                id='collapseOne'
+                className='accordion-collapse collapse show'
+                aria-labelledby='headingOne'
+                data-bs-parent='#accordionExample'
               >
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc
-                laoreet, orci eget congue semper, est nunc tincidunt nulla, eu
-                consequat tellus nunc sit amet lectus. Mauris pretium euismod
-                nibh sed aliquam. Integer blandit metus a aliquet hendrerit. Sed
-                id nisl eget ante hendrerit scelerisque et eget neque. Etiam
-                sollicitudin urna vel diam egestas vehicula. Donec condimentum
-                felis at metus eleifend tempus. Nullam in placerat ligula, eu
-                luctus lacus. Fusce mattis tortor a dui ultrices, vitae
-                porttitor enim dictum. Morbi hendrerit tempor ante a malesuada.
-                Aenean sed sapien gravida, rutrum odio at, viverra massa.
-                Suspendisse quis ante est. Nunc in nisi commodo, feugiat enim
-                eget, tempus sem. Aenean varius dolor ut eros pharetra
-                imperdiet. Lorem ipsum dolor sit amet, consectetur adipiscing
-                elit. Nunc laoreet, orci eget congue semper, est nunc tincidunt
-                nulla, eu consequat tellus nunc sit amet lectus. Mauris pretium
-                euismod nibh sed aliquam. Integer blandit metus a aliquet
-                hendrerit. Sed id nisl eget ante hendrerit scelerisque et eget
-                neque. Etiam sollicitudin urna vel diam egestas vehicula. Donec
-                condimentum felis at metus eleifend tempus. Nullam in placerat
-                ligula, eu luctus lacus. Fusce mattis tortor a dui ultrices,
-                vitae porttitor enim dictum. Morbi hendrerit tempor ante a
-                malesuada. Aenean sed sapien gravida, rutrum odio at, viverra
-                massa. Suspendisse quis ante est. Nunc in nisi commodo, feugiat
-                enim eget, tempus sem. Aenean varius dolor ut eros pharetra
-                imperdiet. Lorem ipsum dolor sit amet, consectetur adipiscing
-                elit. Nunc laoreet, orci eget congue semper, est nunc tincidunt
-                nulla, eu consequat tellus nunc sit amet lectus. Mauris pretium
-                euismod nibh sed aliquam. Integer blandit metus a aliquet
-                hendrerit. Sed id nisl eget ante hendrerit scelerisque et eget
-                neque. Etiam sollicitudin urna vel diam egestas vehicula. Donec
-                condimentum felis at metus eleifend tempus. Nullam in placerat
-                ligula, eu luctus lacus. Fusce mattis tortor a dui ultrices,
-                vitae porttitor enim dictum. Morbi hendrerit tempor ante a
-                malesuada. Aenean sed sapien gravida, rutrum odio at, viverra
-                massa. Suspendisse quis ante est. Nunc in nisi commodo, feugiat
-                enim eget, tempus sem. Aenean varius dolor ut eros pharetra
-                imperdiet. Lorem ipsum dolor sit amet, consectetur adipiscing
-                elit. Nunc laoreet, orci eget congue semper, est nunc tincidunt
-                nulla, eu consequat tellus nunc sit amet lectus. Mauris pretium
-                euismod nibh sed aliquam. Integer blandit metus a aliquet
-                hendrerit. Sed id nisl eget ante hendrerit scelerisque et eget
-                neque. Etiam sollicitudin urna vel diam egestas vehicula. Donec
-                condimentum felis at metus eleifend tempus. Nullam in placerat
-                ligula, eu luctus lacus. Fusce mattis tortor a dui ultrices,
-                vitae porttitor enim dictum. Morbi hendrerit tempor ante a
-                malesuada. Aenean sed sapien gravida, rutrum odio at, viverra
-                massa. Suspendisse quis ante est. Nunc in nisi commodo, feugiat
-                enim eget, tempus sem. Aenean varius dolor ut eros pharetra
-                imperdiet.
-              </MDBAccordionItem>
-              <MDBAccordionItem
-                collapseId={2}
-                headerTitle='Specification'
-                className='accordion-title'
+                <div className='accordion-body'>{vehicle.description}</div>
+              </div>
+            </div>
+            <div className='accordion-item'>
+              <h2 className='accordion-header' id='headingTwo'>
+                <button
+                  className='accordion-button collapsed'
+                  type='button'
+                  data-bs-toggle='collapse'
+                  data-bs-target='#collapseTwo'
+                  aria-expanded='false'
+                  aria-controls='collapseTwo'
+                >
+                  Specification
+                </button>
+              </h2>
+              <div
+                id='collapseTwo'
+                className='accordion-collapse collapse'
+                aria-labelledby='headingTwo'
+                data-bs-parent='#accordionExample'
               >
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc
-                laoreet, orci eget congue semper, est nunc tincidunt nulla, eu
-                consequat tellus nunc sit amet lectus. Mauris pretium euismod
-                nibh sed aliquam. Integer blandit metus a aliquet hendrerit. Sed
-                id nisl eget ante hendrerit scelerisque et eget neque. Etiam
-                sollicitudin urna vel diam egestas vehicula. Donec condimentum
-                felis at metus eleifend tempus. Nullam in placerat ligula, eu
-                luctus lacus. Fusce mattis tortor a dui ultrices, vitae
-                porttitor enim dictum. Morbi hendrerit tempor ante a malesuada.
-                Aenean sed sapien gravida, rutrum odio at, viverra massa.
-                Suspendisse quis ante est. Nunc in nisi commodo, feugiat enim
-                eget, tempus sem. Aenean varius dolor ut eros pharetra
-                imperdiet. Lorem ipsum dolor sit amet, consectetur adipiscing
-                elit. Nunc laoreet, orci eget congue semper, est nunc tincidunt
-                nulla, eu consequat tellus nunc sit amet lectus. Mauris pretium
-                euismod nibh sed aliquam. Integer blandit metus a aliquet
-                hendrerit. Sed id nisl eget ante hendrerit scelerisque et eget
-                neque. Etiam sollicitudin urna vel diam egestas vehicula. Donec
-                condimentum felis at metus eleifend tempus. Nullam in placerat
-                ligula, eu luctus lacus. Fusce mattis tortor a dui ultrices,
-                vitae porttitor enim dictum. Morbi hendrerit tempor ante a
-                malesuada. Aenean sed sapien gravida, rutrum odio at, viverra
-                massa. Suspendisse quis ante est. Nunc in nisi commodo, feugiat
-                enim eget, tempus sem. Aenean varius dolor ut eros pharetra
-                imperdiet. Lorem ipsum dolor sit amet, consectetur adipiscing
-                elit. Nunc laoreet, orci eget congue semper, est nunc tincidunt
-                nulla, eu consequat tellus nunc sit amet lectus. Mauris pretium
-                euismod nibh sed aliquam. Integer blandit metus a aliquet
-                hendrerit. Sed id nisl eget ante hendrerit scelerisque et eget
-                neque. Etiam sollicitudin urna vel diam egestas vehicula. Donec
-                condimentum felis at metus eleifend tempus. Nullam in placerat
-                ligula, eu luctus lacus. Fusce mattis tortor a dui ultrices,
-                vitae porttitor enim dictum. Morbi hendrerit tempor ante a
-                malesuada. Aenean sed sapien gravida, rutrum odio at, viverra
-                massa. Suspendisse quis ante est. Nunc in nisi commodo, feugiat
-                enim eget, tempus sem. Aenean varius dolor ut eros pharetra
-                imperdiet. Lorem ipsum dolor sit amet, consectetur adipiscing
-                elit. Nunc laoreet, orci eget congue semper, est nunc tincidunt
-                nulla, eu consequat tellus nunc sit amet lectus. Mauris pretium
-                euismod nibh sed aliquam. Integer blandit metus a aliquet
-                hendrerit. Sed id nisl eget ante hendrerit scelerisque et eget
-                neque. Etiam sollicitudin urna vel diam egestas vehicula. Donec
-                condimentum felis at metus eleifend tempus. Nullam in placerat
-                ligula, eu luctus lacus. Fusce mattis tortor a dui ultrices,
-                vitae porttitor enim dictum. Morbi hendrerit tempor ante a
-                malesuada. Aenean sed sapien gravida, rutrum odio at, viverra
-                massa. Suspendisse quis ante est. Nunc in nisi commodo, feugiat
-                enim eget, tempus sem. Aenean varius dolor ut eros pharetra
-                imperdiet.
-              </MDBAccordionItem>
-              <MDBAccordionItem
-                collapseId={3}
-                headerTitle='Features'
-                className='accordion-title'
+                <div className='accordion-body'>{vehicle.specification}</div>
+              </div>
+            </div>
+            <div className='accordion-item'>
+              <h2 className='accordion-header' id='headingThree'>
+                <button
+                  className='accordion-button collapsed'
+                  type='button'
+                  data-bs-toggle='collapse'
+                  data-bs-target='#collapseThree'
+                  aria-expanded='false'
+                  aria-controls='collapseThree'
+                >
+                  Features
+                </button>
+              </h2>
+              <div
+                id='collapseThree'
+                className='accordion-collapse collapse'
+                aria-labelledby='headingThree'
+                data-bs-parent='#accordionExample'
               >
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc
-                laoreet, orci eget congue semper, est nunc tincidunt nulla, eu
-                consequat tellus nunc sit amet lectus. Mauris pretium euismod
-                nibh sed aliquam. Integer blandit metus a aliquet hendrerit. Sed
-                id nisl eget ante hendrerit scelerisque et eget neque. Etiam
-                sollicitudin urna vel diam egestas vehicula. Donec condimentum
-                felis at metus eleifend tempus. Nullam in placerat ligula, eu
-                luctus lacus. Fusce mattis tortor a dui ultrices, vitae
-                porttitor enim dictum. Morbi hendrerit tempor ante a malesuada.
-                Aenean sed sapien gravida, rutrum odio at, viverra massa.
-                Suspendisse quis ante est. Nunc in nisi commodo, feugiat enim
-                eget, tempus sem. Aenean varius dolor ut eros pharetra
-                imperdiet. Lorem ipsum dolor sit amet, consectetur adipiscing
-                elit. Nunc laoreet, orci eget congue semper, est nunc tincidunt
-                nulla, eu consequat tellus nunc sit amet lectus. Mauris pretium
-                euismod nibh sed aliquam. Integer blandit metus a aliquet
-                hendrerit. Sed id nisl eget ante hendrerit scelerisque et eget
-                neque. Etiam sollicitudin urna vel diam egestas vehicula. Donec
-                condimentum felis at metus eleifend tempus. Nullam in placerat
-                ligula, eu luctus lacus. Fusce mattis tortor a dui ultrices,
-                vitae porttitor enim dictum. Morbi hendrerit tempor ante a
-                malesuada. Aenean sed sapien gravida, rutrum odio at, viverra
-                massa. Suspendisse quis ante est. Nunc in nisi commodo, feugiat
-                enim eget, tempus sem. Aenean varius dolor ut eros pharetra
-                imperdiet. Lorem ipsum dolor sit amet, consectetur adipiscing
-                elit. Nunc laoreet, orci eget congue semper, est nunc tincidunt
-                nulla, eu consequat tellus nunc sit amet lectus. Mauris pretium
-                euismod nibh sed aliquam. Integer blandit metus a aliquet
-                hendrerit. Sed id nisl eget ante hendrerit scelerisque et eget
-                neque. Etiam sollicitudin urna vel diam egestas vehicula. Donec
-                condimentum felis at metus eleifend tempus. Nullam in placerat
-                ligula, eu luctus lacus. Fusce mattis tortor a dui ultrices,
-                vitae porttitor enim dictum. Morbi hendrerit tempor ante a
-                malesuada. Aenean sed sapien gravida, rutrum odio at, viverra
-                massa. Suspendisse quis ante est. Nunc in nisi commodo, feugiat
-                enim eget, tempus sem. Aenean varius dolor ut eros pharetra
-                imperdiet. Lorem ipsum dolor sit amet, consectetur adipiscing
-                elit. Nunc laoreet, orci eget congue semper, est nunc tincidunt
-                nulla, eu consequat tellus nunc sit amet lectus. Mauris pretium
-                euismod nibh sed aliquam. Integer blandit metus a aliquet
-                hendrerit. Sed id nisl eget ante hendrerit scelerisque et eget
-                neque. Etiam sollicitudin urna vel diam egestas vehicula. Donec
-                condimentum felis at metus eleifend tempus. Nullam in placerat
-                ligula, eu luctus lacus. Fusce mattis tortor a dui ultrices,
-                vitae porttitor enim dictum. Morbi hendrerit tempor ante a
-                malesuada. Aenean sed sapien gravida, rutrum odio at, viverra
-                massa. Suspendisse quis ante est. Nunc in nisi commodo, feugiat
-                enim eget, tempus sem. Aenean varius dolor ut eros pharetra
-                imperdiet.
-              </MDBAccordionItem>
-            </MDBAccordion>
+                <div className='accordion-body'>{vehicle.features}</div>
+              </div>
+            </div>
           </div>
         </MDBCol>
         <MDBCol className='pt-5' md='4'>
@@ -294,14 +201,45 @@ const CarDetail = () => {
             <FinanceCalculator />
           </MDBRow>
         </MDBCol>
-        <MDBCol className='similar-for-sale pt-5 pb-5' md='12'>
+        {/* <MDBCol className='similar-for-sale pt-5 pb-5' md='12'>
           <h1 className='pt-2'>Similar For Sale</h1>
           <CarDetailCarousel />
-          {/* <CarDetailSlickCarousel /> */}
-        </MDBCol>
+        </MDBCol> */}
       </MDBRow>
     </div>
   );
 };
 
 export default CarDetail;
+
+// {/* <MDBCol className='similar-for-sale pt-5 pb-5' md='12'>
+//       //   <h1 className='pt-2'>Similar For Sale</h1>
+//       //   <CarDetailCarousel />
+//       // </MDBCol> */}
+
+//   {/* <div className='accordion-sections'>
+//   <h1 className=''>Overview</h1>
+//   <MDBAccordion initialActive={1}>
+//     <MDBAccordionItem
+//       collapseId={1}
+//       headerTitle='Description'
+//       className='accordion-title'
+//     >
+//       {vehicle.description}
+//     </MDBAccordionItem>
+//     <MDBAccordionItem
+//       collapseId={2}
+//       headerTitle='Specification'
+//       className='accordion-title'
+//     >
+//       {vehicle.specification}
+//     </MDBAccordionItem>
+//     <MDBAccordionItem
+//       collapseId={3}
+//       headerTitle='Features'
+//       className='accordion-title'
+//     >
+//       {vehicle.features}
+//     </MDBAccordionItem>
+//   </MDBAccordion>
+// </div>*/}

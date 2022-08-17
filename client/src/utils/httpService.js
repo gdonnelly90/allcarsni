@@ -12,11 +12,11 @@ axiosClient.defaults.headers = {
 //All request will wait 2 seconds before timeout
 axiosClient.defaults.timeout = 5000;
 
-axios.interceptors.request.use(
+axiosClient.interceptors.request.use(
   (config) => {
     const token = localStorage.getItem('app-token');
     if (token) {
-      config.headers['Authorization'] = 'Bearer ' + token;
+      config.headers.Authorization = `Bearer ${token}`;
     }
     return config;
   },

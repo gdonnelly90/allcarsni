@@ -1,6 +1,6 @@
 import React from 'react';
-import { useNavigate } from 'react-router-dom';
 import { Nav, Navbar, NavDropdown, Container, Button } from 'react-bootstrap';
+import { LinkContainer } from 'react-router-bootstrap';
 
 const Header3 = () => {
   // const Header3 = ({ auth }) => {
@@ -22,7 +22,7 @@ const Header3 = () => {
           <Navbar.Brand>
             <LinkContainer to='/'>
               <Nav.Link>
-                <img src={require('../assets/img/text_only_logo.png')} />
+                <img src={require('../../assets/img/text_only_logo.png')} />
               </Nav.Link>
             </LinkContainer>
           </Navbar.Brand>

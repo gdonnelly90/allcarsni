@@ -50,18 +50,13 @@ export const NavBar = () => {
         </Nav>
         <Nav>
           {isAuthenticated && (
-            <NavDropdown
-              title={`Welcome ${user.firstName}`}
-              id='collasible-nav-dropdown'
-            >
+            <NavDropdown title={`Welcome ${user.firstName}`} id='collasible-nav-dropdown'>
               <NavDropdown.Item>
                 <Hyperlink text={'Account'} to={'/account'} />
               </NavDropdown.Item>
-              <NavDropdown.Item href='#action/3.3'>Settings</NavDropdown.Item>
+              {/* <NavDropdown.Item href='#action/3.3'>Settings</NavDropdown.Item> */}
               <NavDropdown.Divider />
-              <NavDropdown.Item onClick={() => logout()}>
-                Logout
-              </NavDropdown.Item>
+              <NavDropdown.Item onClick={() => logout()}>Logout</NavDropdown.Item>
             </NavDropdown>
           )}
 

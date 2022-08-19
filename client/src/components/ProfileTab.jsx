@@ -1,9 +1,3 @@
-// import React from 'react';
-
-// export const ProfileTab = () => {
-//   return <div>ProfileTab</div>;
-// };
-
 import React from 'react';
 import { Container, Row, Col, Card, Table } from 'react-bootstrap';
 import Avatar from 'react-avatar';
@@ -36,11 +30,11 @@ export const ProfileTab = () => {
               <Container className='mt-3 d-flex justify-content-center text-center'>
                 <Col>
                   <div className='count fw-bold'>25</div>
-                  <div className='meta-profile-title'>Max Allowance</div>
+                  <div className='meta-profile-title'>Allowance</div>
                 </Col>
                 <Col>
                   <div className='count fw-bold'>1</div>
-                  <div className='meta-profile-title'>Ads Left</div>
+                  <div className='meta-profile-title'>Spaces</div>
                 </Col>
                 <Col>
                   <div className='count fw-bold'>2</div>
@@ -58,7 +52,7 @@ export const ProfileTab = () => {
           </p>
           <PersonalDetails />
           <p className='mt-3 text-muted'>
-            Thinking of leaving? Request your account to be deleted click{' '}
+            Thinking of leaving? Click here to request your account deletion{' '}
             {/* <a href='#' onClick={() => requestDelete()}> */}
             here
             {/* </a> */}.

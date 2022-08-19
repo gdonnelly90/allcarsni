@@ -132,8 +132,7 @@ const CarDetail = () => {
                   data-bs-toggle='collapse'
                   data-bs-target='#collapseOne'
                   aria-expanded='true'
-                  aria-controls='collapseOne'
-                >
+                  aria-controls='collapseOne'>
                   Description
                 </button>
               </h2>
@@ -141,8 +140,7 @@ const CarDetail = () => {
                 id='collapseOne'
                 className='accordion-collapse collapse show'
                 aria-labelledby='headingOne'
-                data-bs-parent='#accordionExample'
-              >
+                data-bs-parent='#accordionExample'>
                 <div className='accordion-body'>{vehicle.description}</div>
               </div>
             </div>
@@ -154,8 +152,7 @@ const CarDetail = () => {
                   data-bs-toggle='collapse'
                   data-bs-target='#collapseTwo'
                   aria-expanded='false'
-                  aria-controls='collapseTwo'
-                >
+                  aria-controls='collapseTwo'>
                   Specification
                 </button>
               </h2>
@@ -163,8 +160,7 @@ const CarDetail = () => {
                 id='collapseTwo'
                 className='accordion-collapse collapse'
                 aria-labelledby='headingTwo'
-                data-bs-parent='#accordionExample'
-              >
+                data-bs-parent='#accordionExample'>
                 <div className='accordion-body'>{vehicle.specification}</div>
               </div>
             </div>
@@ -176,8 +172,7 @@ const CarDetail = () => {
                   data-bs-toggle='collapse'
                   data-bs-target='#collapseThree'
                   aria-expanded='false'
-                  aria-controls='collapseThree'
-                >
+                  aria-controls='collapseThree'>
                   Features
                 </button>
               </h2>
@@ -185,8 +180,7 @@ const CarDetail = () => {
                 id='collapseThree'
                 className='accordion-collapse collapse'
                 aria-labelledby='headingThree'
-                data-bs-parent='#accordionExample'
-              >
+                data-bs-parent='#accordionExample'>
                 <div className='accordion-body'>{vehicle.features}</div>
               </div>
             </div>
@@ -211,35 +205,3 @@ const CarDetail = () => {
 };
 
 export default CarDetail;
-
-// {/* <MDBCol className='similar-for-sale pt-5 pb-5' md='12'>
-//       //   <h1 className='pt-2'>Similar For Sale</h1>
-//       //   <CarDetailCarousel />
-//       // </MDBCol> */}
-
-//   {/* <div className='accordion-sections'>
-//   <h1 className=''>Overview</h1>
-//   <MDBAccordion initialActive={1}>
-//     <MDBAccordionItem
-//       collapseId={1}
-//       headerTitle='Description'
-//       className='accordion-title'
-//     >
-//       {vehicle.description}
-//     </MDBAccordionItem>
-//     <MDBAccordionItem
-//       collapseId={2}
-//       headerTitle='Specification'
-//       className='accordion-title'
-//     >
-//       {vehicle.specification}
-//     </MDBAccordionItem>
-//     <MDBAccordionItem
-//       collapseId={3}
-//       headerTitle='Features'
-//       className='accordion-title'
-//     >
-//       {vehicle.features}
-//     </MDBAccordionItem>
-//   </MDBAccordion>
-// </div>*/}

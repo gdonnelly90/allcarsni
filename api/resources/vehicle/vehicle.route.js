@@ -15,11 +15,13 @@ router.get('/', async (req, res) => {
   try {
     // getting query params form URL, adding pagination and executing query
     // which searches for matching cars
+    const pageSize = 9;
+    const page = Number(req.query.page) || 1;
+
+    let query;
     const queryObject = { ...req.query };
     const excludeFields = ['page', 'sort', 'limit', 'fields'];
     excludeFields.forEach((el) => delete queryObject[el]);
-    const pageSize = 9;
-    const page = Number(req.query.page) || 1;
 
     // using filter params to assign a '$' code to the math functions
     // then replacing it in the queryString
@@ -28,7 +30,15 @@ router.get('/', async (req, res) => {
       /\b(gte|gt|lte|lt)\b/g,
       (match) => `$${match}`
     );
-    console.log(JSON.parse(queryString));
+
+    query = Vehicle.find(JSON.parse(queryString));
+    // sorting results
+    if (req.query.sort) {
+      const sortBy = req.query.sort.split(',').join(' ');
+      query = query.sort(sortBy);
+    } else {
+      query = query.sort('-createdAt');
+    }
 
     const count = await Vehicle.countDocuments();
     const vehicles = await Vehicle.find(JSON.parse(queryString))
@@ -275,7 +285,10 @@ router.put('/:id', checkObjectId('id'), auth, async (req, res) => {
         { new: true }
       );
       // return response
-      return res.status(201).json({ success: true, data: updatedVehicle });
+      return res.status(201).json({
+        success: true,
+        data: updatedVehicle,
+      });
     }
     // return 400
     return res

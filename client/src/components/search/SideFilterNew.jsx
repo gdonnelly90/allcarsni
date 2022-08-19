@@ -1,295 +1,38 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { Filter } from '../filters/filter.route';
+import axios from 'axios';
+// import { Filter } from './Filter';
 import * as FaIcons from 'react-icons/fa';
 import * as IoIcons from 'react-icons/io';
 import * as MdIcons from 'react-icons/md';
 import * as BsIcons from 'react-icons/bs';
 import * as GiIcons from 'react-icons/gi';
 
-const SideFilterNew = () => {
+// const SideFilterNew = (vehicle, onHandleChange) => {
+export const SideFilterNew = ({
+  make,
+  model,
+  price,
+  year,
+  mileage,
+  fuelType,
+  colour,
+  onHandleChange,
+}) => {
   return (
     <div className='sidebar'>
       <p className='siderbar-text-pclass'>Filters</p>
       <hr style={{ width: '100%', size: '3px', color: '#c53030' }} />
-      <div className='accordion'>
-        <div className='accordion-item'>
-          <h2 className='accordion-header' id='headingOne'>
-            <button
-              className='accordion-button collapsed'
-              type='button'
-              data-bs-toggle='collapse'
-              data-bs-target='#collapseOne'
-              aria-expanded='false'
-              aria-controls='collapseOne'
-            >
-              <FaIcons.FaCar /> Make
-            </button>
-          </h2>
-          <div
-            id='collapseOne'
-            className='accordion-collapse collapse'
-            aria-labelledby='headingOne'
-            data-bs-parent='#accordionExample'
-          >
-            <div className='accordion-body'>
-              <select>
-                <option>Any</option>
-                <option>Audi</option>
-              </select>
-            </div>
-          </div>
-        </div>
-        <hr style={{ width: '100%', size: '3px', color: '#c53030' }} />
-        <div className='accordion-item'>
-          <h2 className='accordion-header' id='headingTwo'>
-            <button
-              className='accordion-button collapsed'
-              type='button'
-              data-bs-toggle='collapse'
-              data-bs-target='#collapseTwo'
-              aria-expanded='false'
-              aria-controls='collapseTwo'
-            >
-              <IoIcons.IoLogoModelS /> Model
-            </button>
-          </h2>
-          <div
-            id='collapseTwo'
-            className='accordion-collapse collapse'
-            aria-labelledby='headingTwo'
-            data-bs-parent='#accordionExample'
-          >
-            <div className='accordion-body'>
-              <select>
-                <option>Any</option>
-                <option>A4</option>
-              </select>
-            </div>
-          </div>
-        </div>
-        <hr style={{ width: '100%', size: '3px', color: '#c53030' }} />
-
-        <div className='accordion-item'>
-          <h2 className='accordion-header' id='headingThree'>
-            <button
-              className='accordion-button collapsed'
-              type='button'
-              data-bs-toggle='collapse'
-              data-bs-target='#collapseThree'
-              aria-expanded='false'
-              aria-controls='collapseThree'
-            >
-              <MdIcons.MdAttachMoney />
-              Minimum Price
-            </button>
-          </h2>
-          <div
-            id='collapseThree'
-            className='accordion-collapse collapse'
-            aria-labelledby='headingThree'
-            data-bs-parent='#accordionExample'
-          >
-            <div className='accordion-body'>
-              <select>
-                <option>£0</option>
-                <option>£500</option>
-                <option>£50,000</option>
-                <option>£1,000,000</option>
-              </select>
-            </div>
-          </div>
-        </div>
+      <div className='col-3 search-filter'>
+        <Filter id='make' name='by make' data={make} onHandleChange={onHandleChange} />
       </div>
-      <div className='accordion-item'>
-        <h2 className='accordion-header' id='headingFour'>
-          <button
-            className='accordion-button collapsed'
-            type='button'
-            data-bs-toggle='collapse'
-            data-bs-target='#collapseFour'
-            aria-expanded='false'
-            aria-controls='collapseFour'
-          >
-            <MdIcons.MdOutlineMoneyOff />
-            Maximum Price
-          </button>
-        </h2>
-        <div
-          id='collapseFour'
-          className='accordion-collapse collapse'
-          aria-labelledby='headingFour'
-          data-bs-parent='#accordionExample'
-        >
-          <div className='accordion-body'>
-            <select>
-              <option>Any</option>
-              <option>£50,000</option>
-              <option>£10,000,000</option>
-            </select>
-          </div>
-        </div>
-      </div>
-      <hr style={{ width: '100%', size: '3px', color: '#c53030' }} />
-
-      <div className='accordion-item'>
-        <h2 className='accordion-header' id='headingFive'>
-          <button
-            className='accordion-button collapsed'
-            type='button'
-            data-bs-toggle='collapse'
-            data-bs-target='#collapseFive'
-            aria-expanded='false'
-            aria-controls='collapseFive'
-          >
-            <BsIcons.BsCalendarDate />
-            Age From
-          </button>
-        </h2>
-        <div
-          id='collapseFive'
-          className='accordion-collapse collapse'
-          aria-labelledby='headingFive'
-          data-bs-parent='#accordionExample'
-        >
-          <div className='accordion-body'>
-            <select>
-              <option>2010</option>
-              <option>2014</option>
-              <option>2018</option>
-              <option>2020</option>
-            </select>
-          </div>
-        </div>
-      </div>
-      <div className='accordion-item'>
-        <h2 className='accordion-header' id='headingSix'>
-          <button
-            className='accordion-button collapsed'
-            type='button'
-            data-bs-toggle='collapse'
-            data-bs-target='#collapseSix'
-            aria-expanded='false'
-            aria-controls='collapseSix'
-          >
-            <BsIcons.BsCalendar2DateFill />
-            Age To
-          </button>
-        </h2>
-        <div
-          id='collapseSix'
-          className='accordion-collapse collapse'
-          aria-labelledby='headingSix'
-          data-bs-parent='#accordionExample'
-        >
-          <div className='accordion-body'>
-            <select>
-              <option>2019</option>
-              <option>2020</option>
-              <option>2021</option>
-              <option>2022</option>
-            </select>
-          </div>
-        </div>
-      </div>
-      <hr style={{ width: '100%', size: '3px', color: '#c53030' }} />
-      <div className='accordion-item'>
-        <h2 className='accordion-header' id='headingSeven'>
-          <button
-            className='accordion-button collapsed'
-            type='button'
-            data-bs-toggle='collapse'
-            data-bs-target='#collapseSeven'
-            aria-expanded='false'
-            aria-controls='collapseSeven'
-          >
-            <BsIcons.BsSpeedometer2 />
-            Max Mileage
-          </button>
-        </h2>
-        <div
-          id='collapseSeven'
-          className='accordion-collapse collapse'
-          aria-labelledby='headingSeven'
-          data-bs-parent='#accordionExample'
-        >
-          <div className='accordion-body'>
-            <select>
-              <option>Any</option>
-              <option>Up to 20,000</option>
-              <option>Up to 40,000</option>
-              <option>Up to 60,000</option>
-            </select>
-          </div>
-        </div>
-      </div>
-      <hr style={{ width: '100%', size: '3px', color: '#c53030' }} />
-
-      <div className='accordion-item'>
-        <h2 className='accordion-header' id='headingEight'>
-          <button
-            className='accordion-button collapsed'
-            type='button'
-            data-bs-toggle='collapse'
-            data-bs-target='#collapseEight'
-            aria-expanded='false'
-            aria-controls='collapseEight'
-          >
-            <GiIcons.GiFuelTank />
-            Fuel Type
-          </button>
-        </h2>
-        <div
-          id='collapseEight'
-          className='accordion-collapse collapse'
-          aria-labelledby='headingEight'
-          data-bs-parent='#accordionExample'
-        >
-          <div className='accordion-body'>
-            <select>
-              <option>Any</option>
-              <option>Petrol</option>
-              <option>Diesel</option>
-              <option>Electric</option>
-            </select>
-          </div>
-        </div>
-      </div>
-      <hr style={{ width: '100%', size: '3px', color: '#c53030' }} />
-
-      <div className='accordion-item'>
-        <h2 className='accordion-header' id='headingNine'>
-          <button
-            className='accordion-button collapsed'
-            type='button'
-            data-bs-toggle='collapse'
-            data-bs-target='#collapseNine'
-            aria-expanded='false'
-            aria-controls='collapseNine'
-          >
-            <BsIcons.BsPaintBucket />
-            Colour
-          </button>
-        </h2>
-        <div
-          id='collapseNine'
-          className='accordion-collapse collapse'
-          aria-labelledby='headingNine'
-          data-bs-parent='#accordionExample'
-        >
-          <div className='accordion-body'>
-            <select>
-              <option>Any</option>
-              <option>Black</option>
-              <option>Red</option>
-            </select>
-          </div>
-        </div>
-      </div>
-      <hr style={{ width: '100%', size: '3px', color: '#c53030' }} />
     </div>
   );
 };
 
-export default SideFilterNew;
+{
+  /* 
+// export default SideFilterNew;
 
 // <>
 //       <div className='sidebar'>
@@ -519,4 +262,5 @@ export default SideFilterNew;
 //           <CarCard />
 //         </div>
 //       </div>
-//     </>
+//     </> */
+}

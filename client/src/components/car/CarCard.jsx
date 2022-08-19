@@ -1,7 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { MDBRow, MDBCol } from 'mdb-react-ui-kit';
-import { LinkContainer } from 'react-router-bootstrap';
 import { Card } from 'react-bootstrap';
 import { Tooltip, OverlayTrigger } from 'react-bootstrap';
 import Image1 from '../../assets/img/cars/Ferrari_LaFerrari_Aperta_1.jpg';
@@ -35,17 +34,13 @@ const CarCard = ({ vehicle }) => {
       <Card.Img src={Image1} variant='top' />
       <Card.Body>
         <div className='card-top-text'>
-          <OverlayTrigger
-            overlay={<Tooltip id='price'>Price</Tooltip>}
-            placement='right'
-          >
+          <OverlayTrigger overlay={<Tooltip id='price'>Price</Tooltip>} placement='right'>
             <div>{price}</div>
           </OverlayTrigger>
         </div>
         <OverlayTrigger
           overlay={<Tooltip id='price'>Make, Model and Variant</Tooltip>}
-          placement='right'
-        >
+          placement='right'>
           <div>
             {make} {model} {variant}
           </div>

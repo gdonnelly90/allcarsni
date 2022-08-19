@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import CarCard from '../components/car/CarCard';
-import SideFilterNew from '../components/search/SideFilterNew';
+import { SideFilterNew } from '../components/search/SideFilterNew';
 import { fetchAllVehicles } from '../services/vehicle.service';
 import Pagination from 'react-bootstrap/Pagination';
 import qs from 'qs';
 import queryString from 'query-string';
 
-const Search = () => {
+const Search = ({ make, model, price, year, mileage, fuelType, colour, onHandleChange }) => {
   const [vehicles, setVehicles] = useState([]);
   const [query, setQuery] = useState('');
   const [pageNumber, setPageNumber] = useState(1);

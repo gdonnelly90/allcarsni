@@ -156,4 +156,43 @@ router.delete('/', auth, async (req, res) => {
   }
 });
 
+// @route    PUT api/v1/users/:id
+// @desc     Update user details by Token
+// @access   Private
+router.put('/', auth, async (req, res) => {
+  try {
+    const { id } = req.user;
+
+    if (isEmpty(id)) {
+      return res
+        .json(500)
+        .json({ success: false, message: 'Invalid request id' });
+    }
+
+    const activeUser = await User.findById(id);
+    // console.log(activeUser);
+
+    if (!activeUser) {
+      return res.status(500).json({ success: false, message: 'Unauthorised' });
+    }
+
+    if (activeUser.id.toString() !== id) {
+      return res.status(500).json({ success: false, message: 'Unauthorised' });
+    }
+
+    const user = await User.findOneAndUpdate({ _id: id }, req.body, {
+      new: true,
+    });
+
+    return res.status(201).json({
+      success: true,
+      data: user,
+      message: 'User account successfully updated',
+    });
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server Error');
+  }
+});
+
 export default router;

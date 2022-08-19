@@ -10,6 +10,7 @@ import { FavouritesTab } from '../components/FavouritesTab';
 import { StockTab } from '../components/StockTab';
 import { VehicleTab } from '../components/VehicleTab';
 import { createSubscription, createBillingSession } from '../context/appContext/actions';
+import { updateUserDetails } from '../context/appContext/actions';
 import { APP_TABS } from '../utils/constants';
 
 export const Account = () => {

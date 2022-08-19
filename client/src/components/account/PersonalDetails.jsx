@@ -1,69 +1,57 @@
 import React, { useContext } from 'react';
+import { useAppState, useAppDispatch } from '../../context/appContext/context';
+import { useNavigate } from 'react-router-dom';
 import { Button } from 'react-bootstrap';
 import { toast } from 'react-toastify';
 import { Formik, Form } from 'formik';
-import { AuthContext } from '../../context/AuthContext';
 import { updateUser } from '../../services/user.service';
 import * as Yup from 'yup';
 import { Label } from '../formComponents/Label';
 import { FormInput } from '../formComponents/FormInput';
 
-// const UserSchema = Yup.object().shape({
-//   firstName: Yup.string().required('Name is required'),
-//   lastName: Yup.string().required('Last name is required'),
-//   email: Yup.string().email('Invalid email address').required('Email is required'),
-//   password: Yup.string(),
-//   confirmPassword: Yup.string().oneOf([Yup.ref('password'), null], 'Passwords do not match'),
-// });
+const UserSchema = Yup.object().shape({
+  firstName: Yup.string().required('Name is required'),
+  lastName: Yup.string().required('Last name is required'),
+  email: Yup.string().email('Invalid email address').required('Email is required'),
+  password: Yup.string(),
+  confirmPassword: Yup.string().oneOf([Yup.ref('password'), null], 'Passwords do not match'),
+});
 
 export const PersonalDetails = () => {
-  // export const PersonalDetails = ({ auth }) => {
-  // const auth = useContext(AuthContext);
-  // const { authState } = auth;
-  // // console.log(auth)
-  // const { token, userInfo } = authState;
-  // const header = {
-  //   headers: {
-  //     Authorization: `Bearer ${token}`,
-  //   },
-  // };
+  const dispatch = useAppDispatch();
+  let { user } = useAppState();
+  const navigate = useNavigate();
 
-  // Submit the profile updates PUT /api/user/update
-  // const submitProfile = async (userValues, actions) => {
-  //   try {
-  //     // set new user object
-  //     const user = { ...userInfo, ...userValues };
-  //     // call update user
-  //     const response = await updateUser(user, header);
-  //     // update context with new values
-  //     auth.setAuthState({ ...authState, userInfo: user });
-  //     // reset fields
-  //     actions.setFieldValue('password', '');
-  //     actions.setFieldValue('confirmPassword', '');
-  //     // show toast message
-  //     toast.success(response.message);
-  //   } catch (error) {
-  //     toast.error(error.message);
-  //   }
-  // };
+  // function to update data on DB
+  const submitProfile = async (userValues, actions) => {
+    try {
+      // set new user object
+      user = { ...user, ...userValues };
+      // call update user
+      const response = await updateUser(user);
+      // reset fields
+      actions.setFieldValue('password', '');
+      actions.setFieldValue('confirmPassword', '');
+      // show toast message
+      toast.success(response.message);
+    } catch (error) {
+      toast.error(error.message);
+    }
+  };
 
+  // main body
   return (
+    // filling fields with current existing DB data
     <Formik
       initialValues={{
-        firstName: '',
-        lastName: '',
-        email: '',
+        firstName: user.firstName ?? '',
+        lastName: user.lastName ?? '',
+        email: user.email ?? '',
         password: '',
         confirmPassword: '',
-        // firstName: userInfo.firstName ?? '',
-        // lastName: userInfo.lastName ?? '',
-        // email: userInfo.email ?? '',
-        // password: '',
-        // confirmPassword: '',
-      }}>
-      {/* onSubmit={(values, actions) => submitProfile(values, actions)}
-       validationSchema={UserSchema}>
-       {(formik) => ( */}
+      }}
+      onSubmit={(values, actions) => submitProfile(values, actions)}
+      validationSchema={UserSchema}>
       {(formik) => (
         <Form>
           <div className='w-100'></div>

@@ -26,12 +26,16 @@ export const SubscriptionCard = ({ sub, onSubscription }) => {
             <small className='text-muted fw-light'>/mo</small>
           </h1>
           <ul className='list-unstyled mt-3 mb-4'>
-            <li>
+            <p>
               {sub.quantity} {`${sub.quantity <= 1 ? 'car per time' : 'cars per month'}`}
-            </li>
-            <li>{sub.quantity < 150 ? 'Email support' : ''}</li>
-            <li>{sub.quantity >= 150 ? 'Premium Ads' : ''}</li>
-            {sub.quantity > 1 ? <li>Vehicle evaluation</li> : <li>Auto populate</li>}
+            </p>
+            <p>{sub.quantity < 150 ? 'Email support' : ''}</p>
+            <p>{sub.quantity >= 150 ? 'Premium Ads' : ''}</p>
+            {sub.quantity > 1 ? (
+              <li>Vehicle evaluation & Auto populate</li>
+            ) : (
+              <li>Auto populate</li>
+            )}
           </ul>
           <button
             type='button'

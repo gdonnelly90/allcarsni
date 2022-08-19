@@ -1090,5 +1090,19 @@ li {
 
 /* responsive search */
 
+/* profile tabs and user account css*/
+.link-primary {
+  color: #c53030
+}
 
+.link-primary:hover {
+  color: #c53030
+}
 
+.nav-link {
+  color: #c53030;
+}
+
+.nav-link:hover {
+  color: #ff8585;
+}

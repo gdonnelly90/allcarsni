@@ -159,8 +159,9 @@ router.delete('/', auth, async (req, res) => {
 // @route    PUT api/v1/users/:id
 // @desc     Update user details by Token
 // @access   Private
-router.put('/', auth, async (req, res) => {
+router.put('/:id', auth, async (req, res) => {
   try {
+    console.log(req.params.id);
     const { id } = req.user;
 
     if (isEmpty(id)) {

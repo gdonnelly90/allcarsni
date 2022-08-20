@@ -36,7 +36,7 @@ export const NavBar = () => {
       <Navbar.Toggle aria-controls='responsive-navbar-nav' />
       <Navbar.Collapse id='responsive-navbar-nav'>
         <Nav className='me-auto'>
-          <LinkContainer to='/search'>
+          <LinkContainer to='/search?page=1'>
             <Nav.Link>
               <i className='fas fa-search'></i> Search
             </Nav.Link>

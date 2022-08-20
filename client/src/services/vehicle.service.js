@@ -3,9 +3,9 @@ import apiClient from '../utils/httpService';
 // get all vehicles
 export const fetchAllVehicles = async (query) => {
   try {
-    const response = await apiClient.get(`/api/v1/vehicles?${query}`);
-    // const response = await apiClient.get('/api/v1/vehicles');
+    console.log('Vehicle Service Query');
     console.log(query);
+    const response = await apiClient.get(`/api/v1/vehicles?${query}`);
     return response.data;
   } catch (error) {
     console.log(error);

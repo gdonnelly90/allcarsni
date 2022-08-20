@@ -13,14 +13,14 @@ const Home2 = () => {
   let navigate = useNavigate();
 
   const onBrowseCarsClick = () => {
-    navigate('search/');
+    navigate('search?page=1');
   };
 
   const onElectricIconClick = () => {
-    navigate('search?fuelType=Electric');
+    navigate('search?fuelType=Electric&page=1');
   };
   const onBodyTypeClick = (bodyType) => {
-    navigate(`search?bodyType=${bodyType}`);
+    navigate(`search?bodyType=${bodyType}&page=1`);
   };
 
   return (
@@ -155,6 +155,7 @@ const Home2 = () => {
           />
         </MDBCol>
       </MDBRow>
+      {/* latest news feature */}
       <MDBRow className='column-main-cars-home pb-5' md='12'>
         <LatestNews />
       </MDBRow>

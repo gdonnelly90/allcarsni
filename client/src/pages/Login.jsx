@@ -67,10 +67,7 @@ export const Login = () => {
               <div className='text-center mb-2'>
                 {/* <div className='row card col-md-6 offset-md-3 shadow bg-body rounded'> */}
 
-                <img
-                  src={require('../assets/img/red_white_logo.png')}
-                  style={{ width: '25%' }}
-                />
+                <img src={require('../assets/img/red_white_logo.png')} style={{ width: '25%' }} />
               </div>
               <h1 className='mt-5 mb-5 text-center'>Login into your account</h1>
               {/* <p className='text-center'>
@@ -107,9 +104,7 @@ export const Login = () => {
                       onChange={formik.handleChange}
                       onBlur={formik.handleBlur}
                       value={formik.values.password}
-                      isInvalid={
-                        formik.touched.password && formik.errors.password
-                      }
+                      isInvalid={formik.touched.password && formik.errors.password}
                     />
                     <Form.Control.Feedback type='invalid'>
                       {formik.errors.password}
@@ -119,7 +114,7 @@ export const Login = () => {
                     Need to sign up? <Link to={'/register'}>Register</Link>
                   </div>
                   <div className='mb-4 text-center'>
-                    Return to browse? <Link to={'/'}>click here</Link>
+                    Return to browse? <Link to={'/'}>Click here</Link>
                   </div>
                   <div className='d-grid gap-2'></div>
                   <Button variant='primary' type='submit'>

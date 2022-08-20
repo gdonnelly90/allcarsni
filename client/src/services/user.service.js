@@ -13,9 +13,10 @@ export const fetchAllUsers = async () => {
 };
 
 // get user by ID
-export const updateUser = async (id) => {
+export const updateUser = async (user) => {
   try {
-    const response = await apiClient.put(`/api/v1/users/${id}`);
+    console.log(user.id);
+    const response = await apiClient.put(`/api/v1/users/${user.id}`, user);
   } catch (error) {
     console.error(error.message);
     return error.message;

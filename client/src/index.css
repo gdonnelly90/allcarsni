@@ -1,6 +1,6 @@
 /* font used */
 @import url(https://fonts.googleapis.com/css?family=Roboto);
-body, html { 
+* { 
   font-family: 'Roboto', sans-serif;
 }
 
@@ -108,7 +108,7 @@ padding: 100px
 }
 
 .bg--red-gradient {
-  background: linear-gradient( 135deg, #c53030 10%, #c53030 100% );
+  background: linear-gradient( 135deg, #c53030 10%, #c53030 10% );
 }
 
 /* Background Colour Classes */
@@ -905,7 +905,7 @@ li {
 }
 
 .sidebar {
-  font-size: 2rem;
+  font-size: 1rem;
   padding-left: 50px;
   padding-right: 20px;
   position: fixed;
@@ -914,8 +914,9 @@ li {
 }
 
 .siderbar-text-pclass {
-  /* margin: 5px; */
+  font-size: 2.5rem;
   margin-top:35px;
+  margin-left: 20px;
   color: #041639;
 }
 
@@ -1106,3 +1107,31 @@ li {
 .nav-link:hover {
   color: #ff8585;
 }
+
+/* New search filters */
+.search-drawer-container {
+  background-color: #f4f4f4;
+}
+
+.siderbar-text {
+  font-size:3rem;
+}
+
+.drawer-button {
+  text-align: left;
+  width: 300px;
+  padding: 0.5rem;
+  color: #000000;
+  border: 1px solid #b6b6b6;
+  background-color: #fff;
+}
+
+.drawer-button.filter-option {
+  text-align: right;
+}
+
+.siderbar-filter-text {
+  font-size: 1.5rem;;
+}
+
+/* Slider CSS */

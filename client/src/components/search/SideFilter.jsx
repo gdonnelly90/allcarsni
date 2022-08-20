@@ -1,581 +1,402 @@
-// import React, { useEffect, useState } from 'react';
-// import CarCard from '../car/CarCard';
-// import * as FaIcons from 'react-icons/fa';
-// import * as IoIcons from 'react-icons/io';
-// import * as MdIcons from 'react-icons/md';
-// import * as BsIcons from 'react-icons/bs';
-// import * as GiIcons from 'react-icons/gi';
-// import { fetchAllVehicles } from '../../../src/services/vehicle.service';
-// // import { GiGearStickPattern } from 'react-icons/gi';
-// // import Logo from '../../assets/img/red_white_logo.png';
-// // import Control from '../../assets/img/control.png';
+import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import { Filter } from '../filters/filter.route';
+import axios from 'axios';
+// import { Filter } from './Filter';
+import * as FaIcons from 'react-icons/fa';
+import * as IoIcons from 'react-icons/io';
+import * as MdIcons from 'react-icons/md';
+import * as BsIcons from 'react-icons/bs';
+import * as GiIcons from 'react-icons/gi';
 
-// const SideFilter = () => {
-//   const [vehicleData, setVehicleData] = useState([]);
+{
+  /* <Link to={'/login'}>Login In</Link> */
+}
 
-//   const getVehicles = async () => {
-//     const vehicles = await fetchAllVehicles();
-//     setVehicleData(vehicles);
-//   };
+export const SideFilter = () => {
+  return (
+    <div className='hamburger-menu'>
+      <h1 className>Filters</h1>
+      <input id='menu__toggle' type='checkbox' />
+      <label className='menu__btn' for='menu__toggle'>
+        <span></span>
+      </label>
 
-//   useEffect(() => {
-//     getVehicles();
-//   }, []);
+      <ul className='menu__box'>
+        <li>
+          <a className='menu__item' href='#'>
+            Home
+          </a>
+        </li>
+        <li>
+          <a className='menu__item' href='#'>
+            About
+          </a>
+        </li>
+        <li>
+          <a className='menu__item' href='#'>
+            Team
+          </a>
+        </li>
+        <li>
+          <a className='menu__item' href='#'>
+            Contact
+          </a>
+        </li>
+        <li>
+          <a className='menu__item' href='#'>
+            Twitter
+          </a>
+        </li>
+      </ul>
+    </div>
+    // <div className='sidebar-drawer-container'>
+    //   <div className='siderbar-drawer'>
+    //     <ul className='filter-list pt-4'>
+    //       <h1 className='drawer-title pb-5'>Filters</h1>
+    //       <li>
+    //         {/* <hr style={{ width: '100%', size: '3px', color: '#c53030' }} /> */}
+    //         <div className='drawer-icon'>
+    //           <FaIcons.FaCar />
+    //           <span className='drawer-title p-2'>Make</span>
+    //         </div>
+    //       </li>
+    //       <li>
+    //         <div className='drawer-icon'>
+    //           <IoIcons.IoLogoModelS />
+    //           <span className='drawer-title p-2'>Model</span>
+    //         </div>
+    //       </li>
+    //       <li>
+    //         <div className='drawer-icon'>
+    //           <MdIcons.MdAttachMoney />
+    //           <span className='drawer-title p-2'>Min Price</span>
+    //         </div>
+    //       </li>
+    //       <li>
+    //         <div className='drawer-icon'>
+    //           <MdIcons.MdOutlineMoneyOff />
+    //           <span className='drawer-title p-2'>Max Price</span>
+    //         </div>
+    //       </li>
+    //       <li>
+    //         <div className='drawer-icon'>
+    //           <BsIcons.BsCalendarDate />
+    //           <span className='drawer-title p-2'>Year From</span>
+    //         </div>
+    //       </li>
+    //       <li>
+    //         <div className='drawer-icon'>
+    //           <BsIcons.BsCalendar2DateFill />
+    //           <span className='drawer-title p-2'>Year To</span>
+    //         </div>
+    //       </li>
+    //       <li>
+    //         <div className='drawer-icon'>
+    //           <BsIcons.BsSpeedometer2 />
+    //           <span className='drawer-title p-2'>Max Mileage</span>
+    //         </div>
+    //       </li>
+    //       <li>
+    //         <div className='drawer-icon'>
+    //           <GiIcons.GiFuelTank />
+    //           <span className='drawer-title p-2'>Fuel Type</span>
+    //         </div>
+    //       </li>
+    //       <li>
+    //         <div className='drawer-icon'>
+    //           <BsIcons.BsPaintBucket />
+    //           <span className='drawer-title p-2'>Colour</span>
+    //         </div>
+    //       </li>
+    //     </ul>
+    //   </div>
+    // </div>
+  );
+};
 
-//   return (
-//     <div className='container-search-page'>
-//       <div className='sidebar-search-page'>
-//         <div className='sidebar'>
-//           <p className='siderbar-text-pclass'>Filters</p>
-//           <hr style={{ width: '100%', size: '3px', color: '#c53030' }} />
-//           <div class='accordion'>
-//             <div className='accordion-item'>
-//               <h2 className='accordion-header' id='headingOne'>
-//                 <button
-//                   className='accordion-button collapsed'
-//                   type='button'
-//                   data-bs-toggle='collapse'
-//                   data-bs-target='#collapseOne'
-//                   aria-expanded='false'
-//                   aria-controls='collapseOne'
-//                 >
-//                   <FaIcons.FaCar /> Make
-//                 </button>
-//               </h2>
-//               <div
-//                 id='collapseOne'
-//                 class='accordion-collapse collapse'
-//                 aria-labelledby='headingOne'
-//                 data-bs-parent='#accordionExample'
-//               >
-//                 <div className='accordion-body'>
-//                   <select>
-//                     <option>Any</option>
-//                     <option>Audi</option>
-//                   </select>
-//                 </div>
-//               </div>
-//             </div>
-//             <hr style={{ width: '100%', size: '3px', color: '#c53030' }} />
-
-//             <div className='accordion-item'>
-//               <h2 className='accordion-header' id='headingTwo'>
-//                 <button
-//                   className='accordion-button collapsed'
-//                   type='button'
-//                   data-bs-toggle='collapse'
-//                   data-bs-target='#collapseTwo'
-//                   aria-expanded='false'
-//                   aria-controls='collapseTwo'
-//                 >
-//                   <IoIcons.IoLogoModelS /> Model
-//                 </button>
-//               </h2>
-//               <div
-//                 id='collapseTwo'
-//                 class='accordion-collapse collapse'
-//                 aria-labelledby='headingTwo'
-//                 data-bs-parent='#accordionExample'
-//               >
-//                 <div className='accordion-body'>
-//                   <select>
-//                     <option>Any</option>
-//                     <option>A4</option>
-//                   </select>
-//                 </div>
-//               </div>
-//             </div>
-//             <hr style={{ width: '100%', size: '3px', color: '#c53030' }} />
-
-//             <div className='accordion-item'>
-//               <h2 className='accordion-header' id='headingThree'>
-//                 <button
-//                   className='accordion-button collapsed'
-//                   type='button'
-//                   data-bs-toggle='collapse'
-//                   data-bs-target='#collapseThree'
-//                   aria-expanded='false'
-//                   aria-controls='collapseThree'
-//                 >
-//                   <MdIcons.MdAttachMoney />
-//                   Minimum Price
-//                 </button>
-//               </h2>
-//               <div
-//                 id='collapseThree'
-//                 className='accordion-collapse collapse'
-//                 aria-labelledby='headingThree'
-//                 data-bs-parent='#accordionExample'
-//               >
-//                 <div className='accordion-body'>
-//                   <select>
-//                     <option>£0</option>
-//                     <option>£500</option>
-//                     <option>£50,000</option>
-//                     <option>£1,000,000</option>
-//                   </select>
-//                 </div>
-//               </div>
-//             </div>
+// accordion item for filtering
+// <div className='accordion-item'>
+//         <h2 className='accordion-header' id='headingFour'>
+//           <button
+//             className='accordion-button collapsed'
+//             type='button'
+//             data-bs-toggle='collapse'
+//             data-bs-target='#collapseFour'
+//             aria-expanded='false'
+//             aria-controls='collapseFour'>
+//             <MdIcons.MdOutlineMoneyOff />
+//             Maximum Price
+//           </button>
+//         </h2>
+//         <div
+//           id='collapseFour'
+//           className='accordion-collapse collapse'
+//           aria-labelledby='headingFour'
+//           data-bs-parent='#accordionExample'>
+//           <div className='accordion-body'>
+//             <select>
+//               <option>Any</option>
+//               <option>£50,000</option>
+//               <option>£10,000,000</option>
+//             </select>
 //           </div>
-//           <div className='accordion-item'>
-//             <h2 className='accordion-header' id='headingFour'>
-//               <button
-//                 className='accordion-button collapsed'
-//                 type='button'
-//                 data-bs-toggle='collapse'
-//                 data-bs-target='#collapseFour'
-//                 aria-expanded='false'
-//                 aria-controls='collapseFour'
-//               >
-//                 <MdIcons.MdOutlineMoneyOff />
-//                 Maximum Price
-//               </button>
-//             </h2>
-//             <div
-//               id='collapseFour'
-//               class='accordion-collapse collapse'
-//               aria-labelledby='headingFour'
-//               data-bs-parent='#accordionExample'
-//             >
-//               <div className='accordion-body'>
-//                 <select>
-//                   <option>Any</option>
-//                   <option>£50,000</option>
-//                   <option>£10,000,000</option>
-//                 </select>
-//               </div>
-//             </div>
-//           </div>
-//           <hr style={{ width: '100%', size: '3px', color: '#c53030' }} />
-
-//           <div className='accordion-item'>
-//             <h2 className='accordion-header' id='headingFive'>
-//               <button
-//                 className='accordion-button collapsed'
-//                 type='button'
-//                 data-bs-toggle='collapse'
-//                 data-bs-target='#collapseFive'
-//                 aria-expanded='false'
-//                 aria-controls='collapseFive'
-//               >
-//                 <BsIcons.BsCalendarDate />
-//                 Age From
-//               </button>
-//             </h2>
-//             <div
-//               id='collapseFive'
-//               className='accordion-collapse collapse'
-//               aria-labelledby='headingFive'
-//               data-bs-parent='#accordionExample'
-//             >
-//               <div className='accordion-body'>
-//                 <select>
-//                   <option>2010</option>
-//                   <option>2014</option>
-//                   <option>2018</option>
-//                   <option>2020</option>
-//                 </select>
-//               </div>
-//             </div>
-//           </div>
-//           <div className='accordion-item'>
-//             <h2 className='accordion-header' id='headingSix'>
-//               <button
-//                 className='accordion-button collapsed'
-//                 type='button'
-//                 data-bs-toggle='collapse'
-//                 data-bs-target='#collapseSix'
-//                 aria-expanded='false'
-//                 aria-controls='collapseSix'
-//               >
-//                 <BsIcons.BsCalendar2DateFill />
-//                 Age To
-//               </button>
-//             </h2>
-//             <div
-//               id='collapseSix'
-//               className='accordion-collapse collapse'
-//               aria-labelledby='headingSix'
-//               data-bs-parent='#accordionExample'
-//             >
-//               <div className='accordion-body'>
-//                 <select>
-//                   <option>2019</option>
-//                   <option>2020</option>
-//                   <option>2021</option>
-//                   <option>2022</option>
-//                 </select>
-//               </div>
-//             </div>
-//           </div>
-//           <hr style={{ width: '100%', size: '3px', color: '#c53030' }} />
-//           <div className='accordion-item'>
-//             <h2 className='accordion-header' id='headingSeven'>
-//               <button
-//                 className='accordion-button collapsed'
-//                 type='button'
-//                 data-bs-toggle='collapse'
-//                 data-bs-target='#collapseSeven'
-//                 aria-expanded='false'
-//                 aria-controls='collapseSeven'
-//               >
-//                 <BsIcons.BsSpeedometer2 />
-//                 Max Mileage
-//               </button>
-//             </h2>
-//             <div
-//               id='collapseSeven'
-//               className='accordion-collapse collapse'
-//               aria-labelledby='headingSeven'
-//               data-bs-parent='#accordionExample'
-//             >
-//               <div className='accordion-body'>
-//                 <select>
-//                   <option>Any</option>
-//                   <option>Up to 20,000</option>
-//                   <option>Up to 40,000</option>
-//                   <option>Up to 60,000</option>
-//                 </select>
-//               </div>
-//             </div>
-//           </div>
-//           <hr style={{ width: '100%', size: '3px', color: '#c53030' }} />
-
-//           <div className='accordion-item'>
-//             <h2 className='accordion-header' id='headingEight'>
-//               <button
-//                 className='accordion-button collapsed'
-//                 type='button'
-//                 data-bs-toggle='collapse'
-//                 data-bs-target='#collapseEight'
-//                 aria-expanded='false'
-//                 aria-controls='collapseEight'
-//               >
-//                 <GiIcons.GiFuelTank />
-//                 Fuel Type
-//               </button>
-//             </h2>
-//             <div
-//               id='collapseEight'
-//               className='accordion-collapse collapse'
-//               aria-labelledby='headingEight'
-//               data-bs-parent='#accordionExample'
-//             >
-//               <div className='accordion-body'>
-//                 <select>
-//                   <option>Any</option>
-//                   <option>Petrol</option>
-//                   <option>Diesel</option>
-//                   <option>Electric</option>
-//                 </select>
-//               </div>
-//             </div>
-//           </div>
-//           <hr style={{ width: '100%', size: '3px', color: '#c53030' }} />
-
-//           <div className='accordion-item'>
-//             <h2 className='accordion-header' id='headingNine'>
-//               <button
-//                 className='accordion-button collapsed'
-//                 type='button'
-//                 data-bs-toggle='collapse'
-//                 data-bs-target='#collapseNine'
-//                 aria-expanded='false'
-//                 aria-controls='collapseNine'
-//               >
-//                 <BsIcons.BsPaintBucket />
-//                 Colour
-//               </button>
-//             </h2>
-//             <div
-//               id='collapseNine'
-//               class='accordion-collapse collapse'
-//               aria-labelledby='headingNine'
-//               data-bs-parent='#accordionExample'
-//             >
-//               <div className='accordion-body'>
-//                 <select>
-//                   <option>Any</option>
-//                   <option>Black</option>
-//                   <option>Red</option>
-//                 </select>
-//               </div>
-//             </div>
-//           </div>
-//           <hr style={{ width: '100%', size: '3px', color: '#c53030' }} />
 //         </div>
 //       </div>
-//       <main className='main-search-page'>
-//         <div className='main-car-card-search-page'>
-//           {' '}
-//           <CarCard />
+//       <hr style={{ width: '100%', size: '3px', color: '#c53030' }} />
+
+// <div className='wrapper'>
+//       {/* <div className='d-md-flex align-items-md-center'> */}
+//       <div className='h3'>Filters</div>
+//       <div className='d-sm-flex align-items-sm-center pt-2 clear'>
+//         <div className='text-muted filter-label'>Applied Filters:</div>
+//         <div className='green-label font-weight-bold p-0 px-1 mx-sm-1 mx-0 my-sm-0 my-2'>
+//           Selected Filtre <span className=' px-1 close'>&times;</span>{' '}
 //         </div>
-//         <div className='main-car-card-search-page'>
-//           {' '}
-//           <CarCard />
+//         <div className='green-label font-weight-bold p-0 px-1 mx-sm-1 mx-0'>
+//           Selected Filtre <span className=' px-1 close'>&times;</span>{' '}
 //         </div>
-//         <div className='main-car-card-search-page'>
-//           {' '}
-//           <CarCard />
+//       </div>
+//       <div className='filters'>
+//         {' '}
+//         <button
+//           className='btn btn-success'
+//           type='button'
+//           data-toggle='collapse'
+//           data-target='#mobile-filter'
+//           aria-expanded='true'
+//           aria-controls='mobile-filter'>
+//           Filter<span className='px-1 fas fa-filter'></span>
+//         </button>{' '}
+//       </div>
+//       <div id='mobile-filter'>
+//         <div className='py-3'>
+//           <h5 className='font-weight-bold'>Categories</h5>
+//           <ul className='list-group'>
+//             <li className='list-group-item list-group-item-action d-flex justify-content-between align-items-center category'>
+//               {' '}
+//               vegetables <span className='badge badge-primary badge-pill'>328</span>{' '}
+//             </li>
+//             <li className='list-group-item list-group-item-action d-flex justify-content-between align-items-center category'>
+//               {' '}
+//               Fruits <span className='badge badge-primary badge-pill'>112</span>{' '}
+//             </li>
+//             <li className='list-group-item list-group-item-action d-flex justify-content-between align-items-center category'>
+//               {' '}
+//               Kitchen Accessories <span className='badge badge-primary badge-pill'>32</span>{' '}
+//             </li>
+//             <li className='list-group-item list-group-item-action d-flex justify-content-between align-items-center category'>
+//               {' '}
+//               Chefs Tips <span className='badge badge-primary badge-pill'>48</span>{' '}
+//             </li>
+//           </ul>
 //         </div>
-//         <div className='main-car-card-search-page'>
-//           {' '}
-//           <CarCard />
+//         <div className='py-3'>
+//           <h5 className='font-weight-bold'>Brands</h5>
+//           <form className='brand'>
+//             <div className='form-inline d-flex align-items-center py-1'>
+//               {' '}
+//               <label className='tick'>
+//                 Royal Fields <input type='checkbox' /> <span className='check'></span>{' '}
+//               </label>{' '}
+//             </div>
+//             <div className='form-inline d-flex align-items-center py-1'>
+//               {' '}
+//               <label className='tick'>
+//                 Crasmas Fields <input type='checkbox' checked /> <span className='check'></span>{' '}
+//               </label>{' '}
+//             </div>
+//             <div className='form-inline d-flex align-items-center py-1'>
+//               {' '}
+//               <label className='tick'>
+//                 Vegetarisma Farm <input type='checkbox' checked /> <span className='check'></span>{' '}
+//               </label>{' '}
+//             </div>
+//             <div className='form-inline d-flex align-items-center py-1'>
+//               {' '}
+//               <label className='tick'>
+//                 Farmar Field Eve <input type='checkbox' /> <span className='check'></span>{' '}
+//               </label>{' '}
+//             </div>
+//             <div className='form-inline d-flex align-items-center py-1'>
+//               {' '}
+//               <label className='tick'>
+//                 True Farmar Steve <input type='checkbox' /> <span className='check'></span>{' '}
+//               </label>{' '}
+//             </div>
+//           </form>
 //         </div>
-//         <div className='main-car-card-search-page'>
-//           {' '}
-//           <CarCard />
+//         <div className='py-3'>
+//           <h5 className='font-weight-bold'>Rating</h5>
+//           <form className='rating'>
+//             <div className='form-inline d-flex align-items-center py-2'>
+//               {' '}
+//               <label className='tick'>
+//                 <span className='fas fa-star'></span> <span className='fas fa-star'></span>{' '}
+//                 <span className='fas fa-star'></span> <span className='fas fa-star'></span>{' '}
+//                 <span className='fas fa-star'></span> <input type='checkbox' />{' '}
+//                 <span className='check'></span>{' '}
+//               </label>{' '}
+//             </div>
+//             <div className='form-inline d-flex align-items-center py-2'>
+//               {' '}
+//               <label className='tick'>
+//                 {' '}
+//                 <span className='fas fa-star'></span> <span className='fas fa-star'></span>{' '}
+//                 <span className='fas fa-star'></span> <span className='fas fa-star'></span>{' '}
+//                 <span className='far fa-star px-1 text-muted'></span> <input type='checkbox' />{' '}
+//                 <span className='check'></span>{' '}
+//               </label>{' '}
+//             </div>
+//             <div className='form-inline d-flex align-items-center py-2'>
+//               {' '}
+//               <label className='tick'>
+//                 <span className='fas fa-star'></span> <span className='fas fa-star'></span>{' '}
+//                 <span className='fas fa-star'></span>{' '}
+//                 <span className='far fa-star px-1 text-muted'></span>{' '}
+//                 <span className='far fa-star px-1 text-muted'></span> <input type='checkbox' />{' '}
+//                 <span className='check'></span>{' '}
+//               </label>{' '}
+//             </div>
+//             <div className='form-inline d-flex align-items-center py-2'>
+//               {' '}
+//               <label className='tick'>
+//                 <span className='fas fa-star'></span> <span className='fas fa-star'></span>{' '}
+//                 <span className='far fa-star px-1 text-muted'></span>{' '}
+//                 <span className='far fa-star px-1 text-muted'></span>{' '}
+//                 <span className='far fa-star px-1 text-muted'></span> <input type='checkbox' />{' '}
+//                 <span className='check'></span>{' '}
+//               </label>{' '}
+//             </div>
+//             <div className='form-inline d-flex align-items-center py-2'>
+//               {' '}
+//               <label className='tick'>
+//                 {' '}
+//                 <span className='fas fa-star'></span>{' '}
+//                 <span className='far fa-star px-1 text-muted'></span>{' '}
+//                 <span className='far fa-star px-1 text-muted'></span>{' '}
+//                 <span className='far fa-star px-1 text-muted'></span>{' '}
+//                 <span className='far fa-star px-1 text-muted'></span> <input type='checkbox' />{' '}
+//                 <span className='check'></span>{' '}
+//               </label>{' '}
+//             </div>
+//           </form>
 //         </div>
-//         <div className='main-car-card-search-page'>
-//           {' '}
-//           <CarCard />
-//         </div>
-//         <div className='main-car-card-search-page'>
-//           {' '}
-//           <CarCard />
-//         </div>
-//         <div className='main-car-card-search-page'>
-//           {' '}
-//           <CarCard />
-//         </div>
-//         <div className='main-car-card-search-page'>
-//           {' '}
-//           <CarCard />
-//         </div>
-//       </main>
+//       </div>
+//       <div className='content py-md-0 py-3'>
+//         <section id='sidebar'>
+//           <div className='py-3'>
+//             <h5 className='font-weight-bold'>Categories</h5>
+//             <ul className='list-group'>
+//               <li className='list-group-item list-group-item-action d-flex justify-content-between align-items-center category'>
+//                 {' '}
+//                 vegetables <span className='badge badge-primary badge-pill'>328</span>{' '}
+//               </li>
+//               <li className='list-group-item list-group-item-action d-flex justify-content-between align-items-center category'>
+//                 {' '}
+//                 Fruits <span className='badge badge-primary badge-pill'>112</span>{' '}
+//               </li>
+//               <li className='list-group-item list-group-item-action d-flex justify-content-between align-items-center category'>
+//                 {' '}
+//                 Kitchen Accessories <span className='badge badge-primary badge-pill'>32</span>{' '}
+//               </li>
+//               <li className='list-group-item list-group-item-action d-flex justify-content-between align-items-center category'>
+//                 {' '}
+//                 Chefs Tips <span className='badge badge-primary badge-pill'>48</span>{' '}
+//               </li>
+//             </ul>
+//           </div>
+//           <div className='py-3'>
+//             <h5 className='font-weight-bold'>Brands</h5>
+//             <form className='brand'>
+//               <div className='form-inline d-flex align-items-center py-1'>
+//                 {' '}
+//                 <label className='tick'>
+//                   Royal Fields <input type='checkbox' /> <span className='check'></span>{' '}
+//                 </label>{' '}
+//               </div>
+//               <div className='form-inline d-flex align-items-center py-1'>
+//                 {' '}
+//                 <label className='tick'>
+//                   Crasmas Fields <input type='checkbox' checked /> <span className='check'></span>{' '}
+//                 </label>{' '}
+//               </div>
+//               <div className='form-inline d-flex align-items-center py-1'>
+//                 {' '}
+//                 <label className='tick'>
+//                   Vegetarisma Farm <input type='checkbox' checked /> <span className='check'></span>{' '}
+//                 </label>{' '}
+//               </div>
+//               <div className='form-inline d-flex align-items-center py-1'>
+//                 {' '}
+//                 <label className='tick'>
+//                   Farmar Field Eve <input type='checkbox' /> <span className='check'></span>{' '}
+//                 </label>{' '}
+//               </div>
+//               <div className='form-inline d-flex align-items-center py-1'>
+//                 {' '}
+//                 <label className='tick'>
+//                   True Farmar Steve <input type='checkbox' /> <span className='check'></span>{' '}
+//                 </label>{' '}
+//               </div>
+//             </form>
+//           </div>
+//           <div className='py-3'>
+//             <h5 className='font-weight-bold'>Rating</h5>
+//             <form className='rating'>
+//               <div className='form-inline d-flex align-items-center py-2'>
+//                 {' '}
+//                 <label className='tick'>
+//                   <span className='fas fa-star'></span> <span className='fas fa-star'></span>{' '}
+//                   <span className='fas fa-star'></span> <span className='fas fa-star'></span>{' '}
+//                   <span className='fas fa-star'></span> <input type='checkbox' />{' '}
+//                   <span className='check'></span>{' '}
+//                 </label>{' '}
+//               </div>
+//               <div className='form-inline d-flex align-items-center py-2'>
+//                 {' '}
+//                 <label className='tick'>
+//                   {' '}
+//                   <span className='fas fa-star'></span> <span className='fas fa-star'></span>{' '}
+//                   <span className='fas fa-star'></span> <span className='fas fa-star'></span>{' '}
+//                   <span className='far fa-star px-1 text-muted'></span> <input type='checkbox' />{' '}
+//                   <span className='check'></span>{' '}
+//                 </label>{' '}
+//               </div>
+//               <div className='form-inline d-flex align-items-center py-2'>
+//                 {' '}
+//                 <label className='tick'>
+//                   <span className='fas fa-star'></span> <span className='fas fa-star'></span>{' '}
+//                   <span className='fas fa-star'></span>{' '}
+//                   <span className='far fa-star px-1 text-muted'></span>{' '}
+//                   <span className='far fa-star px-1 text-muted'></span> <input type='checkbox' />{' '}
+//                   <span className='check'></span>{' '}
+//                 </label>{' '}
+//               </div>
+//               <div className='form-inline d-flex align-items-center py-2'>
+//                 {' '}
+//                 <label className='tick'>
+//                   <span className='fas fa-star'></span> <span className='fas fa-star'></span>{' '}
+//                   <span className='far fa-star px-1 text-muted'></span>{' '}
+//                   <span className='far fa-star px-1 text-muted'></span>{' '}
+//                   <span className='far fa-star px-1 text-muted'></span> <input type='checkbox' />{' '}
+//                   <span className='check'></span>{' '}
+//                 </label>{' '}
+//               </div>
+//               <div className='form-inline d-flex align-items-center py-2'>
+//                 {' '}
+//                 <label className='tick'>
+//                   {' '}
+//                   <span className='fas fa-star'></span>{' '}
+//                   <span className='far fa-star px-1 text-muted'></span>{' '}
+//                   <span className='far fa-star px-1 text-muted'></span>{' '}
+//                   <span className='far fa-star px-1 text-muted'></span>{' '}
+//                   <span className='far fa-star px-1 text-muted'></span> <input type='checkbox' />{' '}
+//                   <span className='check'></span>{' '}
+//                 </label>{' '}
+//               </div>
+//             </form>
+//           </div>
+//         </section>
+//       </div>
 //     </div>
-//   );
-// };
-
-// export default SideFilter;
-
-// // <>
-// //       <div className='sidebar'>
-// //         <div className='container'>
-// //           <div className='row'>
-// //             <aside className='col-md-3'>
-// //               <div className='card'>
-// //                 <article className='filter-group'>
-// //                   <header className='card-header'>
-// //                     <a
-// //                       href='#'
-// //                       data-toggle='collapse'
-// //                       data-target='#collapse_2'
-// //                       aria-expanded='true'
-// //                       className=''
-// //                     >
-// //                       <i className='icon-control fa fa-chevron-down'></i>
-// //                       <h6 className='title'>Brands </h6>
-// //                     </a>
-// //                   </header>
-// //                   <div className='filter-content collapse show' id='collapse_2'>
-// //                     <div className='card-body'>
-// //                       <label className='custom-control custom-checkbox'>
-// //                         <input
-// //                           type='checkbox'
-// //                           className='custom-control-input'
-// //                         />
-// //                         <div className='custom-control-label'>
-// //                           Mercedes
-// //                           <b className='badge badge-pill badge-light float-right'>
-// //                             120
-// //                           </b>{' '}
-// //                         </div>
-// //                       </label>
-// //                       <label className='custom-control custom-checkbox'>
-// //                         <input
-// //                           type='checkbox'
-// //                           className='custom-control-input'
-// //                         />
-// //                         <div className='custom-control-label'>
-// //                           Toyota
-// //                           <b className='badge badge-pill badge-light float-right'>
-// //                             15
-// //                           </b>{' '}
-// //                         </div>
-// //                       </label>
-// //                       <label className='custom-control custom-checkbox'>
-// //                         <input
-// //                           type='checkbox'
-// //                           className='custom-control-input'
-// //                         />
-// //                         <div className='custom-control-label'>
-// //                           Mitsubishi
-// //                           <b className='badge badge-pill badge-light float-right'>
-// //                             35
-// //                           </b>{' '}
-// //                         </div>
-// //                       </label>
-// //                       <label className='custom-control custom-checkbox'>
-// //                         <input
-// //                           type='checkbox'
-// //                           className='custom-control-input'
-// //                         />
-// //                         <div className='custom-control-label'>
-// //                           Nissan
-// //                           <b className='badge badge-pill badge-light float-right'>
-// //                             89
-// //                           </b>{' '}
-// //                         </div>
-// //                       </label>
-// //                       <label className='custom-control custom-checkbox'>
-// //                         <input
-// //                           type='checkbox'
-// //                           className='custom-control-input'
-// //                         />
-// //                         <div className='custom-control-label'>
-// //                           Honda
-// //                           <b className='badge badge-pill badge-light float-right'>
-// //                             30
-// //                           </b>{' '}
-// //                         </div>
-// //                       </label>
-// //                     </div>
-// //                   </div>
-// //                 </article>
-// //                 <article className='filter-group'>
-// //                   <header className='card-header'>
-// //                     <a
-// //                       href='#'
-// //                       data-toggle='collapse'
-// //                       data-target='#collapse_3'
-// //                       aria-expanded='true'
-// //                       className=''
-// //                     >
-// //                       <i className='icon-control fa fa-chevron-down'></i>
-// //                       <h6 className='title'>Price range </h6>
-// //                     </a>
-// //                   </header>
-// //                   <div className='filter-content collapse show' id='collapse_3'>
-// //                     <div className='card-body'>
-// //                       <input
-// //                         type='range'
-// //                         className='custom-range'
-// //                         min='0'
-// //                         max='100'
-// //                         name=''
-// //                       />
-// //                       <div className='form-row'>
-// //                         <div className='form-group col-md-6'>
-// //                           <label>Min</label>
-// //                           <input
-// //                             className='form-control'
-// //                             placeholder='$0'
-// //                             type='number'
-// //                           />
-// //                         </div>
-// //                         <div className='form-group text-right col-md-6'>
-// //                           <label>Max</label>
-// //                           <input
-// //                             className='form-control'
-// //                             placeholder='$1,0000'
-// //                             type='number'
-// //                           />
-// //                         </div>
-// //                       </div>
-// //                       <button className='btn btn-block btn-primary'>
-// //                         Apply
-// //                       </button>
-// //                     </div>
-// //                   </div>
-// //                 </article>
-// //                 <article className='filter-group'>
-// //                   <header className='card-header'>
-// //                     <a
-// //                       href='#'
-// //                       data-toggle='collapse'
-// //                       data-target='#collapse_4'
-// //                       aria-expanded='true'
-// //                       className=''
-// //                     >
-// //                       <i className='icon-control fa fa-chevron-down'></i>
-// //                       <h6 className='title'>Sizes </h6>
-// //                     </a>
-// //                   </header>
-// //                   <div className='filter-content collapse show' id='collapse_4'>
-// //                     <div className='card-body'>
-// //                       <label className='checkbox-btn'>
-// //                         <input type='checkbox' />
-// //                         <span className='btn btn-light'> XS </span>
-// //                       </label>
-// //                       <label className='checkbox-btn'>
-// //                         <input type='checkbox' />
-// //                         <span className='btn btn-light'> SM </span>
-// //                       </label>
-// //                       <label className='checkbox-btn'>
-// //                         <input type='checkbox' />
-// //                         <span className='btn btn-light'> LG </span>
-// //                       </label>
-// //                       <label className='checkbox-btn'>
-// //                         <input type='checkbox' />
-// //                         <span className='btn btn-light'> XXL </span>
-// //                       </label>
-// //                     </div>
-// //                   </div>
-// //                 </article>
-// //                 <article className='filter-group'>
-// //                   <header className='card-header'>
-// //                     <a
-// //                       href='#'
-// //                       data-toggle='collapse'
-// //                       data-target='#collapse_5'
-// //                       aria-expanded='false'
-// //                       className=''
-// //                     >
-// //                       <i className='icon-control fa fa-chevron-down'></i>
-// //                       <h6 className='title'>More filter </h6>
-// //                     </a>
-// //                   </header>
-// //                   <div className='filter-content collapse in' id='collapse_5'>
-// //                     <div className='card-body'>
-// //                       <label className='custom-control custom-radio'>
-// //                         <input
-// //                           type='radio'
-// //                           name='myfilter_radio'
-// //                           checked=''
-// //                           className='custom-control-input'
-// //                         />
-// //                         <div className='custom-control-label'>
-// //                           Any condition
-// //                         </div>
-// //                       </label>
-// //                       <label className='custom-control custom-radio'>
-// //                         <input
-// //                           type='radio'
-// //                           name='myfilter_radio'
-// //                           className='custom-control-input'
-// //                         />
-// //                         <div className='custom-control-label'>Brand new </div>
-// //                       </label>
-// //                       <label className='custom-control custom-radio'>
-// //                         <input
-// //                           type='radio'
-// //                           name='myfilter_radio'
-// //                           className='custom-control-input'
-// //                         />
-// //                         <div className='custom-control-label'>Used items</div>
-// //                       </label>
-// //                       <label className='custom-control custom-radio'>
-// //                         <input
-// //                           type='radio'
-// //                           name='myfilter_radio'
-// //                           className='custom-control-input'
-// //                         />
-// //                         <div className='custom-control-label'>Very old</div>
-// //                       </label>
-// //                     </div>
-// //                   </div>
-// //                 </article>
-// //               </div>
-// //             </aside>
-// //           </div>
-// //         </div>
-// //       </div>
-
-// //       <div className='page'>
-// //         <div className='main-wrapper'>
-// //           <CarCard />
-// //         </div>
-// //       </div>
-// //     </>

@@ -29,3 +29,16 @@ export const priceOptions = [
   '95000',
   '100000',
 ];
+
+export const SCREENS = {
+  sm: '660px',
+  md: '820px',
+  lg: '1024px',
+  xl: '1280px',
+  '2xl': '1536px',
+};
+
+export const BUTTONS = {
+  FILLED: 'filled',
+  OUTLINE: 'outline',
+};

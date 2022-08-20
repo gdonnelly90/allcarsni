@@ -66,6 +66,24 @@ export const postVehicle = async (vehicle) => {
   }
 };
 
+// function to get all filter data
+export const fetchFilterData = async () => {
+  try {
+    //   const makePromise = apiClient.get('/api/v1/filters/vehicle/makes');
+    //   const colourPromise = apiClient.get('/api/v1/filters/vehicle/colours');
+    //   const bodyStylePromise = apiClient.get('/api/v1/filters/vehicle/bodystyles');
+    //   const cenginseSpectPromise = apiClient.get('/api/v1/filters/vehicle/enginespecs');
+
+    // const [makes, colours, bodyStyle, engineSpec] = await Promise.all([makePromise, colourPromise, ...]);
+
+    const { data } = await apiClient.get('/api/v1/filters/vehicle/makes');
+    // return [makes,....];
+    return data;
+  } catch (error) {
+    return error;
+  }
+};
+
 // // get all vehicles
 // export const fetchAllVehicles = async (pageNumber, query = '') => {
 //   try {

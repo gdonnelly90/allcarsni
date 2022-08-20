@@ -31,6 +31,7 @@ app.use('/api/v1/users', routes.user);
 app.use('/api/v1/vehicles', routes.vehicle);
 app.use('/api/v1/subscriptiontypes', routes.subscriptionType);
 app.use('/api/v1/reviews', routes.review);
+app.use('/api/v1/filters', routes.filters);
 
 const PORT = process.env.PORT || 5008;
 

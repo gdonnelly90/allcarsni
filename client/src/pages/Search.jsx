@@ -2,16 +2,17 @@ import React, { useEffect, useState } from 'react';
 import CarCard from '../components/car/CarCard';
 // import { SideFilterNew } from '../components/search/SideFilterNew';
 import { SearchDrawer } from '../components/search/SearchDrawer';
-import { fetchAllVehicles } from '../services/vehicle.service';
+import { fetchAllVehicles, fetchFilterData } from '../services/vehicle.service';
 import Pagination from 'react-bootstrap/Pagination';
-import qs from 'qs';
 import queryString from 'query-string';
+import { toast } from 'react-toastify';
 
 const Search = ({ make, model, price, year, mileage, fuelType, colour, onHandleChange }) => {
   const [vehicles, setVehicles] = useState([]);
   const [query, setQuery] = useState({});
   const [pageNumber, setPageNumber] = useState(1);
   const [numberOfPages, setNumberOfPages] = useState(1);
+  const [makes, setMakes] = useState([]);
   // const [countVehicles, setCountVehicles] = useState([]);
 
   const generatePages = () => {
@@ -35,12 +36,29 @@ const Search = ({ make, model, price, year, mileage, fuelType, colour, onHandleC
     window.scrollTo(0, 0);
   };
 
+  // function to get all filter data
+  const getInitialFilterData = async () => {
+    try {
+      const data = await fetchFilterData();
+      // const [makes, colours....] = await fetchFilterData();
+      console.log('FILTER DATA');
+      console.log(data);
+      // setColours(colours)
+      setMakes(data);
+    } catch (error) {
+      toast.error(error.message);
+    }
+  };
+
   const onPageNoChange = (event, pageIndex) => {
     const parsedQuery = { ...query, page: pageIndex + 1 };
-    setQuery(parsedQuery);
+    // set page number
     setPageNumber(pageIndex + 1);
+    // updateURL
     setURL(parsedQuery);
-    getVehicles(parsedQuery);
+    // set query local value
+    setQuery(parsedQuery);
+    // getVehicles(parsedQuery);
   };
 
   const stringifyUrl = (obj) => {
@@ -60,10 +78,10 @@ const Search = ({ make, model, price, year, mileage, fuelType, colour, onHandleC
     const parsedQuery = { ...queryString.parse(query), page: 1, [`${key}`]: value };
     // keep obj {make: 'BMW',
     setURL(parsedQuery);
-
+    // set local query
     setQuery(parsedQuery);
 
-    getVehicles(parsedQuery);
+    // getVehicles(parsedQuery);
   };
 
   const buildQuery = () => {
@@ -72,24 +90,31 @@ const Search = ({ make, model, price, year, mileage, fuelType, colour, onHandleC
 
     const fullQuery = { ...queryString.parse(windowSearch) };
     // set the query string needed for API call
-    setQuery(fullQuery);
+    // setQuery(fullQuery);
 
     getVehicles(fullQuery);
   };
 
   useEffect(() => {
     buildQuery();
-  }, []);
+  }, [query]);
 
   useEffect(() => {
     generatePages();
   }, [numberOfPages]);
 
+  // usEeffect for getting filters DB info
+  // LEave blank [] for single actioning
+  useEffect(() => {
+    getInitialFilterData();
+  }, []);
+
   return (
     <div className='main-search-container'>
       <div className='sidebar-search-page'>
         {/* <SideFilterNew /> */}
-        <SearchDrawer onSearchValueChange={onSearchValueChange} />
+        {/*// replicate for all, in order*/}
+        <SearchDrawer makes={makes} onSearchValueChange={onSearchValueChange} />
       </div>
       <div className='card-search-container'>
         <div className='container-search-page'>

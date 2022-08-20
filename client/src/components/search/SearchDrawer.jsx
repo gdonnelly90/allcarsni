@@ -8,7 +8,7 @@ import { COLOUR } from '../../utils/constants';
 import { FUEL_TYPE } from '../../utils/constants';
 import { BODYTYPE } from '../../utils/constants';
 
-export const SearchDrawer = ({ onSearchValueChange }) => {
+export const SearchDrawer = ({ makes, onSearchValueChange }) => {
   let navigate = useNavigate();
   const [activeMake, setActiveMake] = useState('');
 
@@ -99,16 +99,14 @@ export const SearchDrawer = ({ onSearchValueChange }) => {
             id='make'
             name='make'
             onChange={(e) => onMakeChange(e)}>
-            <option>Make</option>
-            <option selected={activeMake === MAKE.AUDI} value={MAKE.AUDI}>
-              {MAKE.AUDI}
+            <option value='' defaultValue={''}>
+              Make
             </option>
-            <option selected={activeMake === MAKE.BMW} value={MAKE.BMW}>
-              {MAKE.BMW}
-            </option>
-            <option selected={activeMake === MAKE.LAMBO} value={MAKE.LAMBO}>
-              {MAKE.LAMBO}
-            </option>
+            {makes.map((make, i) => (
+              <option key={i} value={make} selected={activeMake == make}>
+                {make}
+              </option>
+            ))}
           </Form.Select>
         </div>
       </div>
@@ -119,6 +117,7 @@ export const SearchDrawer = ({ onSearchValueChange }) => {
         name='model'
         onChange={(e) => onModelChange(e)}>
         <option>Model</option>
+        // change activeMake to activeModel
         <option selected={activeMake === MODEL.MODEL1} value={MODEL.MODEL1}>
           {MODEL.MODEL1}
         </option>

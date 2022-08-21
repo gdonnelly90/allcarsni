@@ -1134,7 +1134,11 @@ li {
   font-size: 1.5rem;;
 }
 
-/* Slider CSS */
+/* Reset button */
+.reset-filters-button {
+  margin-left: 150px;
+  margin-top: -53px;
+}
 
 /* /*Search filter customisation
 .filter-holder-text {

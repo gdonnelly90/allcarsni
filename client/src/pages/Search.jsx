@@ -56,8 +56,8 @@ const Search = ({ make, model, price, year, mileage, fuelType, colour, onHandleC
     try {
       // const data = await fetchFilterData();
       const [makes, colours] = await fetchFilterData();
-      console.log('FILTER DATA');
-      console.log(`${JSON.stringify(makes, null, 2)} ${JSON.stringify(colours, null, 2)}`);
+      // console.log('FILTER DATA');
+      // console.log(`${JSON.stringify(makes, null, 2)} ${JSON.stringify(colours, null, 2)}`);
       setMakes(makes);
       setColours(colours);
     } catch (error) {

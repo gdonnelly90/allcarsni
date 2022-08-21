@@ -8,6 +8,7 @@ import { MODEL } from '../../utils/constants';
 // import { COLOUR } from '../../utils/constants';
 import { FUEL_TYPE } from '../../utils/constants';
 import { BODYTYPE } from '../../utils/constants';
+import { Checkbox } from './Checkbox';
 
 export const SearchDrawer = ({ makes, models, colours, onSearchValueChange }) => {
   // let navigate = useNavigate();
@@ -22,13 +23,13 @@ export const SearchDrawer = ({ makes, models, colours, onSearchValueChange }) =>
   const [activeFuelType, setActiveFuelType] = useState('');
 
   const onStatusChange = (e) => {
-    // console.log('CONSOLE LOG E');
-    // console.log(e);
+    console.log('CONSOLE LOG E');
+    console.log(e);
     const {
       target: { value },
     } = e;
     setActiveStatus(value, activeStatus);
-    onSearchValueChange({ key: 'isNewCar', value });
+    onSearchValueChange({ key: 'isNewCar', value: 'true' });
     // the field in the car model is called 'isNewCar' and its a boolean
   };
 
@@ -96,12 +97,31 @@ export const SearchDrawer = ({ makes, models, colours, onSearchValueChange }) =>
     onSearchValueChange({ key: 'fuelType', value });
   };
 
+  // const handleCheck = (e) => {
+  //   // const {target: { value },
+  //   // } = e;
+  //   if (e.{target: { value }}.checked) {
+  //     setActiveStatus(value, activeStatus);
+  //     onSearchValueChange({ key: 'isNewCar', value: 'true' });
+  //   }
+  // };
+
   return (
     <div className='search-drawer-container p-5'>
       <p className='siderbar-text'>Filters</p>
       <div className='dropdown'>
         <p className='siderbar-filter-text mt-3'>Car Status</p>
-        <div>
+        <Checkbox label=' Select for New Cars only' onChange={(e) => onStatusChange(e)} />
+        {/* <p className='siderbar-filter-text mt-2'>Select for New Cars Only</p> */}
+        {/* <div class='form-check mb20'>
+          <input class='form-check-input' type='checkbox' value='' id='flexCheckPetrolSbp' />
+          <label class='form-check-label' for='flexCheckPetrolSbp'>
+            Select for New Cars Only
+          </label>
+        </div> */}
+        {/* input value='isNewCar' type='checkbox' onChange={handleCheck} /> */}
+        {/* Vegetarisma Farm <input type='checkbox' checked /> <span className='check'></span>{' '} */}
+        {/* <div>
           <Form.Select
             className='filter-holder-text'
             aria-label='select dropdown'
@@ -116,7 +136,7 @@ export const SearchDrawer = ({ makes, models, colours, onSearchValueChange }) =>
               {STATUS.USED}
             </option>
           </Form.Select>
-        </div>
+        </div> */}
         <p className='siderbar-filter-text mt-5'>Make & Model</p>
         <div>
           <Form.Select

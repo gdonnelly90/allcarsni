@@ -11,7 +11,7 @@ import Pagination from 'react-bootstrap/Pagination';
 import queryString from 'query-string';
 import { toast } from 'react-toastify';
 
-const Search = ({ make, model, price, year, mileage, fuelType, colour, onHandleChange }) => {
+const Search = ({}) => {
   const [vehicles, setVehicles] = useState([]);
   const [query, setQuery] = useState({});
   const [pageNumber, setPageNumber] = useState(1);
@@ -19,6 +19,8 @@ const Search = ({ make, model, price, year, mileage, fuelType, colour, onHandleC
   const [makes, setMakes] = useState([]);
   const [colours, setColours] = useState([]);
   const [models, setModels] = useState([]);
+  const [bodyTypes, setBodyTypes] = useState([]);
+  const [fuelTypes, setFuelTypes] = useState([]);
   // const [countVehicles, setCountVehicles] = useState([]);
 
   const generatePages = () => {
@@ -55,11 +57,13 @@ const Search = ({ make, model, price, year, mileage, fuelType, colour, onHandleC
   const getInitialFilterData = async () => {
     try {
       // const data = await fetchFilterData();
-      const [makes, colours] = await fetchFilterData();
+      const [makes, colours, bodyTypes, fuelTypes] = await fetchFilterData();
       // console.log('FILTER DATA');
       // console.log(`${JSON.stringify(makes, null, 2)} ${JSON.stringify(colours, null, 2)}`);
       setMakes(makes);
       setColours(colours);
+      setBodyTypes(bodyTypes);
+      setFuelTypes(fuelTypes);
     } catch (error) {
       toast.error(error.message);
     }
@@ -131,12 +135,12 @@ const Search = ({ make, model, price, year, mileage, fuelType, colour, onHandleC
   return (
     <div className='main-search-container'>
       <div className='sidebar-search-page'>
-        {/* <SideFilterNew /> */}
-        {/*// replicate for all, in order*/}
         <SearchDrawer
           makes={makes}
           models={models}
           colours={colours}
+          bodyTypes={bodyTypes}
+          fuelTypes={fuelTypes}
           onSearchValueChange={onSearchValueChange}
         />
       </div>

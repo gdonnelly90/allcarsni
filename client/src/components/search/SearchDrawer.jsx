@@ -1,18 +1,18 @@
 import React, { useState, UseEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { Form, Row, Col, Button } from 'react-bootstrap';
+import { Form, Button } from 'react-bootstrap';
 import { PRICE_MILEAGE_FIGURE } from '../../utils/constants';
-// import { MAKE } from '../../utils/constants';
-import { STATUS } from '../../utils/constants';
-import { MODEL } from '../../utils/constants';
-// import { COLOUR } from '../../utils/constants';
 import { FUEL_TYPE } from '../../utils/constants';
-import { BODYTYPE } from '../../utils/constants';
 import { Checkbox } from './Checkbox';
 import { Box } from '@mui/material';
 
-export const SearchDrawer = ({ makes, models, colours, onSearchValueChange }) => {
-  let navigate = useNavigate();
+export const SearchDrawer = ({
+  makes,
+  models,
+  colours,
+  bodyTypes,
+  fuelTypes,
+  onSearchValueChange,
+}) => {
   const [activeStatus, setActiveStatus] = useState('');
   const [activeMake, setActiveMake] = useState('');
   const [activeModel, setActiveModel] = useState('');
@@ -74,7 +74,7 @@ export const SearchDrawer = ({ makes, models, colours, onSearchValueChange }) =>
     onSearchValueChange({ key: 'price[lte]', value });
   };
 
-  const onBodyChange = (e) => {
+  const onBodyTypeChange = (e) => {
     const {
       target: { value },
     } = e;
@@ -90,7 +90,7 @@ export const SearchDrawer = ({ makes, models, colours, onSearchValueChange }) =>
     onSearchValueChange({ key: 'mileage[lte]', value });
   };
 
-  const onFuelChange = (e) => {
+  const onFuelTypeChange = (e) => {
     const {
       target: { value },
     } = e;
@@ -232,17 +232,16 @@ export const SearchDrawer = ({ makes, models, colours, onSearchValueChange }) =>
           aria-label='select dropdown'
           id='bodyType'
           name='bodyType'
-          onChange={(e) => onBodyChange(e)}>
-          <option>Body Style:</option>
-          <option selected={activeBodyType === BODYTYPE.ESTATE} value={BODYTYPE.ESTATE}>
-            {BODYTYPE.ESTATE}
+          onChange={(e) => onBodyTypeChange(e)}>
+          <option value='' defaultValue={''}>
+            Body Types:
           </option>
-          <option selected={activeBodyType === BODYTYPE.SALOON} value={BODYTYPE.SALOON}>
-            {BODYTYPE.SALOON}
-          </option>
-          <option selected={activeBodyType === BODYTYPE.SUV} value={BODYTYPE.SUV}>
-            {BODYTYPE.SUV}
-          </option>
+          {bodyTypes &&
+            bodyTypes.map((bodyType, i) => (
+              <option key={i} value={bodyType} selected={activeBodyType == bodyType}>
+                {bodyType}
+              </option>
+            ))}
         </Form.Select>
       </div>
 
@@ -278,17 +277,16 @@ export const SearchDrawer = ({ makes, models, colours, onSearchValueChange }) =>
         aria-label='select dropdown'
         id='fuelType'
         name='fuelType'
-        onChange={(e) => onFuelChange(e)}>
-        <option>Fuel Type:</option>
-        <option selected={activeFuelType === FUEL_TYPE.ELECTRIC} value={FUEL_TYPE.ELECTRIC}>
-          {FUEL_TYPE.ELECTRIC}
+        onChange={(e) => onFuelTypeChange(e)}>
+        <option value='' defaultValue={''}>
+          Fuel Types:
         </option>
-        <option selected={activeFuelType === FUEL_TYPE.PETROL} value={FUEL_TYPE.PETROL}>
-          {FUEL_TYPE.PETROL}
-        </option>
-        <option selected={activeFuelType === FUEL_TYPE.DIESEL} value={FUEL_TYPE.DIESEL}>
-          {FUEL_TYPE.DIESEL}
-        </option>
+        {fuelTypes &&
+          fuelTypes.map((fuelType, i) => (
+            <option key={i} value={fuelType} selected={activeFuelType == fuelType}>
+              {fuelType}
+            </option>
+          ))}
       </Form.Select>
     </div>
   );
@@ -328,4 +326,24 @@ export const SearchDrawer = ({ makes, models, colours, onSearchValueChange }) =>
             </option>
           </Form.Select>
         </div> */
+}
+
+{
+  /* <Form.Select
+          className='filter-holder-text mt-3'
+          aria-label='select dropdown'
+          id='bodyType'
+          name='bodyType'
+          onChange={(e) => onBodyChange(e)}>
+          <option>Body Style:</option>
+          <option selected={activeBodyType === BODYTYPE.ESTATE} value={BODYTYPE.ESTATE}>
+            {BODYTYPE.ESTATE}
+          </option>
+          <option selected={activeBodyType === BODYTYPE.SALOON} value={BODYTYPE.SALOON}>
+            {BODYTYPE.SALOON}
+          </option>
+          <option selected={activeBodyType === BODYTYPE.SUV} value={BODYTYPE.SUV}>
+            {BODYTYPE.SUV}
+          </option>
+        </Form.Select> */
 }

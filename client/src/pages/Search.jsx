@@ -2,7 +2,11 @@ import React, { useEffect, useState } from 'react';
 import CarCard from '../components/car/CarCard';
 // import { SideFilterNew } from '../components/search/SideFilterNew';
 import { SearchDrawer } from '../components/search/SearchDrawer';
-import { fetchAllVehicles, fetchFilterData } from '../services/vehicle.service';
+import {
+  fetchAllVehicles,
+  fetchFilterData,
+  fetchVehicleModelsByMake,
+} from '../services/vehicle.service';
 import Pagination from 'react-bootstrap/Pagination';
 import queryString from 'query-string';
 import { toast } from 'react-toastify';
@@ -13,6 +17,8 @@ const Search = ({ make, model, price, year, mileage, fuelType, colour, onHandleC
   const [pageNumber, setPageNumber] = useState(1);
   const [numberOfPages, setNumberOfPages] = useState(1);
   const [makes, setMakes] = useState([]);
+  const [colours, setColours] = useState([]);
+  const [models, setModels] = useState([]);
   // const [countVehicles, setCountVehicles] = useState([]);
 
   const generatePages = () => {
@@ -36,15 +42,24 @@ const Search = ({ make, model, price, year, mileage, fuelType, colour, onHandleC
     window.scrollTo(0, 0);
   };
 
+  const getModels = async (model) => {
+    try {
+      const response = await fetchVehicleModelsByMake(model);
+      setModels(response);
+    } catch (error) {
+      toast.error(error.message);
+    }
+  };
+
   // function to get all filter data
   const getInitialFilterData = async () => {
     try {
-      const data = await fetchFilterData();
-      // const [makes, colours....] = await fetchFilterData();
+      // const data = await fetchFilterData();
+      const [makes, colours] = await fetchFilterData();
       console.log('FILTER DATA');
-      console.log(data);
-      // setColours(colours)
-      setMakes(data);
+      console.log(`${JSON.stringify(makes, null, 2)} ${JSON.stringify(colours, null, 2)}`);
+      setMakes(makes);
+      setColours(colours);
     } catch (error) {
       toast.error(error.message);
     }
@@ -72,6 +87,12 @@ const Search = ({ make, model, price, year, mileage, fuelType, colour, onHandleC
   const onSearchValueChange = (param) => {
     // {make : BMW }
     const { key, value } = param;
+
+    // if param.key is of make - call model api
+    if (key === 'make') {
+      getModels(value);
+    }
+
     // window. location
     const query = window.location.search;
     // return object of query string to make it easier to process
@@ -80,8 +101,6 @@ const Search = ({ make, model, price, year, mileage, fuelType, colour, onHandleC
     setURL(parsedQuery);
     // set local query
     setQuery(parsedQuery);
-
-    // getVehicles(parsedQuery);
   };
 
   const buildQuery = () => {
@@ -114,7 +133,12 @@ const Search = ({ make, model, price, year, mileage, fuelType, colour, onHandleC
       <div className='sidebar-search-page'>
         {/* <SideFilterNew /> */}
         {/*// replicate for all, in order*/}
-        <SearchDrawer makes={makes} onSearchValueChange={onSearchValueChange} />
+        <SearchDrawer
+          makes={makes}
+          models={models}
+          colours={colours}
+          onSearchValueChange={onSearchValueChange}
+        />
       </div>
       <div className='card-search-container'>
         <div className='container-search-page'>

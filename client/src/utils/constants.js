@@ -16,14 +16,15 @@ export const APP_TABS = {
   SELL: 'sell',
 };
 
-export const MAKE = {
-  AUDI: 'Audi',
-  BMW: 'BMW',
-  LAMBO: 'Lambo',
-};
+// export const MAKE = {
+//   AUDI: 'Audi',
+//   BMW: 'BMW',
+//   LAMBO: 'Lambo',
+// };
 
 export const PRICE_MILEAGE_FIGURE = {
-  ONE: 0,
+  ZERO: 0,
+  ONE: 1000,
   TWO: 5000,
   THREE: 10000,
   FOUR: 15000,
@@ -46,11 +47,11 @@ export const PRICE_MILEAGE_FIGURE = {
   TWENTYONE: 100000,
 };
 
-export const COLOUR = {
-  BLACK: 'Black',
-  WHITE: 'White',
-  GREY: 'Grey',
-};
+// export const COLOUR = {
+//   BLACK: 'Black',
+//   WHITE: 'White',
+//   BLUE: 'Blue',
+// };
 
 export const FUEL_TYPE = {
   ELECTRIC: 'Electric',
@@ -62,4 +63,22 @@ export const MODEL = {
   MODEL1: 'Model 1',
   MODEL2: 'Model 2',
   MODEL3: 'Model 3',
+};
+
+export const STATUS = {
+  NEW: 'true',
+  USED: 'false',
+};
+
+export const SCREENS = {
+  sm: '660px',
+  md: '820px',
+  lg: '1024px',
+  xl: '1280px',
+  '2xl': '1536px',
+};
+
+export const BUTTONS = {
+  FILLED: 'filled',
+  OUTLINE: 'outline',
 };

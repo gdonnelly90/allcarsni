@@ -69,15 +69,24 @@ export const postVehicle = async (vehicle) => {
 // function to get all filter data
 export const fetchFilterData = async () => {
   try {
-    //   const makePromise = apiClient.get('/api/v1/filters/vehicle/makes');
-    //   const colourPromise = apiClient.get('/api/v1/filters/vehicle/colours');
+    const makePromise = apiClient.get('/api/v1/filters/vehicle/makes');
+    const colourPromise = apiClient.get('/api/v1/filters/vehicle/colours');
     //   const bodyStylePromise = apiClient.get('/api/v1/filters/vehicle/bodystyles');
     //   const cenginseSpectPromise = apiClient.get('/api/v1/filters/vehicle/enginespecs');
 
-    // const [makes, colours, bodyStyle, engineSpec] = await Promise.all([makePromise, colourPromise, ...]);
+    // promise all - resolves when all querries have fulfilled get inital filter data
+    const [makes, colours] = await Promise.all([makePromise, colourPromise]);
 
-    const { data } = await apiClient.get('/api/v1/filters/vehicle/makes');
-    // return [makes,....];
+    // const { data } = await apiClient.get('/api/v1/filters/vehicle/makes');
+    return [makes.data, colours.data];
+  } catch (error) {
+    return error;
+  }
+};
+
+export const fetchVehicleModelsByMake = async (make) => {
+  try {
+    const { data } = await apiClient.get(`api/v1/filters/vehicle/${make}/models`);
     return data;
   } catch (error) {
     return error;

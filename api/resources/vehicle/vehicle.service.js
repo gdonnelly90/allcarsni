@@ -1,7 +1,7 @@
 import { isEmpty, round } from 'lodash-es';
 import { pascalCase } from 'pascal-case';
 
-// - data processing function for UKVehicleData - ie normalising our data for our DB
+// - data processing function for UKVehicleData - ie normalising data for  DB
 const formatUKVehicleData = (data) => {
   let masterData = {};
   if (!isEmpty(data)) {

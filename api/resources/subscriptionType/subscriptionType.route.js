@@ -85,7 +85,7 @@ router.post('/', auth, restrict(['admin']), async (req, res) => {
       quantity,
     });
     if (stripeProduct.success) {
-      // create new sub model and store in our db
+      // create new sub model and store in db
       subscriptionType = new SubscriptionType({
         name,
         price,

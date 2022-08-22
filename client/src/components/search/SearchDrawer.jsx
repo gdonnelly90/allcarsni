@@ -1,7 +1,6 @@
-import React, { useState, UseEffect } from 'react';
+import React, { useState } from 'react';
 import { Form, Button } from 'react-bootstrap';
 import { PRICE_MILEAGE_FIGURE } from '../../utils/constants';
-import { FUEL_TYPE } from '../../utils/constants';
 import { Checkbox } from './Checkbox';
 import { Box } from '@mui/material';
 
@@ -124,7 +123,7 @@ export const SearchDrawer = ({
             id='make'
             name='make'
             onChange={(e) => onMakeChange(e)}>
-            <option value='' defaultValue={''}>
+            <option value='' defaultValue=''>
               Make:
             </option>
             {makes &&
@@ -143,7 +142,7 @@ export const SearchDrawer = ({
         id='model'
         name='model'
         onChange={(e) => onModelChange(e)}>
-        <option value='' defaultValue={''}>
+        <option value='' defaultValue=''>
           Model:
         </option>
         {models &&
@@ -162,7 +161,7 @@ export const SearchDrawer = ({
           id='colours'
           name='colours'
           onChange={(e) => onColourChange(e)}>
-          <option value='' defaultValue={''}>
+          <option value='' defaultValue=''>
             Colour
           </option>
           {colours &&
@@ -233,7 +232,7 @@ export const SearchDrawer = ({
           id='bodyType'
           name='bodyType'
           onChange={(e) => onBodyTypeChange(e)}>
-          <option value='' defaultValue={''}>
+          <option value='' defaultValue=''>
             Body Types:
           </option>
           {bodyTypes &&
@@ -278,7 +277,7 @@ export const SearchDrawer = ({
         id='fuelType'
         name='fuelType'
         onChange={(e) => onFuelTypeChange(e)}>
-        <option value='' defaultValue={''}>
+        <option value='' defaultValue=''>
           Fuel Types:
         </option>
         {fuelTypes &&

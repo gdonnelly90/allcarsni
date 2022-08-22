@@ -24,7 +24,7 @@ router.get('/vehicle/:make/models', async (req, res) => {
     // create a variable from req.params to get the make from the url
     const { make } = req.params;
 
-    // write a find query to filter our data by the {make: make} and distinct the models field
+    // write a find query to filter data by the {make: make} and distinct the models field
     const models = await Vehicle.find({ make: make }).distinct('model');
     res.status(200).json(models);
   } catch (error) {
@@ -51,7 +51,7 @@ router.get('/vehicle/colours', async (req, res) => {
       query = { ...query, model: model };
     }
 
-    // build up our query using aggregate
+    // build up query using aggregate
     // vehicles = await Vehicle.aggregate([
     //   { $match: query },
     //   {

@@ -4,8 +4,9 @@ import { ToastContainer } from 'react-toastify';
 import { AppProvider } from './context/appContext';
 import { AppShell } from './AppShell';
 import { ProtectedRoute } from './components/common/ProtectedRoute';
-import Home2 from './pages/Home2';
+import { Home2 } from './pages/Home2';
 import { Register } from './pages/Register';
+import { FeaturedReview } from './pages/FeaturedReview';
 import { Login } from './pages/Login';
 import { Account } from './pages/Account';
 import CarCloseDetail from './pages/CarCloseDetail';
@@ -57,6 +58,14 @@ const App = () => {
             exact
           />
 
+          <Route
+            path='/review'
+            element={
+              <AppShell>
+                <FeaturedReview />
+              </AppShell>
+            }
+          />
           <Route path='/login' element={<Login />} />
           <Route path='/register' element={<Register />} />
           <Route

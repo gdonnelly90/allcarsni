@@ -17,8 +17,8 @@ const Search = ({}) => {
   const [pageNumber, setPageNumber] = useState(1);
   const [numberOfPages, setNumberOfPages] = useState(1);
   const [makes, setMakes] = useState([]);
-  const [colours, setColours] = useState([]);
   const [models, setModels] = useState([]);
+  const [colours, setColours] = useState([]);
   const [bodyTypes, setBodyTypes] = useState([]);
   const [fuelTypes, setFuelTypes] = useState([]);
   // const [countVehicles, setCountVehicles] = useState([]);
@@ -36,12 +36,16 @@ const Search = ({}) => {
   };
 
   const getVehicles = async (queryParams) => {
-    // stringfy the query for our BE
-    const { vehicles, totalPages } = await fetchAllVehicles(queryString.stringify(queryParams));
-    setVehicles(vehicles);
-    setNumberOfPages(totalPages);
-    // setCountVehicles(countVehicles);
-    window.scrollTo(0, 0);
+    try {
+      // stringfy the query for BE
+      const { vehicles, totalPages } = await fetchAllVehicles(queryString.stringify(queryParams));
+      setVehicles(vehicles);
+      setNumberOfPages(totalPages);
+      // setCountVehicles(countVehicles);
+      window.scrollTo(0, 0);
+    } catch (error) {
+      toast.error(error.message);
+    }
   };
 
   const getModels = async (model) => {
@@ -127,7 +131,7 @@ const Search = ({}) => {
   }, [numberOfPages]);
 
   // usEeffect for getting filters DB info
-  // LEave blank [] for single actioning
+  // Leave blank [] for single actioning
   useEffect(() => {
     getInitialFilterData();
   }, []);

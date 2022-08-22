@@ -8,7 +8,7 @@ export const Checkbox = ({ label, checked, ...props }) => {
       <label>
         <input
           type='checkbox'
-          isChecked={checked}
+          ischecked={checked}
           onChange={() => setChecked((prev) => !prev)}
           {...props}
         />

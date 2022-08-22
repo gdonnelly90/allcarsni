@@ -10,7 +10,7 @@ export const Filter = ({ id, name, data = [], onHandleChange }) => {
 
   return (
     <select name={id} className='form-control' onChange={handleChange}>
-      <option value='' defaultValue={''}>
+      <option value='' defaultValue=''>
         Select {name}
       </option>
       {data.map((item) => (

@@ -1,14 +1,12 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 export const Footer = () => {
   return (
     <div className='footer-main-container container'>
       <footer className='row row-cols-5 py-5 my-5 border-top'>
         <div className='col'>
-          <a
-            href='/'
-            className='d-flex align-items-center mb-3 link-dark text-decoration-none'
-          >
+          <a href='/' className='d-flex align-items-center mb-3 link-dark text-decoration-none'>
             AllCarsNI
           </a>
           <p className='text-muted'>© 2022</p>
@@ -20,29 +18,9 @@ export const Footer = () => {
           <h5>Section</h5>
           <ul className='nav flex-column'>
             <li className='nav-item mb-2'>
-              <a href='#' className='nav-link p-0 text-muted'>
+              <Link to='/' className='nav-link p-0 text-muted'>
                 Home
-              </a>
-            </li>
-            <li className='nav-item mb-2'>
-              <a href='#' className='nav-link p-0 text-muted'>
-                Features
-              </a>
-            </li>
-            <li className='nav-item mb-2'>
-              <a href='#' className='nav-link p-0 text-muted'>
-                Pricing
-              </a>
-            </li>
-            <li className='nav-item mb-2'>
-              <a href='#' className='nav-link p-0 text-muted'>
-                FAQs
-              </a>
-            </li>
-            <li className='nav-item mb-2'>
-              <a href='#' className='nav-link p-0 text-muted'>
-                About
-              </a>
+              </Link>
             </li>
           </ul>
         </div>
@@ -51,29 +29,9 @@ export const Footer = () => {
           <h5>Section</h5>
           <ul className='nav flex-column'>
             <li className='nav-item mb-2'>
-              <a href='#' className='nav-link p-0 text-muted'>
-                Home
-              </a>
-            </li>
-            <li className='nav-item mb-2'>
-              <a href='#' className='nav-link p-0 text-muted'>
-                Features
-              </a>
-            </li>
-            <li className='nav-item mb-2'>
-              <a href='#' className='nav-link p-0 text-muted'>
-                Pricing
-              </a>
-            </li>
-            <li className='nav-item mb-2'>
-              <a href='#' className='nav-link p-0 text-muted'>
-                FAQs
-              </a>
-            </li>
-            <li className='nav-item mb-2'>
-              <a href='#' className='nav-link p-0 text-muted'>
-                About
-              </a>
+              <Link to='/search?page=1' className='nav-link p-0 text-muted'>
+                Search
+              </Link>
             </li>
           </ul>
         </div>
@@ -82,29 +40,9 @@ export const Footer = () => {
           <h5>Section</h5>
           <ul className='nav flex-column'>
             <li className='nav-item mb-2'>
-              <a href='#' className='nav-link p-0 text-muted'>
-                Home
-              </a>
-            </li>
-            <li className='nav-item mb-2'>
-              <a href='#' className='nav-link p-0 text-muted'>
-                Features
-              </a>
-            </li>
-            <li className='nav-item mb-2'>
-              <a href='#' className='nav-link p-0 text-muted'>
-                Pricing
-              </a>
-            </li>
-            <li className='nav-item mb-2'>
-              <a href='#' className='nav-link p-0 text-muted'>
-                FAQs
-              </a>
-            </li>
-            <li className='nav-item mb-2'>
-              <a href='#' className='nav-link p-0 text-muted'>
-                About
-              </a>
+              <Link to='/login' className='nav-link p-0 text-muted'>
+                Sell
+              </Link>
             </li>
           </ul>
         </div>

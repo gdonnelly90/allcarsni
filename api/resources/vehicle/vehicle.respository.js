@@ -12,7 +12,7 @@ const fetchUkVehicleData = async (registrationNumber) => {
     if (!isEmpty(response)) {
       // format the uk vehicle data into a consistent format of camelcase keys
       const formattedResponse = camelcaseKeys(response.data, { deep: true });
-      // deconstruct our the statuscode and check if success
+      // deconstruct out the statuscode and check if success
       const {
         response: { statusCode, dataItems },
       } = formattedResponse;

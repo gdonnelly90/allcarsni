@@ -1,8 +1,8 @@
 /* font used */
-/* @import url(https://fonts.googleapis.com/css?family=Roboto);
+@import url(https://fonts.googleapis.com/css?family=Roboto);
 * { 
   font-family: 'Roboto', sans-serif;
-} */
+}
 
 /* @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap');
 body, html { 
@@ -388,7 +388,7 @@ img {
 /* Search elements */
 .search-wrapper {
   position: absolute;
-  top: 450px;
+  top: 300px;
   left: 0;
   width: 100%;
   z-index: 100;
@@ -1145,3 +1145,12 @@ li {
   font-style: italic;
 } */
 
+/* Simple Search Homepage */
+.filter-row-homepage {
+  background-color: transparent;
+}
+
+.fullwidth-banner-pic {
+  justify-content: center;
+
+}

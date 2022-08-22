@@ -16,11 +16,12 @@ export const APP_TABS = {
   SELL: 'sell',
 };
 
-// export const MAKE = {
-//   AUDI: 'Audi',
-//   BMW: 'BMW',
-//   LAMBO: 'Lambo',
-// };
+export const MAKE = {
+  AUDI: 'Audi',
+  BMW: 'BMW',
+  FERRARI: 'Ferrari',
+  LAMBORGHINI: 'Lamborghini',
+};
 
 export const PRICE_MILEAGE_FIGURE = {
   ZERO: 0,

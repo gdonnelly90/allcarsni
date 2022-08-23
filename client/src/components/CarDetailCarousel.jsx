@@ -1,7 +1,4 @@
 import React from 'react';
-// import CarModal from './car/CarModal';
-
-// Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
 // Import Swiper styles
 import 'swiper/css';
@@ -46,8 +43,7 @@ export default function CarDetailCarousel() {
         navigation={true}
         // modules={[Autoplay, Pagination, Navigation]}
         modules={[Autoplay, Navigation]}
-        className='mySwiper'
-      >
+        className='mySwiper'>
         <SwiperSlide>
           <CarCard />
         </SwiperSlide>

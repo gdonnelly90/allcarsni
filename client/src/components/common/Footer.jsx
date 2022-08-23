@@ -15,7 +15,7 @@ export const Footer = () => {
         <div className='col'></div>
 
         <div className='col'>
-          <h5>Section</h5>
+          <h5>Main Pages</h5>
           <ul className='nav flex-column'>
             <li className='nav-item mb-2'>
               <Link to='/' className='nav-link p-0 text-muted'>
@@ -26,7 +26,7 @@ export const Footer = () => {
         </div>
 
         <div className='col'>
-          <h5>Section</h5>
+          <h5>Find Cars</h5>
           <ul className='nav flex-column'>
             <li className='nav-item mb-2'>
               <Link to='/search?page=1' className='nav-link p-0 text-muted'>
@@ -37,7 +37,7 @@ export const Footer = () => {
         </div>
 
         <div className='col'>
-          <h5>Section</h5>
+          <h5>Sell A Car</h5>
           <ul className='nav flex-column'>
             <li className='nav-item mb-2'>
               <Link to='/login' className='nav-link p-0 text-muted'>

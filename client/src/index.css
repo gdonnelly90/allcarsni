@@ -1154,3 +1154,25 @@ li {
   justify-content: center;
 
 }
+
+/* Review text panel */
+/* .review-text {
+  background-color: #eaeaea
+} */
+
+.small-title-text-overview {
+  font-size: 1.5rem;
+  font-weight:300;
+  color: #000000;
+}
+
+.small-title-text {
+  font-weight: bold;
+  color:rgb(15, 65, 86);
+}
+
+.news-link {
+  font-size: 1rem;
+  font-style: italic;
+  color: #c53030;
+}

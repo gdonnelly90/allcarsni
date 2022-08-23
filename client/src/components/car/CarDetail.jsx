@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { MDBRow, MDBCol } from 'mdb-react-ui-kit';
 import CarCarousel from './CarCarousel';
-import CarDetailCarousel from '../CarDetailCarousel';
 import image1 from '../../assets/img/cars/Ferrari_LaFerrari_Aperta_2.jpg';
 import image2 from '../../assets/img/cars/Ferrari_LaFerrari_Aperta_3.jpg';
 import ContactSeller from '../car/ContactSeller';

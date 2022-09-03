@@ -381,8 +381,9 @@ img {
 .form-control {
   height: 48px;
 }
+
 .form-handle-xxs {
-  width: 200px;
+  width: 400px;
 }
 
 /* Search elements */
@@ -995,25 +996,23 @@ li {
   display: grid;
   height: auto;
   grid-template-columns: 1fr 3fr;
-  /* grid-template-rows: 5fr 0.5rf; */
-}
-
-.container-search-page {
-  display: grid;
-  height: auto;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 2fr 2fr 2fr;
-  grid-gap: 1rem;
-  align-items: center;
-  /* grid-template-areas: 'sidebar'; */
-  /* grid-gap: 0.2rem; */
- 
 }
 
 .card-search-container {
   padding-top: 20px;
   display: grid;
-  grid-template-rows: 4fr 0.5fr
+  grid-template-rows: 4fr;
+  /* grid-template-rows: min-content 2fr 2fr 0.5fr; */
+}
+
+.container-search-page {
+  align-items:top;
+  display: grid;
+  min-width: 545px;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 2fr 2fr;
+  grid-gap: 1rem;
+  align-items: center;
 }
 
 .pagination-row {
@@ -1175,4 +1174,100 @@ li {
   font-size: 1rem;
   font-style: italic;
   color: #c53030;
+}
+
+/* review page images */
+.review-image:hover {
+  transform:scale(1.05);
+  transition-duration: 0.5s;
+  cursor: pointer;
+}
+
+.review-banner {
+  cursor: pointer;
+}
+
+/*home page icon pointers*/
+.icon-electric {
+  cursor: pointer;
+}
+.icon-suv {
+  cursor: pointer;
+}
+.icon-hatchback {
+  cursor: pointer;
+}
+.icon-coupe {
+  cursor: pointer;
+}
+.icon-estate {
+  cursor: pointer;
+}
+.icon-convertible {
+  cursor: pointer;
+}
+
+/* car imagery modal */
+.modal-backshadow {
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.modal-backshadow .custom-modal {
+  top: 50px;
+  width: 700px;
+  height: 450px;
+  background-color: #000000;
+  position: relative;
+}
+
+.modal-delete-icon {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: #c53030;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  position: absolute;
+  top: -15px;
+  right: -15px;
+}
+
+/* subscriptions button colour */
+.btn-outline-primary {
+  color: #fff;
+  background-color: #c53030;
+  border-color: #c53030;
+}
+
+/* Cursor pointer for vehicleId link */
+.td-link {
+  cursor: pointer;
+}
+
+/* Car card fsvourite icon placement */
+.car-card-favourite-icon {
+  position: absolute;
+  font-size: 1rem;
+  font-weight: bold;
+  top: 5px;
+  right: 7px;
+  z-index: 502;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
 }

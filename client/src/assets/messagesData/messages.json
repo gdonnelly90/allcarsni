@@ -1,0 +1,50 @@
+[
+    {
+      "id": 1,
+      "from": "Gary Donnelly",
+      "fromAddress": "gdtest@test.com",
+      "subject": "Car Blah Blah",
+      "dtSent": "Today, 9:18AM",
+      "read": false,
+      "body": "lorum ipsum dolor sit amet"
+    },
+    {
+      "id": 2,
+      "from": "Hannah Donnelly",
+      "fromAddress": "hdtest@test.com",
+      "subject": "Car Blah Blah Blah",
+      "dtSent": "Today, 8:54AM",
+      "read": false,
+      "body": "lorum ipsum dolor sit amet",
+      "attachment": false
+    },
+    {
+      "id": 3,
+      "from": "Roisin Donnelly",
+      "fromAddress": "rdtest@test.com",
+      "subject": "Car Blah Blah Blah Blah",
+      "dtSent": "Yesterday, 4:48PM",
+      "read": true,
+      "body": "lorum ipsum dolor sit amet",
+      "attachment": true
+    },
+    {
+      "id": 4,
+      "from": "Stephen Donnelly",
+      "fromAddress": "sdtest@test.com",
+      "subject": "Car Blah Blah Blah Blah Blah",
+      "dtSent": "Yesterday, 4:40PM",
+      "read": false,
+      "body": "lorum ipsum dolor sit amet",
+      "priority": 1
+    },
+    {
+      "id": 5,
+      "from": "Bailey Donnelly",
+      "fromAddress": "bdtest@test.com",
+      "subject": "Car Blah Blah Blah Blah Blah Blah",
+      "dtSent": "3 Days Ago",
+      "read": true,
+      "body": "lorum ipsum dolor sit amet"
+    }
+  ]

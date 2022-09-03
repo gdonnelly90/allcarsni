@@ -1,20 +1,20 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Container, Row } from 'react-bootstrap';
 import { MDBRow, MDBCol } from 'mdb-react-ui-kit';
-import { Link } from 'react-router-dom';
+import ModalCar from '../components/car/ModalCar';
 import car_advert from '../assets/m5/bannernew1.jpg';
 import Image1 from '../assets/m5/m5a.jpg';
 import Image2 from '../assets/m5/m5b.jpg';
 import Image3 from '../assets/m5/m5c.jpg';
-import Image4 from '../assets/m5/m5d.jpg';
-import Image5 from '../assets/m5/m5e.jpg';
-import Image6 from '../assets/m5/m5f.jpg';
-import Image7 from '../assets/m5/m5h.jpg';
+import Image4 from '../assets/m5/m5e.jpg';
+import Image5 from '../assets/m5/m5f.jpg';
 import reviewBanner from '../assets/m5/banner.jpg';
-
+import { CarButton } from '../components/car/CarButton';
 // review and image content copied from TopGear website
 
 export const FeaturedReview = (ScrollToTop) => {
+  const [modalCar, setModalCar] = useState(false);
+
   return (
     <Container>
       <Row className='review-banner'>
@@ -24,16 +24,18 @@ export const FeaturedReview = (ScrollToTop) => {
           onClick={() =>
             window.open('https://www.bavarianbmw.co.uk/cars/bmw-m/m5-competition-saloon', '_blank')
           }
+          alt=''
         />
       </Row>
       <Container className='actual-review-container pt-4'>
+        {/* <CarButton setModalCar={setModalCar} />
+        {modalCar === true && <ModalCar setModalCar={setModalCar} />} */}
         <MDBRow className='review-row' md='12'>
           <MDBCol className='review-text' md='8'>
-            <h4 className='small-header-text'>CAR REVIEW</h4>
+            {/* <h4 className='small-header-text'>CAR REVIEW</h4> */}
             <h1 className='header-text'>BMW M5 Competition Review</h1>
             <hr style={{ width: '65%', size: '3px', color: '#c53030' }} />
             <hr style={{ width: '65%', size: '3px', color: '#c53030' }} />
-            <p className='small-title-text-overview'>OVERVIEW</p>
             <h4 className='small-title-text'>WHAT IS IT?</h4>
             <hr style={{ width: '20%', size: '3px', color: '#c53030' }} />
             <p className='small-title-text'>
@@ -72,7 +74,7 @@ export const FeaturedReview = (ScrollToTop) => {
             </p>
             <h4 className='small-title-text mt-5'>WHAT'S THE VERDICT?</h4>
             <hr style={{ width: '38%', size: '3px', color: '#c53030' }} />
-            <h4 className='small-title-text mt-2 mb-4'>
+            <h4 className='small-title-text mt-2 mb-2'>
               “The quickest M5 ever is also the comfiest M5 ever. Maybe the most complete super
               saloon of them all”
             </h4>
@@ -90,36 +92,32 @@ export const FeaturedReview = (ScrollToTop) => {
             </p>
             <h4 className='small-title-text mt-5'>COST</h4>
             <hr style={{ width: '14%', size: '3px', color: '#c53030' }} />
-            <hr style={{ width: '14%', size: '3px', color: '#c53030' }} />
-            <h4 className='small-title-text mt-2 mb-4'>
+            <h4 className='small-title-text mt-2'>
               <p>Prices start from £107,520</p>
-              <p>Our test version cost a total of £121,785</p>
             </h4>
-            <img className='review-image pt-5 pb-2' src={reviewBanner} />
-            <hr style={{ width: '100%', size: '3px', color: '#c53030' }} />
+            <img className='review-image pb-2' src={reviewBanner} alt='' />
             <div className='lastestnews-text4 pt-3'>(credit TopGear)</div>
           </MDBCol>
-          <MDBCol className='review-text' md='4'>
-            <MDBRow className='review-images mb-4'>
-              <img className='review-image' src={Image1} />
+          <MDBCol className='review-images' md='4'>
+            <br></br>
+            <br></br>
+            <CarButton setModalCar={setModalCar} />
+            {modalCar === true && <ModalCar setModalCar={setModalCar} />}
+            <MDBRow className='review-images mt-5 mb-5'>
+              {/* <div className='modal-delete-icon' onClick={() => setModal(false)}> */}
+              <img className='review-image' src={Image1} alt='' />
             </MDBRow>
-            <MDBRow className='review-images mb-4'>
-              <img className='review-image' src={Image2} />
+            <MDBRow className='review-images mb-5'>
+              <img className='review-image' src={Image2} alt='' />
             </MDBRow>
-            <MDBRow className='review-images mb-4'>
-              <img className='review-image' src={Image3} />
+            <MDBRow className='review-images mb-5'>
+              <img className='review-image' src={Image3} alt='' />
             </MDBRow>
-            <MDBRow className='review-images mb-4'>
-              <img className='review-image' src={Image4} />
+            <MDBRow className='review-images mb-5'>
+              <img className='review-image' src={Image4} alt='' />
             </MDBRow>
-            <MDBRow className='review-images mb-4'>
-              <img className='review-image' src={Image5} />
-            </MDBRow>
-            <MDBRow className='review-images mb-4'>
-              <img className='review-image' src={Image6} />
-            </MDBRow>
-            <MDBRow className='review-images mb-4'>
-              <img className='review-image' src={Image7} />
+            <MDBRow className='review-images'>
+              <img className='review-image' src={Image5} alt='' />
             </MDBRow>
           </MDBCol>
         </MDBRow>
@@ -127,9 +125,3 @@ export const FeaturedReview = (ScrollToTop) => {
     </Container>
   );
 };
-
-{
-  /* <FeaturedReviewCarousel /> */
-  //   <MDBRow className='car-imagery-row pt-5' md='12'>
-  //         <MDBCol className='car-imagery-col1 pb-3' md='8'></MDBCol>
-}

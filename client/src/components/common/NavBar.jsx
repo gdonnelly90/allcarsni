@@ -1,4 +1,7 @@
-import React from 'react';
+import React, { useContext, useEffect, useState } from 'react';
+import { Container, Table, Button } from 'react-bootstrap';
+import { AuthContext } from '../../context/AuthContext';
+import { fetchRecipientMessages } from '../../services/message.service';
 import { Link, useNavigate } from 'react-router-dom';
 import { Nav, Navbar, NavDropdown } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
@@ -19,6 +22,7 @@ export const NavBar = () => {
       navigate('/');
     }, 700);
   };
+
   return (
     <Navbar
       className='nav-colour px-4'

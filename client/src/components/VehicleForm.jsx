@@ -100,14 +100,14 @@ export const VehicleForm = ({ formik }) => {
                 </Form.Group>
               </Col>
               <Col md={12} lg={4} className='align-self-center h-100 mt-3'>
-                <Button variant='warning' type='button' onClick={() => fetchVehicleDetails()}>
+                <Button variant='primary' type='button' onClick={() => fetchVehicleDetails()}>
                   {carLoading ? (
                     <div className='d-flex flex-flow-row justify-content-center align-items-center'>
                       <FontAwesomeIcon icon={faCircleNotch} spin />
                       <div className='mr-2'>Loading...</div>
                     </div>
                   ) : (
-                    <div>Search vehicle details</div>
+                    <div>Search Vehicle Details</div>
                   )}
                 </Button>
               </Col>
@@ -266,7 +266,7 @@ export const VehicleForm = ({ formik }) => {
                 <Form.Group className='mb-3'>
                   <Form.Label>
                     Model variation spec
-                    <span className='error-text'>*</span>
+                    {/* <span className='error-text'>*</span> */}
                   </Form.Label>
                   <div className='d-flex flex-sm-column flex-md-row justify-content-md-between'>
                     <Form.Control

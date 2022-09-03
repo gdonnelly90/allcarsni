@@ -4,8 +4,6 @@ import { Container, Row, Col, Card, Table } from 'react-bootstrap';
 import Avatar from 'react-avatar';
 import { PersonalDetails } from './account/PersonalDetails';
 import { useAppState, useAppDispatch } from '../context/appContext/context';
-import { GoPrimitiveDot } from 'react-icons/go';
-import { ImPencil, ImBin } from 'react-icons/im';
 
 export const ProfileTab = () => {
   const dispatch = useAppDispatch();

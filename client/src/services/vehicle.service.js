@@ -27,16 +27,6 @@ export const fetchVehicleById = async (id) => {
   }
 };
 
-// get vehicles by bodyType
-// export const fetchVehiclesByBodyType = async (bodyType) => {
-//   try {
-//     const response = await apiClient.get(`/api/v1/vehicles/${bodyType}`);
-//   } catch (error) {
-//     console.error(error.message);
-//     return error.message;
-//   }
-// };
-
 // get all electric Vehicles
 export const fetchElectricVehicles = async () => {
   try {
@@ -119,3 +109,13 @@ export const fetchVehicleFuelType = async (make, model) => {
     return error;
   }
 };
+
+// get vehicles by bodyType
+// export const fetchVehiclesByBodyType = async (bodyType) => {
+//   try {
+//     const response = await apiClient.get(`/api/v1/vehicles/${bodyType}`);
+//   } catch (error) {
+//     console.error(error.message);
+//     return error.message;
+//   }
+// };

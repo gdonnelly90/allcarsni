@@ -88,9 +88,7 @@ export const RegisterIndividual = () => {
             value={formik.values.firstName}
             isInvalid={formik.touched.firstName && formik.errors.firstName}
           />
-          <Form.Control.Feedback type='invalid'>
-            {formik.errors.firstName}
-          </Form.Control.Feedback>
+          <Form.Control.Feedback type='invalid'>{formik.errors.firstName}</Form.Control.Feedback>
         </Form.Group>
         <Form.Group className='mb-3'>
           <Form.Label htmlFor='lastName'>Last Name</Form.Label>
@@ -105,9 +103,7 @@ export const RegisterIndividual = () => {
             value={formik.values.lastName}
             isInvalid={formik.touched.lastName && formik.errors.lastName}
           />
-          <Form.Control.Feedback type='invalid'>
-            {formik.errors.lastName}
-          </Form.Control.Feedback>
+          <Form.Control.Feedback type='invalid'>{formik.errors.lastName}</Form.Control.Feedback>
         </Form.Group>
         <Form.Group className='mb-3'>
           <Form.Label htmlFor='email'>Email</Form.Label>
@@ -121,9 +117,7 @@ export const RegisterIndividual = () => {
             value={formik.values.email}
             isInvalid={formik.touched.email && formik.errors.email}
           />
-          <Form.Control.Feedback type='invalid'>
-            {formik.errors.email}
-          </Form.Control.Feedback>
+          <Form.Control.Feedback type='invalid'>{formik.errors.email}</Form.Control.Feedback>
         </Form.Group>
         <Form.Group className='mb-3'>
           <Form.Label htmlFor='mobile'>Mobile Number</Form.Label>
@@ -137,9 +131,7 @@ export const RegisterIndividual = () => {
             value={formik.values.mobile}
             isInvalid={formik.touched.mobile && formik.errors.mobile}
           />
-          <Form.Control.Feedback type='invalid'>
-            {formik.errors.mobile}
-          </Form.Control.Feedback>
+          <Form.Control.Feedback type='invalid'>{formik.errors.mobile}</Form.Control.Feedback>
         </Form.Group>
         <Form.Group className='mb-3'>
           <Form.Label htmlFor='password'>Password</Form.Label>
@@ -154,9 +146,7 @@ export const RegisterIndividual = () => {
             value={formik.values.password}
             isInvalid={formik.touched.password && formik.errors.password}
           />
-          <Form.Control.Feedback type='invalid'>
-            {formik.errors.password}
-          </Form.Control.Feedback>
+          <Form.Control.Feedback type='invalid'>{formik.errors.password}</Form.Control.Feedback>
         </Form.Group>
         <Form.Group className='mb-3'>
           <Form.Label htmlFor='confirmPassword'>Confirm Password</Form.Label>
@@ -169,9 +159,7 @@ export const RegisterIndividual = () => {
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
             value={formik.values.confirmPassword}
-            isInvalid={
-              formik.touched.confirmPassword && formik.errors.confirmPassword
-            }
+            isInvalid={formik.touched.confirmPassword && formik.errors.confirmPassword}
           />
           <Form.Control.Feedback type='invalid'>
             {formik.errors.confirmPassword}

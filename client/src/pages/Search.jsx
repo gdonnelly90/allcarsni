@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import CarCard from '../components/car/CarCard';
-// import { SideFilterNew } from '../components/search/SideFilterNew';
 import { SearchDrawer } from '../components/search/SearchDrawer';
 import {
   fetchAllVehicles,
@@ -23,6 +22,7 @@ const Search = ({}) => {
   const [fuelTypes, setFuelTypes] = useState([]);
   // const [countVehicles, setCountVehicles] = useState([]);
 
+  // pagination function
   const generatePages = () => {
     console.log(`REDRAW PAGES ${numberOfPages}`);
     return new Array(numberOfPages).fill().map((v, i) => (
@@ -35,19 +35,21 @@ const Search = ({}) => {
     ));
   };
 
+  // get all vehicles with the query as the params
   const getVehicles = async (queryParams) => {
     try {
       // stringfy the query for BE
       const { vehicles, totalPages } = await fetchAllVehicles(queryString.stringify(queryParams));
       setVehicles(vehicles);
       setNumberOfPages(totalPages);
-      // setCountVehicles(countVehicles);
+
       window.scrollTo(0, 0);
     } catch (error) {
       toast.error(error.message);
     }
   };
 
+  // get models once make function is called
   const getModels = async (model) => {
     try {
       const response = await fetchVehicleModelsByMake(model);
@@ -60,7 +62,6 @@ const Search = ({}) => {
   // function to get all filter data
   const getInitialFilterData = async () => {
     try {
-      // const data = await fetchFilterData();
       const [makes, colours, bodyTypes, fuelTypes] = await fetchFilterData();
       // console.log('FILTER DATA');
       // console.log(`${JSON.stringify(makes, null, 2)} ${JSON.stringify(colours, null, 2)}`);
@@ -73,6 +74,7 @@ const Search = ({}) => {
     }
   };
 
+  // part of the pagination
   const onPageNoChange = (event, pageIndex) => {
     const parsedQuery = { ...query, page: pageIndex + 1 };
     // set page number
@@ -81,19 +83,20 @@ const Search = ({}) => {
     setURL(parsedQuery);
     // set query local value
     setQuery(parsedQuery);
-    // getVehicles(parsedQuery);
   };
 
+  // setting the returned obj into a string for the url
   const stringifyUrl = (obj) => {
     return queryString.stringify(obj);
   };
 
+  // setting the url
   const setURL = (params) => {
     window.history.replaceState(null, '', `/search?${stringifyUrl(params)}`);
   };
 
+  // when search value is called
   const onSearchValueChange = (param) => {
-    // {make : BMW }
     const { key, value } = param;
 
     // if param.key is of make - call model api
@@ -130,11 +133,15 @@ const Search = ({}) => {
     generatePages();
   }, [numberOfPages]);
 
+  useEffect(() => {
+    generatePages();
+  }, []);
+
   // usEeffect for getting filters DB info
   // Leave blank [] for single actioning
   useEffect(() => {
     getInitialFilterData();
-  }, []);
+  }, [numberOfPages, query]);
 
   return (
     <div className='main-search-container'>

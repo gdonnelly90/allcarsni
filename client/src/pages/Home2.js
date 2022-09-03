@@ -15,6 +15,7 @@ import {
 import { SearchSimple } from '../components/search/SearchSimple';
 import queryString from 'query-string';
 import { toast } from 'react-toastify';
+import woman from '../assets/img/woman_selling.jpg';
 
 export const Home2 = ({}) => {
   let navigate = useNavigate();
@@ -125,7 +126,7 @@ export const Home2 = ({}) => {
       {/* Car type */}
       <MDBRow md='12'>
         <div className='home-row-3 text-center'>
-          <h1>Search by body style</h1>
+          <h1>Quick Search By Body Style</h1>
         </div>
         <MDBRow md='12'>
           <MDBCol md='1'></MDBCol>
@@ -165,7 +166,7 @@ export const Home2 = ({}) => {
           <MDBCol md='1'></MDBCol>
           <MDBCol md='2 text-center'>
             <img
-              className='icon-ccoupe'
+              className='icon-coupe'
               src={require('../assets/img/icons/coupe.webp')}
               onClick={() => onBodyTypeClick(BODYTYPE.SALOON)}
             />
@@ -259,7 +260,7 @@ export const Home2 = ({}) => {
           <img
             className='image-home-car-1'
             style={{ width: '100%', height: '450px' }}
-            src={require('../assets/img/woman_selling.jpg')}
+            src={woman}
           />
         </MDBCol>
       </MDBRow>

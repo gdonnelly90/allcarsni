@@ -1,18 +1,25 @@
 import React, { useState } from 'react';
 import { Form, Button } from 'react-bootstrap';
+import { postMessage } from '../../services/message.service';
+import { toast } from 'react-toastify';
+import { useAppState } from '../../context/appContext/context';
 
-const ContactSeller = () => {
+export const ContactSeller = () => {
+  const { user } = useAppState();
   const [state, setState] = useState({
     name: '',
     email: '',
     subject: '',
-    message: '',
+    messageBody: '',
   });
 
   const sendEmail = (event) => {
+    console.log('---EVENT---');
+    console.log(event);
     event.preventDefault();
-
-    console.log('We will fill this up shortly.');
+    window.scrollTo(0, 0);
+    postMessage(event);
+    toast.success('Messsage Sent');
     // code to trigger Sending email
   };
 
@@ -30,49 +37,49 @@ const ContactSeller = () => {
       <h1>Message Seller</h1>
       <form onSubmit={sendEmail}>
         <div className='form-line1 pb-2'>
-          <Form.Group controlId='name'>
-            <Form.Label>Full Name</Form.Label>
+          <Form.Group controlId='firstName'>
+            <Form.Label>First Name</Form.Label>
             <Form.Control
               type='text'
-              name='name'
-              value={state.name}
-              placeholder='Enter your full name'
+              name='firstName'
+              value={user.firstName}
+              placeholder='Enter your First Name'
               onChange={onInputChange}
             />
           </Form.Group>
         </div>
         <div className='form-line2 pb-2'>
-          <Form.Group controlId='email'>
-            <Form.Label>Email</Form.Label>
+          <Form.Group controlId='lastName'>
+            <Form.Label>Last Name</Form.Label>
             <Form.Control
               type='text'
-              name='email'
-              value={state.email}
-              placeholder='Enter your email'
+              name='lastName'
+              value={user.lastName}
+              placeholder='Enter your Surname'
               onChange={onInputChange}
             />
           </Form.Group>
         </div>
         <div className='form-line3 pb-2'>
-          <Form.Group controlId='subject'>
-            <Form.Label>Contact number</Form.Label>
+          <Form.Group controlId='mobile'>
+            <Form.Label>Mobile Number</Form.Label>
             <Form.Control
               type='text'
-              name='subject'
-              value={state.subject}
-              placeholder='Enter your conatct number'
+              name='mobile'
+              value={user.mobile}
+              placeholder='Enter your Mobile Number'
               onChange={onInputChange}
             />
           </Form.Group>
         </div>
         <div className='form-line4 pb-2'>
-          <Form.Group controlId='subject'>
+          <Form.Group controlId='messageBody'>
             <Form.Label>Message</Form.Label>
             <Form.Control
               type='text'
-              name='subject'
-              value={state.subject}
-              placeholder='Enter your message'
+              name='messageBody'
+              value={state.messageBody}
+              placeholder='Enter a brief message'
               onChange={onInputChange}
             />
           </Form.Group>
@@ -86,5 +93,3 @@ const ContactSeller = () => {
     </div>
   );
 };
-
-export default ContactSeller;

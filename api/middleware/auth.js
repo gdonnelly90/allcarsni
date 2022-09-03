@@ -6,7 +6,7 @@ export const auth = (req, res, next) => {
   const token = req.header('authorization');
   // check if token exists
   if (!token) {
-    return res.status(401).json({ msg: 'authorisisation denied' });
+    return res.status(401).json({ msg: 'authorisation denied' });
     // return next(new Error('User not loggedIn'), 401)
   }
   // verify Token

@@ -33,38 +33,6 @@ const LatestNewsCarousel = () => {
         <img
           className='d-block w-100'
           style={{ height: '296.02px' }}
-          src={Image3}
-          alt='Third slide'
-        />
-      </Carousel.Item>
-      <Carousel.Item>
-        <img
-          className='d-block w-100'
-          style={{ height: '296.02px' }}
-          src={Image4}
-          alt='Fourth slide'
-        />
-      </Carousel.Item>
-      <Carousel.Item>
-        <img
-          className='d-block w-100'
-          style={{ height: '296.02px' }}
-          src={Image5}
-          alt='Fifth slide'
-        />
-      </Carousel.Item>
-      <Carousel.Item>
-        <img
-          className='d-block w-100'
-          style={{ height: '296.02px' }}
-          src={Image6}
-          alt='Sixth slide'
-        />
-      </Carousel.Item>
-      <Carousel.Item>
-        <img
-          className='d-block w-100'
-          style={{ height: '296.02px' }}
           src={Image7}
           alt='Seventh slide'
         />
@@ -83,3 +51,38 @@ const LatestNewsCarousel = () => {
 };
 
 export default LatestNewsCarousel;
+
+{
+  /* <Carousel.Item>
+  <img
+    className='d-block w-100'
+    style={{ height: '296.02px' }}
+    src={Image3}
+    alt='Third slide'
+  />
+</Carousel.Item>
+<Carousel.Item>
+  <img
+    className='d-block w-100'
+    style={{ height: '296.02px' }}
+    src={Image4}
+    alt='Fourth slide'
+  />
+</Carousel.Item>
+<Carousel.Item>
+  <img
+    className='d-block w-100'
+    style={{ height: '296.02px' }}
+    src={Image5}
+    alt='Fifth slide'
+  />
+</Carousel.Item>
+<Carousel.Item>
+  <img
+    className='d-block w-100'
+    style={{ height: '296.02px' }}
+    src={Image6}
+    alt='Sixth slide'
+  /> 
+</Carousel.Item>*/
+}

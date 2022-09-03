@@ -32,11 +32,10 @@ export const SearchSimple = ({ makes, models, onSearchValueChange }) => {
   // };
 
   const commitSimpleFilters = (params) => {
-    // window.location.assign(params);
-    console.log('PARAMS');
-    console.log(params);
-    console.log('-------');
-    navigate(`/search?${params})`);
+    // console.log('PARAMS');
+    // console.log(params);
+    // console.log('-------');
+    navigate(`/search${params}`);
   };
 
   return (

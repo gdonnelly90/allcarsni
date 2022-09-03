@@ -121,6 +121,14 @@ const VehicleSchema = mongoose.Schema({
     type: [Object],
     ref: 'reviews',
   },
+  favourites: [
+    {
+      user: {
+        type: mongoose.Schema.ObjectId,
+        ref: 'users',
+      },
+    },
+  ],
 });
 
 // Virtual Populate - user

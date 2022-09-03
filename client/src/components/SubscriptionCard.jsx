@@ -39,8 +39,9 @@ export const SubscriptionCard = ({ sub, onSubscription }) => {
           </ul>
           <button
             type='button'
+            variant='primary'
             className={`w-100 btn btn-md ${
-              currentPlan() ? 'btn-outline-dark' : 'btn-outline-primary'
+              currentPlan() ? 'btn-outline-primary' : 'btn-outline-dark'
             }`}
             onClick={() => subscribe()}>
             {currentPlan() ? 'Manage Plan' : 'Get started'}

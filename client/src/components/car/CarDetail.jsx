@@ -4,7 +4,8 @@ import { MDBRow, MDBCol } from 'mdb-react-ui-kit';
 import CarCarousel from './CarCarousel';
 import image1 from '../../assets/img/cars/Ferrari_LaFerrari_Aperta_2.jpg';
 import image2 from '../../assets/img/cars/Ferrari_LaFerrari_Aperta_3.jpg';
-import ContactSeller from '../car/ContactSeller';
+// import { ContactSeller } from '../car/ContactSeller';
+import { ContactSeller2 } from '../car/ContactSeller2';
 import { AiFillCar } from 'react-icons/ai';
 import { TbEngine } from 'react-icons/tb';
 import { GiGearStick } from 'react-icons/gi';
@@ -13,6 +14,7 @@ import { BsFillCalendar2DateFill } from 'react-icons/bs';
 import { FaGasPump } from 'react-icons/fa';
 import FinanceCalculator from '../common/FinanceCalculator';
 import { fetchVehicleById } from '../../services/vehicle.service';
+import { CarDetailCarousel } from '../CarDetailCarousel';
 
 const CarDetail = () => {
   const [vehicle, setVehicle] = useState({});
@@ -21,7 +23,8 @@ const CarDetail = () => {
   const getVehicle = async () => {
     try {
       const vehicle = await fetchVehicleById(params.id);
-      console.log(vehicle);
+      // console.log('----VEHICLE-----');
+      // console.log(vehicle);
       setVehicle(vehicle);
     } catch (error) {
       console.log(error);
@@ -187,17 +190,18 @@ const CarDetail = () => {
         </MDBCol>
         <MDBCol className='pt-5' md='4'>
           <MDBRow className='mainContainer'>
-            <ContactSeller />
+            {/* <ContactSeller /> */}
+            <ContactSeller2 vehicle={vehicle} />
           </MDBRow>
           <MDBRow className='mainContainer2'>
             <h1 className='pt-2'>Finance Example</h1>
             <FinanceCalculator />
           </MDBRow>
         </MDBCol>
-        {/* <MDBCol className='similar-for-sale pt-5 pb-5' md='12'>
+        <MDBCol className='similar-for-sale pt-5 pb-5' md='12'>
           <h1 className='pt-2'>Similar For Sale</h1>
-          <CarDetailCarousel />
-        </MDBCol> */}
+          {/*  <CarDetailCarousel /> */}
+        </MDBCol>
       </MDBRow>
     </div>
   );

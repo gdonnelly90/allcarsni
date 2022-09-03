@@ -1,24 +1,29 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Tabs, Tab } from 'react-bootstrap';
 import { isEmpty } from 'lodash';
 import { toast } from 'react-toastify';
-import { useAppDispatch, useAppState } from '../context/appContext';
 import { fetchSubscriptions } from '../services/subscription.service';
+import { fetchRecipientMessages } from '../services/message.service';
+import { fetchFavourites } from '../services/favourite.service';
+import { useAppDispatch, useAppState } from '../context/appContext';
 import { SubscriptionTab } from '../components/SubscriptionTab';
 import { ProfileTab } from '../components/ProfileTab';
 import { FavouritesTab } from '../components/FavouritesTab';
 import { StockTab } from '../components/StockTab';
 import { VehicleTab } from '../components/VehicleTab';
+import { MessagesTab } from '../components/MessagesTab';
 import { createSubscription, createBillingSession } from '../context/appContext/actions';
 import { updateUserDetails } from '../context/appContext/actions';
 import { APP_TABS } from '../utils/constants';
 
 export const Account = () => {
   const state = useAppState();
+  const [messages, setMessages] = useState();
   const dispatch = useAppDispatch();
   const [key, setKey] = useState(APP_TABS.PROFILE);
-
   const [subscriptionTypes, setSubscriptionTypes] = useState([]);
+  const [favourites, setFavourites] = useState([]);
+  const [vehicles, setVehicles] = useState([]);
 
   const getSubscriptionTypes = async () => {
     try {
@@ -31,6 +36,24 @@ export const Account = () => {
     }
   };
 
+  const getRecipientMessages = async () => {
+    const messages = await fetchRecipientMessages();
+    console.log('-----RESPONSE MESSAGES DATA-----');
+    console.log(messages);
+    setMessages(messages);
+    // console.log('-----RESPONSE.DATA FE-----');
+    // console.log(response.data);
+    // console.log('-----DATA OBJ-----');
+    // console.log({ data });
+  };
+
+  const getVehicles = async () => {
+    const vehicles = await fetchFavourites();
+    console.log('-----RESPONSE.DATA FE-----');
+    console.log(vehicles.data);
+    setVehicles(vehicles);
+  };
+
   const handleTabSelect = async (key) => {
     switch (key) {
       case APP_TABS.PROFILE:
@@ -38,6 +61,7 @@ export const Account = () => {
         console.log('Profile');
         break;
       case APP_TABS.PLANS_PRICING:
+        console.log('Plan & Pricing');
         setKey(key);
         if (isEmpty(setSubscriptionTypes)) {
           getSubscriptionTypes();
@@ -45,15 +69,21 @@ export const Account = () => {
         break;
       case APP_TABS.FAVOURITES:
         setKey(key);
+        getVehicles();
         console.log('Favourites');
         break;
       case APP_TABS.SELL:
         setKey(key);
-        console.log('Create car');
+        console.log('Sell Car');
         break;
       case APP_TABS.STOCK:
         setKey(key);
-        console.log('stock');
+        console.log('Stock');
+        break;
+      case APP_TABS.MESSAGES:
+        setKey(key);
+        console.log('Messages');
+        getRecipientMessages();
         break;
       default:
         return false;
@@ -96,15 +126,6 @@ export const Account = () => {
     return state?.user?.subscription?.plan?.active || false;
   };
 
-  // useEffect(() => {
-  //   debugger;
-  //   const queryParams = new URLSearchParams(window.location.search);
-  //   const tab = queryParams.get(APP_TABS.QUERY_ACTIVE_TAB) || '';
-  //   if (!isEmpty(tab)) {
-  //     setKey(tab);
-  //   }
-  // }, []);
-
   return (
     <div className='container mt-4' style={{ minHeight: '80vh' }}>
       {/* <pre>{JSON.stringify(state?.user?.subscription, null, 2)}</pre> */}
@@ -120,13 +141,16 @@ export const Account = () => {
           <SubscriptionTab subscriptions={subscriptionTypes} onSubscription={onSubscription} />
         </Tab>
         <Tab eventKey={APP_TABS.FAVOURITES} title='Favourites'>
-          <FavouritesTab />
+          {/* <FavouritesTab vehicles={vehicles} /> */}
         </Tab>
         <Tab eventKey={APP_TABS.STOCK} title='Stock'>
           <StockTab />
         </Tab>
         <Tab eventKey={APP_TABS.SELL} title='Sell'>
           <VehicleTab handleTabSelect={handleTabSelect} />
+        </Tab>
+        <Tab eventKey={APP_TABS.MESSAGES} title='Messages'>
+          <MessagesTab messages={messages} />
         </Tab>
       </Tabs>
     </div>

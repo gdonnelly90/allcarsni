@@ -17,6 +17,7 @@ export const updateUser = async (user) => {
   try {
     console.log(user.id);
     const response = await apiClient.put(`/api/v1/users/${user.id}`, user);
+    return response.data;
   } catch (error) {
     console.error(error.message);
     return error.message;

@@ -20,7 +20,7 @@ const UserSchema = Yup.object().shape({
 export const PersonalDetails = () => {
   const dispatch = useAppDispatch();
   let { user } = useAppState();
-  console.log(user);
+  // console.log(user);
   const navigate = useNavigate();
 
   // function to update data on DB
@@ -118,7 +118,7 @@ export const PersonalDetails = () => {
               />
             </div>
           </div>
-          <Button className='me-2' variant='warning' type='submit' disabled={!formik.dirty}>
+          <Button className='me-2' variant='primary' type='submit' disabled={!formik.dirty}>
             Update profile
           </Button>
         </Form>

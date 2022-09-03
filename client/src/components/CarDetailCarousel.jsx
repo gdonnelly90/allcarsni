@@ -1,11 +1,9 @@
 import React from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
-// Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import CarCard from '../components/car/CarCard';
-// import required modules
 import { Autoplay, Navigation } from 'swiper';
 // carousel basic code taken from swiperjs
 

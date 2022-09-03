@@ -31,20 +31,12 @@ router.get('/', async (req, res) => {
       (match) => `$${match}`
     );
 
-    query = Vehicle.find(JSON.parse(queryString));
-    // sorting results
-    if (req.query.sort) {
-      const sortBy = req.query.sort.split(',').join(' ');
-      query = query.sort(sortBy);
-    } else {
-      query = query.sort('-createdAt');
-    }
-
-    const count = await Vehicle.countDocuments();
+    const count = await Vehicle.countDocuments(JSON.parse(queryString));
     const vehicles = await Vehicle.find(JSON.parse(queryString))
       // const vehicles = await Vehicle.find(req.query)
       .limit(pageSize)
-      .skip(pageSize * (page - 1));
+      .skip(pageSize * (page - 1))
+      .sort('price');
 
     if (!vehicles) {
       return res.status(200).json({ success: true, data: [] });
@@ -59,8 +51,8 @@ router.get('/', async (req, res) => {
   }
 });
 
-// @route    GET api/v1/vehciles/:id
-// @desc     GET Vehcile by id
+// @route    GET api/v1/vehicles/:id
+// @desc     GET Vehicle by id
 // @access   Public
 router.get('/:id', async (req, res) => {
   try {
@@ -82,7 +74,7 @@ router.get('/:id', async (req, res) => {
     if (!vehicle) {
       return res
         .status(400)
-        .json({ success: false, message: 'No vechile found' });
+        .json({ success: false, message: 'No vehicle found' });
     }
 
     res.status(200).json(vehicle);
@@ -128,6 +120,36 @@ router.get('/registration/:id', auth, async (req, res) => {
   } catch (error) {
     console.error(error.message);
     return res.status(500).send('Server Error');
+  }
+});
+
+// @route    PUT api/vehicles/favourite
+// @desc     PUT vehicle favourite
+// @access   Public
+router.put('/favourites/:id', auth, async (req, res) => {
+  try {
+    const vehicle = await Vehicle.findById(req.params.id);
+
+    if (
+      vehicle.favourites.filter(
+        (favourite) => favourite.user.toString() === req.user.id
+      ).length > 0
+    ) {
+      const removeIndex = vehicle.favourites
+        .map((favourite) => favourite.user.toString())
+        .indexOf(req.user.id);
+
+      vehicle.favourites.splice(removeIndex, 1);
+      await vehicle.save();
+      return res.json(vehicle.favourites);
+    } else {
+      vehicle.favourites.unshift({ user: req.user.id });
+      await vehicle.save();
+      return res.json(vehicle.favourites);
+    }
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server error');
   }
 });
 
@@ -251,7 +273,7 @@ router.post(
 
       await vehicle.save();
 
-      res.status(201).json({ success: true, message: 'Vechile created' });
+      res.status(201).json({ success: true, message: 'Vehicle created' });
     } catch (error) {
       console.error(error.message);
       res.status(500).send('Server Error Vehicle');
@@ -336,6 +358,90 @@ router.delete('/:id', checkObjectId('id'), auth, async (req, res) => {
 
 export default router;
 
+// query = Vehicle.find(JSON.parse(queryString));
+// // sorting results
+// if (req.query.sort) {
+//   const sortBy = req.query.sort.split(',').join(' ');
+//   query = query.sort(sortBy);
+// } else {
+//   query = query.sort('-createdAt');
+// }
+
+//     // const vehicles = await Vehicle.find(JSON.parse(queryString));
+//     // console.log('rrergegerg');
+//     // console.log(vehicles);
+//     // console.log('rrergegerg');
+
+//     // const count = vehicles.count();
+
+// const count = await Vehicle.countDocuments();
+
+// // getting query params form URL, adding pagination and executing query
+//     // which searches for matching cars
+//     const pageSize = 9;
+//     const page = Number(req.query.page) || 1;
+
+//     // let query;
+//     const queryObject = { ...req.query };
+//     const excludeFields = ['page', 'sort', 'limit', 'fields'];
+//     excludeFields.forEach((el) => delete queryObject[el]);
+
+//     // using filter params to assign a '$' code to the math functions
+//     // then replacing it in the queryString
+//     let queryString = JSON.stringify(queryObject);
+//     queryString = queryString.replace(
+//       /\b(gte|gt|lte|lt)\b/g,
+//       (match) => `$${match}`
+//     );
+
+//     let query = Vehicle.find(JSON.parse(queryString));
+//     // sorting results
+//     if (req.query.sort) {
+//       query = query.sort(req.query.sort);
+
+//       console.log('-----REQ QUERY-------');
+//       console.log(req.query.sort);
+//       console.log('------------');
+//     }
+//     // sorting results
+//     // if (req.query.sort) {
+//     //   const sortBy = req.query.sort.split(',').join(' ');
+//     //   query = query.sort(sortBy);
+//     // } else {
+//     //   query = query.sort('-createdAt');
+//     // }
+
+//     // const vehicles = await Vehicle.find(JSON.parse(queryString));
+//     // console.log('rrergegerg');
+//     // console.log(vehicles);
+//     // console.log('rrergegerg');
+
+//     // const count = vehicles.count();
+
+//     // const vehicles = await Vehicle.find(req.query)
+//     vehicles.limit(pageSize).skip(pageSize * (page - 1));
+//     const vehicles = await Vehicle.find(JSON.parse(queryString))
+//       // const vehicles = await Vehicle.find(req.query)
+//       .limit(pageSize)
+//       .skip(pageSize * (page - 1));
+
+//     // here it is
+//     // mongodb paginate agfter filtering
+//     const count = await Vehicle.countDocuments();
+
+//     if (!vehicles) {
+//       return res.status(200).json({ success: true, data: [] });
+//     }
+
+//     res
+//       .status(200)
+//       .json({ vehicles, page, totalPages: Math.ceil(count / pageSize) });
+//   } catch (error) {
+//     console.error(error.message);
+//     res.status(500).send('Server Error');
+//   }
+// });
+
 // // tried to add sorting and different pagintation but didnt work
 // try {
 //   // getting query params form URL, adding pagination and executing query
@@ -403,3 +509,7 @@ export default router;
 //   console.error(error.message);
 //   res.status(500).send('Server Error');
 // }
+
+// console.log('----COUNT----');
+// console.log(count);
+// console.log('-----------');

@@ -27,7 +27,7 @@ export const VehicleTab = ({ handleTabSelect }) => {
     mileage: Yup.number().required(),
     make: Yup.string().required(),
     model: Yup.string().required(),
-    modelVariant: Yup.string().required(),
+    modelVariant: Yup.string(),
     year: Yup.number().required(),
     variant: Yup.string().required(),
     bodyType: Yup.string().required(),

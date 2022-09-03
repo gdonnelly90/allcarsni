@@ -14,6 +14,7 @@ export const APP_TABS = {
   PLANS_PRICING: 'plans_pricing',
   FAVOURITES: 'favourites',
   SELL: 'sell',
+  MESSAGES: 'messages',
 };
 
 export const MAKE = {

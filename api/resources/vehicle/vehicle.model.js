@@ -5,9 +5,16 @@ const VehicleSchema = mongoose.Schema({
     type: mongoose.Schema.ObjectId,
     ref: 'users',
   },
+  recipient: {
+    type: mongoose.Schema.ObjectId,
+    ref: 'users',
+  },
   registrationNumber: {
     type: String,
     required: true,
+  },
+  title: {
+    type: String,
   },
   make: {
     type: String,
@@ -89,7 +96,7 @@ const VehicleSchema = mongoose.Schema({
     default: 1,
   },
   description: {
-    type: [String],
+    type: String,
   },
   specification: {
     type: [String],
@@ -127,6 +134,16 @@ const VehicleSchema = mongoose.Schema({
         type: mongoose.Schema.ObjectId,
         ref: 'users',
       },
+    },
+  ],
+  images: [
+    {
+      owner: {
+        type: mongoose.Schema.ObjectId,
+        ref: 'users',
+      },
+      fileId: { type: String },
+      url: { type: String },
     },
   ],
 });

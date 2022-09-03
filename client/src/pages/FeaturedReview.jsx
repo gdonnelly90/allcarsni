@@ -58,7 +58,7 @@ export const FeaturedReview = (ScrollToTop) => {
               It’s worth remembering that BMW did briefly give us another M5 option, though. The
               full-fat £140,780, 626bhp M5 CS was the most powerful M car ever built when it arrived
               in Spring 2021, and although it wasn’t a limited edition BMW only ever planned to
-              build it for 12 months. You can read our full review by clicking these blue words.
+              build it for 12 months.
             </p>
             <h4 className='small-title-text mt-5'>SO THERE’S M8 INPUT HERE, IS THERE?</h4>
             <hr style={{ width: '58%', size: '3px', color: '#c53030' }} />

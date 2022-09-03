@@ -1,12 +1,69 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Form, Row, Col, Button } from 'react-bootstrap';
 import { toast } from 'react-toastify';
+import { useDropzone } from 'react-dropzone';
+import { v4 as uuidv4 } from 'uuid';
+import { faXmark } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCircleNotch } from '@fortawesome/free-solid-svg-icons';
+import { useAppState } from '../context/appContext';
 import { fetchVehicleByRegistration } from '../services/vehicle.service';
 
+const thumbsContainer = {
+  display: 'flex',
+  flexDirection: 'row',
+  flexWrap: 'wrap',
+  marginTop: 16,
+};
+
+const thumb = {
+  position: 'relative',
+  display: 'inline-flex',
+  borderRadius: 2,
+  border: '1px solid #eaeaea',
+  marginBottom: 8,
+  marginRight: 8,
+  width: '20%',
+  height: 125,
+  padding: 4,
+  boxSizing: 'border-box',
+};
+
+const thumbInner = {
+  display: 'flex',
+  width: '100%',
+  minWidth: 0,
+  overflow: 'hidden',
+};
+
+const img = {
+  display: 'block',
+  width: '100%',
+  height: '100%',
+};
+
 export const VehicleForm = ({ formik }) => {
+  const state = useAppState();
+
   const [carLoading, setCarLoading] = useState(false);
+  const [files, setFiles] = useState([]);
+
+  const { getRootProps, getInputProps } = useDropzone({
+    accept: 'image/jpg, image/png, image/jpeg',
+    onDrop: (acceptedFiles) => {
+      const newFiles = acceptedFiles.map((file) =>
+        Object.assign(file, {
+          preview: URL.createObjectURL(file),
+          fileId: uuidv4(),
+          owner: state?.user?.id,
+        }),
+      );
+      console.log('NEW FILES');
+      console.log(newFiles);
+      // set state and keep old files
+      setFiles((arr) => [...arr, ...newFiles]);
+    },
+  });
 
   const fetchVehicleDetails = async () => {
     if (formik.values.registrationNumber) {
@@ -24,6 +81,37 @@ export const VehicleForm = ({ formik }) => {
     }
   };
 
+  const removeFile = (selectedFile) => {
+    // filter out the file the user wants to remove
+    const newFileList = [...files].filter((file) => file.fileId !== selectedFile.fileId);
+    console.log(newFileList);
+    // spread in the new file list
+    setFiles([...newFileList]);
+  };
+
+  const thumbs = files.map((file, index) => (
+    <div className='col-xs-12 col-sm-6 col-md-3 position-relative' key={file.name}>
+      <div className='mb-1 me-1'>
+        <img src={file.preview} style={img} alt='' />
+      </div>
+
+      <div className='preview-delete'>
+        <FontAwesomeIcon icon={faXmark} className='mr-4' onClick={() => removeFile(file)} />
+      </div>
+    </div>
+  ));
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    formik.setFieldValue('images', files);
+    formik.handleSubmit();
+  };
+
+  // clean up for files
+  useEffect(() => {
+    files.forEach((file) => URL.revokeObjectURL(file.preview));
+  }, [files]);
+
   return (
     <section className='container'>
       <div className='py-5 text-center'>
@@ -35,48 +123,51 @@ export const VehicleForm = ({ formik }) => {
       </div>
       <Row className='g-5'>
         <div className='col-md-5 col-lg-4 order-md-last'>
-          <h4>Key Vehicle Information</h4>
-
-          <ul className='list-group mb-3'>
-            <li className='list-group-item d-flex justify-content-between lh-sm'>
-              <div>
-                <h6 className='my-0'>Make</h6>
-                <small className='text-muted'>{formik.values.make}</small>
-              </div>
-            </li>
-            <li className='list-group-item d-flex justify-content-between lh-sm bg-light'>
-              <div>
-                <h6 className='my-0'>Model</h6>
-                <small className='text-muted'>{formik.values.model}</small>
-              </div>
-            </li>
-            <li className='list-group-item d-flex justify-content-between lh-sm'>
-              <div>
-                <h6 className='my-0'>Year</h6>
-                <small className='text-muted'>{formik.values.year}</small>
-              </div>
-              <span className='text-muted'>*</span>
-            </li>
-            <li className='list-group-item d-flex justify-content-between bg-light'>
-              <div>
-                <h6 className='my-0'>Colour</h6>
-                <small>{formik.values.colour}</small>
-              </div>
-            </li>
-            <li className='list-group-item d-flex justify-content-between lh-sm'>
-              <div>
-                <h6 className='my-0'>Body Type</h6>
-                <small className='text-muted'>{formik.values.bodyType}</small>
-              </div>
-            </li>
-          </ul>
+          {formik.values.make && (
+            <>
+              <h4>Key Vehicle Information</h4>
+              <ul className='list-group mb-3'>
+                <li className='list-group-item d-flex justify-content-between lh-sm'>
+                  <div>
+                    <h6 className='my-0'>Make</h6>
+                    <small className='text-muted'>{formik.values.make}</small>
+                  </div>
+                </li>
+                <li className='list-group-item d-flex justify-content-between lh-sm bg-light'>
+                  <div>
+                    <h6 className='my-0'>Model</h6>
+                    <small className='text-muted'>{formik.values.model}</small>
+                  </div>
+                </li>
+                <li className='list-group-item d-flex justify-content-between lh-sm'>
+                  <div>
+                    <h6 className='my-0'>Year</h6>
+                    <small className='text-muted'>{formik.values.year}</small>
+                  </div>
+                  <span className='text-muted'>*</span>
+                </li>
+                <li className='list-group-item d-flex justify-content-between bg-light'>
+                  <div>
+                    <h6 className='my-0'>Colour</h6>
+                    <small>{formik.values.colour}</small>
+                  </div>
+                </li>
+                <li className='list-group-item d-flex justify-content-between lh-sm'>
+                  <div>
+                    <h6 className='my-0'>Body Type</h6>
+                    <small className='text-muted'>{formik.values.bodyType}</small>
+                  </div>
+                </li>
+              </ul>
+            </>
+          )}
           <div className='p-2 my-2 d-flex flex-flow-row justify-content-start align-items-center'>
             <div className='me-1'>Total vehicles remaining</div>{' '}
             <div className='badge bg-success rounded-pill'>3</div>
           </div>
         </div>
         <div className='col-md-7 col-lg-8'>
-          <Form onSubmit={formik.handleSubmit}>
+          <Form onSubmit={(e) => handleSubmit(e)}>
             <Row>
               <h4 className='mb-4'>Vehicle Registration</h4>
               <Col sm={12} md={12} lg={4}>
@@ -100,14 +191,14 @@ export const VehicleForm = ({ formik }) => {
                 </Form.Group>
               </Col>
               <Col md={12} lg={4} className='align-self-center h-100 mt-3'>
-                <Button variant='primary' type='button' onClick={() => fetchVehicleDetails()}>
+                <Button variant='warning' type='button' onClick={() => fetchVehicleDetails()}>
                   {carLoading ? (
                     <div className='d-flex flex-flow-row justify-content-center align-items-center'>
                       <FontAwesomeIcon icon={faCircleNotch} spin />
                       <div className='mr-2'>Loading...</div>
                     </div>
                   ) : (
-                    <div>Search Vehicle Details</div>
+                    <div>Search vehicle details</div>
                   )}
                 </Button>
               </Col>
@@ -169,6 +260,7 @@ export const VehicleForm = ({ formik }) => {
                   </Form.Label>
                   <div className='d-flex flex-sm-column flex-md-row justify-content-md-between'>
                     <Form.Select
+                      className='form-control'
                       aria-label='Default select example'
                       id='status'
                       name='status'
@@ -193,6 +285,72 @@ export const VehicleForm = ({ formik }) => {
                   <small id='engineSizeNote' className='form-text text-muted'>
                     For sale, sold or deposit taken.
                   </small>
+                </Form.Group>
+              </Col>
+              <Col sm={12}>
+                <Form.Group className='mb-3'>
+                  <Form.Label>
+                    Listing Title
+                    <span className='error-text'>*</span>
+                  </Form.Label>
+                  <div className='d-flex flex-sm-column flex-md-row justify-content-md-between'>
+                    <Form.Control
+                      id='title'
+                      name='title'
+                      type='text'
+                      value={formik.values.title}
+                      onChange={formik.handleChange}
+                      onBlur={formik.handleBlur}
+                      isValid={formik.touched.title && !formik.errors.title}
+                      isInvalid={formik.touched.title && formik.errors.title}
+                    />
+                  </div>
+                  <small id='titleNote' className='form-text text-muted'>
+                    The vehicle listing title - recommend Make, Model and something unique.
+                  </small>
+                </Form.Group>
+              </Col>
+              <Col sm={12}>
+                <Form.Group className='mb-3'>
+                  <Form.Label>
+                    Description
+                    <span className='error-text'>*</span>
+                  </Form.Label>
+                  <div className='d-flex flex-sm-column flex-md-row justify-content-md-between'>
+                    <Form.Control
+                      as='textarea'
+                      rows={5}
+                      name='description'
+                      className='form-control'
+                      value={formik.values.description}
+                      onChange={formik.handleChange}
+                      onBlur={formik.handleBlur}
+                      isValid={formik.touched.description && !formik.errors.description}
+                      isInvalid={formik.touched.description && formik.errors.description}
+                    />
+                  </div>
+                  <small id='titleNote' className='form-text text-muted'>
+                    Key details regarding the vehicle.
+                  </small>
+                </Form.Group>
+              </Col>
+            </Row>
+            <hr className='my-4' />
+            <Row>
+              <h4>Vehicle Photos</h4>
+              <Col sm={12} md={12}>
+                <Form.Group className='mb-3'>
+                  <div {...getRootProps({ className: 'dropzone' })}>
+                    <input {...getInputProps()} />
+                    <p className='m-0'>Drag 'n' drop some files here, or click to select files.</p>
+                    <p className='m-2'>Place your main profile image first</p>
+                  </div>
+                  {files.length > 0 && (
+                    <aside style={thumbsContainer}>
+                      <h4 className='col-md-12'>Preview</h4>
+                      {thumbs}
+                    </aside>
+                  )}
                 </Form.Group>
               </Col>
             </Row>
@@ -266,7 +424,7 @@ export const VehicleForm = ({ formik }) => {
                 <Form.Group className='mb-3'>
                   <Form.Label>
                     Model variation spec
-                    {/* <span className='error-text'>*</span> */}
+                    <span className='error-text'>*</span>
                   </Form.Label>
                   <div className='d-flex flex-sm-column flex-md-row justify-content-md-between'>
                     <Form.Control
@@ -349,7 +507,7 @@ export const VehicleForm = ({ formik }) => {
             <hr className='my-4' />
             <Row>
               <h4>Vehicle Performance</h4>
-              <Col sm={12} md={4}>
+              <Col sm={12} lg={4}>
                 <Form.Group className='mb-3'>
                   <Form.Label>
                     Engine Power
@@ -372,7 +530,7 @@ export const VehicleForm = ({ formik }) => {
                   </small>
                 </Form.Group>
               </Col>
-              <Col m={12} md={4}>
+              <Col m={12} lg={4}>
                 <Form.Group className='mb-3'>
                   <Form.Label>
                     Engine Size
@@ -395,7 +553,7 @@ export const VehicleForm = ({ formik }) => {
                   </small>
                 </Form.Group>
               </Col>
-              <Col sm={12} md={4}>
+              <Col sm={12} lg={4}>
                 <Form.Group className='mb-3'>
                   <Form.Label>
                     Zero to Sixty
@@ -418,7 +576,6 @@ export const VehicleForm = ({ formik }) => {
                   </small>
                 </Form.Group>
               </Col>
-
               <Form.Group className='mb-3'>
                 <Form.Label>
                   Aspiration
@@ -442,7 +599,7 @@ export const VehicleForm = ({ formik }) => {
             <hr className='my-4' />
             <Row>
               <h4>Vehicle Transmission</h4>
-              <Col sm={12} md={4}>
+              <Col sm={12} lg={4}>
                 <Form.Group className='mb-3'>
                   <Form.Label>
                     Gearbox
@@ -462,7 +619,7 @@ export const VehicleForm = ({ formik }) => {
                   </div>
                 </Form.Group>
               </Col>
-              <Col sm={12} md={4}>
+              <Col sm={12} lg={4}>
                 <Form.Group className='mb-3'>
                   <Form.Label>
                     Number of gears
@@ -482,7 +639,7 @@ export const VehicleForm = ({ formik }) => {
                   </div>
                 </Form.Group>
               </Col>
-              <Col sm={12} md={4}>
+              <Col sm={12} lg={4}>
                 <Form.Group className='mb-3'>
                   <Form.Label>
                     Drive Train
@@ -506,7 +663,7 @@ export const VehicleForm = ({ formik }) => {
             <hr className='my-4' />
             <Row>
               <h4>Vehicle Economy</h4>
-              <Col sm={12} md={4}>
+              <Col sm={12} md={6} lg={4}>
                 <Form.Group className='mb-3'>
                   <Form.Label>
                     Fuel Consumption
@@ -529,7 +686,7 @@ export const VehicleForm = ({ formik }) => {
                   </small>
                 </Form.Group>
               </Col>
-              <Col sm={12} md={4}>
+              <Col sm={12} md={6} lg={4}>
                 <Form.Group className='mb-3'>
                   <Form.Label>
                     Fuel Type
@@ -556,7 +713,7 @@ export const VehicleForm = ({ formik }) => {
             <hr className='my-4' />
             <Row>
               <h4>Vehicle Accessibility</h4>
-              <Col sm={12} md={4}>
+              <Col sm={12} md={6} lg={4}>
                 <Form.Group className='mb-3'>
                   <Form.Label>
                     No of doors
@@ -576,7 +733,7 @@ export const VehicleForm = ({ formik }) => {
                   </div>
                 </Form.Group>
               </Col>
-              <Col sm={12} md={4}>
+              <Col sm={12} md={6} lg={4}>
                 <Form.Group className='mb-3'>
                   <Form.Label>
                     No of seats

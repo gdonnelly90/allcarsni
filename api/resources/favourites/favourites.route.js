@@ -1,8 +1,6 @@
 import { Router } from 'express';
 import { Favourite } from './favourites.model.js';
 import { auth } from '../../middleware/auth.js';
-import { checkObjectId } from '../../middleware/checkObjectId.js';
-import { Vehicle } from '../vehicle/vehicle.model.js';
 
 const router = new Router();
 
@@ -76,16 +74,16 @@ router.post('/', auth, async (req, res) => {
 // // @route    GET api/v1/favourites/:vehicleId/
 // // @desc     GET a favourite to a seller
 // // @access   Private
-router.get('/', auth, async (req, res) => {
-  try {
-    const userId = req.user.id;
-    const userFavourites = await Favourite.find({ user: userId });
-    res.status(200).json(userFavourites);
-  } catch (error) {
-    console.error(error.message);
-    res.status(500).send('Favourites Get Server Error');
-  }
-});
+// router.get('/', auth, async (req, res) => {
+//   try {
+//     const userId = req.user.id;
+//     const userFavourites = await Favourite.find({ user: userId });
+//     res.status(200).json(userFavourites);
+//   } catch (error) {
+//     console.error(error.message);
+//     res.status(500).send('Favourites Get Server Error');
+//   }
+// });
 
 export default router;
 

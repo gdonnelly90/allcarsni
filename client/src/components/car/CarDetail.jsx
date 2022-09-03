@@ -13,6 +13,7 @@ import { IoIosSpeedometer } from 'react-icons/io';
 import { BsFillCalendar2DateFill } from 'react-icons/bs';
 import { FaGasPump } from 'react-icons/fa';
 import FinanceCalculator from '../common/FinanceCalculator';
+import { currencyFormat } from '../../utils/helpers';
 import { fetchVehicleById } from '../../services/vehicle.service';
 import { CarDetailCarousel } from '../CarDetailCarousel';
 
@@ -60,11 +61,11 @@ const CarDetail = () => {
           </MDBRow>
         </MDBCol>
       </MDBRow>
-      <MDBRow className='car-icon-display pt-5' md='12'>
-        <MDBCol className='price-row-cardetails' md='3'>
-          <h1 className='car-price-cardetails'>{vehicle.price}</h1>
+      <MDBRow className='car-icon-display pt-5'>
+        <MDBCol className='price-row-cardetails' md='5'>
+          <h1 className='car-price-cardetails'>{currencyFormat(vehicle.price)}</h1>
         </MDBCol>
-        <MDBCol className='pb-3' md='2'>
+        <MDBCol className='pb-3' md='1'>
           <MDBRow className='cardetails-icons-icon text-center'>
             <AiFillCar size='26px' />
           </MDBRow>
@@ -101,7 +102,7 @@ const CarDetail = () => {
             <GiGearStick size='22px' />
           </MDBRow>
           <MDBRow className='cardetails-icons-icon text-center pt-1'>
-            <h5>{vehicle.gearbox}</h5>
+            <h5>{vehicle.transmission}</h5>
           </MDBRow>
         </MDBCol>
         <MDBCol className='pb-3' md='1'>

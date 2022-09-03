@@ -3,10 +3,22 @@ import { Vehicle } from './vehicle.model.js';
 import { auth } from '../../middleware/auth.js';
 import { check } from 'express-validator';
 import { isEmpty } from 'lodash-es';
+import multer from 'multer';
+import fs from 'fs';
 import { checkObjectId } from '../../middleware/checkObjectId.js';
 import vehicleRespository from './vehicle.respository.js';
 
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    if (!fs.existsSync(process.env.TMP_DIR)) {
+      fs.mkdirSync(process.env.TMP_DIR);
+    }
+    cb(null, process.env.TMP_DIR);
+  },
+});
+
 const router = Router();
+const multerMid = multer({ storage: storage });
 
 // @route    GET api/v1/vehicles
 // @desc     GET all vehicles
@@ -47,9 +59,81 @@ router.get('/', async (req, res) => {
       .json({ vehicles, page, totalPages: Math.ceil(count / pageSize) });
   } catch (error) {
     console.error(error.message);
-    res.status(500).send('Server Error');
+    res.status(500).send('Get All Vehicles Server Error');
   }
 });
+
+// @route    GET api/v1/vehicles/customer
+// @desc     GET all vehicles for customer
+// @access   Private
+router.get('/customer', auth, async (req, res) => {
+  try {
+    // current customer who is logged in
+    const { id } = req.user;
+    // default pagesize
+    const pageSize = 5;
+    // page number
+    const page = Number(req.query.page) || 1;
+    // query to get vehicles for customer
+    const vehicles = await Vehicle.find({ user: id })
+      .skip(pageSize * (page - 1))
+      .limit(pageSize);
+    // count total amount of records
+    const totalDocuments = await Vehicle.find({ user: id }).count();
+
+    if (!vehicles) {
+      return res.status(200).json('No Vehicles listed');
+    }
+    return res.status(200).json({
+      vehicles,
+      page,
+      totalPages: Math.ceil(totalDocuments / pageSize),
+    });
+  } catch (error) {
+    return res.status(500).send(error);
+  }
+});
+
+// get all vehicles which are favourited
+router.get('/favourites', auth, async (req, res) => {
+  try {
+    // current customer who is logged in
+    const { id } = req.user;
+    // default pagesize
+    const pageSize = 5;
+    // page number
+    const page = Number(req.query.page) || 1;
+    // query to get vehicles for customer
+    const vehicles = await Vehicle.find({ user: id })
+      .skip(pageSize * (page - 1))
+      .limit(pageSize);
+    // count total amount of records
+    const totalDocuments = await Vehicle.find({ user: id }).count();
+
+    if (!vehicles) {
+      return res.status(200).json('No Vehicles listed');
+    }
+    return res.status(200).json({
+      vehicles,
+      page,
+      totalPages: Math.ceil(totalDocuments / pageSize),
+    });
+  } catch (error) {
+    return res.status(500).send(error);
+  }
+});
+//   try {
+//     const { id } = req.user;
+
+//     const { favourites } = await Vehicle.find({ favourites: { $size: 1 } });
+//     console.log('---FAVOURITES VEHICLES---');
+//     console.log(favourites);
+//     return res.status(200).json(favourites);
+//   } catch (error) {
+//     console.error(error.message);
+//     return res.status(500).send('Favourites Server Error');
+//   }
+// });
 
 // @route    GET api/v1/vehicles/:id
 // @desc     GET Vehicle by id
@@ -80,7 +164,7 @@ router.get('/:id', async (req, res) => {
     res.status(200).json(vehicle);
   } catch (error) {
     console.error(error.message);
-    res.status(500).send('Server Error');
+    res.status(500).send('Vehcs By Id Server Error');
   }
 });
 
@@ -101,7 +185,7 @@ router.get('/:keyword', async (req, res) => {
     res.status(200).json({ success: true, data: vehicles });
   } catch (error) {
     console.error(error.message);
-    res.status(500).send('Server Error');
+    res.status(500).send('Vehc Keyword Server Error');
   }
 });
 
@@ -119,13 +203,13 @@ router.get('/registration/:id', auth, async (req, res) => {
     return res.status(200).json(ukVehicleData);
   } catch (error) {
     console.error(error.message);
-    return res.status(500).send('Server Error');
+    return res.status(500).send('Vehc Reg Server Error');
   }
 });
 
 // @route    PUT api/vehicles/favourite
 // @desc     PUT vehicle favourite
-// @access   Public
+// @access   Public but with Auth user component
 router.put('/favourites/:id', auth, async (req, res) => {
   try {
     const vehicle = await Vehicle.findById(req.params.id);
@@ -149,7 +233,7 @@ router.put('/favourites/:id', auth, async (req, res) => {
     }
   } catch (err) {
     console.error(err.message);
-    res.status(500).send('Server error');
+    res.status(500).send('Favs Server error');
   }
 });
 
@@ -168,7 +252,7 @@ router.post(
     check('price', 'Enter Price').not().isEmpty(),
     check('year', 'Year Of Manufacture').not().isEmpty(),
     check('mileage', 'Current Mileage').not().isEmpty(),
-    check('gearbox', 'Manual Or Automatic').not().isEmpty(),
+    check('transmission', 'Manual Or Automatic').not().isEmpty(),
     check('fuelType', 'Fuel Type').not().isEmpty(),
     check('bodyType', 'Body Type').not().isEmpty(),
     check('engineSize', 'Size Of Engine').not().isEmpty(),
@@ -196,7 +280,7 @@ router.post(
       price,
       year,
       mileage,
-      gearbox,
+      transmission,
       fuelType,
       bodyType,
       engineSize,
@@ -212,6 +296,8 @@ router.post(
       emissions,
       ulezCompliant,
       modelVariant,
+      title,
+      description,
       status,
       damaged,
       numberOfOwners,
@@ -240,6 +326,8 @@ router.post(
       vehicle = new Vehicle({
         user,
         registrationNumber,
+        title,
+        description,
         make,
         model,
         variant,
@@ -247,7 +335,7 @@ router.post(
         price,
         year,
         mileage,
-        gearbox,
+        transmission,
         fuelType,
         bodyType,
         engineSize,
@@ -276,10 +364,51 @@ router.post(
       res.status(201).json({ success: true, message: 'Vehicle created' });
     } catch (error) {
       console.error(error.message);
-      res.status(500).send('Server Error Vehicle');
+      res.status(500).send('Server Error Vehicle Post');
     }
   }
 );
+router.post('/files', auth, multerMid.any(), async (req, res) => {
+  try {
+    console.log('1. Landed on UploadFiles');
+    const { id } = req.user;
+
+    if (!id) {
+      return res.status(400).send('Unathorised');
+    }
+
+    const { id: vehicleId } = req.body;
+    console.log(`1A. VEHICLE ID ${vehicleId}`);
+
+    let files = req.files;
+
+    console.log('2. FILES');
+    console.log(files);
+
+    if (!vehicleId) {
+      return res.status(400).send('Vehicle is missing from uploading files');
+    }
+
+    if (files.length <= 0) {
+      return res.status(400).send('Files is missing from upload');
+    }
+
+    let vehicle = await Vehicle.findOne({ id: vehicleId });
+
+    console.log('3. UploadPhotos REPOSITORY ');
+    const uploadedFiles = await vehicleRespository.uploadPhotos(vehicle, files);
+
+    vehicle.images = uploadedFiles;
+
+    const doc = await vehicle.save();
+
+    return res.status(201).json(doc);
+  } catch (error) {
+    console.log('THROWING ERROR');
+    console.error(error);
+    res.status(500).send(error);
+  }
+});
 
 // @route    PUT api/vehicles/:id
 // @desc     Update vehicle details by ID
@@ -352,7 +481,7 @@ router.delete('/:id', checkObjectId('id'), auth, async (req, res) => {
   } catch (error) {
     console.error(error.message);
 
-    res.status(500).send('Server Error');
+    res.status(500).send('Delete Vehc Server Error');
   }
 });
 

@@ -12,7 +12,6 @@ const router = new Router();
 // // @access   Private
 router.post('/:vehicleId', auth, async (req, res) => {
   try {
-    // console.log(req.body);
     // this is the ID of the user who is sending the message
     const { id } = req.user;
     const { vehicleId } = req.params;
@@ -21,8 +20,6 @@ router.post('/:vehicleId', auth, async (req, res) => {
     // recipient has both the vehicle ID and the ID of the user who posted the vehicle for sale
     // the user is referred to as 'user' within the query below
     const recipient = await Vehicle.findOne({ id: vehicleId }).select('user');
-    console.log('---RECIPIENT---');
-    console.log(recipient);
 
     const message = new Message({
       user: id,
@@ -69,7 +66,7 @@ router.get('/:vehicleId', auth, async (req, res) => {
 router.get('/', auth, async (req, res) => {
   try {
     const recipientUserId = req.user.id;
-    console.log(recipientUserId);
+
     // this is the ID of the user who is sending the message
     const userMessages = await Message.find({
       recipientUserId: recipientUserId,
@@ -92,7 +89,7 @@ router.get('/', auth, async (req, res) => {
 router.get('/', auth, async (req, res) => {
   try {
     const userId = req.user.id;
-    console.log(userId);
+
     const userMessages = await Message.find({
       user: userId,
     })
@@ -130,7 +127,6 @@ router.delete('/:id', checkObjectId('id'), auth, async (req, res) => {
   try {
     const { id } = req.params;
     const user = req.user;
-    // console.log(user);
 
     const userMessages = await Message.findById(id);
 
@@ -153,7 +149,7 @@ router.delete('/:id', checkObjectId('id'), auth, async (req, res) => {
     res.status(201).json({ sucess: true, message: 'Message removed' });
   } catch (error) {
     console.error(error.message);
-    res.status(500).send('Server Error');
+    res.status(500).send('Delete Message Server Error');
   }
 });
 

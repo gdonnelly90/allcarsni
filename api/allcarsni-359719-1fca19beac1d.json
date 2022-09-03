@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "allcarsni-359719",
+  "private_key_id": "1fca19beac1d08c289cda8f2cd25631fc82b8766",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQCvSBCrVjYBJLy1\nuG4ayRbzDdFsQk/S/W1ewkw3Daf8igVLbhnuEejGNG3mYiWYajlZb0llBFtqqhjx\n1OGvau8gsFyPSNSUm02f7zLc6cZygHnEmUkyQeAXaCjnJpz2C7RW6wtMLm9t8kgL\n4vcJgGT9LMk0kSow2pxC9yDNFaAlJKXbcU8eRGfsvFQawgwiZ9s/xZ2rv5jLnDHt\n3J54jfsyO5VSm1jgHhWWTA4SF96a44jfxPJR2k/zZeScIcYutWwiYZR8dpgGClT7\n3rUgr8EMQBTHxp1ZR4Hc8WGUXbQo1E9O1kRC3egmy8DmkA0XDseXyFWEAhT6+SUx\n8KTp5V5rAgMBAAECggEAEmmV5ARaB0QOVWHP9x0D6HjyydYsFR7YBqnkYFgdOwhd\n8VmEfHSsfhLzLyNE4xOC02PpqCSNXHwNGMI4XuPzG1JLYXsmEYzq2jpsnmDUSXeO\nKFptzPYMjd48MGPm/cBRq7EPGRaQ+qdbwsaPFWluXQX/sMzwS1ImM1v1ucq5bY0/\nzjxzfUwrK2nqRW9xUO8l8djSb+3sA272mKIhIfQRBqqBQIoU1XuugeKMgIIDMtfH\nZdTy5lq2WLHoiEnhbuIumFlkZwo48lCEOcnwEIP5i5rPhP809IejVcXORvm1hL50\nF/4kcmI/xMtmQrZQOMBCYDdmKEhHh3/8TF6ztJq66QKBgQDWrrgBrFhpnPRAzl+w\ngjRhTks602LwxMQdjCD8Qy1AmDdSlsVBVGscP8BsvDc6t15dS21bOhpIR1ctWyjv\nqpHRKCyBeNzoUdh6XmcAQQTxNC+LHlIegMBZb8QktmA+uKN2n879K8EiKMgmLJeW\neaPeGc+tXw/Kno2/cA3m3dd9XwKBgQDRBBUf6f7RHx1OA6WZZv3u5J7UgcFLvjI0\nZsNjrv45allxtdMXQIPPa8BuovgwlKmERRYNyo3jxcfX7tAkZGWK/hM7YcGsj3AY\nbnVk4eWc5w/jeRYemAAz9q9TE0P7Y8WSOYMj0YlZuul/c+DtWNdkFrCQdNSMfFfS\nB4jsW14udQKBgE78GVcEQcMZrAPr6ejW/s6OL7+E5nIO8tisJbaqQIvzdOc98XUH\nyiCqk/FtjiRcMqvAhIt75Q+Sr9BQKc+DwgJh9X3tKdmPw0XCVcMSKO9Vc+iLT0tJ\ns3s0U8XuE5r/86RBR7Z90qDuwDTLUzpZpqCgfnga8YRqsVwtre+yzwWhAoGAZXhd\n6QhoNI2uZFlQ45AkZv2GPhRgCq1jIh1hbdtef/EpSxLCT996HhBpc0yawLrrMNN5\nSWi0SYeS5TmCwqgaw8dk/scOhv97o+C8DSW9mtZx2DTIkEGql4+Cvgn0Tu6406wo\nBhOLYoxjHwTahV9D8csyHG8bYLhcyhHuXxBcQKECgYBs8tQsIeSQ/awVyzK9EdgM\nVIM/55icbcfJg0j1LsXz2Vqv0Y4adjZUx+dGXlOQD/S1bP8gVWwPbQwRSFt53AOg\nLkciQc8u2nuS+I0TxP6jVcAu89AilHVFtoQ5JDwbsG3WQKC90vnz955slRV2/IWk\nY7Bdu9poXlBwmRopRk85AA==\n-----END PRIVATE KEY-----\n",
+  "client_email": "allcarsni@allcarsni-359719.iam.gserviceaccount.com",
+  "client_id": "116124989145245097901",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/allcarsni%40allcarsni-359719.iam.gserviceaccount.com"
+}

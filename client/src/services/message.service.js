@@ -16,8 +16,8 @@ export const postMessage = async (vehicleId, formData) => {
 export const fetchRecipientMessages = async () => {
   try {
     const response = await apiClient.get('/api/v1/messages');
-    console.log('-----RESPONSE MESS SERVICE-----');
-    console.log(response.data);
+    // console.log('-----RESPONSE MESS SERVICE-----');
+    // console.log(response.data);
     return response.data;
   } catch (error) {
     console.error(error);

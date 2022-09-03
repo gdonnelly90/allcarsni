@@ -48,10 +48,42 @@ export const fetchVehicleByRegistration = async (registrationNumber) => {
   }
 };
 
+// Fetch customer vehicles - ie stock
+export const fetchCustomerVehicles = async () => {
+  try {
+    const { data } = await apiClient.get('api/v1/vehicles/customer');
+    return data;
+  } catch (error) {
+    return error;
+  }
+};
+
+// Fetch user favourite vehicles - ie stock
+export const fetchUserFavouriteVehicles = async () => {
+  try {
+    const { data } = await apiClient.get('api/v1/vehicles/favourites');
+    return data;
+  } catch (error) {
+    return error;
+  }
+};
+
 // create a new vehicle
 export const postVehicle = async (vehicle) => {
   try {
     const { data } = await apiClient.post('/api/v1/vehicles', vehicle);
+    return data;
+  } catch (error) {
+    return error;
+  }
+};
+
+export const uploadVehiclePhotos = async (formData, headers) => {
+  try {
+    console.log('6. API CLIENT');
+    console.log(apiClient);
+    const { data } = await apiClient.post('/api/v1/vehicles/files', formData, headers);
+    console.log(`7. DATA FROM UPLOAD VEHICLE ${data}`);
     return data;
   } catch (error) {
     return error;

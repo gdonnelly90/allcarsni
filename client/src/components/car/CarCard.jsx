@@ -1,15 +1,20 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { MDBRow, MDBCol } from 'mdb-react-ui-kit';
-import { Card } from 'react-bootstrap';
+import { Container, Row, Card, Col } from 'react-bootstrap';
+import { currencyFormat } from '../../utils/helpers';
 import { toast } from 'react-toastify';
 import { Tooltip, OverlayTrigger } from 'react-bootstrap';
 import Image1 from '../../assets/img/cars/Ferrari_LaFerrari_Aperta_1.jpg';
 import { AiFillHeart } from 'react-icons/ai';
+import { AiOutlineHeart } from 'react-icons/ai';
 import { putFavourites } from '../../services/favourite.service';
+import { isEmpty } from 'lodash';
 
 //adding the individual data points to set a 'vehicle'
 const CarCard = ({ vehicle }) => {
+  // appstate context lift out the  userId = id
+  // const { id = '' } = app.user - this is the currently logged in user
+
   let navigate = useNavigate();
   const [favourite, setFavourite] = useState(vehicle.favourite);
 
@@ -22,15 +27,33 @@ const CarCard = ({ vehicle }) => {
     year,
     engineSize,
     enginePower,
-    gearbox,
+    transmission,
     fuelType,
     mileage,
     numberOfOwners,
     favourites,
+    modelVariant,
   } = vehicle;
 
-  console.log('---vehicle favourites-----');
-  console.log(vehicle.favourites);
+  // new function setFavourite
+  // const setFavouriute = () => {}
+  // if(isEmpty(id)) { return out <div></div>}
+  // else - we know user is logged in - we want check if the current user id is in the list of vehicle.favourites
+  // const isFavourite favourites.some(f => f.user === id);
+  // return isFavourite ? <AiFillHeart /> : <AiOutlineHeart />
+
+  const setFvourite = () => {
+    console.log(vehicle);
+  };
+  //   if (isEmpty(id)) {
+  //     return <div></div>;
+  //   } else {
+  //     const isFavourite = favourites.some((f) => f.user === id);
+  //     return isFavourite ? <AiFillHeart /> : <AiOutlineHeart />;
+  //   }
+  // };
+  // console.log('---vehicle favourites-----');
+  // console.log(vehicle.favourites);
 
   const getVehicleId = async () => {
     try {
@@ -43,13 +66,16 @@ const CarCard = ({ vehicle }) => {
   const onVehicleClick = () => {
     navigate(`/vehicle/${_id}`);
   };
+
+  useEffect(() => {
+    setFvourite();
+  }, []);
+
   return (
-    // <LinkContainer to=':id'>
-    // <Card className='card-div-class rounded' onClick={() => onVehicleClick()}>
     <Card className='card-div-class rounded'>
       <Card.Img src={Image1} variant='top' onClick={() => onVehicleClick()} />
       <div className='car-card-favourite-icon' onClick={() => getVehicleId()}>
-        <OverlayTrigger
+        {/* <OverlayTrigger
           overlay={
             <Tooltip id='favourite'>
               {' '}
@@ -57,30 +83,26 @@ const CarCard = ({ vehicle }) => {
             </Tooltip>
           }
           placement='top'>
-          <div className={`${favourite ? 'fill-red' : ''}`}>
-            <AiFillHeart />
-          </div>
-        </OverlayTrigger>
+          <div className='fill-red-heart'>
+            <span>{favourites.length > 0 && <span>{favourites.length}</span>}</span>
+            </div>
+          </OverlayTrigger> */}
+        <AiFillHeart />
+        {/* {setFavourite()} */}
       </div>
       <Card.Body onClick={() => onVehicleClick()}>
         <div className='card-top-text'>
-          <OverlayTrigger overlay={<Tooltip id='price'>Price</Tooltip>} placement='right'>
-            <div>{price}</div>
-          </OverlayTrigger>
+          <div>{currencyFormat(price)}</div>
         </div>
-        <OverlayTrigger
-          overlay={<Tooltip id='price'>Make, Model and Variant</Tooltip>}
-          placement='right'>
-          <div>
-            {make} {model} {variant}
-          </div>
-        </OverlayTrigger>
+        <div className='mb-2'>
+          {make} {model} {variant} {modelVariant || ''}
+        </div>
         <div onClick={() => onVehicleClick()}>
           {/* <li className='card-small-elements mt-2'>2019</li> */}
           <li className='card-small-elements mt-2'>{year}</li>
           <li className='card-small-elements'>{engineSize}L</li>
           <li className='card-small-elements'>{enginePower} BHP</li>
-          <li className='card-small-elements'>{gearbox}</li>
+          <li className='card-small-elements'>{transmission}</li>
         </div>
         <div className='pt-1'>
           <li className='card-small-elements'>{fuelType}</li>
@@ -88,16 +110,20 @@ const CarCard = ({ vehicle }) => {
           <li className='card-small-elements'>{numberOfOwners} owners</li>
         </div>
       </Card.Body>
-      <MDBRow className='pt-4'>
-        <MDBCol md='7'>
-          <p className='card-seller-distance'>Charles Hurst (2,220)</p>
-        </MDBCol>
-        <MDBCol md='5'>
-          <p className='card-seller-distance'>999 miles away</p>
-        </MDBCol>
-      </MDBRow>
+      <hr className='my-4' />
+      <Container>
+        <Row>
+          <Col md={7}>
+            <p className='card-footer-text'>Charles Hurst (2,220)</p>
+          </Col>
+          <Col md={5}>
+            <p className='card-footer-text text-end'>
+              {(Math.random() * 100).toFixed(2)} miles away
+            </p>
+          </Col>
+        </Row>
+      </Container>
     </Card>
-    // </LinkContainer>
   );
 };
 

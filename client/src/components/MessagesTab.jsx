@@ -29,10 +29,7 @@ export const MessagesTab = ({ messages }) => {
                 onClick={() =>
                   window.open(`http://localhost:3000/vehicle/${message.vehicleId}`, 'blank')
                 }>
-                {/* <td className='td-link' onClick={() => onVehicleIdClick(message.vehicleId)}> */}
                 <FaCarSide size='26px' /> Click for Vehicle
-                {/* {message.vehicleId} */}
-                {/* {message.vehicleId} onClick={() => onBodyTypeClick(message.vehicleId)} */}
               </td>
             </tr>
           ))}

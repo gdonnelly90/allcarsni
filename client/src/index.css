@@ -4,11 +4,6 @@
   font-family: 'Roboto', sans-serif;
 }
 
-/* @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap');
-body, html { 
-  font-family: 'Roboto', sans-serif;
-} */
-
 /* Home page elements */
 main {
   min-height: 160vh;
@@ -383,13 +378,13 @@ img {
 }
 
 .form-handle-xxs {
-  width: 400px;
+  width: 200px;
 }
 
 /* Search elements */
 .search-wrapper {
   position: absolute;
-  top: 300px;
+  top: 450px;
   left: 0;
   width: 100%;
   z-index: 100;
@@ -532,9 +527,9 @@ background-color:#c53030
   align-items: center;
 }
 
-.car-icon-display {
+/* .car-icon-display {
   text-transform: uppercase;
-}
+} */
 
 /* .footer-main-container {
   background-image: linear-gradient(#c53030, #ca0303, #b80101);
@@ -714,12 +709,12 @@ input[type=range]:focus::-ms-fill-upper {
   border-color: #c53030;
 }
 
-.btn-primary:hover {
+/* .btn-primary:hover {
   font-size:small;
   color: #fff;
   background-color: #c53030 ;
   border-color: #c53030;
-}
+} */
 
 .btn:focus, .btn.focus {
   outline: 0;
@@ -736,12 +731,12 @@ input[type=range]:focus::-ms-fill-upper {
   outline: none;
 }
 
-.btn-primary:focus,
+/* .btn-primary:focus,
 .btn-primary.focus {
   color: #fff;
   background-color: #c53030;
   border-color: #c53030;
-}
+} */
 
 .swiper {
   width: 100%;
@@ -794,6 +789,9 @@ li {
   box-shadow: 0 1px 1px -1px hsla(240, 30.1%, 28%, 0.25), 0 8px 16px -8px hsla(0, 0%, 0%, 0.3),
   0 -6px 16px -6px hsla(0, 0%, 0%, 0.03);
 }
+.card-div-class:hover {
+  cursor: pointer;
+}
 
 .card-top-text {
   color: #041639;
@@ -823,7 +821,13 @@ li {
   margin: 2px 4px 0 0;
   padding: 2px 8px;
 }
-.card-seller-distance {
+
+.card-footer-text {
+  color: #041639;
+  font-size: 0.75rem;
+}
+
+/* .card-seller-distance {
   color: #041639;
   display: flex;
   border-top: 1px solid #ebebeb;
@@ -833,7 +837,7 @@ li {
   margin-left: 10px;
   padding-top: 10px;
   font-size: 0.75rem;
-}
+} */
 
 .card-desc-div {
   color: 000000 75%;
@@ -906,7 +910,7 @@ li {
 }
 
 .sidebar {
-  font-size: 1rem;
+  font-size: 2rem;
   padding-left: 50px;
   padding-right: 20px;
   position: fixed;
@@ -915,9 +919,9 @@ li {
 }
 
 .siderbar-text-pclass {
-  font-size: 2.5rem;
+  /* font-size: 2.5rem; */
   margin-top:35px;
-  margin-left: 20px;
+  /* margin-left: 20px; */
   color: #041639;
 }
 
@@ -1001,14 +1005,12 @@ li {
 .card-search-container {
   padding-top: 20px;
   display: grid;
-  grid-template-rows: 4fr;
-  /* grid-template-rows: min-content 2fr 2fr 0.5fr; */
+  grid-template-rows: 4fr 0.5fr
 }
 
 .container-search-page {
-  align-items:top;
   display: grid;
-  min-width: 545px;
+  height: auto;
   grid-template-columns: 1fr 1fr 1fr;
   grid-template-rows: 2fr 2fr;
   grid-gap: 1rem;
@@ -1256,7 +1258,49 @@ li {
   cursor: pointer;
 }
 
-/* Car card fsvourite icon placement */
+.dropzone {
+  min-height: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background-color: #ebf0f6;
+  border-radius: 5px;
+  height: 100%;
+  background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' rx='8' ry='8' stroke='%23C9C8D3FF' stroke-width='5' stroke-dasharray='18' stroke-dashoffset='10' stroke-linecap='square'/%3e%3c/svg%3e");
+}
+
+.dropzone > p {
+  margin: 0;
+  color: #777575;
+}
+
+.preview-delete {
+  position: absolute;
+  top: 1px;
+  right: 3px;
+  z-index: 1000;
+  background:#c01212;
+  width: 25px;
+  height: 25px;
+  color: white;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+
+.stock-listing-page {
+  display: grid;
+  height: auto;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 2fr 2fr;
+  grid-gap: 1rem;
+  align-items: center;
+}
+
+/* Car card favourite icon placement */
 .car-card-favourite-icon {
   position: absolute;
   font-size: 1rem;
@@ -1269,5 +1313,27 @@ li {
   display: flex;
   align-items: center;
   justify-content: center;
+  color: rgb(239, 251, 14);
+  /* color: #fff; */
+  /* color: #c53030; */
+}
+
+.car-card-outline-heart {
   color: #fff;
+  /* color: #c53030; */
+}
+
+.car-card-fill-heart {
+  position: absolute;
+  font-size: 1rem;
+  font-weight: bold;
+  top: 5px;
+  right: 7px;
+  z-index: 502;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: rgb(239, 251, 14);
 }

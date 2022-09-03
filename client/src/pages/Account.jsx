@@ -2,10 +2,10 @@ import React, { useEffect, useState } from 'react';
 import { Tabs, Tab } from 'react-bootstrap';
 import { isEmpty } from 'lodash';
 import { toast } from 'react-toastify';
+import { useAppDispatch, useAppState } from '../context/appContext';
 import { fetchSubscriptions } from '../services/subscription.service';
 import { fetchRecipientMessages } from '../services/message.service';
 import { fetchFavourites } from '../services/favourite.service';
-import { useAppDispatch, useAppState } from '../context/appContext';
 import { SubscriptionTab } from '../components/SubscriptionTab';
 import { ProfileTab } from '../components/ProfileTab';
 import { FavouritesTab } from '../components/FavouritesTab';
@@ -15,42 +15,62 @@ import { MessagesTab } from '../components/MessagesTab';
 import { createSubscription, createBillingSession } from '../context/appContext/actions';
 import { updateUserDetails } from '../context/appContext/actions';
 import { APP_TABS } from '../utils/constants';
+import { fetchCustomerVehicles } from '../services/vehicle.service';
+import { fetchUserFavouriteVehicles } from '../services/vehicle.service';
 
 export const Account = () => {
   const state = useAppState();
   const [messages, setMessages] = useState();
   const dispatch = useAppDispatch();
   const [key, setKey] = useState(APP_TABS.PROFILE);
+  const [vehicleData, setVehicleData] = useState({ vehicles: [], page: 1, totalPages: 1 });
+
   const [subscriptionTypes, setSubscriptionTypes] = useState([]);
   const [favourites, setFavourites] = useState([]);
   const [vehicles, setVehicles] = useState([]);
+  const [favouriteVehicles, setFavouriteVehicles] = useState({
+    vehicles: [],
+    page: 1,
+    totalPages: 1,
+  });
 
   const getSubscriptionTypes = async () => {
     try {
       const subscriptions = await fetchSubscriptions();
-      console.log(subscriptions);
-      setSubscriptionTypes(subscriptions);
+      if (subscriptions) setSubscriptionTypes(subscriptions);
+      else toast.error('Error getting subscriptions');
     } catch (error) {
-      console.error(error);
+      toast.error(error.message);
+    }
+  };
+
+  const getCustomerVehicles = async () => {
+    try {
+      const data = await fetchCustomerVehicles();
+      setVehicleData(data);
+    } catch (error) {
+      toast.error(error.message);
+    }
+  };
+
+  const getUserFavouriteVehicles = async () => {
+    try {
+      const data = await fetchUserFavouriteVehicles();
+      setFavouriteVehicles(data);
+    } catch (error) {
       toast.error(error.message);
     }
   };
 
   const getRecipientMessages = async () => {
     const messages = await fetchRecipientMessages();
-    console.log('-----RESPONSE MESSAGES DATA-----');
-    console.log(messages);
+    // console.log('-----RESPONSE MESSAGES DATA-----');
+    // console.log(messages);
     setMessages(messages);
-    // console.log('-----RESPONSE.DATA FE-----');
-    // console.log(response.data);
-    // console.log('-----DATA OBJ-----');
-    // console.log({ data });
   };
 
   const getVehicles = async () => {
     const vehicles = await fetchFavourites();
-    console.log('-----RESPONSE.DATA FE-----');
-    console.log(vehicles.data);
     setVehicles(vehicles);
   };
 
@@ -69,16 +89,18 @@ export const Account = () => {
         break;
       case APP_TABS.FAVOURITES:
         setKey(key);
-        getVehicles();
         console.log('Favourites');
+        getUserFavouriteVehicles();
+        // getVehicles();
+        break;
+      case APP_TABS.STOCK:
+        setKey(key);
+        console.log('stock');
+        getCustomerVehicles();
         break;
       case APP_TABS.SELL:
         setKey(key);
         console.log('Sell Car');
-        break;
-      case APP_TABS.STOCK:
-        setKey(key);
-        console.log('Stock');
         break;
       case APP_TABS.MESSAGES:
         setKey(key);
@@ -141,10 +163,10 @@ export const Account = () => {
           <SubscriptionTab subscriptions={subscriptionTypes} onSubscription={onSubscription} />
         </Tab>
         <Tab eventKey={APP_TABS.FAVOURITES} title='Favourites'>
-          {/* <FavouritesTab vehicles={vehicles} /> */}
+          <FavouritesTab vehicles={vehicles} />
         </Tab>
         <Tab eventKey={APP_TABS.STOCK} title='Stock'>
-          <StockTab />
+          <StockTab vehicleData={vehicleData} />
         </Tab>
         <Tab eventKey={APP_TABS.SELL} title='Sell'>
           <VehicleTab handleTabSelect={handleTabSelect} />

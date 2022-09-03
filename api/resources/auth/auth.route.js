@@ -39,9 +39,6 @@ router.post(
         user.stripeCustomerId
       );
 
-      console.log('SUBSCRIPTION DATA......');
-      console.log(subscription.data);
-
       // for security you would normally not differentiate between error messages (such as invalid password below)
       const doesMatch = await bcrypt.compare(password, user.password);
 

@@ -1,16 +1,18 @@
 import express from 'express';
 import bodyParser from 'body-parser';
 import cors from 'cors';
-import { config } from 'dotenv';
 import { connectDB } from './config/db.js';
 import routes from './routes/index.js';
 import * as dotenv from 'dotenv';
+import path from 'path';
 
 // load process env - may not need in prod
 // load config
+const __dirname = path.resolve();
+console.log(__dirname);
+
 dotenv.config();
-console.log(process.env);
-// config();
+
 // set express instance to app
 const app = express();
 // db connection

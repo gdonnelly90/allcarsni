@@ -96,7 +96,7 @@ const VehicleSchema = mongoose.Schema({
     default: 1,
   },
   description: {
-    type: String,
+    type: [String],
   },
   specification: {
     type: [String],

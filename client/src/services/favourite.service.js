@@ -3,6 +3,7 @@ import apiClient from '../utils/httpService';
 // post favourite
 export const putFavourites = async (vehicleId) => {
   try {
+    // console.log('PUT FAVES CALLED');
     const { data } = await apiClient.put(`/api/v1/vehicles/favourites/${vehicleId}`);
     return data;
   } catch (error) {
@@ -11,9 +12,19 @@ export const putFavourites = async (vehicleId) => {
 };
 
 // get favourites
-export const getFavourites = async (userId) => {
+// export const getFavourites = async (userId) => {
+//   try {
+//     const { data } = await apiClient.put(`/api/v1/vehicles/favourites/${userId}`);
+//     return data;
+//   } catch (error) {
+//     return error;
+//   }
+// };
+
+// get favourites
+export const getFavourites = async (vehicleId) => {
   try {
-    const { data } = await apiClient.put(`/api/v1/vehicles/favourites/${userId}`);
+    const { data } = await apiClient.put(`/api/v1/vehicles/favourites/${vehicleId}`);
     return data;
   } catch (error) {
     return error;

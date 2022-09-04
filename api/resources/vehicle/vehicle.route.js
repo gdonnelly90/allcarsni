@@ -94,47 +94,6 @@ router.get('/customer', auth, async (req, res) => {
   }
 });
 
-// get all vehicles which are favourited
-router.get('/favourites', auth, async (req, res) => {
-  try {
-    // current customer who is logged in
-    const { id } = req.user;
-    // default pagesize
-    const pageSize = 5;
-    // page number
-    const page = Number(req.query.page) || 1;
-    // query to get vehicles for customer
-    const vehicles = await Vehicle.find({ user: id })
-      .skip(pageSize * (page - 1))
-      .limit(pageSize);
-    // count total amount of records
-    const totalDocuments = await Vehicle.find({ user: id }).count();
-
-    if (!vehicles) {
-      return res.status(200).json('No Vehicles listed');
-    }
-    return res.status(200).json({
-      vehicles,
-      page,
-      totalPages: Math.ceil(totalDocuments / pageSize),
-    });
-  } catch (error) {
-    return res.status(500).send(error);
-  }
-});
-//   try {
-//     const { id } = req.user;
-
-//     const { favourites } = await Vehicle.find({ favourites: { $size: 1 } });
-//     console.log('---FAVOURITES VEHICLES---');
-//     console.log(favourites);
-//     return res.status(200).json(favourites);
-//   } catch (error) {
-//     console.error(error.message);
-//     return res.status(500).send('Favourites Server Error');
-//   }
-// });
-
 // @route    GET api/v1/vehicles/:id
 // @desc     GET Vehicle by id
 // @access   Public
@@ -207,12 +166,30 @@ router.get('/registration/:id', auth, async (req, res) => {
   }
 });
 
+// get all vehicles which are favourited
+router.get('/favourites/:userId', auth, async (req, res) => {
+  try {
+    const { id } = req.user;
+    console.log('---FAVOURITES USER ID---');
+    console.log(id);
+    const { favourites } = await Vehicle.find({ favourites: { $size: 1 } });
+    console.log('---FAVOURITES VEHICLES---');
+    console.log(favourites);
+    return res.status(200).json(favourites);
+  } catch (error) {
+    console.error(error.message);
+    return res.status(500).send('Favourites Server Error');
+  }
+});
+
 // @route    PUT api/vehicles/favourite
 // @desc     PUT vehicle favourite
 // @access   Public but with Auth user component
 router.put('/favourites/:id', auth, async (req, res) => {
   try {
     const vehicle = await Vehicle.findById(req.params.id);
+    // console.log('req.params.id');
+    // console.log(req.params.id);
 
     if (
       vehicle.favourites.filter(
@@ -368,47 +345,6 @@ router.post(
     }
   }
 );
-router.post('/files', auth, multerMid.any(), async (req, res) => {
-  try {
-    console.log('1. Landed on UploadFiles');
-    const { id } = req.user;
-
-    if (!id) {
-      return res.status(400).send('Unathorised');
-    }
-
-    const { id: vehicleId } = req.body;
-    console.log(`1A. VEHICLE ID ${vehicleId}`);
-
-    let files = req.files;
-
-    console.log('2. FILES');
-    console.log(files);
-
-    if (!vehicleId) {
-      return res.status(400).send('Vehicle is missing from uploading files');
-    }
-
-    if (files.length <= 0) {
-      return res.status(400).send('Files is missing from upload');
-    }
-
-    let vehicle = await Vehicle.findOne({ id: vehicleId });
-
-    console.log('3. UploadPhotos REPOSITORY ');
-    const uploadedFiles = await vehicleRespository.uploadPhotos(vehicle, files);
-
-    vehicle.images = uploadedFiles;
-
-    const doc = await vehicle.save();
-
-    return res.status(201).json(doc);
-  } catch (error) {
-    console.log('THROWING ERROR');
-    console.error(error);
-    res.status(500).send(error);
-  }
-});
 
 // @route    PUT api/vehicles/:id
 // @desc     Update vehicle details by ID

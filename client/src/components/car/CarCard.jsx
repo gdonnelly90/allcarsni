@@ -9,14 +9,18 @@ import { AiFillHeart } from 'react-icons/ai';
 import { AiOutlineHeart } from 'react-icons/ai';
 import { putFavourites } from '../../services/favourite.service';
 import { isEmpty } from 'lodash';
+import { useAppState, useAppDispatch } from '../../context/appContext/context';
 
 //adding the individual data points to set a 'vehicle'
 const CarCard = ({ vehicle }) => {
   // appstate context lift out the  userId = id
   // const { id = '' } = app.user - this is the currently logged in user
 
+  const { user } = useAppState();
   let navigate = useNavigate();
-  const [favourite, setFavourite] = useState(vehicle.favourite);
+  const [favourite, setFavourite] = useState(vehicle.favourites);
+  console.log('favourite');
+  console.log(favourite);
 
   const {
     _id,
@@ -24,6 +28,7 @@ const CarCard = ({ vehicle }) => {
     make,
     model,
     variant,
+    modelVariant,
     year,
     engineSize,
     enginePower,
@@ -31,8 +36,7 @@ const CarCard = ({ vehicle }) => {
     fuelType,
     mileage,
     numberOfOwners,
-    favourites,
-    modelVariant,
+    // favourites,
   } = vehicle;
 
   // new function setFavourite
@@ -41,10 +45,42 @@ const CarCard = ({ vehicle }) => {
   // else - we know user is logged in - we want check if the current user id is in the list of vehicle.favourites
   // const isFavourite favourites.some(f => f.user === id);
   // return isFavourite ? <AiFillHeart /> : <AiOutlineHeart />
+  // Cars.find({ 'favourites.user': mongoose.Types.ObjectId('62e7fc9bba5f9bac64897a83') } )
+  // console.log('---VEHC USER');
+  // console.log(vehicle.favourites.user);
 
-  const setFvourite = () => {
-    console.log(vehicle);
+  // const { user, id } = favourite;
+
+  // console.log('fAVOURITE');
+  // console.log(favourite);
+  // console.log('fAVOURITE USER');
+  // console.log(user);
+
+  const setFavourites = () => {
+    if (
+      vehicle.favourites.filter((favourite) => favourite.user.toString() === user.id).length > 0
+    ) {
+      <div className='car-card-favourite-icon'>
+        <AiFillHeart />
+      </div>;
+      console.log('Vehicle has a favourite');
+    } else {
+      <div className='car-card-favourite-icon'>
+        <AiOutlineHeart />
+      </div>;
+    }
   };
+  // if (isEmpty(vehicle.favourites)) {
+  //   console.log('Vehicle Doesnt have a favourite');
+  // } else {
+  //   console.log('VEHICLE');
+  //   console.log(vehicle._id);
+  // }
+
+  // console.log('VEHICLE');
+  // console.log(vehicle.favourites.user);
+  // if (vehicle.favourites) console.log(vehicle.favourites);
+
   //   if (isEmpty(id)) {
   //     return <div></div>;
   //   } else {
@@ -67,8 +103,13 @@ const CarCard = ({ vehicle }) => {
     navigate(`/vehicle/${_id}`);
   };
 
+  // const setHeartColour = async () => {
+  //   if (favourites.user)
+  //     favourites.user.filter((favourite) => favourite.user.toString() === req.user.id).length > 0;
+  //   // <AiFillHeart />;
+  // };
   useEffect(() => {
-    setFvourite();
+    setFavourites();
   }, []);
 
   return (
@@ -87,7 +128,7 @@ const CarCard = ({ vehicle }) => {
             <span>{favourites.length > 0 && <span>{favourites.length}</span>}</span>
             </div>
           </OverlayTrigger> */}
-        <AiFillHeart />
+        {/* <AiOutlineHeart /> */}
         {/* {setFavourite()} */}
       </div>
       <Card.Body onClick={() => onVehicleClick()}>

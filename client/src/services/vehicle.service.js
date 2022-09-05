@@ -31,6 +31,18 @@ export const fetchVehicleById = async (id) => {
 export const fetchElectricVehicles = async () => {
   try {
     const response = await apiClient.get('/api/v1/vehicles?fuelType=Electric');
+    return response.data;
+  } catch (error) {
+    console.error(error.message);
+    return error.message;
+  }
+};
+
+// Fetch user favourite vehicles - ie stock
+export const fetchUserFavouriteVehicles = async (userId) => {
+  try {
+    const response = await apiClient.get(`api/v1/vehicles/favourites/${userId}`);
+    return response.data;
   } catch (error) {
     console.error(error.message);
     return error.message;
@@ -52,16 +64,6 @@ export const fetchVehicleByRegistration = async (registrationNumber) => {
 export const fetchCustomerVehicles = async () => {
   try {
     const { data } = await apiClient.get('api/v1/vehicles/customer');
-    return data;
-  } catch (error) {
-    return error;
-  }
-};
-
-// Fetch user favourite vehicles - ie stock
-export const fetchUserFavouriteVehicles = async () => {
-  try {
-    const { data } = await apiClient.get('api/v1/vehicles/favourites');
     return data;
   } catch (error) {
     return error;

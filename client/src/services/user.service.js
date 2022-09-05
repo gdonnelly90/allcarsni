@@ -15,7 +15,7 @@ export const fetchAllUsers = async () => {
 // get user by ID
 export const updateUser = async (user) => {
   try {
-    console.log(user.id);
+    // console.log(user.id);
     const response = await apiClient.put(`/api/v1/users/${user.id}`, user);
     return response.data;
   } catch (error) {

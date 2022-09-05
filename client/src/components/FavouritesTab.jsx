@@ -1,22 +1,21 @@
 import React from 'react';
 import { Container } from 'react-bootstrap';
-import { toast } from 'react-toastify';
 import CarCard from '../components/car/CarCard';
-import { getFavourites } from '../services/favourite.service';
 
-export const FavouritesTab = ({ vehicles, user }) => {
-  const fetchFavourites = async () => {
-    try {
-      getFavourites();
-      // getFavourites(_id);
-    } catch (error) {
-      toast.error(error.message);
-    }
-  };
+export const FavouritesTab = ({ favouriteVehicles }) => {
+  console.log('FTAB VEHICLES DATA');
+  console.log(favouriteVehicles);
 
   return (
     <div>
-      <div>Favourites</div>
+      <Container className='stock-listing-page'>
+        {favouriteVehicles &&
+          favouriteVehicles.map((vehicle, i) => (
+            // <Col sm={12} md={6} lg={4}>
+            <CarCard key={i} vehicle={vehicle} />
+            // </Col>
+          ))}
+      </Container>
     </div>
   );
 };
@@ -33,3 +32,19 @@ export const FavouritesTab = ({ vehicles, user }) => {
 //     </div>
 //   </Container>
 // </div>
+
+// const fetchFavourites = async () => {
+//   try {
+//     getFavourites();
+//     // getFavourites(_id);
+//   } catch (error) {
+//     toast.error(error.message);
+//   }
+// };
+
+// return (
+//   <div>
+//     <div>Favourites</div>
+//   </div>
+// );
+// };

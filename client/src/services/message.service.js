@@ -4,8 +4,6 @@ import apiClient from '../utils/httpService';
 export const postMessage = async (vehicleId, formData) => {
   try {
     const { data } = await apiClient.post(`/api/v1/messages/${vehicleId}`, formData);
-    // console.log('---DATA---');
-    // console.log({ data });
     return data;
   } catch (error) {
     return error;
@@ -16,8 +14,6 @@ export const postMessage = async (vehicleId, formData) => {
 export const fetchRecipientMessages = async () => {
   try {
     const response = await apiClient.get('/api/v1/messages');
-    // console.log('-----RESPONSE MESS SERVICE-----');
-    // console.log(response.data);
     return response.data;
   } catch (error) {
     console.error(error);
@@ -29,8 +25,6 @@ export const fetchRecipientMessages = async () => {
 export const getUser = async (id) => {
   try {
     const { data } = await apiClient.get(`/api/v1/vehicles/${id}`);
-    // console.log('---MESS SERV ID----');
-    // console.log(data);
     return data;
   } catch (error) {
     return error;

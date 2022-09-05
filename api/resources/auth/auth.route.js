@@ -38,7 +38,7 @@ router.post(
       const subscription = await subscriptionRepo.getStripeUserSubscriptions(
         user.stripeCustomerId
       );
-
+      
       // for security you would normally not differentiate between error messages (such as invalid password below)
       const doesMatch = await bcrypt.compare(password, user.password);
 

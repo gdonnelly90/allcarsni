@@ -12,10 +12,6 @@ import {
   SET_SUBSCRIPTION,
   SUCCESS,
   CREATE_SUBSCRIPTION_SESSION,
-  USER_UPDATE,
-  USER_UPDATE_SUCCESS,
-  USER_UPDATE_ERROR,
-  USER_UPDATE_RESET,
 } from '../actionTypes';
 import { logout } from './actions';
 import { getLocalUser, setLocalUser } from '../../services/localStorage.service';
@@ -55,14 +51,12 @@ export const AppReducer = (initialState, action) => {
     case REQUEST_LOGIN:
     case REQUEST_CREATE_SUBSCRIPTION:
     case LOADING:
-    case USER_UPDATE:
       return {
         ...initialState,
         loading: true,
       };
     case REGISTER_SUCCESS:
     case LOGIN_SUCCESS:
-    case USER_UPDATE_SUCCESS:
       return {
         ...initialState,
         user: action.payload.user,
@@ -85,7 +79,6 @@ export const AppReducer = (initialState, action) => {
     case REGISTER_ERROR:
     case LOGIN_ERROR:
     case ERROR:
-    case USER_UPDATE_ERROR:
       return {
         ...initialState,
         loading: false,

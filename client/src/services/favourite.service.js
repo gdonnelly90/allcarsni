@@ -48,17 +48,7 @@ export const fetchFavourites = async () => {
 // post favourite TWO
 export const updateFavourite = async (_id, formData) => {
   try {
-    // const vehicleId = _id;
-    console.log('---Fave Service---');
-    // console.log(vehicleId);
-    console.log(_id);
-
     const { data } = await apiClient.post('/api/v1/favourites/', formData);
-    // const response = await apiClient.post('/api/v1/favourites', _id);
-
-    // return response;
-    console.log('---Fave Service Response---');
-    console.log(data);
     return data;
   } catch (error) {
     return error;

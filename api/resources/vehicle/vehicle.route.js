@@ -7,6 +7,7 @@ import multer from 'multer';
 import fs from 'fs';
 import { checkObjectId } from '../../middleware/checkObjectId.js';
 import vehicleRespository from './vehicle.respository.js';
+import mongoose from 'mongoose';
 
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
@@ -54,9 +55,11 @@ router.get('/', async (req, res) => {
       return res.status(200).json({ success: true, data: [] });
     }
 
-    res
-      .status(200)
-      .json({ vehicles, page, totalPages: Math.ceil(count / pageSize) });
+    res.status(200).json({
+      vehicles,
+      page,
+      totalPages: Math.ceil(count / pageSize),
+    });
   } catch (error) {
     console.error(error.message);
     res.status(500).send('Get All Vehicles Server Error');
@@ -91,6 +94,25 @@ router.get('/customer', auth, async (req, res) => {
     });
   } catch (error) {
     return res.status(500).send(error);
+  }
+});
+
+// // @route    GET api/v1/vehicles/favourites/:id
+// // @desc     GET a users favourite cars by user id
+// // @access   Private
+router.get('/favourites/:id', auth, async (req, res) => {
+  try {
+    const { id } = req.user;
+
+    // const vehicle = await Vehicle.findById(req.params.id);
+    const favourites = await Vehicle.aggregate([
+      { $match: { 'favourites.user': new mongoose.Types.ObjectId(id) } },
+      { $unwind: '$favourites' },
+    ]);
+    return res.json(favourites);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Favs From Id Server error');
   }
 });
 
@@ -149,7 +171,7 @@ router.get('/:keyword', async (req, res) => {
 });
 
 // @route   GET api/v1/vehicles/registration/:id
-// @desc    GET Vehcile by registration number
+// @desc    GET vehicle by registration number
 // @access  Private
 router.get('/registration/:id', auth, async (req, res) => {
   try {
@@ -166,21 +188,20 @@ router.get('/registration/:id', auth, async (req, res) => {
   }
 });
 
-// get all vehicles which are favourited
-router.get('/favourites/:userId', auth, async (req, res) => {
-  try {
-    const { id } = req.user;
-    console.log('---FAVOURITES USER ID---');
-    console.log(id);
-    const { favourites } = await Vehicle.find({ favourites: { $size: 1 } });
-    console.log('---FAVOURITES VEHICLES---');
-    console.log(favourites);
-    return res.status(200).json(favourites);
-  } catch (error) {
-    console.error(error.message);
-    return res.status(500).send('Favourites Server Error');
-  }
-});
+// @route   GET api/v1/vehicles/
+// @desc    GET Total vehicle count
+// @access  Public
+// router.get('/count', async (req, res) => {
+//   try {
+//     const count = await Vehicle.countDocuments();
+//     cconsole.log('count');
+//     console.log(count);
+//     return res.status(200).json(count);
+//   } catch (error) {
+//     console.error(error.message);
+//     return res.status(500).send('Vehc Count Server Error');
+//   }
+// });
 
 // @route    PUT api/vehicles/favourite
 // @desc     PUT vehicle favourite
@@ -422,6 +443,22 @@ router.delete('/:id', checkObjectId('id'), auth, async (req, res) => {
 });
 
 export default router;
+
+// get all vehicles which are favourited
+// router.get('/favourites/:userId', auth, async (req, res) => {
+//   try {
+//     const { id } = req.user;
+//     console.log('---FAVOURITES USER ID---');
+//     console.log(id);
+//     const { favourites } = await Vehicle.find({ favourites: { $size: 1 } });
+//     console.log('---FAVOURITES VEHICLES---');
+//     console.log(favourites);
+//     return res.status(200).json(favourites);
+//   } catch (error) {
+//     console.error(error.message);
+//     return res.status(500).send('Favourites Server Error');
+//   }
+// });
 
 // query = Vehicle.find(JSON.parse(queryString));
 // // sorting results

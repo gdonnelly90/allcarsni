@@ -44,7 +44,7 @@ router.post('/:vehicleId', auth, async (req, res) => {
 // // @access   Private
 router.get('/:vehicleId', auth, async (req, res) => {
   try {
-    console.log(req.params);
+    // console.log(req.params);
     // this is the ID of the user who is sending the message
     const messages = await Message.find(req.params)
       .select('messageBody')
@@ -100,7 +100,7 @@ router.get('/', auth, async (req, res) => {
 
     if (userMessages.length < 1) {
       const recipientUserId = req.user.id;
-      console.log(recipientUserId);
+      // console.log(recipientUserId);
       // this is the ID of the user who is sending the message
       const userMessages = await Message.find({
         recipientUserId: recipientUserId,

@@ -12,10 +12,6 @@ import {
   SUCCESS,
   CREATE_SUBSCRIPTION_SESSION,
   ERROR,
-  USER_UPDATE,
-  USER_UPDATE_SUCCESS,
-  USER_UPDATE_ERROR,
-  USER_UPDATE_RESET,
 } from '../actionTypes';
 import { isEmpty } from 'lodash';
 
@@ -29,7 +25,6 @@ const setLocalStorageState = (token, user, exp) => {
   localStorage.setItem('expiresAt', JSON.stringify(exp));
 };
 
-// register new user
 export const register = async (dispatch, registerPayload) => {
   try {
     dispatch({ type: REGISTER });
@@ -51,7 +46,6 @@ export const register = async (dispatch, registerPayload) => {
   }
 };
 
-// user login
 export const loginUser = async (dispatch, loginPayload) => {
   try {
     dispatch({ type: REQUEST_LOGIN });
@@ -75,38 +69,12 @@ export const loginUser = async (dispatch, loginPayload) => {
   }
 };
 
-// user logout
 export const logout = () => {
   localStorage.removeItem('user');
   localStorage.removeItem('app-token');
   localStorage.removeItem('expiresAt');
 };
 
-// update user details
-export const updateUserDetails = async (user, dispatch, payload) => {
-  try {
-    dispatch({ type: USER_UPDATE });
-    let response = await apiClient.put('/api/v1/auth', user, payload);
-    let { data } = response;
-    if (data) {
-      let {
-        data: { token },
-      } = response;
-      let { user, exp } = decodeToken(token);
-      setLocalStorageState(token, user, exp);
-      dispatch({ type: USER_UPDATE_SUCCESS, payload: { token, user } });
-      return token;
-    }
-
-    dispatch({ type: USER_UPDATE_ERROR, error: response.errors[0] });
-    return;
-  } catch (error) {
-    dispatch({ type: USER_UPDATE_ERROR, error: error });
-    return error;
-  }
-};
-
-// create subscription
 export const createSubscription = async (dispatch, payload) => {
   try {
     dispatch({ type: LOADING });
@@ -122,7 +90,6 @@ export const createSubscription = async (dispatch, payload) => {
   }
 };
 
-// fetch subscription type
 export const getSetSubscription = async (dispatch, payload) => {
   try {
     dispatch({ type: LOADING });
@@ -142,7 +109,6 @@ export const getSetSubscription = async (dispatch, payload) => {
   }
 };
 
-// create billing
 export const createBillingSession = async (dispatch, payload) => {
   try {
     dispatch({ type: LOADING });

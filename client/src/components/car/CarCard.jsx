@@ -19,8 +19,7 @@ const CarCard = ({ vehicle }) => {
   const { user } = useAppState();
   let navigate = useNavigate();
   const [favourite, setFavourite] = useState(vehicle.favourites);
-  console.log('favourite');
-  console.log(favourite);
+  const [isFavourite, setIsFavourite] = useState(vehicle.favourites);
 
   const {
     _id,
@@ -39,61 +38,10 @@ const CarCard = ({ vehicle }) => {
     // favourites,
   } = vehicle;
 
-  // new function setFavourite
-  // const setFavouriute = () => {}
-  // if(isEmpty(id)) { return out <div></div>}
-  // else - we know user is logged in - we want check if the current user id is in the list of vehicle.favourites
-  // const isFavourite favourites.some(f => f.user === id);
-  // return isFavourite ? <AiFillHeart /> : <AiOutlineHeart />
-  // Cars.find({ 'favourites.user': mongoose.Types.ObjectId('62e7fc9bba5f9bac64897a83') } )
-  // console.log('---VEHC USER');
-  // console.log(vehicle.favourites.user);
-
-  // const { user, id } = favourite;
-
-  // console.log('fAVOURITE');
-  // console.log(favourite);
-  // console.log('fAVOURITE USER');
-  // console.log(user);
-
-  const setFavourites = () => {
-    if (
-      vehicle.favourites.filter((favourite) => favourite.user.toString() === user.id).length > 0
-    ) {
-      <div className='car-card-favourite-icon'>
-        <AiFillHeart />
-      </div>;
-      console.log('Vehicle has a favourite');
-    } else {
-      <div className='car-card-favourite-icon'>
-        <AiOutlineHeart />
-      </div>;
-    }
-  };
-  // if (isEmpty(vehicle.favourites)) {
-  //   console.log('Vehicle Doesnt have a favourite');
-  // } else {
-  //   console.log('VEHICLE');
-  //   console.log(vehicle._id);
-  // }
-
-  // console.log('VEHICLE');
-  // console.log(vehicle.favourites.user);
-  // if (vehicle.favourites) console.log(vehicle.favourites);
-
-  //   if (isEmpty(id)) {
-  //     return <div></div>;
-  //   } else {
-  //     const isFavourite = favourites.some((f) => f.user === id);
-  //     return isFavourite ? <AiFillHeart /> : <AiOutlineHeart />;
-  //   }
-  // };
-  // console.log('---vehicle favourites-----');
-  // console.log(vehicle.favourites);
-
   const getVehicleId = async () => {
     try {
       putFavourites(_id);
+      toggleHeart();
     } catch (error) {
       toast.error(error.message);
     }
@@ -103,33 +51,27 @@ const CarCard = ({ vehicle }) => {
     navigate(`/vehicle/${_id}`);
   };
 
-  // const setHeartColour = async () => {
-  //   if (favourites.user)
-  //     favourites.user.filter((favourite) => favourite.user.toString() === req.user.id).length > 0;
-  //   // <AiFillHeart />;
-  // };
-  useEffect(() => {
-    setFavourites();
-  }, []);
+  // favourites.user.filter((favourite) => favourite.user.toString() === req.user.id).length > 0;
+
+  const toggleHeart = async () => {
+    if (
+      vehicle.favourites.filter((favourite) => favourite.user.toString() === user.id).length > 0
+    ) {
+      <AiFillHeart />;
+    }
+  };
+
+  // useEffect(() => {
+  //   // setFavourites();
+  //   checkFavourites();
+  // }, []);
 
   return (
     <Card className='card-div-class rounded'>
       <Card.Img src={Image1} variant='top' onClick={() => onVehicleClick()} />
-      <div className='car-card-favourite-icon' onClick={() => getVehicleId()}>
-        {/* <OverlayTrigger
-          overlay={
-            <Tooltip id='favourite'>
-              {' '}
-              {`${favourite ? 'You favourited this car' : 'Add to favourites!'}`}
-            </Tooltip>
-          }
-          placement='top'>
-          <div className='fill-red-heart'>
-            <span>{favourites.length > 0 && <span>{favourites.length}</span>}</span>
-            </div>
-          </OverlayTrigger> */}
-        {/* <AiOutlineHeart /> */}
-        {/* {setFavourite()} */}
+      {/* <div className='car-card-favourite-icon' onClick={() => getVehicleId()}> */}
+      <div className='car-card-favourite-icon'>
+        <AiOutlineHeart onClick={() => getVehicleId()} />
       </div>
       <Card.Body onClick={() => onVehicleClick()}>
         <div className='card-top-text'>
@@ -169,3 +111,84 @@ const CarCard = ({ vehicle }) => {
 };
 
 export default CarCard;
+
+{
+  /* <OverlayTrigger
+          overlay={
+            <Tooltip id='favourite'>
+              {' '}
+              {`${favourite ? 'You favourited this car' : 'Add to favourites!'}`}
+            </Tooltip>
+          }
+          placement='top'>
+          <div className='fill-red-heart'>
+            <span>{favourites.length > 0 && <span>{favourites.length}</span>}</span>
+            </div>
+          </OverlayTrigger> */
+}
+{
+  /* <AiOutlineHeart /> */
+}
+{
+  /* {setFavourite()} */
+}
+
+// new function setFavourite
+// const setFavouriute = () => {}
+// if(isEmpty(id)) { return out <div></div>}
+// else - we know user is logged in - we want check if the current user id is in the list of vehicle.favourites
+// const isFavourite favourites.some(f => f.user === id);
+// return isFavourite ? <AiFillHeart /> : <AiOutlineHeart />
+// Cars.find({ 'favourites.user': mongoose.Types.ObjectId('62e7fc9bba5f9bac64897a83') } )
+// console.log('---VEHC USER');
+// console.log(vehicle.favourites.user);
+
+// const checkFavourites = () => {
+//   console.log('---called---');
+//   if (!isEmpty(user.id)) {
+//     return isFavourite ? <AiFillHeart /> : <AiOutlineHeart />;
+//   }
+// };
+// const { user, id } = favourite;
+
+// console.log('fAVOURITE');
+// console.log(favourite);
+// console.log('fAVOURITE USER');
+// console.log(user);
+// const testValue =
+//   vehicle.favourites.some((favourite) => favourite.user.toString() === user.id).length > 0;
+// console.log('testValue');
+// console.log(testValue);
+
+// const setFavourites = () => {
+//   if (
+//     // this returns true
+//     vehicle.favourites.filter((favourite) => favourite.user.toString() === user.id).length > 0 ===
+//     true
+//   ) {
+//     <AiFillHeart />;
+//   } else {
+//     <AiOutlineHeart />;
+//   }
+// };
+
+// if (isEmpty(vehicle.favourites)) {
+//   console.log('Vehicle Doesnt have a favourite');
+// } else {
+//   console.log('VEHICLE');
+//   console.log(vehicle._id);
+// }
+
+// console.log('VEHICLE');
+// console.log(vehicle.favourites.user);
+// if (vehicle.favourites) console.log(vehicle.favourites);
+
+//   if (isEmpty(id)) {
+//     return <div></div>;
+//   } else {
+//     const isFavourite = favourites.some((f) => f.user === id);
+//     return isFavourite ? <AiFillHeart /> : <AiOutlineHeart />;
+//   }
+// };
+// console.log('---vehicle favourites-----');
+// console.log(vehicle.favourites);

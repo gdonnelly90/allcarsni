@@ -1303,13 +1303,13 @@ li {
 /* Car card favourite icon placement */
 .car-card-favourite-icon {
   position: absolute;
-  font-size: 1rem;
+  font-size: 1.5rem;
   font-weight: bold;
   top: 5px;
   right: 7px;
-  z-index: 502;
-  width: 40px;
-  height: 40px;
+  z-index: 999;
+  width: 45px;
+  height: 45px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1320,6 +1320,7 @@ li {
 
 .car-card-outline-heart {
   color: #fff;
+  z-index: 999;
   /* color: #c53030; */
 }
 
@@ -1329,7 +1330,7 @@ li {
   font-weight: bold;
   top: 5px;
   right: 7px;
-  z-index: 502;
+  z-index: 999;
   width: 40px;
   height: 40px;
   display: flex;

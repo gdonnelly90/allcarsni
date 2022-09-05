@@ -11,6 +11,7 @@ import {
   fetchAllVehicles,
   fetchFilterData,
   fetchVehicleModelsByMake,
+  fetchVehicleCount,
 } from '../services/vehicle.service';
 import { SearchSimple } from '../components/search/SearchSimple';
 import queryString from 'query-string';
@@ -23,6 +24,7 @@ export const Home2 = ({}) => {
   const [query, setQuery] = useState({});
   const [makes, setMakes] = useState([]);
   const [models, setModels] = useState([]);
+  const [vehicleCount, setVehicleCount] = useState();
 
   // function to get all cars
   const onBrowseCarsClick = () => {
@@ -104,19 +106,34 @@ export const Home2 = ({}) => {
     getVehicles(fullQuery);
   };
 
+  const getVehicleCount = async () => {
+    try {
+      const countData = await fetchVehicleCount();
+      setVehicleCount(countData);
+    } catch (error) {
+      toast.error(error.message);
+    }
+  };
+
   useEffect(() => {
     buildQuery();
   }, [query]);
 
   useEffect(() => {
     getInitialFilterData();
+    getVehicleCount();
   }, []);
 
   return (
     <MDBCol>
       <MDBRow className='hero-column-home' md='12'>
         <div className='home-image-logo-row'>
-          <SearchSimple makes={makes} models={models} onSearchValueChange={onSearchValueChange} />
+          <SearchSimple
+            makes={makes}
+            models={models}
+            vehicleCount={vehicleCount}
+            onSearchValueChange={onSearchValueChange}
+          />
           {/* <SimpleSearch /> */}
           <img className='home-logo' src={home_logo} />
           <img className='home-car' src={home_car} />

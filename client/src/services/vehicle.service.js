@@ -144,6 +144,16 @@ export const fetchVehicleFuelType = async (make, model) => {
   }
 };
 
+// get all fuel types based on make and model selected
+export const fetchVehicleCount = async () => {
+  try {
+    const { data } = await apiClient.get('api/v1/vehicles/status');
+    return data;
+  } catch (error) {
+    return error;
+  }
+};
+
 // get vehicles by bodyType
 // export const fetchVehiclesByBodyType = async (bodyType) => {
 //   try {

@@ -24,6 +24,19 @@ const multerMid = multer({ storage: storage });
 // @route    GET api/v1/vehicles
 // @desc     GET all vehicles
 // @access   Public
+router.get('/status', async (req, res) => {
+  try {
+    const count = await Vehicle.countDocuments({ status: 'FOR SALE' });
+    res.status(200).json(count);
+  } catch (error) {
+    console.error(error.message);
+    res.status(500).send('Vehcs Count Server Error');
+  }
+});
+
+// @route    GET api/v1/vehicles
+// @desc     GET all vehicles
+// @access   Public
 router.get('/', async (req, res) => {
   try {
     // getting query params form URL, adding pagination and executing query
@@ -187,21 +200,6 @@ router.get('/registration/:id', auth, async (req, res) => {
     return res.status(500).send('Vehc Reg Server Error');
   }
 });
-
-// @route   GET api/v1/vehicles/
-// @desc    GET Total vehicle count
-// @access  Public
-// router.get('/count', async (req, res) => {
-//   try {
-//     const count = await Vehicle.countDocuments();
-//     cconsole.log('count');
-//     console.log(count);
-//     return res.status(200).json(count);
-//   } catch (error) {
-//     console.error(error.message);
-//     return res.status(500).send('Vehc Count Server Error');
-//   }
-// });
 
 // @route    PUT api/vehicles/favourite
 // @desc     PUT vehicle favourite

@@ -3,11 +3,12 @@ import { useNavigate } from 'react-router-dom';
 import { Row, Form, Button } from 'react-bootstrap';
 import queryString from 'query-string';
 
-export const SearchSimple = ({ makes, models, onSearchValueChange }) => {
+export const SearchSimple = ({ makes, models, vehicleCount, onSearchValueChange }) => {
   let navigate = useNavigate();
 
   const [activeMake, setActiveMake] = useState('');
   const [activeModel, setActiveModel] = useState('');
+  const [activeVehicleCount, setActiveVehicleCount] = useState('');
 
   const onMakeChange = (e) => {
     const {
@@ -82,7 +83,7 @@ export const SearchSimple = ({ makes, models, onSearchValueChange }) => {
                     ))}
                 </Form.Select>
               </div>
-              <div className='col-lg-1 col-md-1 col-sm-1 mt-3'>
+              <div className='col-lg-2 col-md-2 col-sm-2 mt-3'>
                 {/* <button type='submit' className='btn btn-danger wrn-btn'>
                   Search
                 </button> */}
@@ -91,7 +92,7 @@ export const SearchSimple = ({ makes, models, onSearchValueChange }) => {
                 {/* </Button> */}
                 {/* <Button variant='primary' type='submit'></Button> */}
                 <Button variant='primary' onClick={() => commitSimpleFilters(query)}>
-                  Search
+                  Search {vehicleCount} cars for sale
                 </Button>
               </div>
             </Row>

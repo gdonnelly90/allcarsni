@@ -1,23 +1,10 @@
 import React from 'react';
-import { LinkContainer } from 'react-router-bootstrap';
-import { Container, Nav, Navbar } from 'react-bootstrap';
+import { Container } from 'react-bootstrap';
 import { MDBRow, MDBCol } from 'mdb-react-ui-kit';
-import { toast } from 'react-toastify';
 import EnterRegBox from './EnterRegBox';
 
 // designing the sell your car feature
 const SellYourCar = () => {
-  const getPrice = async () => {
-    try {
-      const valuation = Math.floor(Math.random() * 30000) + 20000;
-      console.log('valuation');
-      console.log(valuation);
-      return valuation;
-    } catch (error) {
-      toast.error(error.message);
-    }
-  };
-
   return (
     <div className='sell-car-quick pt-5'>
       <Container>
@@ -37,7 +24,7 @@ const SellYourCar = () => {
               <div className='sell-car-text3'>
                 <p>enter licence plate below</p>
               </div>
-              <EnterRegBox onClick={() => getPrice()} />
+              <EnterRegBox />
             </div>
           </MDBCol>
           <MDBCol md='1'></MDBCol>

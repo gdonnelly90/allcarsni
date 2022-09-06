@@ -29,8 +29,6 @@ export const CarDetail = () => {
   const getVehicle = async () => {
     try {
       const vehicle = await fetchVehicleById(params.id);
-      console.log('vehicle.images');
-      console.log(vehicle.images);
       setVehicle(vehicle);
     } catch (error) {
       console.log(error);

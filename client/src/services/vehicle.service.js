@@ -177,6 +177,21 @@ export const deleteSelectedVehicle = async (id) => {
   }
 };
 
+// return a vehicle price
+export const fetchVehiclePrice = async () => {
+  try {
+    const min = 30000;
+    const max = 60000;
+
+    const response = Math.floor(Math.random() * (max - min + 1)) + min;
+
+    return response;
+  } catch (error) {
+    console.error(error.message);
+    return error.message;
+  }
+};
+
 // get vehicles by bodyType
 // export const fetchVehiclesByBodyType = async (bodyType) => {
 //   try {

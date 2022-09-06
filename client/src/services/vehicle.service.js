@@ -83,7 +83,7 @@ export const postVehicle = async (vehicle) => {
 export const uploadVehiclePhotos = async (formData, headers) => {
   try {
     console.log('6. API CLIENT');
-    console.log(apiClient);
+    console.log(formData);
     const { data } = await apiClient.post('/api/v1/vehicles/files', formData, headers);
     console.log(`7. DATA FROM UPLOAD VEHICLE ${data}`);
     return data;
@@ -150,7 +150,30 @@ export const fetchVehicleCount = async () => {
     const { data } = await apiClient.get('api/v1/vehicles/status');
     return data;
   } catch (error) {
-    return error;
+    console.error(error.message);
+    return error.message;
+  }
+};
+
+// get 10 random cars
+export const fetchCarouselVehicles = async () => {
+  try {
+    const { data } = await apiClient.get('/api/v1/vehicles/random');
+    return data;
+  } catch (error) {
+    console.error(error.message);
+    return error.message;
+  }
+};
+
+// delete a vehicle
+export const deleteSelectedVehicle = async (id) => {
+  try {
+    const response = await apiClient.delete(`/api/v1/vehicles/${id}`);
+    return response.data;
+  } catch (error) {
+    console.error(error.message);
+    return error.message;
   }
 };
 

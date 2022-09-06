@@ -13,48 +13,35 @@ export const VehicleTab = ({ handleTabSelect }) => {
       console.log(`3. HAVE FILES`);
       // seetup new form data for posting to axios
       let formData = new FormData();
-      // append files to formData
+      // append our files to formData
       for (let i = 0; i < files.length; i++) {
         let file = files[i];
-        console.log(file);
-        formData.append(file.fileId, files[i]);
+        formData.append(file.fileId, file);
       }
-
       formData.append('id', vehicleId);
-      // [...files].map(f => {
-      //   let { file } = f;
-      //   formData.append('files', file);
-      //   formData.append('ids', f.fileId);
-      // });
       // set headers for files *** important for image upload ***
       const headers = { 'Content-Type': 'multipart/form-data' };
-      console.log(`5. UPLOAD FILES FN CALL: FORMDATA`);
-      console.log(formData);
       // do post
-      const response = await uploadVehiclePhotos(formData, headers);
-      console.log('RESPONSE TO FE');
-      console.log(response);
+      try {
+        await uploadVehiclePhotos(formData, headers);
+        formik.resetForm();
+        toast.success('Vehicle images uploaded');
+      } catch (error) {
+        toast.error(error.message);
+      }
     }
   };
 
   const createVehicle = async (vehicle, formik) => {
     try {
       window.scrollTo(0, 0);
-      console.log('BEFORE UPLOAD');
-      console.log(vehicle.images);
-      console.log(`1. POSTVEHICLE`);
       const { _id: vehicleId } = await postVehicle(vehicle);
-
-      console.log(`2. VEHICLE IMAGES`);
-      console.log(`${vehicle.images}`);
-
-      // add in again once post car
-      console.log('3. INVOKING UPLOADFILES');
+      console.log('VEHICLEID');
+      console.log(vehicleId);
       await uploadFiles(vehicle.images, vehicleId);
 
       formik.resetForm();
       toast.success('Vehicle listing created');
-
       setTimeout(() => {
         window.reload();
         handleTabSelect(`${APP_TABS.STOCK}`);
@@ -68,6 +55,8 @@ export const VehicleTab = ({ handleTabSelect }) => {
     registrationNumber: Yup.string().required(),
     title: Yup.string().required(),
     description: Yup.string().required(),
+    specification: Yup.string(),
+    features: Yup.string(),
     price: Yup.number().required(),
     mileage: Yup.number().required(),
     make: Yup.string().required(),
@@ -103,6 +92,8 @@ export const VehicleTab = ({ handleTabSelect }) => {
       registrationNumber: '',
       title: null,
       description: null,
+      specification: null,
+      features: null,
       price: null,
       mileage: null,
       make: '',
@@ -132,7 +123,6 @@ export const VehicleTab = ({ handleTabSelect }) => {
       images: [],
     },
     onSubmit: (formValues) => {
-      console.log(formValues);
       createVehicle(formValues, formik);
     },
   });

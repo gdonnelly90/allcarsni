@@ -9,8 +9,8 @@ import { Register } from './pages/Register';
 import { FeaturedReview } from './pages/FeaturedReview';
 import { Login } from './pages/Login';
 import { Account } from './pages/Account';
-import CarCloseDetail from './pages/CarCloseDetail';
-import Search from './pages/Search';
+import { CarCloseDetail } from './pages/CarCloseDetail';
+import { Search } from './pages/Search';
 import { StripeSuccess } from './pages/StripeSuccess';
 import 'react-toastify/dist/ReactToastify.css';
 

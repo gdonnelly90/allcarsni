@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+// import { useAppState, useAppDispatch } from '../../context/appContext/context';
 import { useParams } from 'react-router-dom';
 import { MDBRow, MDBCol } from 'mdb-react-ui-kit';
 import CarCarousel from './CarCarousel';
@@ -16,36 +17,52 @@ import FinanceCalculator from '../common/FinanceCalculator';
 import { currencyFormat } from '../../utils/helpers';
 import { fetchVehicleById } from '../../services/vehicle.service';
 import { CarDetailCarousel } from '../CarDetailCarousel';
+import { fetchCarouselVehicles } from '../../services/vehicle.service';
+import { toast } from 'react-toastify';
 
-const CarDetail = () => {
+export const CarDetail = () => {
+  // const { user, isAuthenticated } = useAppState();
+  const [carouselVehicles, setCarouselVehicles] = useState([]);
   const [vehicle, setVehicle] = useState({});
   const params = useParams();
 
   const getVehicle = async () => {
     try {
       const vehicle = await fetchVehicleById(params.id);
+      console.log('vehicle.images');
+      console.log(vehicle.images);
       setVehicle(vehicle);
     } catch (error) {
       console.log(error);
     }
   };
 
+  const getCarouselVehicles = async () => {
+    try {
+      const carouselVehicles = await fetchCarouselVehicles();
+      setCarouselVehicles(carouselVehicles);
+    } catch (error) {
+      toast.error(error.message);
+    }
+  };
+
   useEffect(() => {
     getVehicle();
+    getCarouselVehicles();
   }, []);
 
   return (
     <div>
       <MDBRow className='car-imagery-row pt-5' md='12'>
         <MDBCol className='car-imagery-col1 pb-3' md='8'>
-          <CarCarousel className='carousel-image-cardetails' />
+          <CarCarousel images={vehicle.images} className='carousel-image-cardetails' />
         </MDBCol>
         <MDBCol className='car-imagery-col1' md='4'>
           <MDBRow className='car-imagery-row1' md='12'>
             <img
               className='second-image-cardetails'
               style={{ width: '100%', height: '268px' }}
-              src={image1}
+              src={vehicle?.images?.length > 0 ? vehicle?.images[4]?.url : image1}
               alt='second pic'
             />
           </MDBRow>
@@ -53,7 +70,7 @@ const CarDetail = () => {
             <img
               className='third-image-cardetails'
               style={{ width: '100%', height: '268px' }}
-              src={image2}
+              src={vehicle?.images?.length > 0 ? vehicle?.images[5]?.url : image2}
               alt='third pic'
             />
           </MDBRow>
@@ -199,11 +216,9 @@ const CarDetail = () => {
         </MDBCol>
         <MDBCol className='similar-for-sale pt-5 pb-5' md='12'>
           <h1 className='pt-2'>Similar For Sale</h1>
-          {/*  <CarDetailCarousel /> */}
+          <CarDetailCarousel carouselVehicles={carouselVehicles} />
         </MDBCol>
       </MDBRow>
     </div>
   );
 };
-
-export default CarDetail;

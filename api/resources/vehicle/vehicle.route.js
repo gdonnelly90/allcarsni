@@ -9,17 +9,14 @@ import { checkObjectId } from '../../middleware/checkObjectId.js';
 import vehicleRespository from './vehicle.respository.js';
 import mongoose from 'mongoose';
 
-const storage = multer.diskStorage({
-  destination: (req, file, cb) => {
-    if (!fs.existsSync(process.env.TMP_DIR)) {
-      fs.mkdirSync(process.env.TMP_DIR);
-    }
-    cb(null, process.env.TMP_DIR);
+const router = Router();
+
+const multerMid = multer({
+  storage: multer.memoryStorage(),
+  limits: {
+    fileSize: 5 * 1024 * 1024,
   },
 });
-
-const router = Router();
-const multerMid = multer({ storage: storage });
 
 // @route    GET api/v1/vehicles
 // @desc     GET all vehicles
@@ -31,6 +28,19 @@ router.get('/status', async (req, res) => {
   } catch (error) {
     console.error(error.message);
     res.status(500).send('Vehcs Count Server Error');
+  }
+});
+
+// @route    GET api/v1/vehicles
+// @desc     GET 10 random vehicles
+// @access   Public
+router.get('/random', async (req, res) => {
+  try {
+    const randomVehicles = await Vehicle.aggregate([{ $sample: { size: 10 } }]);
+    res.status(200).json(randomVehicles);
+  } catch (error) {
+    console.error(error.message);
+    res.status(500).send('Vehcs Random Server Error');
   }
 });
 
@@ -294,6 +304,8 @@ router.post(
       modelVariant,
       title,
       description,
+      specification,
+      features,
       status,
       damaged,
       numberOfOwners,
@@ -324,6 +336,8 @@ router.post(
         registrationNumber,
         title,
         description,
+        specification,
+        features,
         make,
         model,
         variant,
@@ -357,13 +371,57 @@ router.post(
 
       await vehicle.save();
 
-      res.status(201).json({ success: true, message: 'Vehicle created' });
+      res.status(201).json(vehicle);
     } catch (error) {
       console.error(error.message);
       res.status(500).send('Server Error Vehicle Post');
     }
   }
 );
+
+// add comments
+router.post('/files', auth, multerMid.any(), async (req, res) => {
+  try {
+    const { id } = req.user;
+
+    if (!id) {
+      return res.status(400).send('Unathorised');
+    }
+
+    const { id: vehicleId } = req.body;
+    console.log(vehicleId);
+
+    if (!vehicleId) {
+      return res.status(400).send('Vehicle is missing from uploading files');
+    }
+
+    let files = req.files;
+
+    if (files.length <= 0) {
+      return res.status(400).send('Files is missing from upload');
+    }
+
+    let vehicle = await Vehicle.findById(vehicleId);
+
+    for (const file of files) {
+      console.log('PROCESSING FILE');
+      console.log(file);
+      const image = await vehicleRespository.uploadImage(file);
+      vehicle.images.push({ url: image, owner: id, fileId: file.fieldname });
+      console.log(vehicle);
+      console.log('FILE UPLOADED');
+      console.log(image);
+    }
+
+    await vehicle.save();
+
+    return res.status(201).json(vehicle.images);
+  } catch (error) {
+    console.log('THROWING ERROR');
+    console.error(error);
+    res.status(500).send(error);
+  }
+});
 
 // @route    PUT api/vehicles/:id
 // @desc     Update vehicle details by ID

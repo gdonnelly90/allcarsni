@@ -33,6 +33,17 @@ export const SearchDrawer = ({
     // the field in the car model is called 'isNewCar' and its a boolean
   };
 
+  // const onFavouriteChange = (e) => {
+  //   console.log('CONSOLE LOG E');
+  //   console.log(e);
+  //   const {
+  //     target: { value },
+  //   } = e;
+  //   setActiveStatus(value, activeStatus);
+  //   onSearchValueChange({ key: 'favourites', value: 'true' });
+  //   // the field in the car model is called 'isNewCar' and its a boolean
+  // };
+
   const onMakeChange = (e) => {
     const {
       target: { value },
@@ -113,7 +124,9 @@ export const SearchDrawer = ({
 
       <div className='dropdown'>
         <p className='siderbar-filter-text mt-3'>Car Status</p>
-        <Checkbox label=' Select for New Cars only' onChange={(e) => onStatusChange(e)} />
+        <Checkbox label=' Select New Cars only' onChange={(e) => onStatusChange(e)} />
+        {/* <p></p>
+        <Checkbox label=' Select Favourites only' onChange={(e) => onFavouriteChange(e)} /> */}
 
         <p className='siderbar-filter-text mt-5'>Make & Model</p>
         <div>
@@ -290,59 +303,3 @@ export const SearchDrawer = ({
     </div>
   );
 };
-
-{
-  /* <p className='siderbar-filter-text mt-2'>Select for New Cars Only</p> */
-}
-{
-  /* <div class='form-check mb20'>
-          <input class='form-check-input' type='checkbox' value='' id='flexCheckPetrolSbp' />
-          <label class='form-check-label' for='flexCheckPetrolSbp'>
-            Select for New Cars Only
-          </label>
-        </div> */
-}
-{
-  /* input value='isNewCar' type='checkbox' onChange={handleCheck} /> */
-}
-{
-  /* Vegetarisma Farm <input type='checkbox' checked /> <span className='check'></span>{' '} */
-}
-{
-  /* <div>
-          <Form.Select
-            className='filter-holder-text'
-            aria-label='select dropdown'
-            id='status'
-            name='status'
-            onChange={(e) => onStatusChange(e)}>
-            <option>Select New or Used Condition</option>
-            <option selected={activeStatus === STATUS.NEW} value={STATUS.TRUE}>
-              {STATUS.NEW}
-            </option>
-            <option selected={activeStatus === STATUS.USED} value={STATUS.FALSE}>
-              {STATUS.USED}
-            </option>
-          </Form.Select>
-        </div> */
-}
-
-{
-  /* <Form.Select
-          className='filter-holder-text mt-3'
-          aria-label='select dropdown'
-          id='bodyType'
-          name='bodyType'
-          onChange={(e) => onBodyChange(e)}>
-          <option>Body Style:</option>
-          <option selected={activeBodyType === BODYTYPE.ESTATE} value={BODYTYPE.ESTATE}>
-            {BODYTYPE.ESTATE}
-          </option>
-          <option selected={activeBodyType === BODYTYPE.SALOON} value={BODYTYPE.SALOON}>
-            {BODYTYPE.SALOON}
-          </option>
-          <option selected={activeBodyType === BODYTYPE.SUV} value={BODYTYPE.SUV}>
-            {BODYTYPE.SUV}
-          </option>
-        </Form.Select> */
-}

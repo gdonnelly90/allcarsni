@@ -16,8 +16,7 @@ const EnterRegBox = () => {
       <Formik
         initialValues={{
           enterReg: '',
-        }}
-      >
+        }}>
         <Form className='enter-reg'>
           <div className='mb-3'>
             <FormInput
@@ -37,7 +36,7 @@ const EnterRegBox = () => {
         type='submit'
         // disabled={!formik.dirty}
       >
-        Press to start your listing...
+        Press to get an approximate price...
       </Button>
     </div>
   );

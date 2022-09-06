@@ -1,9 +1,9 @@
 import React from 'react';
 import { MDBContainer } from 'mdb-react-ui-kit';
-import CarDetail from '../components/car/CarDetail';
+import { CarDetail } from '../components/car/CarDetail';
 
 // calling the car details component
-const CarCloseDetail = () => {
+export const CarCloseDetail = () => {
   return (
     <div>
       <MDBContainer>
@@ -12,5 +12,3 @@ const CarCloseDetail = () => {
     </div>
   );
 };
-
-export default CarCloseDetail;

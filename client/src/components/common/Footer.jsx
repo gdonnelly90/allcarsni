@@ -1,7 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { useAppState, useAppDispatch } from '../../context/appContext/context';
 
 export const Footer = () => {
+  const { user, isAuthenticated } = useAppState();
   return (
     <div className='footer-main-container container'>
       <footer className='row row-cols-5 py-5 my-5 border-top'>
@@ -40,9 +42,15 @@ export const Footer = () => {
           <h5>Sell A Car</h5>
           <ul className='nav flex-column'>
             <li className='nav-item mb-2'>
-              <Link to='/login' className='nav-link p-0 text-muted'>
-                Sell
-              </Link>
+              {isAuthenticated ? (
+                <Link to='/account?tab=sell' className='nav-link p-0 text-muted'>
+                  Sell
+                </Link>
+              ) : (
+                <Link to='/login' className='nav-link p-0 text-muted'>
+                  Sell
+                </Link>
+              )}
             </li>
           </ul>
         </div>
@@ -50,3 +58,9 @@ export const Footer = () => {
     </div>
   );
 };
+
+// {
+//   isAuthenticated ? (
+//     <Link to='/account' className='nav-link p-0 text-muted'></Link>
+//   ) : <Link to='/login' className='nav-link p-0 text-muted'></Link>;
+// }

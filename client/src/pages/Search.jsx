@@ -10,7 +10,7 @@ import Pagination from 'react-bootstrap/Pagination';
 import queryString from 'query-string';
 import { toast } from 'react-toastify';
 
-const Search = ({}) => {
+export const Search = ({}) => {
   const [vehicles, setVehicles] = useState([]);
   const [query, setQuery] = useState({});
   const [pageNumber, setPageNumber] = useState(1);
@@ -172,5 +172,3 @@ const Search = ({}) => {
     </div>
   );
 };
-
-export default Search;

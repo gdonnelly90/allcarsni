@@ -55,7 +55,6 @@ export const VehicleForm = ({ formik }) => {
         Object.assign(file, {
           preview: URL.createObjectURL(file),
           fileId: uuidv4(),
-          owner: state?.user?.id,
         }),
       );
       console.log('NEW FILES');
@@ -85,7 +84,7 @@ export const VehicleForm = ({ formik }) => {
     // filter out the file the user wants to remove
     const newFileList = [...files].filter((file) => file.fileId !== selectedFile.fileId);
     console.log(newFileList);
-    // spread in the new file list
+    // spread in our new file list
     setFiles([...newFileList]);
   };
 
@@ -334,6 +333,54 @@ export const VehicleForm = ({ formik }) => {
                   </small>
                 </Form.Group>
               </Col>
+              <Col sm={12}>
+                <Form.Group className='mb-3'>
+                  <Form.Label>
+                    Specification
+                    <span className='error-text'>*</span>
+                  </Form.Label>
+                  <div className='d-flex flex-sm-column flex-md-row justify-content-md-between'>
+                    <Form.Control
+                      as='textarea'
+                      rows={5}
+                      name='specification'
+                      className='form-control'
+                      value={formik.values.specification}
+                      onChange={formik.handleChange}
+                      onBlur={formik.handleBlur}
+                      isValid={formik.touched.specification && !formik.errors.specification}
+                      isInvalid={formik.touched.specification && formik.errors.specification}
+                    />
+                  </div>
+                  <small id='titleNote' className='form-text text-muted'>
+                    Key specification detail regarding the vehicle.
+                  </small>
+                </Form.Group>
+              </Col>
+              <Col sm={12}>
+                <Form.Group className='mb-3'>
+                  <Form.Label>
+                    Features
+                    <span className='error-text'>*</span>
+                  </Form.Label>
+                  <div className='d-flex flex-sm-column flex-md-row justify-content-md-between'>
+                    <Form.Control
+                      as='textarea'
+                      rows={5}
+                      name='features'
+                      className='form-control'
+                      value={formik.values.features}
+                      onChange={formik.handleChange}
+                      onBlur={formik.handleBlur}
+                      isValid={formik.touched.features && !formik.errors.features}
+                      isInvalid={formik.touched.features && formik.errors.features}
+                    />
+                  </div>
+                  <small id='titleNote' className='form-text text-muted'>
+                    Key features detail regarding the vehicle.
+                  </small>
+                </Form.Group>
+              </Col>
             </Row>
             <hr className='my-4' />
             <Row>
@@ -342,8 +389,7 @@ export const VehicleForm = ({ formik }) => {
                 <Form.Group className='mb-3'>
                   <div {...getRootProps({ className: 'dropzone' })}>
                     <input {...getInputProps()} />
-                    <p className='m-0'>Drag 'n' drop some files here, or click to select files.</p>
-                    <p className='m-2'>Place your main profile image first</p>
+                    <p className='m-0'>Drag 'n' drop some files here, or click to select files</p>
                   </div>
                   {files.length > 0 && (
                     <aside style={thumbsContainer}>

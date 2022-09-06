@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { Tabs, Tab } from 'react-bootstrap';
 import { isEmpty } from 'lodash';
+import queryString from 'query-string';
 import { toast } from 'react-toastify';
 import { useAppDispatch, useAppState } from '../context/appContext';
 import { fetchSubscriptions } from '../services/subscription.service';
@@ -86,7 +87,7 @@ export const Account = () => {
         break;
       case APP_TABS.STOCK:
         setKey(key);
-        console.log('stock');
+        console.log('Stock');
         getCustomerVehicles();
         break;
       case APP_TABS.SELL:
@@ -138,6 +139,17 @@ export const Account = () => {
   const hasActivePlan = () => {
     return state?.user?.subscription?.plan?.active || false;
   };
+
+  useEffect(() => {
+    const windowSearch = window.location.search;
+    const fullQuery = { ...queryString.parse(windowSearch) };
+    if (!isEmpty(fullQuery)) {
+      if (fullQuery['tab'] !== undefined) {
+        console.log(fullQuery['tab']);
+        setKey(fullQuery['tab']);
+      }
+    }
+  });
 
   return (
     <div className='container mt-4' style={{ minHeight: '80vh' }}>

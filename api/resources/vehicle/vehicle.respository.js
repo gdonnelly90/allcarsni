@@ -1,16 +1,8 @@
 import axios from 'axios';
-import fs from 'fs';
 import { isEmpty } from 'lodash-es';
 import camelcaseKeys from 'camelcase-keys';
 import vehicleService from './vehicle.service.js';
 import { Storage } from '@google-cloud/storage';
-import { removeDirectoryContents } from '../../utils/util.js';
-import path from 'path';
-
-// load process env - may not need in prod
-// load config
-const __dirname = path.resolve();
-console.log(__dirname);
 
 export const fileStatus = {
   UPLOADED: 'UPLOADED',
@@ -27,7 +19,7 @@ const fetchUkVehicleData = async (registrationNumber) => {
     if (!isEmpty(response)) {
       // format the uk vehicle data into a consistent format of camelcase keys
       const formattedResponse = camelcaseKeys(response.data, { deep: true });
-      // deconstruct out the statuscode and check if success
+      // deconstruct our the statuscode and check if success
       const {
         response: { statusCode, dataItems },
       } = formattedResponse;
@@ -46,75 +38,42 @@ const fetchUkVehicleData = async (registrationNumber) => {
   }
 };
 
-export const uploadPhotos = async (vehicle, files) => {
-  console.log('4. UploadPhotos check process env GCP BUCKET');
-  console.log(`${process.env.GCLOUD_BUCKET}`);
-  console.log('4A. process env');
-  console.log(process.env.PORT);
+export const uploadImage = (file) =>
+  new Promise((resolve, reject) => {
+    // setup stroage account details
+    const storage = new Storage({
+      projectId: process.env.GCLOUD_PROJECT_ID,
+      credentials: {
+        client_email: process.env.GCLOUD_CLIENT_EMAIL,
+        private_key: process.env.GCLOUD_PRIVATE_KEY,
+      },
+    });
+    // select our bucket in GCP once storage instance declared.
+    const bucket = storage.bucket(process.env.GCLOUD_BUCKET);
 
-  let newFileArray = [];
-  // GCP Storage - could have these values passed in as params to configure different storage
-  const storage = new Storage({
-    projectId: process.env.GCLOUD_PROJECT_ID,
-    credentials: {
-      client_email: process.env.GCLOUD_CLIENT_EMAIL,
-      private_key: process.env.GCLOUD_PRIVATE_KEY,
-    },
+    let { originalname, mimetype, fieldname, buffer } = file;
+    // create unique file name
+    const fileTypeArr = mimetype.split('/');
+
+    originalname = `${fieldname}.${fileTypeArr[1]}`;
+    // deconstruct file details for upload
+    const blob = bucket.file(originalname);
+    // create writestream
+    const blobStream = blob.createWriteStream({
+      resumable: false,
+    });
+    blobStream
+      .on('finish', () => {
+        const publicUrl = `https://storage.googleapis.com/${bucket.name}/${blob.name}`;
+        resolve(publicUrl);
+      })
+      .on('error', () => {
+        reject(`Unable to upload image, something went wrong`);
+      })
+      .end(buffer);
   });
-  console.log('5. UploadPhotos - storage init');
-  console.log(storage);
-
-  // select the bucket in GCP once storage instance declared.
-  const bucket = storage.bucket(process.env.GCLOUD_BUCKET);
-
-  console.log('6. UploadPhotos - bucket init');
-
-  // the uniquie folder name - this case the vehicleId || some asset since it will be unique
-  const folder = vehicle.id;
-  // tmp-file
-  const directoryPath = process.env.TMP_DIR;
-  console.log(`7. UploadPhotos - directoryPath: ${directoryPath}`);
-
-  // loop through file list and upload each file to storage bucket
-  files.forEach(async (file) => {
-    // store files on files system
-    console.log(
-      `8. UploadPhotos - writeToDirectory: ${__dirname}/${directoryPath}/${file.filename}`
-    );
-
-    await fs.writeFile(`${__dirname}/${directoryPath}/${file.filename}`, file);
-
-    console.log('8A BUCKET UPLOADING');
-
-    try {
-      const response = await bucket.upload(
-        `${__dirname}/${directoryPath}/${file.filename}`,
-        {
-          destination: `${folder}/${file.filename}`,
-        }
-      );
-      console.log(`9. UploadPhotos - RESPONE FROM BUCKET ${response}`);
-      console.log(
-        `10 UploadPhotos ${file} uploaded to ${process.env.GCLOUD_BUCKET}`
-      );
-      newFileArray = [
-        ...newFileArray,
-        { ...response, fileId: file.id, owner: vehicle.user },
-      ];
-    } catch (error) {
-      console.log('ERROR IN UPLOAD');
-      console.log(error);
-    }
-  });
-  // removeDirectoryContents(`${directoryPath}`);
-
-  console.log('RETURING NEW FILES AFTER UPLOAD');
-  console.log(newFileArray);
-
-  return newFileArray;
-};
 
 export default {
   fetchUkVehicleData,
-  uploadPhotos,
+  uploadImage,
 };

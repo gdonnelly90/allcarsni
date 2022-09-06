@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Button } from 'react-bootstrap';
 import { MDBRow, MDBCol } from 'mdb-react-ui-kit';
+import { toast } from 'react-toastify';
 import home_logo from '../assets/img/red_white_logo.png';
 import home_car from '../assets/img/fullwidth/bugatti_back1b.jpg';
 import LatestNews from '../components/common/LatestNews';
@@ -15,7 +16,6 @@ import {
 } from '../services/vehicle.service';
 import { SearchSimple } from '../components/search/SearchSimple';
 import queryString from 'query-string';
-import { toast } from 'react-toastify';
 import woman from '../assets/img/woman_selling.jpg';
 
 export const Home2 = ({}) => {

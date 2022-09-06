@@ -3,12 +3,15 @@ import { useNavigate } from 'react-router-dom';
 import { Container, Row, Card, Col } from 'react-bootstrap';
 import { currencyFormat } from '../../utils/helpers';
 import { toast } from 'react-toastify';
+import { isEmpty } from 'lodash';
 import Image1 from '../../assets/img/cars/Ferrari_LaFerrari_Aperta_1.jpg';
 import { AiFillHeart } from 'react-icons/ai';
 import { AiOutlineHeart } from 'react-icons/ai';
+import { AiFillDelete } from 'react-icons/ai';
 import { putFavourites } from '../../services/favourite.service';
 import { useAppState, useAppDispatch } from '../../context/appContext/context';
 import { AuthContext } from '../../context/AuthContext';
+import { deleteSelectedVehicle } from '../../services/vehicle.service';
 
 //adding the individual data points to set a 'vehicle'
 const CarCard = ({ vehicle }) => {
@@ -33,6 +36,7 @@ const CarCard = ({ vehicle }) => {
     mileage,
     numberOfOwners,
     favourites,
+    images,
   } = vehicle;
 
   const toggleFavourite = async () => {
@@ -50,9 +54,25 @@ const CarCard = ({ vehicle }) => {
     navigate(`/vehicle/${_id}`);
   };
 
+  const getImagePrimary = () => {
+    if (!isEmpty(images)) {
+      return images[0].url;
+    }
+    return Image1;
+  };
+
   const displayFavourite = () => {
     const favourite = [...favourites].some((f) => f.user === user.id) || isFavourite;
     return favourite ? <AiFillHeart /> : <AiOutlineHeart />;
+  };
+
+  const deleteListing = async () => {
+    try {
+      const data = await deleteSelectedVehicle(_id);
+      return toast.success('Vehicle sold');
+    } catch (error) {
+      toast.error(error.message);
+    }
   };
 
   useEffect(() => {
@@ -62,10 +82,15 @@ const CarCard = ({ vehicle }) => {
 
   return (
     <Card className='card-div-class rounded'>
-      <Card.Img src={Image1} variant='top' onClick={() => onVehicleClick()} />
+      <Card.Img src={getImagePrimary()} variant='top' onClick={() => onVehicleClick()} />
       {isAuthenticated ? (
         <div className='car-card-favourite-icon' onClick={() => toggleFavourite()}>
           {displayFavourite()}
+        </div>
+      ) : null}
+      {isAuthenticated && user.id === vehicle.user ? (
+        <div className='car-card-delete-icon'>
+          <AiFillDelete onClick={() => deleteListing()} />
         </div>
       ) : null}
       <Card.Body onClick={() => onVehicleClick()}>
@@ -106,3 +131,7 @@ const CarCard = ({ vehicle }) => {
 };
 
 export default CarCard;
+
+// <div className='car-card-delete-icon'>
+//   <AiFillDelete onClick={() => deleteListing()} />
+// </div>;

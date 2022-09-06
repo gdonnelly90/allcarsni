@@ -60,7 +60,7 @@ export const CarDetail = () => {
             <img
               className='second-image-cardetails'
               style={{ width: '100%', height: '268px' }}
-              src={vehicle?.images?.length > 0 ? vehicle?.images[4]?.url : image1}
+              src={vehicle?.images?.length > 0 ? vehicle?.images[5]?.url : image1}
               alt='second pic'
             />
           </MDBRow>
@@ -68,7 +68,7 @@ export const CarDetail = () => {
             <img
               className='third-image-cardetails'
               style={{ width: '100%', height: '268px' }}
-              src={vehicle?.images?.length > 0 ? vehicle?.images[5]?.url : image2}
+              src={vehicle?.images?.length > 0 ? vehicle?.images[6]?.url : image2}
               alt='third pic'
             />
           </MDBRow>

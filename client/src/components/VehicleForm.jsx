@@ -84,7 +84,7 @@ export const VehicleForm = ({ formik }) => {
     // filter out the file the user wants to remove
     const newFileList = [...files].filter((file) => file.fileId !== selectedFile.fileId);
     console.log(newFileList);
-    // spread in our new file list
+    // spread in the new file list
     setFiles([...newFileList]);
   };
 

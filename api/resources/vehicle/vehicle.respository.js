@@ -19,7 +19,7 @@ const fetchUkVehicleData = async (registrationNumber) => {
     if (!isEmpty(response)) {
       // format the uk vehicle data into a consistent format of camelcase keys
       const formattedResponse = camelcaseKeys(response.data, { deep: true });
-      // deconstruct our the statuscode and check if success
+      // deconstruct the statuscode and check if success
       const {
         response: { statusCode, dataItems },
       } = formattedResponse;
@@ -48,7 +48,7 @@ export const uploadImage = (file) =>
         private_key: process.env.GCLOUD_PRIVATE_KEY,
       },
     });
-    // select our bucket in GCP once storage instance declared.
+    // select the bucket in GCP once storage instance declared.
     const bucket = storage.bucket(process.env.GCLOUD_BUCKET);
 
     let { originalname, mimetype, fieldname, buffer } = file;

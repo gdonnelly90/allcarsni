@@ -13,7 +13,7 @@ export const VehicleTab = ({ handleTabSelect }) => {
       console.log(`3. HAVE FILES`);
       // seetup new form data for posting to axios
       let formData = new FormData();
-      // append our files to formData
+      // append files to formData
       for (let i = 0; i < files.length; i++) {
         let file = files[i];
         formData.append(file.fileId, file);

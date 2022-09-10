@@ -140,16 +140,16 @@ export const Account = () => {
     return state?.user?.subscription?.plan?.active || false;
   };
 
-  useEffect(() => {
-    const windowSearch = window.location.search;
-    const fullQuery = { ...queryString.parse(windowSearch) };
-    if (!isEmpty(fullQuery)) {
-      if (fullQuery['tab'] !== undefined) {
-        console.log(fullQuery['tab']);
-        setKey(fullQuery['tab']);
-      }
-    }
-  });
+  // useEffect(() => {
+  //   const windowSearch = window.location.search;
+  //   const fullQuery = { ...queryString.parse(windowSearch) };
+  //   if (!isEmpty(fullQuery)) {
+  //     if (fullQuery['tab'] !== undefined) {
+  //       console.log(fullQuery['tab']);
+  //       setKey(fullQuery['tab']);
+  //     }
+  //   }
+  // });
 
   return (
     <div className='container mt-4' style={{ minHeight: '80vh' }}>

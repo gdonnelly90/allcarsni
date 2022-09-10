@@ -8,6 +8,7 @@ import Image1 from '../../assets/img/cars/Ferrari_LaFerrari_Aperta_1.jpg';
 import { AiFillHeart } from 'react-icons/ai';
 import { AiOutlineHeart } from 'react-icons/ai';
 import { AiFillDelete } from 'react-icons/ai';
+import { AiFillEdit } from 'react-icons/ai';
 import { putFavourites } from '../../services/favourite.service';
 import { useAppState, useAppDispatch } from '../../context/appContext/context';
 import { AuthContext } from '../../context/AuthContext';
@@ -75,6 +76,15 @@ const CarCard = ({ vehicle }) => {
     }
   };
 
+  const editListing = async () => {
+    try {
+      // const data = await deleteSelectedVehicle(_id);
+      // return toast.success('Vehicle edited');
+    } catch (error) {
+      toast.error(error.message);
+    }
+  };
+
   useEffect(() => {
     // watch for favourite change to rerender
     displayFavourite();
@@ -83,7 +93,7 @@ const CarCard = ({ vehicle }) => {
   return (
     <Card className='card-div-class rounded'>
       <Card.Img src={getImagePrimary()} variant='top' onClick={() => onVehicleClick()} />
-      {isAuthenticated ? (
+      {isAuthenticated && user.id !== vehicle.user ? (
         <div className='car-card-favourite-icon' onClick={() => toggleFavourite()}>
           {displayFavourite()}
         </div>
@@ -91,6 +101,11 @@ const CarCard = ({ vehicle }) => {
       {isAuthenticated && user.id === vehicle.user ? (
         <div className='car-card-delete-icon'>
           <AiFillDelete onClick={() => deleteListing()} />
+        </div>
+      ) : null}
+      {isAuthenticated && user.id === vehicle.user ? (
+        <div className='car-card-edit-icon'>
+          <AiFillEdit onClick={() => editListing()} />
         </div>
       ) : null}
       <Card.Body onClick={() => onVehicleClick()}>

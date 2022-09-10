@@ -28,7 +28,7 @@ export const ProfileTab = () => {
               <Container className='mt-3 d-flex justify-content-center text-center'>
                 <Col>
                   {/* <div className='count fw-bold'>{user.populate(subscriptionTypes)}</div> */}
-                  <div className='count fw-bold'>25</div>
+                  <div className='count fw-bold'>1</div>
                   <div className='meta-profile-title'>Allowance</div>
                 </Col>
                 <Col>
@@ -36,7 +36,7 @@ export const ProfileTab = () => {
                   <div className='meta-profile-title'>Spaces</div>
                 </Col>
                 <Col>
-                  <div className='count fw-bold'>2</div>
+                  <div className='count fw-bold'>0</div>
                   <div className='meta-profile-title'>Messages</div>
                 </Col>
               </Container>

@@ -3,7 +3,7 @@ import { Container, Row } from 'react-bootstrap';
 import { MDBRow, MDBCol } from 'mdb-react-ui-kit';
 import ModalCar from '../components/car/ModalCar';
 import car_advert from '../assets/m5/bannernew1.jpg';
-import Image1 from '../assets/m5/m5a.jpg';
+import Image1 from '../assets/m5/m5l.jpg';
 import Image2 from '../assets/m5/m5b.jpg';
 import Image3 from '../assets/m5/m5c.jpg';
 import Image4 from '../assets/m5/m5e.jpg';

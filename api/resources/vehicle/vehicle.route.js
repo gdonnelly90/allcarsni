@@ -490,11 +490,11 @@ router.delete('/:id', checkObjectId('id'), auth, async (req, res) => {
 
     await Vehicle.deleteOne({ _id: id });
 
-    res.status(201).json({ sucess: true, message: 'Vehile removed' });
+    res.status(201).json({ sucess: true, message: 'Vehicle removed' });
   } catch (error) {
     console.error(error.message);
 
-    res.status(500).send('Delete Vehc Server Error');
+    res.status(500).send('Delete Vehicle Server Error');
   }
 });
 

@@ -14,7 +14,7 @@ import { useAppState, useAppDispatch } from '../../context/appContext/context';
 import { AuthContext } from '../../context/AuthContext';
 import { deleteSelectedVehicle } from '../../services/vehicle.service';
 
-//adding the individual data points to set a 'vehicle'
+//adding individual data points to set a 'vehicle'
 const CarCard = ({ vehicle }) => {
   const { user, isAuthenticated } = useAppState();
   const auth = useContext(AuthContext);
